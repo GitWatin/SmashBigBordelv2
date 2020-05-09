@@ -57,6 +57,7 @@ Map1::Map1(): Map()
 	//this->PathPlateforme = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\plat1.png";
 	//this->PathBackground = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\mario.png";
 	std::cout << "donnée map envoyer" << std::endl;
+	//linux c'est qd même de la merde
 
 }
 /// Test petit poney 
