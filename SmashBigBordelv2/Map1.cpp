@@ -59,17 +59,7 @@ Map1::Map1(): Map()
 	std::cout << "donnée map envoyer" << std::endl;
 
 }
-//----------------- Getter Texture Plateforme -----------------------
-/*std::string Map1::GetPathPlateforme()
-{
-	return PathPlateforme;
-}
-//----------------- Getter Texture back_ground -----------------------
-std::string Map1::GetPathBackground()
-{
-	return PathBackground;
-}
-*/
+/// Test petit poney 
 
 
 
