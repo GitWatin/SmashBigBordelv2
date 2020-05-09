@@ -60,7 +60,7 @@ Map1::Map1(): Map()
 	//linux c'est qd même de la merde
 
 }
-///// Test petit poney lol mdr les poney c'est bon dans une assiette 
+//ee/ Test petit poney coucou 
 
 
 
