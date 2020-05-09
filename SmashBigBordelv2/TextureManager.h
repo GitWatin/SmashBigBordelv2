@@ -14,6 +14,7 @@ public :
 	~TextureManager();
 	virtual sf::Texture* GetTexture(std::string path_texture);
 	virtual sf::Texture* SetTexture(std::string path_texture);
+
 protected :
 	std::map<std::string, sf::Texture*> map_textures;
 
