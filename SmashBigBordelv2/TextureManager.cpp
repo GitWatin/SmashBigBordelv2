@@ -43,7 +43,7 @@ sf::Texture* TextureManager::SetTexture(std::string path_texture)
 }
 
 sf::Texture * TextureManager::GetTexture(std::string path_texture)
-{
+{// Ici on a un problème 
 	std::cout << "[Path Texture Manager]:" << path_texture << std::endl;
 
 	for (auto itr = map_textures.find(path_texture); itr != map_textures.end(); itr++)
