@@ -6,6 +6,7 @@
 
 Map1::Map1(): Map()
 {
+	
 	this->NomMap = "Map du Turfu";
 
 
