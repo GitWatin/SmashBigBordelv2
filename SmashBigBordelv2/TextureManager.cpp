@@ -4,7 +4,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-//TextureManager TextureManager::instance=NULL;
+
 
 TextureManager::TextureManager()
 {
@@ -18,9 +18,8 @@ sf::Texture* TextureManager::SetTexture(std::string path_texture)
 
 	static sf::Texture *texture;
 	
-	texture = this->GetTexture(path_texture);// GuiGui Modifié ICI .at()
-	if (texture == NULL)// GUIGUI modifié ici &
-	//if(this->GetTexture(path_texture)==NULL)
+	texture = this->GetTexture(path_texture);// Mr Lerat on a un problème ici aussi ( renvoie l'erreur std::out_of_range car pas d'élément "trouvable" dans map)
+	if (texture == NULL)
 	{
 		texture = new sf::Texture;
 
