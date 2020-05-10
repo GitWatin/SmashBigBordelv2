@@ -9,8 +9,6 @@ class TextureManager
 public :
 	
 	TextureManager();
-
-	static TextureManager *instance;
 	~TextureManager();
 	virtual sf::Texture* GetTexture(std::string path_texture);
 	virtual sf::Texture* SetTexture(std::string path_texture);
