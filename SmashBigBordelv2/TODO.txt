@@ -2,7 +2,7 @@
 
 2 - Création des personnages
 
-3- Bouger_personnage
+3 - Bouger_personnage
 
 4- Gestion collision perso/Platefrome
 
@@ -13,8 +13,9 @@
 7- Gestion des conditions de victoires
 
 
-
 ------------------------------------------------
+
+
 Si on a le temps 
 
 8 - Gestion des atouts
