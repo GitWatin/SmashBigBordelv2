@@ -3,6 +3,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include "Entite.h"
+#include "Morty.h"
+#include "Rick.h"
 #include "Map1.h"
 #include "Map2.h"
 
@@ -17,6 +19,8 @@ public:
 
 	 virtual void ChargementJeu(Map *map);
 	 virtual void ChoixMap();
+	 virtual void ChoixPerso();
+
 	 Map* GetMapChoisie();
 
 
@@ -36,6 +40,8 @@ protected:
 	sf::RenderWindow *fenetre;
 	sf::View *Vueprincipal;
 	Map *mapchoisie;
+	Personnage *perso1choisi;
+	Personnage *perso2choisi;
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 

@@ -12,7 +12,7 @@ public: // A voir pour les déclaration a cause de sfml
 
 	virtual void supprimer_vector();
 
-	virtual void SetVectorDrawable(Entite *drawable);
+	virtual void SetVectorPersonnages(Entite *drawable);
 	
 
 	virtual void SetPositionX(float position_x);

@@ -7,7 +7,7 @@ Entite::Entite() : Sprite()
 }
 
 
-void Entite::SetVectorDrawable(Entite *drawable)
+void Entite::SetVectorPersonnages(Entite *drawable)
 {
 	Dessin.push_back(drawable);
 }

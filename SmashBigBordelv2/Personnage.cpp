@@ -4,12 +4,7 @@
 
 Personnage::Personnage() : Entite()
 {
-	;
-}
-
-void Personnage::Attaque(Personnage *NomCible, std::string TypeAttaque)
-{
-
+	
 }
 
 // -------------------------- Pourcentages ---------------------------------

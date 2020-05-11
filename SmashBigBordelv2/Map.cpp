@@ -41,6 +41,7 @@ std::vector< Plateforme* > Map::GetVectorPlatefomes()
 {
 	return plateformes;
 }
+
 Back_Ground* Map::getBackground()
 {
 	return BackGround;
