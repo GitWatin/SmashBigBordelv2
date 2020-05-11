@@ -24,7 +24,7 @@ public:
 	 virtual void ChoixPerso();
 
 	 Map* GetMapChoisie();
-
+	
 
 	 sf::View* GetView();
 	 void SetView(float TailleX, float TailleY);
