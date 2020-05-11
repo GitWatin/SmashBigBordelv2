@@ -43,6 +43,6 @@ protected:
 	float Taille_X;
 	float Taille_Y;
 	std::vector < sf::Drawable* > Dessin;
-}
+};
 
 

@@ -8,7 +8,7 @@ class Personnage :
 {
     public:
 	Personnage();
-	virtual void Attaque(Personnage *NomCible, std::string TypeAttaque);
+	virtual void Attaque(Personnage *NomCible, std::string TypeAttaque) = 0;
 	virtual void SetPourcentages(double percent);
 	virtual double GetPourcentages();
 	virtual void SetPoids(int poids);
