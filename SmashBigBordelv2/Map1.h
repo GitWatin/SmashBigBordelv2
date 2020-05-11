@@ -13,6 +13,6 @@ class Map1 :
 		//virtual std::string GetPathPlateforme();
 		//virtual std::string GetPathBackground();
 	protected:
-		std::string Path = " \\textures\\plat1.png ";
+		std::string Path = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\plat1.png";
 };
 
