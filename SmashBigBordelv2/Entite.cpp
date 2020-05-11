@@ -39,6 +39,7 @@ void Entite::SetVectorDrawable(Entite *drawable)
 
  void Entite::supprimer_vector()
  {
+	 /*
 	 for (int i = 0; i < entite_fixe.size(); i++) // suppression des Drawable mes_objets
 	 {
 		 delete entite_fixe.back();
@@ -49,6 +50,7 @@ void Entite::SetVectorDrawable(Entite *drawable)
 		 delete Dessin.back();
 		 Dessin.pop_back();
 	 }
+	 */
  }
 
 // -------------------------- Position  X---------------------------------
