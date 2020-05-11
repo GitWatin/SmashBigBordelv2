@@ -39,6 +39,7 @@ Jeu :: ~Jeu()
 }
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
-	map->setPlatefomes();
 	map->setBackground();
+	map->setPlatefomes();
+	
 }

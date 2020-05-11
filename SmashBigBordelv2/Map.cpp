@@ -14,7 +14,7 @@ Map::Map(int plateforme)
 		this->plateformes.push_back(new Plateforme());// TODO créer un constructeur vide ?
 		plateforme--;
 	}
-	new Back_Ground();
+	this->BackGround = new Back_Ground();
 	
 }
 
@@ -25,6 +25,7 @@ Map::~Map(void)
 		delete plateformes.back();
 		plateformes.pop_back();
 	}
+	delete BackGround;
 }
 
 int Map::countPlatforms() {
