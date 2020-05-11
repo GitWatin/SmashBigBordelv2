@@ -140,7 +140,6 @@
   <ItemGroup>
     <ClCompile Include="Atout.cpp" />
     <ClCompile Include="Entite.cpp" />
-    <ClCompile Include="Environnement.cpp" />
     <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Map1.cpp" />
@@ -152,7 +151,6 @@
   <ItemGroup>
     <ClInclude Include="Atout.h" />
     <ClInclude Include="Entite.h" />
-    <ClInclude Include="Environnement.h" />
     <ClInclude Include="Jeu.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Map1.h" />
