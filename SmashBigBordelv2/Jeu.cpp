@@ -28,7 +28,6 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
 	map->setBackground();
 	map->setPlatefomes();
-	
 }
 
 void Jeu::ChoixMap()
