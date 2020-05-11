@@ -14,6 +14,7 @@ Map::Map(int plateforme)
 		this->plateformes.push_back(new Plateforme());// TODO créer un constructeur vide ?
 		plateforme--;
 	}
+	
 }
 
 Map::~Map(void)

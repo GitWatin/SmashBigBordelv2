@@ -40,10 +40,25 @@ void Map1::setPlatefomes()
 	delete t;
 
 }
+void Map1::setBackground()
+{
+	TextureManager *t;
+	t = new TextureManager();
+
+	this->BackGround->setTexture(t->SetTexture(this->GetPathBackground()));
+	this->BackGround->setOrigin(800, 450);
+
+	delete t;
+}
 std::string Map1::GetPath()
 {
 	return Path;
 }
+std::string Map1::GetPathBackground()
+{
+	return PathBackground;
+}
+
 // Han ouais 
 
 

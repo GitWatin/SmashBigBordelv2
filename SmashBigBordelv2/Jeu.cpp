@@ -25,6 +25,11 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 	}
 }
 
+void Jeu::DrawBackGround(sf::RectangleShape BackGround)
+{
+	fenetre->draw(BackGround);
+}
+
 Jeu :: ~Jeu()
 {
 	Entite *jeu;
@@ -35,4 +40,5 @@ Jeu :: ~Jeu()
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
 	map->setPlatefomes();
+	map->setBackground();
 }

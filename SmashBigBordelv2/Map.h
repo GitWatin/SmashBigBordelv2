@@ -7,14 +7,14 @@ class Map
 
     Map(int plateforme);
 	~Map(void);
-
+	virtual void setBackground() = 0;
 	virtual void setPlatefomes()= 0;
 	int countPlatforms();
 
 	Plateforme* getPlatform(int pos);
 	
 	virtual std::vector< Plateforme* >GetVectorPlatefomes();
-
+	
 	/*
     virtual std::string GetPathPlateforme();
 	virtual std::string GetPathBackground();
@@ -48,7 +48,7 @@ class Map
 protected:
 
 	std::vector < Plateforme* > plateformes;
-
+	sf::RectangleShape *BackGround;
 
 	// Nom de la carte
 	//std::string NomMap;
