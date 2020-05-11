@@ -13,7 +13,12 @@ public:
 	 Jeu ();
 	 virtual ~Jeu();
 	 sf::RenderWindow* GetWindow();
+
 	 virtual void ChargementJeu(Map *map);
+
+	 sf::View* GetView();
+	 void SetView(float TailleX, float TailleY);
+	 
 
 
 	 virtual void DrawEntite(std::vector < sf::Drawable* > Dessin);
@@ -25,7 +30,7 @@ public:
 protected:
 	float Timer;
 	sf::RenderWindow *fenetre;
-
+	sf::View *Vueprincipal;
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 

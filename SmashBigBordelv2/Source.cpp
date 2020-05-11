@@ -62,8 +62,7 @@ int main()
 	
 	//window = new sf::RenderWindow (sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	//window->setFramerateLimit(60);
-	sf::View view;
-
+	
 	//------------------------Création des Sprite ---------------------------------------------
 	// rect defini pour la plage de jeu
 	//back_ground = new sf::RectangleShape (sf::Vector2f(rect_game_x,rect_game_y));
@@ -93,8 +92,8 @@ int main()
 		//-------------------------------- Modification des états des objets--------------------
 		
 
-		view.setCenter(0, 0); //center les coordoné 2D de la window au centre de la vue
-		view.setSize(x, y); // Taille de la vue si x=1600 ; y = 900 => vue 16:9
+		Game.SetView(1600, 900); //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
+		
 
 		//back_ground->setPosition((-rect_game_x/2),(-rect_game_y/2)); //Rectangle de fond positionner au milieur de la vue
 		//point_reference->setPosition((-Rshape / 2), (-Rshape / 2));//Cercle vert positionner au milieur de la vue Référence
@@ -105,7 +104,7 @@ int main()
 
 		//-------------------------------- Liaison des objets graphiques à la fenêtre------------
 
-		Game.GetWindow()->setView(view);
+		Game.GetWindow()->setView(*Game.GetView());
 		Game.DrawBackGround(map.getBackground());
 		Game.DrawPlateforme(map.GetVectorPlatefomes());
 		Game.GetWindow()->display();
