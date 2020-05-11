@@ -45,11 +45,23 @@ sf::Texture * TextureManager::GetTexture(std::string path_texture)
 {// Ici on a un problème 
 	std::cout << "[Path Texture Manager]:" << path_texture << std::endl;
 
-	for (auto itr = map_textures.find(path_texture); itr != map_textures.end(); itr++)
+	if (map_textures.empty())
 	{
-		std::cout << "[Boucle GetTexture]:" << std::endl;
-		return itr->second;
+		std::cout << "[MAP NULL]:" << path_texture << std::endl;
+		return NULL;
 	}
+	else
+	{
+
+		for (auto itr = map_textures.find(path_texture); itr != map_textures.end(); itr++)
+		{
+
+			std::cout << "[Path Texture Manager]:" << itr->second << std::endl;
+			return itr->second;
+		}
+	}
+
+
 		
 }
 
