@@ -17,7 +17,7 @@ void Map2::setPlatefomes()
 	// Plateforme principale dans le bas frère
 	this->getPlatform(0)->setPosition(0, +350);
 	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath(1)));
-	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1193, 120));
+	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1123, 115));
 	this->getPlatform(0)->setOrigin(this->getPlatform(0)->getGlobalBounds().width / 2, this->getPlatform(0)->getGlobalBounds().height / 2);
 
 
