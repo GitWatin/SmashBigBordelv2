@@ -27,7 +27,8 @@
 #include <stdlib.h>
 
 void VerifPosition(Entite *Plat);
-Entite J;
+
+//Entite J;
 
 //void GenerateurPlateforme();
 //void GenerateurMap(Map mapouche);
@@ -39,13 +40,13 @@ Entite J;
 //sf::RectangleShape *back_ground;
 //sf::CircleShape *point_reference;
 //Taille de la vue si x=1600 ; y = 900 => vue 16:9
-float x=1600;
-float y=900;
+//float x=1600;
+//float y=900;
 //Rayon cercle reference
-float Rshape=10;
+//float Rshape=10;
 // Taille view
-float rect_game_x = x;
-float rect_game_y = y;
+//float rect_game_x = x;
+//float rect_game_y = y;
 
 // Chargement de la texture (View totale)
 

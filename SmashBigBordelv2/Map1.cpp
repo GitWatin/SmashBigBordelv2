@@ -51,6 +51,7 @@ void Map1::setBackground()
 
 	this->getBackground()->setTexture(*t->SetTexture(this->GetPathBackground()));
 	this->getBackground()->setOrigin(800, 450);
+
 	delete t;
 }
 std::string Map1::GetPath(int taille)

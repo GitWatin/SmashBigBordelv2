@@ -34,7 +34,6 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 void Jeu::ChoixMap()
 {
 	// a gerer avec un switch dans le menu pour les différente maps
-
 	Map1 map;
 	this->mapchoisie = &map;
 }
