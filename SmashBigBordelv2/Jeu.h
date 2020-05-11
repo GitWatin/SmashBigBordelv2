@@ -16,7 +16,7 @@ public:
 	 virtual void ChargementJeu(Map *map);
 	 virtual void DrawEntite(std::vector < sf::Drawable* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
-	 virtual void DrawBackGround(sf::RectangleShape *BackGround);
+	 virtual void DrawBackGround(Back_Ground *BackGround);
 
 	//Get Return_Texture_Plateforme
 	//Get Return_Texture_Map

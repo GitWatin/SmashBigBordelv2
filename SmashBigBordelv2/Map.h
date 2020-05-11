@@ -1,5 +1,6 @@
 #pragma once
 #include "Plateforme.h"
+#include "Back_Ground.h"
 #include <iostream>
 class Map
 {
@@ -15,7 +16,7 @@ class Map
 	
 	virtual std::vector< Plateforme* >GetVectorPlatefomes();
 
-	virtual sf::RectangleShape getBackground();
+	Back_Ground* getBackground();
 	
 	/*
     virtual std::string GetPathPlateforme();
@@ -50,7 +51,7 @@ class Map
 protected:
 
 	std::vector < Plateforme* > plateformes;
-	sf::RectangleShape *BackGround;
+	Back_Ground *BackGround;
 
 	// Nom de la carte
 	//std::string NomMap;

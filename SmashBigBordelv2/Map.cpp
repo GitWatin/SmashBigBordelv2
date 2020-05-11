@@ -14,6 +14,7 @@ Map::Map(int plateforme)
 		this->plateformes.push_back(new Plateforme());// TODO créer un constructeur vide ?
 		plateforme--;
 	}
+	new Back_Ground();
 	
 }
 
@@ -39,9 +40,9 @@ std::vector< Plateforme* > Map::GetVectorPlatefomes()
 {
 	return plateformes;
 }
-sf::RectangleShape Map::getBackground()
+Back_Ground* Map::getBackground()
 {
-	return *BackGround;
+	return BackGround;
 }
 
 
