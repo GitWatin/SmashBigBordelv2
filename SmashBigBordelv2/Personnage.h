@@ -30,5 +30,6 @@ protected:
 	int Bouclier;
 	std::string DerniersAtout;
 	std::string TypeAttaque;
+	Personnage *perso;
 };
 

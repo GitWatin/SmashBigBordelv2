@@ -13,9 +13,6 @@ Jeu :: ~Jeu()
 	jeu = new Entite();
 
 
-	jeu->supprimer_vector();
-
-
 	delete jeu;
 }
 
@@ -119,11 +116,11 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 
 
 
-void Jeu::DrawHUD(std::vector<sf::Drawable*> HUD)
+void Jeu::DrawHUD()
 {
-	for (int i = 0; i < HUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
+	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
-		fenetre->draw(*HUD[i]);
+		fenetre->draw(*vectorHUD[i]);
 		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
 	}
 }

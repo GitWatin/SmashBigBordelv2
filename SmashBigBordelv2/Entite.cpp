@@ -6,6 +6,15 @@ Entite::Entite() : Sprite()
 	;
 }
 
+Entite::~Entite()
+{
+	for (int i = 0; i < Dessin.size(); i++) // suppression des Drawable mes_objets
+	{
+		delete Dessin.back();
+		Dessin.pop_back();
+	}
+}
+
 
 void Entite::SetVectorPersonnages(Entite *drawable)
 {
@@ -20,6 +29,17 @@ void Entite::SetVectorPersonnages(Entite *drawable)
 	
 }
 
+void Entite::SetNom(std::string nom)
+{
+	this->Nom = nom;
+}
+
+std::string Entite::GetNom()
+{
+	return Nom;
+}
+
+ /*
  void Entite::supprimer_vector()
  {
 	 
@@ -54,15 +74,7 @@ float Entite::GetPositionY()
 }
 
 // -------------------------- Nom entité---------------------------------
-void Entite::SetNom(std::string nom)
-{
-	this->Nom = nom;
-}
 
-std::string Entite::GetNom()
-{
-	return Nom;
-}
 
 // -------------------------- Texture ---------------------------------
 
@@ -99,7 +111,7 @@ float Entite::GetTailleY()
 {
 	return Taille_Y;
 }
-
+*/
 
 
 
