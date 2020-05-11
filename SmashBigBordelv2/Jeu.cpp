@@ -117,6 +117,17 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 	}
 }
 
+
+
+void Jeu::DrawHUD(std::vector<sf::Drawable*> HUD)
+{
+	for (int i = 0; i < HUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
+	{
+		fenetre->draw(*HUD[i]);
+		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
+	}
+}
+
 void Jeu::DrawBackGround(Back_Ground *BackGround)
 {
 	fenetre->draw(*BackGround);
