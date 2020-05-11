@@ -57,8 +57,9 @@ int main()
 	// Objet temps machine
 	
 	//---------------------------- Création de la fenêtre -----------------------------------------
-	//sf::RenderWindow *window;
+	
 	Jeu *Game;
+	sf::RenderWindow *window = Game->GetWindow();
 	//window = new sf::RenderWindow (sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	//window->setFramerateLimit(60);
 	sf::View view;
@@ -80,14 +81,14 @@ int main()
 	Game->ChargementJeu(&map);
 
 	//----------------------------- Boucle du jeu --------------------------------------------------
-	while (Game->GetWindow()->isOpen())
+	while (window ->isOpen())
 	{
 		sf::Event event;
 		//------------------------------- Gestion des évènements -------------------------------
-		while (Game->GetWindow()->pollEvent(event))
+		while (window->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				Game->GetWindow()->close();
+				window->close();
 		}
 		//-------------------------------- Modification des états des objets--------------------
 		
@@ -100,17 +101,18 @@ int main()
 
 		//-------------------------------- Effacer le contenu de la fenêtre----------------------
 
-		Game->GetWindow()->clear();
+		window->clear();
 
 		//-------------------------------- Liaison des objets graphiques à la fenêtre------------
 
-		Game->GetWindow()->setView(view);
+		window->setView(view);
 		Game->DrawBackGround(map.getBackground());
 		Game->DrawPlateforme(map.GetVectorPlatefomes());
-		Game->GetWindow()->display();
+		window->display();
 
 	}
 	delete Game;
+	delete window;
 	return 0;
 
 }
