@@ -1,5 +1,6 @@
 #pragma once
 #include "Personnage.h"
+#include "TextureManager.h"
 class Morty :
 	public Personnage
 {

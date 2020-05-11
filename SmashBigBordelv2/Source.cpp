@@ -74,6 +74,7 @@ int main()
 
 	
 	Game.ChoixMap();
+	Game.ChoixPerso();
 	
 	// Chargement des textures
 

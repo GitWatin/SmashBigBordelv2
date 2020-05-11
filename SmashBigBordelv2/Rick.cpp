@@ -3,8 +3,8 @@
 
 Rick::Rick() : Personnage()
 {
-	TextureManager *t;
-	t = new TextureManager();
+	//TextureManager *t;
+	//t = new TextureManager();
 
 	this->perso = new Rick();
 
@@ -19,12 +19,10 @@ Rick::Rick() : Personnage()
 	this->perso->setTextureRect(sf::IntRect(0, 0, 268, 90));
 	this->perso->setColor(sf::Color::Green);
 	this->perso->setOrigin(this->perso->getGlobalBounds().width / 2, this->perso->getGlobalBounds().height / 2);
-
 	this->perso->setPosition(0, 0);
-
 	this->perso->SetVectorPersonnages(perso);
 
-	delete t;
+	//delete t;
 
 }
 

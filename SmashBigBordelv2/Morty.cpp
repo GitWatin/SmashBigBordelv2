@@ -3,8 +3,8 @@
 
 Morty::Morty() : Personnage()
 {
-	TextureManager *t;
-	t = new TextureManager();
+	//TextureManager *t;
+	//t = new TextureManager();
 
 	this->perso = new Morty();
 
@@ -25,7 +25,7 @@ Morty::Morty() : Personnage()
 
 	this->perso->SetVectorPersonnages(perso);
 
-	delete t;
+	//delete t;
 }
 
 void Morty::SetPersonnage()
