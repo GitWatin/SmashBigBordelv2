@@ -1,1 +1,24 @@
+1 - Affichage de la map ( Platefrome, background , texture)
+
+2 - Création des personnages
+
+3 - Bouger_personnage
+
+4- Gestion collision perso/Platefrome
+
+5- Gestion collision entre perso
+
+6- gestion des attaques
+
+7- Gestion des conditions de victoires
+
+
+------------------------------------------------
+
+
+Si on a le temps 
+
+8 - Gestion des atouts
+
+9 - Menu (plusieurs maps)
 
