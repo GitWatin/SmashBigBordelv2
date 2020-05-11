@@ -15,8 +15,8 @@ class Jeu
 
 public:
 	
-	 Jeu(void);
-	 virtual ~Jeu();
+	 Jeu (void);
+	 virtual ~Jeu(void);
 	 sf::RenderWindow* GetWindow();
 
 	 virtual void ChargementJeu(Map *map);
@@ -29,7 +29,6 @@ public:
 	 sf::View* GetView();
 	 void SetView(float TailleX, float TailleY);
 	 
-
 
 	 virtual void DrawEntite(std::vector < sf::Drawable* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);

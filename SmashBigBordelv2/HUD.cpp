@@ -21,11 +21,7 @@ HUD::~HUD()
 
 }
 
-std::vector<sf::Drawable*> HUD::GetVectorHUD()
-{
-	//return std::vector<sf::Drawable*>();
-	return vectorHUD;
-}
+
 
 void HUD::CallHUD()
 {
