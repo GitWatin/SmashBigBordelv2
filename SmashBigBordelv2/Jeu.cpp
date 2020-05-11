@@ -92,6 +92,8 @@ void Jeu::SetView(float TailleX , float TailleY)
 	this->Vueprincipal->setSize(TailleX , TailleY);
 }
 
+
+
 //---------------------Entite--------------------------------------------
 
 void Jeu::DrawEntite(std::vector < sf::Drawable* > Dessin)
