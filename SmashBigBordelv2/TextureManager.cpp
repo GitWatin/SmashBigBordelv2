@@ -45,8 +45,7 @@ sf::Texture * TextureManager::GetTexture(std::string path_texture)
 {// Ici on a un problème 
 	std::cout << "[Path Texture Manager]:" << path_texture << std::endl;
 
-
-	if (map_textures.find(path_texture) == map_textures.end())
+	if (!map_textures.find(path_texture))
 	{
 		// Ca n'existe pas 
 		return NULL;
