@@ -34,13 +34,12 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 void Jeu::ChoixMap()
 {
 	// a gerer avec un switch dans le menu pour les différente maps
-	Map1 map;
-	this->mapchoisie = &map;
+	this->mapchoisie = new Map1();
 }
 
 Map* Jeu::GetMapChoisie()
 {
-	return mapchoisie;
+	return this->mapchoisie;
 }
 
 sf::View * Jeu::GetView()
