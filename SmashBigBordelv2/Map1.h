@@ -18,7 +18,7 @@ class Map1 :
 		std::string PathPlateformeTiny = "plat_tiny.png";
 		std::string PathPlateformePetite = "plat_petite.png";
 		std::string PathPlateformeGrande = "plat_grande.png";
-		std::string PathBackground = "background.png";
+		std::string PathBackground = "background_map1.png";
 };
 
 

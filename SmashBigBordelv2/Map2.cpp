@@ -50,7 +50,9 @@ void Map2::setBackground()
 	t = new TextureManager();
 
 	this->getBackground()->setTexture(*t->SetTexture(this->GetPathBackground()));
-	this->getBackground()->setOrigin(800, 450);
+	this->getBackground()->setOrigin(this->getBackground()->getGlobalBounds().width/2, this->getBackground()->getGlobalBounds().height/2);
+	//this->getBackground()->setOrigin(800, 450);
+	this->getBackground()->setScale(0.834, 0.834);
 
 	delete t;
 }
