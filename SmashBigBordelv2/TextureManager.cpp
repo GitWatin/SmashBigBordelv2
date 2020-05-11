@@ -53,10 +53,13 @@ sf::Texture * TextureManager::GetTexture(std::string path_texture)
 	else
 	{
 
+		std::cout << "[ELSE FOR]:" << path_texture << std::endl;
+		
+
 		for (auto itr = map_textures.find(path_texture); itr != map_textures.end(); itr++)
 		{
 
-			std::cout << "[Path Texture Manager]:" << itr->second << std::endl;
+			std::cout << "[Path Texture Manager IN FOR]:" << itr->second << std::endl;
 			return itr->second;
 		}
 	}
