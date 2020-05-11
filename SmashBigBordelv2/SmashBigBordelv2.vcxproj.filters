@@ -81,15 +81,4 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="Textures\plat_grande.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
-    <Image Include="Textures\plat_petite.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
-    <Image Include="Textures\background.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
-  </ItemGroup>
 </Project>
