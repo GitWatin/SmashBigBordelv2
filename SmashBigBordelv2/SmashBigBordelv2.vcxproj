@@ -145,8 +145,10 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Map1.cpp" />
     <ClCompile Include="Map2.cpp" />
+    <ClCompile Include="Morty.cpp" />
     <ClCompile Include="Personnage.cpp" />
     <ClCompile Include="Plateforme.cpp" />
+    <ClCompile Include="Rick.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
@@ -158,8 +160,10 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Map1.h" />
     <ClInclude Include="Map2.h" />
+    <ClInclude Include="Morty.h" />
     <ClInclude Include="Personnage.h" />
     <ClInclude Include="Plateforme.h" />
+    <ClInclude Include="Rick.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
