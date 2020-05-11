@@ -20,6 +20,7 @@ sf::Texture* TextureManager::SetTexture(std::string path_texture)
 	texture = this->GetTexture(path_texture);// Mr Lerat on a un problème ici aussi ( renvoie l'erreur std::out_of_range car pas d'élément "trouvable" dans map)
 	if (texture == NULL)
 	{
+		std::cout << "[INFO] -[] :Premier IF " << std::endl;
 		texture = new sf::Texture;
 
 		if (!texture->loadFromFile(path_texture))
