@@ -21,7 +21,6 @@ public: // A voir pour les déclaration a cause de sfml
 	virtual void SetPositionY(float position_y);
 	virtual float GetPositionY();
 
-
 	virtual void SetNom(std::string nom);
 	virtual std::string GetNom();
 
