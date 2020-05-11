@@ -18,6 +18,7 @@ void Map1::setPlatefomes()
 	this->getPlatform(0)->setPosition(0, +350);
 	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath(2)));
 	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1200, 100));
+	std::cout << "Taille X " << this->getPlatform(0)->getGlobalBounds().height << std::endl;
 	this->getPlatform(0)->setOrigin(1200/2, 100/2);
 
 
