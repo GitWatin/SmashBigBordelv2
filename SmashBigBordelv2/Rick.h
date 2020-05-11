@@ -12,7 +12,6 @@ public:
 
 protected:
 
-	Rick *perso;
 	std::string PathTexture = "  ";// rajouter le path
 };
 
