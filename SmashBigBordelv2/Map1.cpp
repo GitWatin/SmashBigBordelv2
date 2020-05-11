@@ -37,6 +37,8 @@ void Map1::setPlatefomes()
 	this->getPlatform(4)->setTexture(*t->SetTexture(this->GetPath()));
 	this->getPlatform(4)->setTextureRect(sf::IntRect(0, 0, 1000, 50));
 
+	delete t;
+
 }
 std::string Map1::GetPath()
 {
