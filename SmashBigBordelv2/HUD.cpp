@@ -1,4 +1,5 @@
 #include "HUD.h"
+#include <string>
 
 
 HUD::HUD()
@@ -29,9 +30,15 @@ std::vector<sf::Drawable*> HUD::GetVectorHUD()
 void HUD::CallHUD()
 {
 
-	return 
+	this->ViePerso1.setString(std::to_string(perso1choisi->GetNbre_Vies));
+	this->ViePerso1.setPosition(0, 0);
 
-	//this->vectorHUD.push_back();
+	this->ViePerso1.setString(std::to_string(perso1choisi->GetNbre_Vies));
+	this->ViePerso1.setPosition(0, 0);
+
+
+
+	vectorHUD.push_back(ViePerso1);
 
 }
 
