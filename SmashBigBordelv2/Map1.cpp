@@ -5,7 +5,7 @@
 #include <iostream>
 
 
-Map1::Map1(): Map(1)
+Map1::Map1(): Map(3) // PAS OUBLIE DE MODIFIER CE CHIFFRE PUT***
 {
 }
 void Map1::setPlatefomes()
@@ -13,34 +13,31 @@ void Map1::setPlatefomes()
 	TextureManager *t;
 	t = new TextureManager();
 
+	// Taille Plateforme : 
+	// 1 : Grande : 1193*120
+	// 2 : Petite : 448*90
+	// 3 : Tiny : 268*90 
 
 	// Plateforme principale dans le bas frère
 	this->getPlatform(0)->setPosition(0, +350);
-	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath(2)));
+	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath(1)));
 	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1193, 120));
 	this->getPlatform(0)->setOrigin(this->getPlatform(0)->getGlobalBounds().width/2, this->getPlatform(0)->getGlobalBounds().height /2);
 
 
-	/*
-	this->getPlatform(1)->setPosition(100, 300);
-	this->getPlatform(1)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(1)->setTextureRect(sf::IntRect(0, 0, 100, 20));
+	// Plateforme 1 en haut à gauche
 
+	this->getPlatform(1)->setPosition(-200, 0);
+	this->getPlatform(1)->setTexture(*t->SetTexture(this->GetPath(2)));
+	this->getPlatform(1)->setTextureRect(sf::IntRect(0, 0, 448, 90));
+	this->getPlatform(1)->setOrigin(this->getPlatform(0)->getGlobalBounds().width/2, this->getPlatform(0)->getGlobalBounds().height/2);
 
-	this->getPlatform(2)->setPosition(-100, 200);
-	this->getPlatform(2)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(2)->setTextureRect(sf::IntRect(0, 0, 100, 20));
+	this->getPlatform(2)->setPosition(+200, 0);
+	this->getPlatform(2)->setTexture(*t->SetTexture(this->GetPath(3)));
+	this->getPlatform(2)->setTextureRect(sf::IntRect(0, 0, 268, 90));
+	this->getPlatform(2)->setOrigin(this->getPlatform(0)->getGlobalBounds().width/2, this->getPlatform(0)->getGlobalBounds().height/2);
 
-
-	this->getPlatform(3)->setPosition(50, 20);
-	this->getPlatform(3)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(3)->setTextureRect(sf::IntRect(0, 0, 100, 20));
-
-
-	this->getPlatform(4)->setPosition(-500, 900);
-	this->getPlatform(4)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(4)->setTextureRect(sf::IntRect(0, 0, 1000, 50));
-	*/
+	
 	delete t;
 
 }
@@ -58,12 +55,20 @@ std::string Map1::GetPath(int taille)
 {
 	if (taille == 1)
 	{
-		return PathPlateformePetite;
+		std::cout << "[GRANDE]:" << std::endl;
+		return PathPlateformeGrande;
+		
 
 	}
 	if (taille == 2)
 	{
-		return PathPlateformeGrande;
+		std::cout << "[HAN OUAIS]:" << std::endl;
+		return PathPlateformePetite;
+		
+	}
+	if (taille == 3)
+	{
+		return PathPlateformeTiny;
 	}
 	else
 	{
