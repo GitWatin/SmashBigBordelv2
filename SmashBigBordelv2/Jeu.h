@@ -15,8 +15,8 @@ class Jeu
 
 public:
 	
-	 Jeu (void);
-	 virtual ~Jeu(void);
+	 Jeu ();
+	 virtual ~Jeu();
 	 sf::RenderWindow* GetWindow();
 
 	 virtual void ChargementJeu(Map *map);
