@@ -5,7 +5,7 @@
 #include <iostream>
 
 
-Map1::Map1(): Map(1)
+Map1::Map1(): Map(5)
 {
 }
 void Map1::setPlatefomes()
@@ -37,12 +37,6 @@ void Map1::setPlatefomes()
 	this->getPlatform(4)->setTexture(*t->SetTexture(this->GetPath()));
 	this->getPlatform(4)->setTextureRect(sf::IntRect(0, 0, 1000, 20));
 
-
-	this->getPlatform(5)->setPosition(60, 0);
-	this->getPlatform(5)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(5)->setTextureRect(sf::IntRect(0, 0, 100, 20));
-
-	
 }
 std::string Map1::GetPath()
 {
