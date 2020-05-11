@@ -55,7 +55,7 @@ void Map1::setBackground()
 }
 std::string Map1::GetPath()
 {
-	return Path;
+	return PathPlateformePetite;
 }
 std::string Map1::GetPathBackground()
 {
