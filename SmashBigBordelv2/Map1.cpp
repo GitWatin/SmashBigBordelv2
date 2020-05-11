@@ -58,7 +58,7 @@ std::string Map1::GetPath()
 {
 	return Path;
 }
-/// Test petit poney 
+// Han ouais 
 
 
 
