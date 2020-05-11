@@ -6,12 +6,12 @@
 #include "Jeu.h"
 
 
-class HUD: public Jeu
+class HUD :
+	public Jeu
 {
 public:
 	HUD();
 	~HUD();
-	virtual std::vector<sf::Drawable*> GetVectorHUD();
 
 	virtual void CallHUD();
 
@@ -28,9 +28,6 @@ public:
 
 	// Zone pour le timer
 	sf::Text *VieTimer;
-
-
-
 
 protected:
 

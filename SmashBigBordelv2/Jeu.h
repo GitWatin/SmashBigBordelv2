@@ -15,7 +15,7 @@ class Jeu
 
 public:
 	
-	 Jeu ();
+	 Jeu(void);
 	 virtual ~Jeu();
 	 sf::RenderWindow* GetWindow();
 
