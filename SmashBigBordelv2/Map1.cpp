@@ -13,11 +13,15 @@ void Map1::setPlatefomes()
 	TextureManager *t;
 	t = new TextureManager();
 
-	this->getPlatform(0)->setPosition(0, 0);
-	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 100, 20));
 
-	
+	// Plateforme principale dans le bas frère
+	this->getPlatform(0)->setPosition(0, +350);
+	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath()));
+	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1200, 100));
+	this->getPlatform(0)->setOrigin(1200/2, 100/2);
+
+
+	/*
 	this->getPlatform(1)->setPosition(100, 300);
 	this->getPlatform(1)->setTexture(*t->SetTexture(this->GetPath()));
 	this->getPlatform(1)->setTextureRect(sf::IntRect(0, 0, 100, 20));
@@ -36,7 +40,7 @@ void Map1::setPlatefomes()
 	this->getPlatform(4)->setPosition(-500, 900);
 	this->getPlatform(4)->setTexture(*t->SetTexture(this->GetPath()));
 	this->getPlatform(4)->setTextureRect(sf::IntRect(0, 0, 1000, 50));
-
+	*/
 	delete t;
 
 }
@@ -47,9 +51,6 @@ void Map1::setBackground()
 
 	this->getBackground()->setTexture(*t->SetTexture(this->GetPathBackground()));
 	this->getBackground()->setOrigin(800, 450);
-	this->getBackground()->scale(1.6, 1.6);
-
-
 	delete t;
 }
 std::string Map1::GetPath()
