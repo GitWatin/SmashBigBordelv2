@@ -9,13 +9,16 @@ void Map2::setPlatefomes()
 	TextureManager *t;
 	t = new TextureManager();
 
+	// Taille Plateforme : 
+	// 1 : Grande : 1193*120
+	// 2 : Petite : 448*90
+	// 3 : Tiny : 268*90 
 
 	// Plateforme principale dans le bas frère
 	this->getPlatform(0)->setPosition(0, +350);
-	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath(2)));
-	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1200, 100));
-	std::cout << "Taille X " << this->getPlatform(0)->getGlobalBounds().height << std::endl;
-	this->getPlatform(0)->setOrigin(1200 / 2, 100 / 2);
+	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1193, 120));
+	this->getPlatform(0)->setOrigin(this->getPlatform(0)->getGlobalBounds().width / 2, this->getPlatform(0)->getGlobalBounds().height / 2);
 
 
 	/*
@@ -53,14 +56,22 @@ void Map2::setBackground()
 }
 std::string Map2::GetPath(int taille)
 {
-	if (taille == 1)
+	if(taille == 1)
 	{
-		return PathPlateformePetite;
+		std::cout << "[GRANDE]:" << std::endl;
+		return PathPlateformeGrande;
+
 
 	}
 	if (taille == 2)
 	{
-		return PathPlateformeGrande;
+		std::cout << "[HAN OUAIS]:" << std::endl;
+		return PathPlateformePetite;
+
+	}
+	if (taille == 3)
+	{
+		return PathPlateformeTiny;
 	}
 	else
 	{

@@ -14,6 +14,7 @@ public:
 	//virtual std::string GetPathPlateforme();
 	//virtual std::string GetPathBackground();
 protected:
+	std::string PathPlateformeTiny = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\plat_tiny.png";
 	std::string PathPlateformePetite = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\plat_petite.png";
 	std::string PathPlateformeGrande = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\plat_grande.png";
 	std::string PathBackground = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\background.png";
