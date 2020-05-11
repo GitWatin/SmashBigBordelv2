@@ -52,7 +52,7 @@ sf::Texture * TextureManager::GetTexture(std::string path_texture)
 	}
 	else
 	{
-		// Du coup ca existe MDR
+		// Du coup ca existe MDR hg
 		return  map_textures.find(path_texture)->second;
 	}
 
