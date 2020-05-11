@@ -160,6 +160,11 @@
     <ClInclude Include="Plateforme.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\background.png" />
+    <Image Include="Textures\plat_grande.png" />
+    <Image Include="Textures\plat_petite.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
