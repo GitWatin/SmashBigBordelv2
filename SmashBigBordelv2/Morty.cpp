@@ -9,10 +9,10 @@ Morty::Morty() : Personnage()
 	this->perso = new Morty();
 
 	this->perso->SetBouclier(50);
-	this->perso->SetPoids(80);
+	this->perso->SetPoids(70);
 	this->perso->SetPourcentages(0);
 	this->perso->SetNbre_Vies(3);
-	this->perso->SetNom("Rick : " /*+ NomJoueur*/);
+	this->perso->SetNom("Morty : " /*+ NomJoueur*/);
 
 
 	this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));
