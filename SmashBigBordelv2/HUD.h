@@ -17,24 +17,23 @@ public:
 
 
 	// Zone de texte pour le perso 1
-	sf::Text ViePerso1;
-	sf::Text BouclierPerso1;
-	sf::Text AtoutPerso1;
+	sf::Text *ViePerso;
+	sf::Text *BouclierPerso;
+	sf::Text *AtoutPerso;
 
 	// Zone de texte pour le perso 2
-	sf::Text ViePerso2;
-	sf::Text BouclierPerso2;
-	sf::Text AtoutPerso2;
+	//sf::Text *ViePerso2;
+	//sf::Text *BouclierPerso2;
+	//sf::Text *AtoutPerso2;
 
 	// Zone pour le timer
-	sf::Text VieTimer;
+	sf::Text *VieTimer;
 
 
 
 
 protected:
 
-	std::vector < sf::Drawable* > vectorHUD;
 
 };
 
