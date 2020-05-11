@@ -1,15 +1,6 @@
 #include "Entite.h"
 #include <iostream>
-Entite::Entite(float position_x, float position_y, float taille_x, float taille_y, std::string path_texture) : Sprite()
-{
-	this->Position_X = position_x;
-	this->Position_Y = position_y;
-	this->Taille_X = taille_x;
-	this->Taille_Y = taille_y;
-	this->nom_texture = path_texture;
-	std::cout << "Entite cree" << std::endl;
 
-}
 Entite::Entite() : Sprite()
 {
 	;

@@ -6,7 +6,6 @@ class Entite : public sf::Sprite
 {
 public: // A voir pour les déclaration a cause de sfml
 	Entite();
-	Entite(float position_x, float position_y, float taille_x, float taille_y, std::string path_texture);
 
 	virtual std::vector< sf::Drawable* >GetVectorDrawable();
 	
@@ -14,7 +13,7 @@ public: // A voir pour les déclaration a cause de sfml
 	virtual void supprimer_vector();
 
 	virtual void SetVectorDrawable(Entite *drawable);
-	virtual void SetVectorEntiteFixe(Entite *entite);
+	
 
 	virtual void SetPositionX(float position_x);
 	virtual float GetPositionX();
@@ -36,6 +35,7 @@ public: // A voir pour les déclaration a cause de sfml
 	virtual float GetTailleY();
 
 protected:
+
 	std::string Nom;
 	float Position_X;
 	float Position_Y;
