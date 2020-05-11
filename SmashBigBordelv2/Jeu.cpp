@@ -24,6 +24,7 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 		std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
 	}
 }
+
 Jeu :: ~Jeu()
 {
 	Entite *jeu;
@@ -31,8 +32,7 @@ Jeu :: ~Jeu()
 	jeu->supprimer_vector();
 	delete jeu;
 }
-void Jeu::ChargementJeu() // Chargement une fois
+void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
-	Map1 *map;// Voir CLasse Map : Charge Les texture Back_ground et Plateforme contenu dans la map choisi  // Cree les plateforme et les envoie dans le vetor d'entite
 	map->setPlatefomes();
 }

@@ -34,6 +34,11 @@ Plateforme * Map::getPlatform(int pos)
 	return this->plateformes[pos];
 }
 
+std::vector< Plateforme* > Map::GetVectorPlatefomes()
+{
+	return plateformes;
+}
+
 
 /*
 void Map::GenerateurPlateformeMap(Map *mapouche)

@@ -71,13 +71,12 @@ int main()
 	
 
 	
-	
-	Map1 mappp;
+	Map1 map;
 	
 	// Chargement des textures
 
 	Jeu Game(window);
-	Game.ChargementJeu(&mappp);
+	Game.ChargementJeu(&map);
 
 	//----------------------------- Boucle du jeu --------------------------------------------------
 	while (window->isOpen())
@@ -105,7 +104,7 @@ int main()
 		//-------------------------------- Liaison des objets graphiques à la fenêtre------------
 
 		window->setView(view);
-		Game.Draw(J.GetVectorDrawable());
+		Game.DrawPlateforme(map.GetVectorPlatefomes());
 		window->display();
 
 	}

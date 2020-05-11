@@ -13,6 +13,7 @@ class Map
 
 	Plateforme* getPlatform(int pos);
 	
+	virtual std::vector< Plateforme* >GetVectorPlatefomes();
 
 	/*
     virtual std::string GetPathPlateforme();

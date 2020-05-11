@@ -13,9 +13,10 @@ public:
 	 Jeu ();
 	 virtual ~Jeu();
 
-	 virtual void ChargementJeu();
+	 virtual void ChargementJeu(Map *map);
 	 virtual void DrawEntite(std::vector < sf::Drawable* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
+	 
 
 	//Get Return_Texture_Plateforme
 	//Get Return_Texture_Map
