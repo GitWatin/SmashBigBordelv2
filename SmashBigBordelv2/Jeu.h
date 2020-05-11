@@ -36,7 +36,7 @@ public:
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 
 	 // Draw HUD
-	 virtual void DrawHUD(std::vector < sf::Drawable* > HUD);
+	 virtual void DrawHUD();
 
 
 	//Get Return_Texture_Plateforme
@@ -48,6 +48,7 @@ protected:
 	Map *mapchoisie;
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
+	std::vector < sf::Drawable* > vectorHUD;
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 
