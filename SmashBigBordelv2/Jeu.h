@@ -15,6 +15,8 @@ public:
 	 sf::RenderWindow* GetWindow();
 
 	 virtual void ChargementJeu(Map *map);
+	 virtual void ChoixMap();
+	 Map* GetMapChoisie();
 
 	 sf::View* GetView();
 	 void SetView(float TailleX, float TailleY);
@@ -31,6 +33,7 @@ protected:
 	float Timer;
 	sf::RenderWindow *fenetre;
 	sf::View *Vueprincipal;
+	Map *mapchoisie;
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 
