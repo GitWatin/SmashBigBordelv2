@@ -80,6 +80,16 @@ Map* Jeu::GetMapChoisie()
 	return this->mapchoisie;
 }
 
+Personnage * Jeu::Getperso1choisi()
+{
+	return perso1choisi;
+}
+
+Personnage * Jeu::Getperso2choisi()
+{
+	return perso2choisi;
+}
+
 sf::View * Jeu::GetView()
 {
 	return this->Vueprincipal;
