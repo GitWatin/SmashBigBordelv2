@@ -15,15 +15,7 @@ Entite::Entite() : Sprite()
 	;
 }
 
-void Entite::SetVectorEntiteFixe(Entite *entite)
-{
-	entite_fixe.push_back(entite);
-}
 
-std::vector < Entite* > Entite::GetVectorEntiteFixe()
-{
-	return entite_fixe;
-}
 void Entite::SetVectorDrawable(Entite *drawable)
 {
 	Dessin.push_back(drawable);
@@ -40,11 +32,6 @@ void Entite::SetVectorDrawable(Entite *drawable)
  void Entite::supprimer_vector()
  {
 	 
-	 for (int i = 0; i < entite_fixe.size(); i++) // suppression des Drawable mes_objets
-	 {
-		 delete entite_fixe.back();
-		 entite_fixe.pop_back();
-	 }
 	 for (int i = 0; i < Dessin.size(); i++) // suppression des Drawable mes_objets
 	 {
 		 delete Dessin.back();
