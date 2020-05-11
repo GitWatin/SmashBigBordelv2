@@ -12,7 +12,7 @@ public:
 	
 	 Jeu ();
 	 virtual ~Jeu();
-	 virtual sf::RenderWindow* GetWindow();
+	 sf::RenderWindow* GetWindow();
 	 virtual void ChargementJeu(Map *map);
 
 

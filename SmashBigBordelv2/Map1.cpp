@@ -47,6 +47,8 @@ void Map1::setBackground()
 
 	this->getBackground()->setTexture(*t->SetTexture(this->GetPathBackground()));
 	this->getBackground()->setOrigin(800, 450);
+	this->getBackground()->scale(1.6, 1.6);
+
 
 	delete t;
 }
