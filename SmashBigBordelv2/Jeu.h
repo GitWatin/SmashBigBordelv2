@@ -9,11 +9,13 @@ class Jeu
 {
 
 public:
-	 Jeu (sf::RenderWindow *window);
+	
 	 Jeu ();
 	 virtual ~Jeu();
-
+	 virtual sf::RenderWindow* GetWindow();
 	 virtual void ChargementJeu(Map *map);
+
+
 	 virtual void DrawEntite(std::vector < sf::Drawable* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);

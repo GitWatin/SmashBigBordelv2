@@ -57,9 +57,10 @@ int main()
 	// Objet temps machine
 	
 	//---------------------------- Création de la fenêtre -----------------------------------------
-	sf::RenderWindow *window;
-	window = new sf::RenderWindow (sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
-	window->setFramerateLimit(60);
+	//sf::RenderWindow *window;
+	Jeu *Game;
+	//window = new sf::RenderWindow (sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
+	//window->setFramerateLimit(60);
 	sf::View view;
 
 	//------------------------Création des Sprite ---------------------------------------------
@@ -75,18 +76,18 @@ int main()
 	
 	// Chargement des textures
 
-	Jeu Game(window);
-	Game.ChargementJeu(&map);
+	
+	Game->ChargementJeu(&map);
 
 	//----------------------------- Boucle du jeu --------------------------------------------------
-	while (window->isOpen())
+	while (Game->GetWindow()->isOpen())
 	{
 		sf::Event event;
 		//------------------------------- Gestion des évènements -------------------------------
-		while (window->pollEvent(event))
+		while (Game->GetWindow()->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				window->close();
+				Game->GetWindow()->close();
 		}
 		//-------------------------------- Modification des états des objets--------------------
 		
@@ -99,65 +100,20 @@ int main()
 
 		//-------------------------------- Effacer le contenu de la fenêtre----------------------
 
-		window->clear();
+		Game->GetWindow()->clear();
 
 		//-------------------------------- Liaison des objets graphiques à la fenêtre------------
 
-		window->setView(view);
-		Game.DrawBackGround(map.getBackground());
-		Game.DrawPlateforme(map.GetVectorPlatefomes());
-		window->display();
+		Game->GetWindow()->setView(view);
+		Game->DrawBackGround(map.getBackground());
+		Game->DrawPlateforme(map.GetVectorPlatefomes());
+		Game->GetWindow()->display();
 
 	}
-	
-	
-
-	delete window;
-	/*for (int i = 0; i < entite_fixe.size(); i++) // suppression des Drawable mes_objets
-	{
-		delete entite_fixe.back();
-		entite_fixe.pop_back();
-	}*/
-
+	delete Game;
 	return 0;
 
-
-	
 }
-			// Fonction pour regenerer les plateformes à chaque itération de la fenetre
-
-/*
-void GenerateurEntiteFixe(Entite *entite_fixe)
-{
-
-	if (!texture.create(500, 500)) {}
-	texture.clear(sf::Color::Red);
-	texture.getTexture();
-
-	std::cout << "[Error]:Generateur entite debut \"Games\"";
-	entite_fixe->setPosition(entite_fixe->GetPositionX(), entite_fixe->GetPositionY());
-	entite_fixe->setScale(entite_fixe->GetTailleX(), entite_fixe->GetTailleY());
-	entite_fixe->setTextureRect(sf::IntRect(10, 10, 32, 32));
-	//entite_fixe->setColor(sf::Color::Red);//replacer par texture
-	entite_fixe->setTexture(texture.getTexture());
-	//mes_objets.push_back(entite_fixe);
-	std::cout << "[Error]:Generateur entite fin \"Games\"";
-}
-
-void GenerateurMap(Map mapouche)  Voir Classe map et AtStartup + Entite
-{	
-	Plateforme *Plat;
-	Plat = new Plateforme(mapouche.GetPlat1PosX(), mapouche.GetPlat1PosY(), mapouche.GetPlat1TailleX(), mapouche.GetPlat1TailleY(), "j");
-	entite_fixe.push_back(Plat);
-	Plat = new Plateforme(mapouche.GetPlat2PosX(), mapouche.GetPlat2PosY(), mapouche.GetPlat2TailleX(), mapouche.GetPlat2TailleY(), "j");
-	entite_fixe.push_back(Plat);
-	Plat = new Plateforme(mapouche.GetPlat3PosX(), mapouche.GetPlat3PosY(), mapouche.GetPlat3TailleX(), mapouche.GetPlat3TailleY(), "j");
-	entite_fixe.push_back(Plat);
-	Plat = new Plateforme(mapouche.GetPlat4PosX(), mapouche.GetPlat4PosY(), mapouche.GetPlat4TailleX(), mapouche.GetPlat4TailleY(), "j");
-	entite_fixe.push_back(Plat);
-	Plat = new Plateforme(mapouche.GetPlat5PosX(), mapouche.GetPlat5PosY(), mapouche.GetPlat5TailleX(), mapouche.GetPlat5TailleY(), "j");
-	entite_fixe.push_back(Plat);
-}*/
 
 void VerifPosition(Entite *Plat)
 {
