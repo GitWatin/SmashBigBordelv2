@@ -40,7 +40,7 @@ void Jeu::ChoixMap()
 
 Map* Jeu::GetMapChoisie()
 {
-	return this->mapchoisie;
+	return mapchoisie;
 }
 
 sf::View * Jeu::GetView()
