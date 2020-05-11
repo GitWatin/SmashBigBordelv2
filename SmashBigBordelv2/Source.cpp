@@ -108,7 +108,7 @@ int main()
 		Game.GetWindow()->setView(*Game.GetView());
 		Game.DrawBackGround(Game.GetMapChoisie()->getBackground());
 		Game.DrawPlateforme(Game.GetMapChoisie()->GetVectorPlatefomes());
-		Game.DrawHUD(Game.GetVectorHUD);
+		Game.DrawHUD();
 		Game.GetWindow()->display();
 
 	}
