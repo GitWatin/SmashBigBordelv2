@@ -6,7 +6,8 @@
 #include "Jeu.h"
 
 
-class HUD: public Jeu
+class HUD :
+	public Jeu
 {
 public:
 	HUD();
@@ -20,6 +21,12 @@ protected:
 	sf::Text *BouclierPerso;
 	sf::Text *AtoutPerso;
 	sf::Text *VieTimer;
+
+
+
+
+protected:
+
 
 };
 
