@@ -1,4 +1,4 @@
-1 - Affichage de la map ( Platefrome, background , texture)
+1 - Affichage de la map ( Platefrome, background , texture) OK 
 
 2 - Création des personnages
 
