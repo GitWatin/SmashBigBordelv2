@@ -3,8 +3,8 @@
 
 Jeu::Jeu()
 {
-	fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
-	fenetre->setFramerateLimit(60);
+	this->fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
+	this->fenetre->setFramerateLimit(60);
 
 }
 
@@ -19,10 +19,12 @@ Jeu :: ~Jeu()
 
 	delete jeu;
 }
+
 sf::RenderWindow* Jeu::GetWindow()
 {
 	return this->fenetre;
 }
+
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
 	map->setBackground();
