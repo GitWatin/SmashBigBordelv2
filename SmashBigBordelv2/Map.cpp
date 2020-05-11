@@ -39,6 +39,10 @@ std::vector< Plateforme* > Map::GetVectorPlatefomes()
 {
 	return plateformes;
 }
+sf::RectangleShape Map::getBackground()
+{
+	return BackGround;
+}
 
 
 /*

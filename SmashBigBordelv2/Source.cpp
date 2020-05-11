@@ -104,7 +104,7 @@ int main()
 		//-------------------------------- Liaison des objets graphiques à la fenêtre------------
 
 		window->setView(view);
-		Game.DrawBackGround(map.GetBackground())
+		Game.DrawBackGround(map.getBackground());
 		Game.DrawPlateforme(map.GetVectorPlatefomes());
 		window->display();
 
