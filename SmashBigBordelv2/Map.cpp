@@ -41,7 +41,7 @@ std::vector< Plateforme* > Map::GetVectorPlatefomes()
 }
 sf::RectangleShape Map::getBackground()
 {
-	return BackGround;
+	return *BackGround;
 }
 
 

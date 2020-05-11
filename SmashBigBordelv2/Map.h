@@ -15,7 +15,7 @@ class Map
 	
 	virtual std::vector< Plateforme* >GetVectorPlatefomes();
 
-	sf::RectangleShape getBackground();
+	virtual sf::RectangleShape getBackground();
 	
 	/*
     virtual std::string GetPathPlateforme();

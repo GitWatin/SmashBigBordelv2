@@ -25,7 +25,7 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 	}
 }
 
-void Jeu::DrawBackGround(sf::RectangleShape BackGround)
+void Jeu::DrawBackGround(sf::RectangleShape *BackGround)
 {
 	fenetre->draw(BackGround);
 }
