@@ -45,27 +45,18 @@ sf::Texture * TextureManager::GetTexture(std::string path_texture)
 {// Ici on a un problème 
 	std::cout << "[Path Texture Manager]:" << path_texture << std::endl;
 
-	if (!map_textures.find(path_texture))
+
+	if (map_textures.find(path_texture) == map_textures.end())
 	{
-		std::cout << "[MAP NULL]:" << path_texture << std::endl;
+		// Ca n'existe pas 
 		return NULL;
 	}
 	else
 	{
-
-		std::cout << "[ELSE FOR]:" << path_texture << std::endl;
-		
-
-		for (auto itr = map_textures.find(path_texture); itr != map_textures.end(); itr++)
-		{
-
-			std::cout << "[Path Texture Manager IN FOR]:" << itr->second << std::endl;
-			return itr->second;
-		}
+		// Du coup ca existe MDR
+		return  map_textures.find(path_texture)->second;
 	}
 
-
-		
 }
 
 
