@@ -32,8 +32,20 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 
 void Jeu::ChoixMap()
 {
+	int choix;
 	// a gerer avec un switch dans le menu pour les différente maps
-	this->mapchoisie = new Map1();
+	std::cout << "Choissez une map : \n 1. Map 1 \n 2. Map 2";
+	std::cin >> choix;
+	switch (choix)
+	{
+	case 1 :
+		this->mapchoisie = new Map1();
+		break;
+	case 2:
+		this->mapchoisie = new Map1();
+		break;
+	}
+	
 }
 
 Map* Jeu::GetMapChoisie()
