@@ -5,7 +5,7 @@
 #include <iostream>
 
 
-Map1::Map1(): Map(5)
+Map1::Map1(): Map(1)
 {
 }
 void Map1::setPlatefomes()
@@ -16,7 +16,7 @@ void Map1::setPlatefomes()
 
 	// Plateforme principale dans le bas frère
 	this->getPlatform(0)->setPosition(0, +350);
-	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath()));
+	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath(2)));
 	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1200, 100));
 	this->getPlatform(0)->setOrigin(1200/2, 100/2);
 
@@ -53,9 +53,22 @@ void Map1::setBackground()
 	this->getBackground()->setOrigin(800, 450);
 	delete t;
 }
-std::string Map1::GetPath()
+std::string Map1::GetPath(int taille)
 {
-	return PathPlateformePetite;
+	if (taille == 1)
+	{
+		return PathPlateformePetite;
+
+	}
+	if (taille == 2)
+	{
+		return PathPlateformeGrande;
+	}
+	else
+	{
+		return PathPlateformePetite; // return plateforme par defaut ( a changer si jamais ) 
+	}
+	
 }
 std::string Map1::GetPathBackground()
 {
