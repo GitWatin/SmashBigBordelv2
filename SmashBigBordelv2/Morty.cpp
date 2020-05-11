@@ -15,11 +15,13 @@ Morty::Morty() : Personnage()
 	this->perso->SetNom("Morty : " /*+ NomJoueur*/);
 
 
-	this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));
+	//this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));
+
 	this->perso->setTextureRect(sf::IntRect(0, 0, 268, 90));
+	this->perso->setColor(sf::Color::Red);
 	this->perso->setOrigin(this->perso->getGlobalBounds().width / 2, this->perso->getGlobalBounds().height / 2);
 
-	this->perso->setPosition(0, 0);
+	this->perso->setPosition(100, 0);
 
 	this->perso->SetVectorPersonnages(perso);
 
