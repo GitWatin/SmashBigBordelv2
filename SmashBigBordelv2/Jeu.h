@@ -5,6 +5,8 @@
 #include "Entite.h"
 #include "Map1.h"
 #include "Map2.h"
+#include "HUD.h"
+
 
 class Jeu
 {
@@ -28,6 +30,10 @@ public:
 	 virtual void DrawEntite(std::vector < sf::Drawable* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
+
+	 // Draw HUD
+	 virtual void DrawHUD(std::vector < sf::Drawable* > HUD);
+
 
 	//Get Return_Texture_Plateforme
 	//Get Return_Texture_Map
