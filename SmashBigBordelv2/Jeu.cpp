@@ -5,7 +5,6 @@ Jeu::Jeu()
 {
 	this->fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	this->fenetre->setFramerateLimit(60);
-
 }
 
 Jeu :: ~Jeu()
@@ -30,6 +29,18 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 	map->setBackground();
 	map->setPlatefomes();
 	
+}
+
+sf::View * Jeu::GetView()
+{
+	return this->Vueprincipal;
+}
+
+void Jeu::SetView(float TailleX , float TailleY)
+{
+	this->Vueprincipal = new sf::View();
+	this->Vueprincipal->setCenter(0 , 0);
+	this->Vueprincipal->setSize(TailleX , TailleY);
 }
 
 //---------------------Entite--------------------------------------------
