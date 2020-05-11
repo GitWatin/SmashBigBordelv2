@@ -72,12 +72,12 @@ int main()
 	
 
 	
-	Map1 map;
+	Game.ChoixMap();
 	
 	// Chargement des textures
 
 	
-	Game.ChargementJeu(&map);
+	Game.ChargementJeu(Game.GetMapChoisie());
 
 	//----------------------------- Boucle du jeu --------------------------------------------------
 	while (Game.GetWindow()->isOpen())
@@ -105,8 +105,8 @@ int main()
 		//-------------------------------- Liaison des objets graphiques à la fenêtre------------
 
 		Game.GetWindow()->setView(*Game.GetView());
-		Game.DrawBackGround(map.getBackground());
-		Game.DrawPlateforme(map.GetVectorPlatefomes());
+		Game.DrawBackGround(Game.GetMapChoisie()->getBackground());
+		Game.DrawPlateforme(Game.GetMapChoisie()->GetVectorPlatefomes());
 		Game.GetWindow()->display();
 
 	}
