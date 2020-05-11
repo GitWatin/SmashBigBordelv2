@@ -6,8 +6,7 @@
 #include "Jeu.h"
 
 
-class HUD :
-	public Jeu
+class HUD : public Jeu
 {
 public:
 	HUD();
@@ -23,9 +22,6 @@ protected:
 	sf::Text *VieTimer;
 
 
-
-
-protected:
 
 
 };

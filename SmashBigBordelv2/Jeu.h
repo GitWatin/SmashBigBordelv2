@@ -7,7 +7,7 @@
 #include "Rick.h"
 #include "Map1.h"
 #include "Map2.h"
-#include "HUD.h"
+
 
 
 class Jeu
@@ -16,7 +16,7 @@ class Jeu
 public:
 	
 	 Jeu ();
-	 virtual ~Jeu();
+	 ~Jeu();
 	 sf::RenderWindow* GetWindow();
 
 	 virtual void ChargementJeu(Map *map);
