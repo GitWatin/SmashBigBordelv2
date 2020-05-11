@@ -33,6 +33,6 @@ Jeu :: ~Jeu()
 }
 void Jeu::ChargementJeu() // Chargement une fois
 {
-	Map1 map;// Voir CLasse Map : Charge Les texture Back_ground et Plateforme contenu dans la map choisi  // Cree les plateforme et les envoie dans le vetor d'entite
-
+	Map1 *map;// Voir CLasse Map : Charge Les texture Back_ground et Plateforme contenu dans la map choisi  // Cree les plateforme et les envoie dans le vetor d'entite
+	map->setPlatefomes();
 }
