@@ -5,7 +5,14 @@
 #include "TextureManager.h"
 #include <SFML/Graphics.hpp>
 
-Plateforme::Plateforme(float position_x, float position_y, float taille_x, float taille_y, std::string path_texture) : Entite(position_x,  position_y, taille_x, taille_y, path_texture)//envoyer (pos x , pos y , taille_x , taille_y , *pointeur de texture)
+
+Plateforme::Plateforme()
+{
+	;
+}
+
+
+/*Plateforme::Plateforme(float position_x, float position_y, float taille_x, float taille_y, std::string path_texture) : Entite(position_x,  position_y, taille_x, taille_y, path_texture)//envoyer (pos x , pos y , taille_x , taille_y , *pointeur de texture)
 {	
 	sf::Sprite *plateforme;
 	TextureManager *tl;
@@ -20,10 +27,11 @@ Plateforme::Plateforme(float position_x, float position_y, float taille_x, float
 	plateforme->setPosition(Position_X,Position_Y);
 	plateforme->setColor(sf::Color::Red);
 	std::cout << "Plateforme cree" << std::endl;
-}
+}*/
 
 
 Plateforme::~Plateforme()
 {
-	
+	;
 }
+

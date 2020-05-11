@@ -1,65 +1,62 @@
 #pragma once
 #include "Map1.h"
+#include "TextureManager.h"
 #include "Map.h"
 #include <iostream>
 
 
-Map1::Map1(): Map()
+Map1::Map1(): Map(1)
 {
-	
-	this->NomMap = "Map du Turfu";
+}
+void Map1::setPlatefomes()
+{
+	TextureManager *t;
+	t = new TextureManager();
+
+	this->getPlatform(0)->setPosition(0, 0);
+	this->getPlatform(0)->setTexture(*t->SetTexture(this->GetPath()));
+	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 100, 20));
+
+	/*
+	this->getPlatform(1)->setPosition(0, 0);
+	this->getPlatform(1)->setLargeur(100);
+	this->getPlatform(1)->setHauteur(20);
+	this->getPlatform(1)->setTexture(*t->SetTexture(this->GetPath()));
+	this->getPlatform(1)->setTextureRect(sf::IntRect(0, 0, 100, 20));
 
 
-	//--------------POSTION------------------------
-
-		//Plateforme 1 : 
-		
-		this->TabPos1[0] = {100.0};// Position X
-		this->TabPos1[1] = {200.0};// Position Y 
-		this->TabPos1[2] = {600.0};// Taille X
-		this->TabPos1[3] = {400.0};// Taille Y
+	this->getPlatform(2)->setPosition(0, 0);
+	this->getPlatform(2)->setLargeur(100);
+	this->getPlatform(2)->setHauteur(20);
+	this->getPlatform(2)->setTexture(*t->SetTexture(this->GetPath()));
+	this->getPlatform(2)->setTextureRect(sf::IntRect(0, 0, 100, 20));
 
 
-		//Plateforme 2 : 
-
-		this->TabPos2[0] = { -20.0 };// Position X
-		this->TabPos2[1] = { -20.0 };// Position Y 
-		this->TabPos2[2] = { 20.0 };// Taille X
-		this->TabPos2[3] = { 20.0 };// Taille Y
-
-
-		//Plateforme 3 : 
-
-		this->TabPos3[0] = { 20.0 };// Position X
-		this->TabPos3[1] = { 20.0 };// Position Y 
-		this->TabPos3[2] = { 20.0 };// Taille X
-		this->TabPos3[3] = { 20.0 };// Taille Y
+	this->getPlatform(3)->setPosition(0, 0);
+	this->getPlatform(3)->setLargeur(100);
+	this->getPlatform(3)->setHauteur(20);
+	this->getPlatform(3)->setTexture(*t->SetTexture(this->GetPath()));
+	this->getPlatform(3)->setTextureRect(sf::IntRect(0, 0, 100, 20));
 
 
-		//Plateforme 4 : 
-
-		this->TabPos4[0] = { 20.0 };// Position X
-		this->TabPos4[1] = { 20.0 };// Position Y 
-		this->TabPos4[2] = { 20.0 };// Taille X
-		this->TabPos4[3] = { 20.0 };// Taille Y
-
+	this->getPlatform(4)->setPosition(0, 0);
+	this->getPlatform(4)->setLargeur(100);
+	this->getPlatform(4)->setHauteur(20);
+	this->getPlatform(4)->setTexture(*t->SetTexture(this->GetPath()));
+	this->getPlatform(4)->setTextureRect(sf::IntRect(0, 0, 100, 20));
 
 
-		//Plateforme 5 : 
+	this->getPlatform(5)->setPosition(0, 0);
+	this->getPlatform(5)->setLargeur(100);
+	this->getPlatform(5)->setHauteur(20);
+	this->getPlatform(5)->setTexture(*t->SetTexture(this->GetPath()));
+	this->getPlatform(5)->setTextureRect(sf::IntRect(0, 0, 100, 20));
 
-		this->TabPos5[0] = { 20.0 };// Position X
-		this->TabPos5[1] = { 20.0 };// Position Y 
-		this->TabPos5[2] = { 20.0 };// Taille X
-		this->TabPos5[3] = { 20.0 };// Taille Y	
-	//--------------TEXTURE-------------------------
-	this->PathPlateforme = "plat1.png";
-	this->PathBackground = "mario.png";
-
-	//this->PathPlateforme = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\plat1.png";
-	//this->PathBackground = "D:\\projet_cpp\\SmashBigBordelv2\\SmashBigBordelv2\\Textures\\mario.png";
-	std::cout << "donnée map envoyer" << std::endl;
-	//linux c'est qd même de la merde
-
+	*/
+}
+std::string Map1::GetPath()
+{
+	return Path;
 }
 /// Test petit poney 
 

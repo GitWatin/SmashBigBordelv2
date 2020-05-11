@@ -13,14 +13,16 @@ public:
 	 Jeu ();
 	 virtual ~Jeu();
 
-	 virtual void ChargementJeu(Map *map);
-	 virtual void Draw(std::vector < sf::Drawable* > Dessin);
+	 virtual void ChargementJeu();
+	 virtual void DrawEntite(std::vector < sf::Drawable* > Dessin);
+	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
+
 	//Get Return_Texture_Plateforme
 	//Get Return_Texture_Map
 protected:
 	float Timer;
 	sf::RenderWindow *fenetre;
-	Map *mapouche;
+
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 

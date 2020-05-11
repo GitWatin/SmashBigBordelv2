@@ -1,13 +1,20 @@
 #pragma once
+#include "Plateforme.h"
 #include <iostream>
 class Map
 {
     public:
 
-    Map();
+    Map(int plateforme);
+	~Map(void);
 
-	virtual void GenerateurPlateformeMap(Map *mapouche);
+	virtual void setPlatefomes()= 0;
+	int countPlatforms();
 
+	Plateforme* getPlatform(int pos);
+	
+
+	/*
     virtual std::string GetPathPlateforme();
 	virtual std::string GetPathBackground();
 
@@ -35,24 +42,27 @@ class Map
 	virtual float GetPlat5PosY();
 	virtual float GetPlat5TailleX();
 	virtual float GetPlat5TailleY();
-
+	*/
 
 protected:
 
+	std::vector < Plateforme* > plateformes;
+
+
 	// Nom de la carte
-	std::string NomMap;
+	//std::string NomMap;
 
 	// Position plateforme
-	float TabPos1[4];
-	float TabPos2[4];
-	float TabPos3[4];
-	float TabPos4[4];
-	float TabPos5[4];
+	//float TabPos1[4];
+	//float TabPos2[4];
+	//float TabPos3[4];
+	//float TabPos4[4];
+	//float TabPos5[4];
 
 	// Chemin accès background 
-	std::string PathBackground;
-
+	//std::string PathBackground;
+	
 	// Path Plateforme
-	std::string PathPlateforme;
+	//std::string PathPlateforme;
 };
 

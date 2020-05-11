@@ -7,19 +7,43 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <iostream>
 
-Map::Map()
+Map::Map(int plateforme)
 {
-	
+	while (plateforme) 
+	{
+		this->plateformes.push_back(new Plateforme());// TODO créer un constructeur vide ?
+		plateforme--;
+	}
 }
 
+Map::~Map(void)
+{
+	for (int i = 0; i < plateformes.size(); i++) // suppression des plateforme
+	{
+		delete plateformes.back();
+		plateformes.pop_back();
+	}
+}
+
+int Map::countPlatforms() {
+	return this->plateformes.size();
+}
+
+Plateforme * Map::getPlatform(int pos)
+{
+	return this->plateformes[pos];
+}
+
+
+/*
 void Map::GenerateurPlateformeMap(Map *mapouche)
 {
     // Recupere les infos des map pour les positione et la taille  
-	/*TextureManager *test;
+	TextureManager *test;
 	test = new TextureManager();
 
 	test->SetTexture(mapouche->GetPathPlateforme()); // envoyer la texture de la plateforme a charger
-	test->SetTexture(mapouche->GetPathBackground());*/
+	test->SetTexture(mapouche->GetPathBackground());
 
     static Plateforme *plateforme;
 
@@ -143,3 +167,5 @@ float Map::GetPlat5TailleY()
 {
 	return TabPos5[3];
 }
+
+*/
