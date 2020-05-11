@@ -42,7 +42,7 @@ void Jeu::ChoixMap()
 		this->mapchoisie = new Map1();
 		break;
 	case 2:
-		this->mapchoisie = new Map1();
+		this->mapchoisie = new Map2();
 		break;
 	}
 	

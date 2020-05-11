@@ -4,6 +4,7 @@
 #include <SFML/System.hpp>
 #include "Entite.h"
 #include "Map1.h"
+#include "Map2.h"
 
 class Jeu
 {
