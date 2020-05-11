@@ -104,4 +104,9 @@
       <Filter>Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
+  </ItemGroup>
 </Project>
