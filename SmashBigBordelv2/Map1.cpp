@@ -27,15 +27,16 @@ void Map1::setPlatefomes()
 
 	// Plateforme 1 en haut à gauche
 
-	this->getPlatform(1)->setPosition(-200, 0);
+	this->getPlatform(1)->setPosition(-400, 0);
 	this->getPlatform(1)->setTexture(*t->SetTexture(this->GetPath(2)));
 	this->getPlatform(1)->setTextureRect(sf::IntRect(0, 0, 448, 90));
-	this->getPlatform(1)->setOrigin(this->getPlatform(0)->getGlobalBounds().width/2, this->getPlatform(0)->getGlobalBounds().height/2);
+	this->getPlatform(1)->setOrigin(this->getPlatform(1)->getGlobalBounds().width/2, this->getPlatform(1)->getGlobalBounds().height/2);
 
-	this->getPlatform(2)->setPosition(+200, 0);
+	// Plateforme 2 
+	this->getPlatform(2)->setPosition(+500, 0);
 	this->getPlatform(2)->setTexture(*t->SetTexture(this->GetPath(3)));
 	this->getPlatform(2)->setTextureRect(sf::IntRect(0, 0, 268, 90));
-	this->getPlatform(2)->setOrigin(this->getPlatform(0)->getGlobalBounds().width/2, this->getPlatform(0)->getGlobalBounds().height/2);
+	this->getPlatform(2)->setOrigin(this->getPlatform(2)->getGlobalBounds().width/2, this->getPlatform(2)->getGlobalBounds().height/2);
 
 	
 	delete t;
