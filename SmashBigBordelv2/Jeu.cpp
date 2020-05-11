@@ -72,7 +72,7 @@ void Jeu::DrawEntite(std::vector < sf::Drawable* > Dessin)
 	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
 		fenetre->draw(*Dessin[i]);
-		std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
+		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
 	}
 }
 
@@ -83,7 +83,7 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
 		fenetre->draw(*Dessin[i]);
-		std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
+		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
 	}
 }
 
