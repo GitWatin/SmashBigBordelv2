@@ -43,7 +43,7 @@ void Jeu::CheckInput(sf::Event event)
 		switch (event.key.code)
 		{
 		case sf::Keyboard::Right:
-			
+			 
 			break;
 		}
 		break;
