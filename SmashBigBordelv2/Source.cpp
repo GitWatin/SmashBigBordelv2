@@ -87,6 +87,7 @@ void main(int argc,char** argv[])
 	//----------------------------- Boucle du jeu --------------------------------------------------
 	while (Game.GetWindow()->isOpen())
 	{
+		
 		Game.setDureeIteration();
 		sf::Event event;
 		//------------------------------- Gestion des évènements -------------------------------

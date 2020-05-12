@@ -77,10 +77,10 @@ void Jeu::CheckInput(sf::Event event)
 			perso1choisi->setMoveLeft();
 			break;
 		case sf::Keyboard::D:
-			this->perso2choisi->setMoveRight();
+			perso2choisi->setMoveRight();
 			break;
 		case sf::Keyboard::Q:
-			this->perso2choisi->setMoveLeft();
+			perso2choisi->setMoveLeft();
 			break;
 		}
 		break;
@@ -91,12 +91,11 @@ void Jeu::CheckModif()
 {
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{
-		std::cout << " [Check Modif] : right perso1" << std::endl;
+		std::cout << " [Check Modif] : right perso1" << perso1choisi->GetPoids()<< std::endl;
 		perso1choisi->move(dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso1choisi->getMoveLeft()) //check si le bool est actif
 	{
-		std::cout << " [Check Modif] : left perso1" << std::endl;
 		perso1choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
@@ -106,8 +105,7 @@ void Jeu::CheckModif()
 	}
 	if (perso2choisi->getMoveLeft()) //check si le bool est actif
 	{
-		std::cout << " [Check Modif] : left perso2" << std::endl;
-		perso2choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement/perso2choisi->GetPoids())*100), 0);
+		perso2choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 }
 
@@ -156,17 +154,17 @@ void Jeu::ChoixPerso()
 	{
 	case 1:
 		
-		this->perso1choisi = new Rick();
-		this->perso1choisi->SetPersonnage();
-		
+		perso1choisi = new Rick();
+		perso1choisi->SetPersonnage();
+
 		std::cout << "J1 : Rick \n"<<std::endl;
 		
 
 		break;
 	case 2:
 		
-		this->perso1choisi = new Morty();
-		this->perso1choisi->SetPersonnage();
+		perso1choisi = new Morty();
+		perso1choisi->SetPersonnage();
 
 		std::cout << "J1 : Morty \n" << std::endl;
 		break;
@@ -179,15 +177,15 @@ void Jeu::ChoixPerso()
 	{
 	case 1:
 
-		this->perso2choisi = new Rick();
-		this->perso2choisi->SetPersonnage();
+		perso2choisi = new Rick();
+		perso2choisi->SetPersonnage();
 		
 		std::cout << "J2 : Rick  \n " << std::endl;
 		break;
 	case 2:
 
-		this->perso2choisi = new Morty();
-		this->perso2choisi->SetPersonnage();
+		perso2choisi = new Morty();
+		perso2choisi->SetPersonnage();
 
 		std::cout << "J2 : Morty \n " << std::endl;
 		
@@ -345,6 +343,7 @@ void Jeu::HUD()
 // Fonction pour gerer le timer
 void Jeu::Timing()
 {
+	
 	sf::Time timer_jeu = clock_jeu->getElapsedTime();
 
 	std::cout << "[Info]: " << timer_jeu.asSeconds() << std::endl;
