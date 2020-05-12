@@ -8,6 +8,9 @@ Jeu::Jeu()
 	this->fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
+
+	// Timer du jeu (5min )
+	this->clock_jeu = new sf::Clock;
 	this->dureeIteration = sf::Time::Zero;
 }
 
@@ -34,18 +37,9 @@ sf::RenderWindow* Jeu::GetWindow()
 
 void Jeu::CheckInput(sf::Event event)
 {
-	switch (event.type)
+	switch (event.key.code)
 	{
-	case sf::Event::Closed:
-		fenetre->close();
-		break;
-	case sf::Event::EventType::KeyPressed:
-		switch (event.key.code)
-		{
-		case sf::Keyboard::Right:
-			 
-			break;
-		}
+		de
 		break;
 	}
 }
