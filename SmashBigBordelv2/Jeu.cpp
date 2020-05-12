@@ -54,16 +54,16 @@ void Jeu::CheckInput(sf::Event event)
 		switch (event.key.code)
 		{
 		case sf::Keyboard::Right :
-			perso1choisi->setMoveRight();
+			perso1choisi->setMoveRight(true);
 			break;
 		case sf::Keyboard::Left:
-			perso1choisi->setMoveLeft();
+			perso1choisi->setMoveLeft(true);
 			break;
 		case sf::Keyboard::D:
-			perso2choisi->setMoveRight();
+			perso2choisi->setMoveRight(true);
 			break;
 		case sf::Keyboard::Q:
-			perso2choisi->setMoveLeft();
+			perso2choisi->setMoveLeft(true);
 			break;
 		}
 		break;
@@ -71,16 +71,16 @@ void Jeu::CheckInput(sf::Event event)
 		switch (event.key.code)
 		{
 		case sf::Keyboard::Right:
-			perso1choisi->setMoveRight();
+			perso1choisi->setMoveRight(false);
 			break;
 		case sf::Keyboard::Left:
-			perso1choisi->setMoveLeft();
+			perso1choisi->setMoveLeft(false);
 			break;
 		case sf::Keyboard::D:
-			perso2choisi->setMoveRight();
+			perso2choisi->setMoveRight(false);
 			break;
 		case sf::Keyboard::Q:
-			perso2choisi->setMoveLeft();
+			perso2choisi->setMoveLeft(false);
 			break;
 		}
 		break;
@@ -115,7 +115,7 @@ void Jeu::CheckModif()
 void Jeu::CallModif()
 {
 	// Call HUD Function 
-	HUD();
+	SetHUD();
 	Timing();
 }
 

@@ -88,14 +88,14 @@ void Personnage::SetAvatar(std::string path_avatar)
 	this->Path_Avatar = path_avatar;
 }
 
-void Personnage::setMoveRight()
+void Personnage::setMoveRight(bool ok)
 {
-	this->moveRight= !this->moveRight;
+	this->moveRight= ok;
 }
 
-void Personnage::setMoveLeft()
+void Personnage::setMoveLeft(bool ok)
 {
-	this->moveLeft = !this->moveLeft;
+	this->moveLeft = ok;
 }
 
 void Personnage::setJump()
