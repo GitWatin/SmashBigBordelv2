@@ -61,13 +61,13 @@ std::string Map1::GetPath(int taille)
 		
 
 	}
-	if (taille == 2)
+	else if (taille == 2)
 	{
 		std::cout << "[HAN OUAIS]:" << std::endl;
 		return PathPlateformePetite;
 		
 	}
-	if (taille == 3)
+	else if (taille == 3)
 	{
 		return PathPlateformeTiny;
 	}
