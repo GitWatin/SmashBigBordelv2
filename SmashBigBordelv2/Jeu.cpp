@@ -31,7 +31,7 @@ void Jeu::ChoixMap()
 {
 	int choix;
 	// a gerer avec un switch dans le menu pour les différente maps
-	std::cout << "Choissez une map : \n 1. Map 1 \n 2. Map 2";
+	std::cout << "Choissez une map : \n 1. Map 1 \n 2. Map 2 \n";
 	std::cin >> choix;
 	switch (choix)
 	{
@@ -50,46 +50,46 @@ void Jeu::ChoixPerso()
 	int choix1;
 	int choix2;
 	// a gerer avec un switch dans le menu pour les différente maps
-	std::cout << "perso 1  : \n 1. Rick 1 \n 2. Morty";
+	std::cout << "perso 1  : \n 1. Rick 1 \n 2. Morty \n";
 	std::cin >> choix1;
 	switch (choix1)
 	{
 	case 1:
 		
-		perso1choisi = new Rick();
-		perso1choisi->SetPersonnage();
+		this->perso1choisi = new Rick();
+		this->perso1choisi->SetPersonnage();
 		
-		std::cout << "J1 : Rick "<<std::endl;
+		std::cout << "J1 : Rick \n"<<std::endl;
 		
 
 		break;
 	case 2:
 		
-		perso1choisi = new Morty();
-		perso1choisi->SetPersonnage();
+		this->perso1choisi = new Morty();
+		this->perso1choisi->SetPersonnage();
 
-		std::cout << "J1 : Morty " << std::endl;
+		std::cout << "J1 : Morty \n" << std::endl;
 		break;
 	}
 
 	
-	std::cout << "perso 1  : \n 1. Rick 1 \n 2. Morty";
+	std::cout << "perso 2 : \n 1. Rick 1 \n 2. Morty \n";
 	std::cin >> choix1;
 	switch (choix1)
 	{
 	case 1:
 
-		perso2choisi = new Rick();
-		perso2choisi->SetPersonnage();
+		this->perso2choisi = new Rick();
+		this->perso2choisi->SetPersonnage();
 		
-		std::cout << "J2 : Rick " << std::endl;
+		std::cout << "J2 : Rick  \n " << std::endl;
 		break;
 	case 2:
 
-		perso2choisi = new Morty();
-		perso2choisi->SetPersonnage();
+		this->perso2choisi = new Morty();
+		this->perso2choisi->SetPersonnage();
 
-		std::cout << "J2 : Morty " << std::endl;
+		std::cout << "J2 : Morty \n " << std::endl;
 		
 		break;
 	}
