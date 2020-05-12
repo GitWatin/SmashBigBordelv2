@@ -81,8 +81,9 @@ protected:
 	sf::Text *BouclierPerso2;
 	sf::Text *AtoutPerso2;
 
-
+	float TempsDeJeu;
 	sf::Time dureeIteration;
+	sf::Time timer_jeu;
 	sf::Clock *clock;
 
 	// Clock timer général
