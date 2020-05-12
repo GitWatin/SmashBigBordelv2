@@ -82,11 +82,6 @@ protected:
 	sf::Text *AtoutPerso2;
 
 
-
-
-
-	sf::String text_timer;
-
 	sf::Time dureeIteration;
 	sf::Clock *clock;
 
