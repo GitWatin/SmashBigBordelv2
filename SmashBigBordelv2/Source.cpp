@@ -95,7 +95,7 @@ void main(int argc,char** argv[])
 				Game.GetWindow()->close();
 		}
 		//-------------------------------- Modification des états des objets--------------------
-	
+		Game.CheckModif();
 		Game.CallModif();
 		Game.SetView(1600, 900); //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		
@@ -119,7 +119,7 @@ void main(int argc,char** argv[])
 
 	}
 	
-	return 0;
+	
 
 }
 

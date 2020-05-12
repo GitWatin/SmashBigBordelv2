@@ -48,13 +48,56 @@ void Jeu::CheckInput(sf::Event event)
 		switch (event.key.code)
 		{
 		case sf::Keyboard::Right :
-
+			this->perso1choisi->setMoveRight();
+			break;
+		case sf::Keyboard::Left:
+			this->perso1choisi->setMoveLeft();
+			break;
+		case sf::Keyboard::D:
+			this->perso2choisi->setMoveRight();
+			break;
+		case sf::Keyboard::Q:
+			this->perso2choisi->setMoveLeft();
 			break;
 		}
 		break;
 	case sf::Event::EventType::KeyReleased :
-
+		switch (event.key.code)
+		{
+		case sf::Keyboard::Right:
+			this->perso1choisi->setMoveRight();
+			break;
+		case sf::Keyboard::Left:
+			this->perso1choisi->setMoveLeft();
+			break;
+		case sf::Keyboard::D:
+			this->perso2choisi->setMoveRight();
+			break;
+		case sf::Keyboard::Q:
+			this->perso2choisi->setMoveLeft();
+			break;
+		}
 		break;
+	}
+}
+
+void Jeu::CheckModif()
+{
+	if (perso1choisi->getMoveRight()) //check si le bool est actif
+	{
+		perso1choisi->move(2, 0);
+	}
+	if (perso1choisi->getMoveLeft()) //check si le bool est actif
+	{
+		perso1choisi->move(2, 0);
+	}
+	if (perso2choisi->getMoveRight()) //check si le bool est actif
+	{
+		perso2choisi->move(2, 0);
+	}
+	if (perso2choisi->getMoveLeft()) //check si le bool est actif
+	{
+		perso2choisi->move(2, 0);
 	}
 }
 
