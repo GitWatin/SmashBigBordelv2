@@ -42,8 +42,8 @@ public:
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 
-	 virtual void HUD();
-	 void setHUD();
+	 virtual void CreateHUD();
+	 void SetHUD();
 	 virtual void Timing();
 
 	 // Draw HUD
@@ -62,13 +62,25 @@ protected:
 	std::vector < sf::Drawable* > vectorHUD;
 
 	const int VitesseDeplacement = 100;//  pixel/sec
-	sf::Text *text_HUD;
-	//sf::Text *BouclierPerso;
-	//sf::Text *AtoutPerso;
-	//sf::Text *HUDTimer;
-
+	
+	// Label HUD
 	sf::Sprite *avatar1;
+	sf::Text *NomPerso1;
+	sf::Text *ViePerso1;
+	sf::Text *BouclierPerso1;
+	sf::Text *AtoutPerso1;
+		
+	sf::Text *HUDTimer;
+
 	sf::Sprite *avatar2;
+	sf::Text *NomPerso2;
+	sf::Text *ViePerso2;
+	sf::Text *BouclierPerso2;
+	sf::Text *AtoutPerso2;
+
+
+
+
 
 	sf::String text_timer;
 

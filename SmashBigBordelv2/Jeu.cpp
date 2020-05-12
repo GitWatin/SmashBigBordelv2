@@ -112,7 +112,7 @@ void Jeu::CheckModif()
 void Jeu::CallModif()
 {
 	// Call HUD Function 
-	HUD();
+	SetHUD();
 	Timing();
 }
 
@@ -266,78 +266,47 @@ void Jeu::DrawBackGround(Back_Ground *BackGround)
 
 
 // Fonction pour recuperer les informations des personnages et les ajouters au vector vectorHUD
-void Jeu::HUD()
+void Jeu::CreateHUD()
 {
-	text_HUD = new sf::Text;
+	NomPerso1 = new sf::Text;
+	NomPerso2 = new sf::Text;
+	ViePerso1 = new sf::Text;
+	ViePerso2 = new sf::Text;
+	BouclierPerso1 = new sf::Text;
+	BouclierPerso2 = new sf::Text;
+	AtoutPerso1 = new sf::Text;
+	AtoutPerso2 = new sf::Text;
 	
-
-	FontManager *font;
-	font = new FontManager();
-
-	TextureManager *texture_hud;
-	texture_hud = new TextureManager();
-
 	avatar1 = new sf::Sprite;
 	avatar2 = new sf::Sprite;
 
-	// Set Label pour le perso 1
 
-	// Affichage de l'avatar : 
-	
+	FontManager *font;
+	font = new FontManager();
+	TextureManager *texture_hud;
+	texture_hud = new TextureManager();
+
+
+
+	// Creation de l'avatar perso 1: 
 	avatar1->setTextureRect(sf::IntRect(0, 0, 50, 50));
 	avatar1->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
-	avatar1->setColor(sf::Color::Red);
 	avatar1->setPosition(+200, -450);
-	//this->avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()));
-	//this->avatar1->setOrigin(this->avatar1->getGlobalBounds().width / 2, this->avatar1->getGlobalBounds().height / 2);
 	vectorHUD.push_back(avatar1);
 	
-	text_HUD->setString("Joueur : " + perso1choisi->GetNom());
-	text_HUD->setFont(*font->SetFont("quicksand.ttf"));
-	text_HUD->setFillColor(sf::Color::Red);
-	text_HUD->setPosition(-500, -450);
-	vectorHUD.push_back(text_HUD);
+	NomPerso1->setString("N/A");
+	NomPerso1->setFont(*font->SetFont("quicksand.ttf"));
+	NomPerso1->setFillColor(sf::Color::Red);
+	NomPerso1->setPosition(-500, -450);
+	vectorHUD.push_back(NomPerso1);
 	
-	text_HUD->setString("Bouclier " + std::to_string(perso1choisi->GetNbre_Vies()));
-	text_HUD->setFont(*font->SetFont("quicksand.ttf"));
-	text_HUD->setFillColor(sf::Color::Red);
-	text_HUD->setPosition(-400, -450);
-	vectorHUD.push_back(text_HUD);
-	
-	// Display Timer
-		// Pas oublier de mettre le timer
-
-
-	// Set Label pour le perso 2
-
-	/*
-	BouclierPerso->setString(std::to_string(perso1choisi->GetBouclier()));
-	BouclierPerso->setPosition(0, 0);
-	vectorHUD.push_back(BouclierPerso);
-
-	AtoutPerso->setString(perso1choisi->GetDerniersAtout());
-	AtoutPerso->setPosition(0, 0);
-	vectorHUD.push_back(AtoutPerso);
-
-	ViePerso->setString(std::to_string(perso2choisi->GetNbre_Vies()));
-	ViePerso->setPosition(0, 0);
-	vectorHUD.push_back(ViePerso);
-
-	BouclierPerso->setString(std::to_string(perso2choisi->GetBouclier()));
-	BouclierPerso->setPosition(0, 0);
-	vectorHUD.push_back(BouclierPerso);
-
-	AtoutPerso->setString(perso2choisi->GetDerniersAtout());
-	AtoutPerso->setPosition(0, 0);
-	vectorHUD.push_back(AtoutPerso);
-	*/
 	delete font;
 	delete texture_hud;
 }
-void Jeu::setHUD()
-{
-	text_HUD = new sf::Text;
 
+
+void Jeu::SetHUD()
+{
 
 	FontManager *font;
 	font = new FontManager();
@@ -352,25 +321,7 @@ void Jeu::setHUD()
 
 	// Affichage de l'avatar : 
 
-	avatar1->setTextureRect(sf::IntRect(0, 0, 50, 50));
-	avatar1->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
-	avatar1->setColor(sf::Color::Red);
-	avatar1->setPosition(+200, -450);
-	//this->avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()));
-	//this->avatar1->setOrigin(this->avatar1->getGlobalBounds().width / 2, this->avatar1->getGlobalBounds().height / 2);
-	vectorHUD.push_back(avatar1);
-
-	text_HUD->setString("Joueur : " + perso1choisi->GetNom());
-	text_HUD->setFont(*font->SetFont("quicksand.ttf"));
-	text_HUD->setFillColor(sf::Color::Red);
-	text_HUD->setPosition(-500, -450);
-	vectorHUD.push_back(text_HUD);
-
-	text_HUD->setString("Bouclier " + std::to_string(perso1choisi->GetNbre_Vies()));
-	text_HUD->setFont(*font->SetFont("quicksand.ttf"));
-	text_HUD->setFillColor(sf::Color::Red);
-	text_HUD->setPosition(-400, -450);
-	vectorHUD.push_back(text_HUD);
+	NomPerso1->setString("Joueur : " + perso1choisi->GetNom());
 }
 // Fonction pour gerer le timer
 void Jeu::Timing()

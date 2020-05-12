@@ -78,7 +78,8 @@ void main(int argc,char** argv[])
 	
 	Game.ChoixMap();
 	Game.ChoixPerso();
-	Game.CallModif();
+	Game.CreateHUD(); // Création de l'interface HUD
+
 	// Chargement des textures
 
 	
