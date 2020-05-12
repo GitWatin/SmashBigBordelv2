@@ -93,6 +93,9 @@ void main(int argc,char** argv[])
 		while (Game.GetWindow()->pollEvent(event))
 		{
 			Game.CheckInput(event);
+
+			if (event.type == sf::Event::Closed)
+				Game.GetWindow()->close();
 		}
 		//-------------------------------- Modification des états des objets--------------------
 		Game.CheckModif();
@@ -118,6 +121,7 @@ void main(int argc,char** argv[])
 		Game.GetWindow()->display();
 
 	}
+	
 }
 
 void VerifPosition(Entite *Plat)
