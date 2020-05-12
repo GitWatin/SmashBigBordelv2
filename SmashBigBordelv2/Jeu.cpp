@@ -112,7 +112,7 @@ void Jeu::CheckModif()
 void Jeu::CallModif()
 {
 	// Call HUD Function 
-	HUD();
+	SetHUD();
 	Timing();
 }
 
@@ -291,14 +291,28 @@ void Jeu::CreateHUD()
 	// Creation de l'avatar perso 1: 
 	avatar1->setTextureRect(sf::IntRect(0, 0, 50, 50));
 	avatar1->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
-	avatar1->setPosition(+200, -450);
+	avatar1->setPosition(+200, -400);
 	vectorHUD.push_back(avatar1);
 	
 	NomPerso1->setString("N/A");
 	NomPerso1->setFont(*font->SetFont("quicksand.ttf"));
 	NomPerso1->setFillColor(sf::Color::Red);
-	NomPerso1->setPosition(-500, -450);
+	NomPerso1->setPosition(-400, -400);
 	vectorHUD.push_back(NomPerso1);
+
+	NomPerso2->setString("N/A");
+	NomPerso2->setFont(*font->SetFont("quicksand.ttf"));
+	NomPerso2->setFillColor(sf::Color::Red);
+	NomPerso2->setPosition(-300, -400);
+	vectorHUD.push_back(NomPerso2);
+
+	BouclierPerso2->setString("N/A");
+	BouclierPerso2->setFont(*font->SetFont("quicksand.ttf"));
+	BouclierPerso2->setFillColor(sf::Color::Red);
+	BouclierPerso2->setPosition(-200, -400);
+	vectorHUD.push_back(BouclierPerso2);
+
+
 	
 	delete font;
 	delete texture_hud;
