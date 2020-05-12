@@ -7,8 +7,8 @@ class Entite : public sf::Sprite
 public: // A voir pour les déclaration a cause de sfml
 	Entite();
 	~Entite();
-	virtual std::vector< sf::Drawable* >GetVectorDrawable();
-	virtual void SetVectorPersonnages(Entite *drawable);
+	
+	
 
 	virtual void SetNom(std::string nom);
 	virtual std::string GetNom();
@@ -41,7 +41,7 @@ protected:
 	//std::string nom_texture;
 	//float Taille_X;
 	//float Taille_Y;
-	std::vector < sf::Drawable* > Dessin;
+	
 };
 
 

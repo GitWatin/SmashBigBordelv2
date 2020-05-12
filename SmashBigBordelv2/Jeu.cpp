@@ -80,6 +80,11 @@ Map* Jeu::GetMapChoisie()
 	return this->mapchoisie;
 }
 
+Personnage * Jeu::GetPersochoisi()
+{
+	return this->perso1choisi;
+}
+
 
 sf::View * Jeu::GetView()
 {
@@ -97,7 +102,7 @@ void Jeu::SetView(float TailleX , float TailleY)
 
 //---------------------Entite--------------------------------------------
 
-void Jeu::DrawEntite(std::vector < sf::Drawable* > Dessin)
+void Jeu::DrawPersonnage(std::vector < Personnage* > Dessin)
 {
 	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{

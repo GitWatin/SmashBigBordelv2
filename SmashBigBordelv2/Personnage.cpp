@@ -7,6 +7,15 @@ Personnage::Personnage() : Entite()
 	
 }
 
+Personnage::~Personnage()
+{
+	for (int i = 0; i < Dessin.size(); i++) // suppression des Drawable mes_objets
+	{
+		delete Dessin.back();
+		Dessin.pop_back();
+	}
+}
+
 // -------------------------- Pourcentages ---------------------------------
 
 void Personnage::SetPourcentages(double percent)
@@ -66,6 +75,16 @@ void Personnage::SetBouclier(int bouclier)
 int Personnage::GetBouclier()
 {
 	return Bouclier;
+}
+
+void Personnage::SetVectorPersonnages(Personnage * drawable)
+{
+	Dessin.push_back(drawable);
+}
+
+std::vector<Personnage*> Personnage::GetVectorDrawable()
+{
+	return Dessin;
 }
 
 

@@ -60,7 +60,7 @@ int main()
 	//---------------------------- Création de la fenêtre -----------------------------------------
 	
 	Jeu Game;
-	Entite Perso;
+
 	//window = new sf::RenderWindow (sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	//window->setFramerateLimit(60);
 	
@@ -109,7 +109,7 @@ int main()
 		Game.GetWindow()->setView(*Game.GetView());
 		Game.DrawBackGround(Game.GetMapChoisie()->getBackground());
 		Game.DrawPlateforme(Game.GetMapChoisie()->GetVectorPlatefomes());
-		Game.DrawEntite(Perso.GetVectorDrawable());
+		Game.DrawPersonnage(Game.GetPersochoisi()->GetVectorDrawable());
 		Game.DrawHUD();
 		Game.GetWindow()->display();
 

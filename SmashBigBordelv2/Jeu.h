@@ -24,13 +24,13 @@ public:
 	 virtual void ChoixPerso();
 
 	 Map* GetMapChoisie();
-	
+	 Personnage* GetPersochoisi();
 
 	 sf::View* GetView();
 	 void SetView(float TailleX, float TailleY);
 	 
 
-	 virtual void DrawEntite(std::vector < sf::Drawable* > Dessin);
+	 virtual void DrawPersonnage(std::vector < Personnage* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 

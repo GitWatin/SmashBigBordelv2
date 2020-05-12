@@ -8,26 +8,9 @@ Entite::Entite() : Sprite()
 
 Entite::~Entite()
 {
-	for (int i = 0; i < Dessin.size(); i++) // suppression des Drawable mes_objets
-	{
-		delete Dessin.back();
-		Dessin.pop_back();
-	}
-}
-
-
-void Entite::SetVectorPersonnages(Entite *drawable)
-{
-	Dessin.push_back(drawable);
-}
-
- std::vector< sf::Drawable* > Entite::GetVectorDrawable()
-{
-	
-		return Dessin;
-		std::cout << "[Info]:Return vector dessin "  << std::endl;
 	
 }
+
 
 void Entite::SetNom(std::string nom)
 {

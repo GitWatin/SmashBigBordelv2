@@ -8,6 +8,7 @@ class Personnage :
 {
     public:
 	Personnage();
+	~Personnage();
 	virtual void SetPersonnage() = 0;
 	virtual void Attaque(Personnage *NomCible, std::string TypeAttaque) = 0;
 	virtual void SetPourcentages(double percent);
@@ -20,6 +21,9 @@ class Personnage :
 	virtual std::string GetDerniersAtout();
 	virtual void SetBouclier(int bouclier);
 	virtual int GetBouclier();
+
+	virtual void SetVectorPersonnages(Personnage *drawable);
+	virtual std::vector< Personnage* >GetVectorDrawable();
 	
 protected:
 	int Nbre_Vies;
@@ -31,5 +35,6 @@ protected:
 	std::string DerniersAtout;
 	std::string TypeAttaque;
 	Personnage *perso;
+	std::vector < Personnage* > Dessin;
 };
 
