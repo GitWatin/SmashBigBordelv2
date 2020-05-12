@@ -301,7 +301,7 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 // Draw les elements de l'HUD
 void Jeu::DrawHUD()
 {
-	std::cout << "[HUD] :" << vectorHUD.size() << std::endl;
+	
 	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
 		fenetre->draw(*vectorHUD[i]);
@@ -329,6 +329,7 @@ void Jeu::CreateHUD()
 	BouclierPerso2 = new sf::Text;
 	AtoutPerso1 = new sf::Text;
 	AtoutPerso2 = new sf::Text;
+	HUDTimer = new sf::Text;
 	
 	avatar1 = new sf::Sprite;
 	avatar2 = new sf::Sprite;
@@ -342,28 +343,90 @@ void Jeu::CreateHUD()
 
 
 	// Creation de l'avatar perso 1: 
-	avatar1->setTextureRect(sf::IntRect(0, 0, 50, 50));
+	avatar1->setTextureRect(sf::IntRect(0, 0, 80, 80));
 	avatar1->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
-	avatar1->setPosition(+200, -400);
+	avatar1->setPosition(-720, -370);
+	avatar1->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
+
 	vectorHUD.push_back(avatar1);
 	
-	NomPerso1->setString("N/A");
+	NomPerso1->setString("Morty");
 	NomPerso1->setFont(*font->SetFont("quicksand.ttf"));
 	NomPerso1->setFillColor(sf::Color::Red);
-	NomPerso1->setPosition(-400, -400);
+	NomPerso1->setPosition(-670, -410);
 	vectorHUD.push_back(NomPerso1);
 
-	NomPerso2->setString("N/A");
+	ViePerso1->setString("Vie restante : 3");
+	ViePerso1->setFont(*font->SetFont("quicksand.ttf"));
+	ViePerso1->setFillColor(sf::Color::Red);
+	ViePerso1->setCharacterSize(24);
+	ViePerso1->setPosition(-670, -360);
+	vectorHUD.push_back(ViePerso1);
+
+	BouclierPerso1->setString("Bouclier : 100%");
+	BouclierPerso1->setFont(*font->SetFont("quicksand.ttf"));
+	BouclierPerso1->setFillColor(sf::Color::Red);
+	BouclierPerso1->setCharacterSize(24);
+	BouclierPerso1->setPosition(-480, -410);
+	vectorHUD.push_back(BouclierPerso1);
+
+	AtoutPerso1->setString("Atout : Weight Watcher");
+	AtoutPerso1->setFont(*font->SetFont("quicksand.ttf"));
+	AtoutPerso1->setFillColor(sf::Color::Red);
+	AtoutPerso1->setCharacterSize(24);
+	AtoutPerso1->setPosition(-480, -360);
+	vectorHUD.push_back(AtoutPerso1);
+
+
+	// --------------- Perso 2 ----------------------
+
+	avatar2->setTextureRect(sf::IntRect(0, 0, 80, 80));
+	avatar2->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
+	avatar2->setPosition(+720, -370);
+	avatar2->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
+	vectorHUD.push_back(avatar2);
+
+	NomPerso2->setString("Rickyky");
 	NomPerso2->setFont(*font->SetFont("quicksand.ttf"));
-	NomPerso2->setFillColor(sf::Color::Red);
-	NomPerso2->setPosition(-300, -400);
+	NomPerso2->setFillColor(sf::Color::Blue);
+	NomPerso2->setPosition(+670, -410);
+	NomPerso2->setOrigin(NomPerso2->getGlobalBounds().width, 0);
 	vectorHUD.push_back(NomPerso2);
 
-	BouclierPerso2->setString("N/A");
+	ViePerso2->setString("Vie restante : 3");
+	ViePerso2->setFont(*font->SetFont("quicksand.ttf"));
+	ViePerso2->setFillColor(sf::Color::Blue);
+	ViePerso2->setCharacterSize(24);
+	ViePerso2->setOrigin(ViePerso2->getGlobalBounds().width, 0);
+	ViePerso2->setPosition(+670, -360);
+	vectorHUD.push_back(ViePerso2);
+
+	BouclierPerso2->setString("Bouclier : 100%");
 	BouclierPerso2->setFont(*font->SetFont("quicksand.ttf"));
-	BouclierPerso2->setFillColor(sf::Color::Red);
-	BouclierPerso2->setPosition(-200, -400);
+	BouclierPerso2->setFillColor(sf::Color::Blue);
+	BouclierPerso2->setCharacterSize(24);
+	BouclierPerso2->setOrigin(BouclierPerso2->getGlobalBounds().width, 0);
+	BouclierPerso2->setPosition(+480, -410);
 	vectorHUD.push_back(BouclierPerso2);
+
+	AtoutPerso2->setString("Atout : Weight Watcher");
+	AtoutPerso2->setFont(*font->SetFont("quicksand.ttf"));
+	AtoutPerso2->setFillColor(sf::Color::Blue);
+	AtoutPerso2->setCharacterSize(24);
+	AtoutPerso2->setOrigin(AtoutPerso2->getGlobalBounds().width, 0);
+	AtoutPerso2->setPosition(+480, -360);
+	vectorHUD.push_back(AtoutPerso2);
+
+
+	HUDTimer->setString("0000");
+	HUDTimer->setFont(*font->SetFont("quicksand.ttf"));
+	HUDTimer->setFillColor(sf::Color::Black);
+	HUDTimer->setCharacterSize(30);
+	HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width/2, HUDTimer->getGlobalBounds().height/2);
+	HUDTimer->setPosition(0, -410);
+	vectorHUD.push_back(HUDTimer);
+
+
 
 
 	
@@ -388,7 +451,7 @@ void Jeu::SetHUD()
 
 	// Affichage de l'avatar : 
 
-	NomPerso1->setString("Joueur : " + perso1choisi->GetNom());
+	//NomPerso1->setString("Joueur : " + perso1choisi->GetNom());
 }
 // Fonction pour gerer le timer
 void Jeu::Timing()
