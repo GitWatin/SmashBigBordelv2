@@ -141,7 +141,7 @@ void Jeu::CheckModif()
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement)));
 	}
 	if(!perso2choisi->getCollision())
-	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));*/
 }
 
 void Jeu::CheckCollision()
@@ -172,7 +172,7 @@ void Jeu::CheckCollision()
 		{
 			perso1choisi->setCollision(false);
 		}
-	}
+	}*/
 }
 
 void Jeu::CallModif()
