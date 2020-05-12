@@ -39,9 +39,21 @@ sf::RenderWindow* Jeu::GetWindow()
 
 void Jeu::CheckInput(sf::Event event)
 {
-	switch (event.key.code)
+	switch (event.type)
 	{
-		de
+	case sf::Event::Closed:
+			fenetre->close();
+		break;
+	case sf::Event::EventType :: KeyPressed :
+		switch (event.key.code)
+		{
+		case sf::Keyboard::Right :
+
+			break;
+		}
+		break;
+	case sf::Event::EventType::KeyReleased :
+
 		break;
 	}
 }
