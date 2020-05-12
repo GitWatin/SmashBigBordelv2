@@ -25,7 +25,7 @@ void Personnage::SetPourcentages(double percent)
 
 double Personnage::GetPourcentages()
 {
-	return Pourcentages;
+	return this->Pourcentages;
 }
 
 // -------------------------- Poids ---------------------------------
@@ -33,11 +33,12 @@ double Personnage::GetPourcentages()
 void Personnage::SetPoids(int poids)
 {
 	this->Poids = poids;
+	std::cout << "Poids Envoyeé : "<< poids << " Poids perso :" << Poids << std::endl;
 }
 
 int Personnage::GetPoids()
 {
-	return Poids;
+	return this->Poids;
 }
 
 // -------------------------- Nombres VIES ---------------------------------
@@ -49,7 +50,7 @@ void Personnage::SetNbre_Vies(int nbre_vies)
 
 int Personnage::GetNbre_Vies()
 {
-	return Nbre_Vies;
+	return this->Nbre_Vies;
 }
 
 // -------------------------- Derniers Atouts ---------------------------------
@@ -61,7 +62,7 @@ void  Personnage::SetDerniersAtout(std::string derniers_atout)
 
 std::string  Personnage::GetDerniersAtout()
 {
-	return DerniersAtout;
+	return this->DerniersAtout;
 }
 
 // -------------------------- Bouclier ---------------------------------
@@ -74,7 +75,7 @@ void Personnage::SetBouclier(int bouclier)
 
 int Personnage::GetBouclier()
 {
-	return Bouclier;
+	return this->Bouclier;
 }
 
 std::string Personnage::GetAvatar()
@@ -120,7 +121,7 @@ bool Personnage::getJump()
 
 std::vector<Personnage*> Personnage::GetVectorPersonnage()
 {
-	return Dessin;
+	return this->Dessin;
 }
 
 

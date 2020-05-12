@@ -14,7 +14,7 @@ void Rick::SetPersonnage()
 	this->perso = new Rick();
 
 	this->perso->SetBouclier(50);
-	this->perso->SetPoids(80);
+	this->perso->SetPoids(100);
 	this->perso->SetPourcentages(0);
 	this->perso->SetNbre_Vies(3);
 	this->perso->SetNom("Rick : " /*+ NomJoueur*/);
