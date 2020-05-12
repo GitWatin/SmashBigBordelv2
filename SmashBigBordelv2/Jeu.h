@@ -81,6 +81,9 @@ protected:
 	sf::Text *BouclierPerso2;
 	sf::Text *AtoutPerso2;
 
+	int minute;
+	int secondes;
+
 	float TempsDeJeu;
 	sf::Time dureeIteration;
 	sf::Time timer_jeu;

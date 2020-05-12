@@ -79,11 +79,7 @@ void main(int argc,char** argv[])
 	Game.ChoixMap();
 	Game.ChoixPerso();
 	Game.CreateHUD(); // Création de l'interface HUD
-
-	// Chargement des textures
-
-	
-	Game.ChargementJeu(Game.GetMapChoisie());
+	Game.ChargementJeu(Game.GetMapChoisie()); // Chargement une fois 
 
 	//----------------------------- Boucle du jeu --------------------------------------------------
 	while (Game.GetWindow()->isOpen())
