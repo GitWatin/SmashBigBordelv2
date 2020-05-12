@@ -1,8 +1,11 @@
 1 - Affichage de la map ( Platefrome, background , texture) OK 
 
-2 - Création des personnages
+2 - Création des personnages OK 
 
-3 - Bouger_personnage
+3 - Bouger_personnage OK 
+
+3' - HUD OK 
+32'' Timer En cours 
 
 4- Gestion collision perso/Platefrome
 
