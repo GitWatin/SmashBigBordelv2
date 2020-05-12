@@ -110,11 +110,11 @@ void Jeu::CheckModif()
 {
 	//---------J1--------------------------------
 	
-	if (perso1choisi->getMoveRight()) //check si le bool est actif
+	if (perso1choisi->getMoveRight()&&!perso1choisi->getCollision()) //check si le bool est actif
 	{	
 		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	 if (perso1choisi->getMoveLeft()) //check si le bool est actif
+	 if (perso1choisi->getMoveLeft()&&!perso1choisi->getCollision()) //check si le bool est actif
 	{
 		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
@@ -127,11 +127,11 @@ void Jeu::CheckModif()
 		perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 	}
 	//----------J2--------------------------------
-	if (perso2choisi->getMoveRight()) //check si le bool est actif
+	if (perso2choisi->getMoveRight()&&!perso2choisi->getCollision()) //check si le bool est actif
 	{
 		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	if (perso2choisi->getMoveLeft()) //check si le bool est actif
+	if (perso2choisi->getMoveLeft()&&!perso2choisi->getCollision()) //check si le bool est actif
 	{
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
@@ -149,12 +149,13 @@ void Jeu::CheckCollision(Personnage *michel)
 {
 	for (int i=0; i<(mapchoisie->GetVectorPlatefomes()).size() ;i++)
 	{
-		if (michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
+		if(michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
 		{
 			michel->setCollision(true);
 			std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			break;
 		}
-		else 
+		if(!michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
 		{
 			std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
 			michel->setCollision(false);
