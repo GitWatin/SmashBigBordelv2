@@ -61,6 +61,7 @@ sf::Texture * TextureManager::GetTexture(std::string path_texture)
 
 
 
+
 TextureManager::~TextureManager()
 {
 

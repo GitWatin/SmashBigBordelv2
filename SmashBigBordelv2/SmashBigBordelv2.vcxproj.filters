@@ -54,6 +54,9 @@
     <ClCompile Include="Morty.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entite.h">
@@ -92,6 +95,9 @@
     <ClInclude Include="Morty.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt">
@@ -102,5 +108,10 @@
     <None Include="..\README.md">
       <Filter>Fichiers de ressources</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="quicksand.ttf">
+      <Filter>Fichiers de ressources</Filter>
+    </Font>
   </ItemGroup>
 </Project>
