@@ -11,23 +11,23 @@ void Morty::SetPersonnage()
 	TextureManager *t;
 	t = new TextureManager();
 
-	this->perso = new Morty();
+	
 
-	this->perso->SetBouclier(50);
-	this->perso->SetPoids(80);
-	this->perso->SetPourcentages(0);
-	this->perso->SetNbre_Vies(3);
-	this->perso->SetNom("Rick : " /*+ NomJoueur*/);
-	this->perso->SetAvatar("plat_tiny.png"); // Avatar de l'HUD
+	this->SetBouclier(50);
+	this->SetPoids(80);
+	this->SetPourcentages(0);
+	this->SetNbre_Vies(3);
+	this->SetNom("Rick : " /*+ NomJoueur*/);
+	this->SetAvatar("plat_tiny.png"); // Avatar de l'HUD
 
 
-	this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));
-	this->perso->setTextureRect(sf::IntRect(0, 0, 90, 90));
-	this->perso->setColor(sf::Color::Black);
-	this->perso->setOrigin(this->perso->getGlobalBounds().width / 2, this->perso->getGlobalBounds().height / 2);
-	this->perso->setPosition(-100, 0);
+	this->setTexture(*t->SetTexture(this->GetPathTexture()));
+	this->setTextureRect(sf::IntRect(0, 0, 90, 90));
+	this->setColor(sf::Color::Black);
+	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
+	this->setPosition(-100, 0);
 
-	Dessin.push_back(this->perso);
+	Dessin.push_back(this);
 	delete t;
 }
 

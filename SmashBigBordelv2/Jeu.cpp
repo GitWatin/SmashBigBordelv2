@@ -91,7 +91,7 @@ void Jeu::CheckModif()
 {
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{
-		std::cout << " [Check Modif] : right perso1" << std::endl;
+		std::cout << " [Check Modif] : right perso1" << perso1choisi->GetPoids()<< std::endl;
 		perso1choisi->move(dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso1choisi->getMoveLeft()) //check si le bool est actif
@@ -154,17 +154,17 @@ void Jeu::ChoixPerso()
 	{
 	case 1:
 		
-		this->perso1choisi = new Rick();
-		this->perso1choisi->SetPersonnage();
-		
+		perso1choisi = new Rick();
+		perso1choisi->SetPersonnage();
+
 		std::cout << "J1 : Rick \n"<<std::endl;
 		
 
 		break;
 	case 2:
 		
-		this->perso1choisi = new Morty();
-		this->perso1choisi->SetPersonnage();
+		perso1choisi = new Morty();
+		perso1choisi->SetPersonnage();
 
 		std::cout << "J1 : Morty \n" << std::endl;
 		break;
@@ -177,15 +177,15 @@ void Jeu::ChoixPerso()
 	{
 	case 1:
 
-		this->perso2choisi = new Rick();
-		this->perso2choisi->SetPersonnage();
+		perso2choisi = new Rick();
+		perso2choisi->SetPersonnage();
 		
 		std::cout << "J2 : Rick  \n " << std::endl;
 		break;
 	case 2:
 
-		this->perso2choisi = new Morty();
-		this->perso2choisi->SetPersonnage();
+		perso2choisi = new Morty();
+		perso2choisi->SetPersonnage();
 
 		std::cout << "J2 : Morty \n " << std::endl;
 		

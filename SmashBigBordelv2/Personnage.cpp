@@ -30,10 +30,10 @@ double Personnage::GetPourcentages()
 
 // -------------------------- Poids ---------------------------------
 
-void Personnage::SetPoids(int poids)
+void Personnage::SetPoids(float poids)
 {
 	this->Poids = poids;
-	std::cout << "Poids Envoyeé : "<< poids << " Poids perso :" << Poids << std::endl;
+	std::cout << "Poids Envoyeé : "<< poids << " Poids perso :" << this->Poids << std::endl;
 }
 
 int Personnage::GetPoids()
@@ -121,7 +121,7 @@ bool Personnage::getJump()
 
 std::vector<Personnage*> Personnage::GetVectorPersonnage()
 {
-	return this->Dessin;
+	return Dessin;
 }
 
 

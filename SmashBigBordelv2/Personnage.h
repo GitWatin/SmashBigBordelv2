@@ -13,7 +13,7 @@ class Personnage :
 	virtual void Attaque(Personnage *NomCible, std::string TypeAttaque) = 0;
 	virtual void SetPourcentages(double percent);
 	virtual double GetPourcentages();
-	virtual void SetPoids(int poids);
+	virtual void SetPoids(float poids);
 	virtual int GetPoids();
 	virtual void SetNbre_Vies(int nbre_vies);
 	virtual int GetNbre_Vies();
@@ -40,7 +40,7 @@ protected:
 	int Force_Attaque1;
 	int Force_Attaque2;
 	double Pourcentages;
-	int Poids;
+	float Poids;
 	int Bouclier;
 	std::string DerniersAtout;
 	std::string TypeAttaque;
