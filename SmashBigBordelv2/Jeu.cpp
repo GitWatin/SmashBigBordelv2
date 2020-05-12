@@ -14,6 +14,13 @@ Jeu :: ~Jeu()
 
 
 	delete jeu;
+
+	// Destructeur HUD
+	for (int i = 0; i < vectorHUD.size(); i++)
+	{
+		delete vectorHUD.back();
+		vectorHUD.pop_back();
+	}
 }
 
 sf::RenderWindow* Jeu::GetWindow()
@@ -125,16 +132,43 @@ void Jeu::SetView(float TailleX , float TailleY)
 	this->Vueprincipal->setSize(TailleX , TailleY);
 }
 
-void Jeu::CallModif()
-{
-	
-}
-
-
-
 
 
 //---------------------Entite--------------------------------------------
+
+void Jeu::CallModif()
+{
+	ViePerso = new sf::Text;
+
+	// Set Label pour le perso 1
+
+	ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
+	ViePerso->setPosition(0, 0);
+	vectorHUD.push_back(ViePerso);
+
+	BouclierPerso->setString(std::to_string(perso1choisi->GetBouclier()));
+	BouclierPerso->setPosition(0, 0);
+	vectorHUD.push_back(BouclierPerso);
+
+	AtoutPerso->setString(perso1choisi->GetDerniersAtout());
+	AtoutPerso->setPosition(0, 0);
+	vectorHUD.push_back(AtoutPerso);
+
+	// Set Label pour le perso 2
+
+	ViePerso->setString(std::to_string(perso2choisi->GetNbre_Vies()));
+	ViePerso->setPosition(0, 0);
+	vectorHUD.push_back(ViePerso);
+
+	BouclierPerso->setString(std::to_string(perso2choisi->GetBouclier()));
+	BouclierPerso->setPosition(0, 0);
+	vectorHUD.push_back(BouclierPerso);
+
+	AtoutPerso->setString(perso2choisi->GetDerniersAtout());
+	AtoutPerso->setPosition(0, 0);
+	vectorHUD.push_back(AtoutPerso);
+
+}
 
 void Jeu::DrawPersonnage(std::vector < Personnage* > Dessin)
 {

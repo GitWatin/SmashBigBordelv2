@@ -30,7 +30,7 @@ public:
 	 sf::View* GetView();
 	 void SetView(float TailleX, float TailleY);
 	 
-
+	 virtual void CallModif();
 	 virtual void DrawPersonnage(std::vector < Personnage* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
@@ -49,6 +49,12 @@ protected:
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
 	std::vector < sf::Drawable* > vectorHUD;
+
+
+	sf::Text *ViePerso;
+	sf::Text *BouclierPerso;
+	sf::Text *AtoutPerso;
+	sf::Text *VieTimer;
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 

@@ -142,7 +142,6 @@
     <ClCompile Include="Atout.cpp" />
     <ClCompile Include="Back_Ground.cpp" />
     <ClCompile Include="Entite.cpp" />
-    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Map1.cpp" />
@@ -158,7 +157,6 @@
     <ClInclude Include="Atout.h" />
     <ClInclude Include="Back_Ground.h" />
     <ClInclude Include="Entite.h" />
-    <ClInclude Include="HUD.h" />
     <ClInclude Include="Jeu.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Map1.h" />
