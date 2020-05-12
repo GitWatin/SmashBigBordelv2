@@ -309,7 +309,7 @@ void Jeu::HUD()
 // Fonction pour gerer le timer
 void Jeu::Timing()
 {
-	/*
+	
 	sf::Time timer_jeu = clock_jeu->getElapsedTime();
 
 	std::cout << "[Info]: " << timer_jeu.asSeconds() << std::endl;
@@ -325,5 +325,5 @@ void Jeu::Timing()
 		Game_State = true;
 	}
 
-	//clock_jeu->getElapsedTime
+	//clock_jeu->getElapsedTime*/
 }
