@@ -77,6 +77,16 @@ int Personnage::GetBouclier()
 	return Bouclier;
 }
 
+std::string Personnage::GetAvatar()
+{
+	return this->Path_Avatar;
+}
+
+void Personnage::SetAvatar(std::string path_avatar)
+{
+	this->Path_Avatar = path_avatar;
+}
+
 void Personnage::setMoveRight()
 {
 	this->moveRight= !this->moveRight;

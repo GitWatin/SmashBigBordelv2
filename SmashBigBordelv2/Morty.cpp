@@ -18,6 +18,7 @@ void Morty::SetPersonnage()
 	this->perso->SetPourcentages(0);
 	this->perso->SetNbre_Vies(3);
 	this->perso->SetNom("Rick : " /*+ NomJoueur*/);
+	this->perso->SetAvatar("plat_tiny.png"); // Avatar de l'HUD
 
 
 	this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));

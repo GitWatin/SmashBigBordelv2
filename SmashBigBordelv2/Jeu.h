@@ -66,6 +66,9 @@ protected:
 	sf::Text *AtoutPerso;
 	sf::Text *HUDTimer;
 
+	sf::Sprite *avatar1;
+	sf::Sprite *avatar2;
+
 	sf::String text_timer;
 
 	sf::Time *dureeIteration;

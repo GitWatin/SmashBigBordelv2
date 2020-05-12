@@ -22,6 +22,9 @@ class Personnage :
 	virtual void SetBouclier(int bouclier);
 	virtual int GetBouclier();
 
+	virtual std::string GetAvatar();
+	virtual void SetAvatar(std::string path_avatar);
+
 	virtual void setMoveRight();
 	virtual void setMoveLeft();
 	virtual void setJump();
@@ -41,6 +44,7 @@ protected:
 	int Bouclier;
 	std::string DerniersAtout;
 	std::string TypeAttaque;
+	std::string Path_Avatar;
 	Personnage *perso;
 	std::vector < Personnage* > Dessin;
 	bool moveRight=false;
