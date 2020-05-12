@@ -12,8 +12,9 @@ Rick::Rick() : Personnage()
 	this->SetPoids(100);
 	this->SetPourcentages(0);
 	this->SetNbre_Vies(3);
-	this->SetNom("Rick : " /*+ NomJoueur*/);
+	this->SetNom("Rick " /*+ NomJoueur*/);
 	this->SetAvatar("plat_tiny.png"); // Avatar de l'HUD
+	this->SetDerniersAtout("Toto");
 
 	this->setTexture(*t->SetTexture(this->GetPathTexture()));
 	this->setTextureRect(sf::IntRect(0, 0, 90, 90));

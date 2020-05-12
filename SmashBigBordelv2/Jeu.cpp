@@ -12,8 +12,7 @@ Jeu::Jeu()
 	this->clock = new sf::Clock;
 	this->dureeIteration = sf::Time::Zero;
 
-	// Timer du jeu (5min )
-	this->clock_jeu = new sf::Clock;
+
 }
 
 Jeu :: ~Jeu()
@@ -179,12 +178,16 @@ void Jeu::CheckCollision()
 void Jeu::CallModif()
 {
 	// Call HUD Function 
+
 	SetHUD();
 	Timing();
 }
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
+	// demmarage du Timer du jeu (5min )
+	this->clock_jeu = new sf::Clock;
+
 	map->setBackground();
 	map->setPlatefomes();
 }
@@ -199,7 +202,7 @@ void Jeu::ChoixMap()
 	{
 	case 1 :
 		this->mapchoisie = new Map1();
-		this->TempsDeJeu = 300;
+		this->TempsDeJeu = 15;
 		break;
 	case 2:
 		this->mapchoisie = new Map2();
@@ -383,7 +386,7 @@ void Jeu::CreateHUD()
 	BouclierPerso1->setPosition(-480, -410);
 	vectorHUD.push_back(BouclierPerso1);
 
-	AtoutPerso1->setString("Atout : Weight Watcher");
+	AtoutPerso1->setString("");
 	AtoutPerso1->setFont(*font->SetFont("quicksand.ttf"));
 	AtoutPerso1->setFillColor(sf::Color::Red);
 	AtoutPerso1->setCharacterSize(24);
@@ -422,7 +425,7 @@ void Jeu::CreateHUD()
 	BouclierPerso2->setPosition(+480, -410);
 	vectorHUD.push_back(BouclierPerso2);
 
-	AtoutPerso2->setString("Atout : Weight Watcher");
+	AtoutPerso2->setString("");
 	AtoutPerso2->setFont(*font->SetFont("quicksand.ttf"));
 	AtoutPerso2->setFillColor(sf::Color::Blue);
 	AtoutPerso2->setCharacterSize(24);
@@ -457,34 +460,77 @@ void Jeu::SetHUD()
 	TextureManager *texture_hud;
 	texture_hud = new TextureManager();
 
+	//std::cout << "[Info]: " << perso2choisi->GetDerniersAtout() << std::endl;
 
 	NomPerso1->setString(perso1choisi->GetNom());
 	NomPerso2->setString(perso2choisi->GetNom());
 
-	ViePerso1->setString(std::to_string(perso1choisi->GetNbre_Vies()));
-	ViePerso2->setString(std::to_string(perso2choisi->GetNbre_Vies()));
+	ViePerso1->setString("Vies restantes :" + std::to_string(perso1choisi->GetNbre_Vies()));
+	ViePerso2->setString("Vies restantes :" + std::to_string(perso2choisi->GetNbre_Vies()));
+	ViePerso2->setOrigin(ViePerso2->getGlobalBounds().width,0);
 
-	BouclierPerso1->setString(std::to_string(perso1choisi->GetBouclier()));
-	BouclierPerso2->setString(std::to_string(perso2choisi->GetBouclier()));
+	BouclierPerso1->setString("Bouclier :" + std::to_string(perso1choisi->GetBouclier()));
+	BouclierPerso2->setString("Bouclier :" + std::to_string(perso2choisi->GetBouclier()));
+	BouclierPerso2->setOrigin(BouclierPerso2->getGlobalBounds().width, 0);
 
-	AtoutPerso1->setString(perso1choisi->GetDerniersAtout());
-	AtoutPerso2->setString(perso2choisi->GetDerniersAtout());
+	if (perso1choisi->GetDerniersAtout() != "")
+	{
+		AtoutPerso1->setString("Atout :" + perso1choisi->GetDerniersAtout());
+	}
+	else if (perso2choisi->GetDerniersAtout() != "")
+	{
+		AtoutPerso2->setString("Atout :" + perso2choisi->GetDerniersAtout());
+		AtoutPerso2->setOrigin(AtoutPerso2->getGlobalBounds().width, 0);
+	}
+	else if (perso1choisi->GetDerniersAtout() != "" && perso2choisi->GetDerniersAtout() != "")
+	{
+		AtoutPerso1->setString("Atout :" + perso1choisi->GetDerniersAtout());
+		AtoutPerso2->setString("Atout :" + perso2choisi->GetDerniersAtout());
+		AtoutPerso2->setOrigin(AtoutPerso2->getGlobalBounds().width, 0);
+	}
+
+	
+
 }
 
 // Fonction pour gerer le timer
 void Jeu::Timing()
 {
 	sf::Time timer_jeu = clock_jeu->getElapsedTime();
-	/*
-	if (timer_jeu.asSeconds > TempsDeJeu )
+	
+	if (timer_jeu.asSeconds() > TempsDeJeu ) // Fin du jeu 
 	{
 		this->HUDTimer->setString(" Fin du jeu");
+		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 		std::cout << "[Info]: Fin du jeu (Time done)" << std::endl;
 		Game_State = false;
 	}
-	else
+	else // Continue à incrementer
 	{
-		this->HUDTimer->setString(std::to_string(timer_jeu.asSeconds()));
+		this->secondes = timer_jeu.asSeconds();
+		
+		if (secondes < 10)
+		{
+			this->HUDTimer->setString(std::to_string(this->minute) + ":" + "0"+ std::to_string(this->secondes));
+			
+		}
+		else
+		{
+			this->HUDTimer->setString(std::to_string(this->minute) + ":" + std::to_string(this->secondes));
+		}
+
+
+		if (timer_jeu.asSeconds() >= 60.f)
+		{
+			this->minute++;
+			clock_jeu->restart();
+		}
+		
+		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
+		
 		Game_State = true;
-	}*/
+	}
+
+	std::cout << "[Info] [Status du jeu]:"<< Game_State << std::endl;
+
 }
