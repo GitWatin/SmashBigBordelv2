@@ -110,7 +110,7 @@ void Jeu::CheckInput(sf::Event event)
 void Jeu::CheckModif()
 {
 	//---------J1--------------------------------
-
+	/*
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{	
 		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
@@ -140,12 +140,12 @@ void Jeu::CheckModif()
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement)));
 	}
-	else if(!perso2choisi->getCollision())
+	if(!perso2choisi->getCollision())
 	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 }
 
 void Jeu::CheckCollision()
-{
+{/*
 	//Collision Perso 1
 	/*
 	for (int i; i<(this->mapchoisie->GetVectorPlatefomes()).size() ;i++)
@@ -173,7 +173,6 @@ void Jeu::CheckCollision()
 			perso1choisi->setCollision(false);
 		}
 	}
-	*/
 }
 
 void Jeu::CallModif()
@@ -199,9 +198,11 @@ void Jeu::ChoixMap()
 	{
 	case 1 :
 		this->mapchoisie = new Map1();
+		this->TempsDeJeu = 300;
 		break;
 	case 2:
 		this->mapchoisie = new Map2();
+		this->TempsDeJeu = 300;
 		break;
 	}
 	
@@ -473,8 +474,8 @@ void Jeu::SetHUD()
 void Jeu::Timing()
 {
 	sf::Time timer_jeu = clock_jeu->getElapsedTime();
-
-	if (timer_jeu.asSeconds >= 300.f)
+	/*
+	if (timer_jeu.asSeconds > TempsDeJeu )
 	{
 		this->HUDTimer->setString(" Fin du jeu");
 		std::cout << "[Info]: Fin du jeu (Time done)" << std::endl;
@@ -484,5 +485,5 @@ void Jeu::Timing()
 	{
 		this->HUDTimer->setString(std::to_string(timer_jeu.asSeconds()));
 		Game_State = true;
-	}
+	}*/
 }
