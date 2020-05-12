@@ -9,7 +9,7 @@ Jeu::Jeu()
 	this->fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
-	dureeIteration = sf::Time::Zero;
+	this->dureeIteration = new sf::Time(sf::Time::Zero);
 
 	// Timer du jeu (5min )
 	this->clock_jeu = new sf::Clock;
@@ -91,24 +91,21 @@ void Jeu::CheckModif()
 {
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{
-		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
-		std::cout << "[PERSONNAGE 1] : PosX = " << perso1choisi->getPosition().x << " et PosY = " << perso1choisi->getPosition().y << std::endl;
+		std::cout << " [Check Modif] : right perso1" << perso1choisi->GetPoids()<< std::endl;
+		perso1choisi->move(dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso1choisi->getMoveLeft()) //check si le bool est actif
 	{
-		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
-		std::cout << "[PERSONNAGE 1] : PosX = " << perso1choisi->getPosition().x << " et PosY = " << perso1choisi->getPosition().y << std::endl;
+		perso1choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
 	{
-		
-		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * 100), 0);
-		std::cout << "[PERSONNAGE 2] : PosX = " << perso2choisi->getPosition().x << " et PosY = " << perso2choisi->getPosition().y << std::endl;
+		std::cout << " [Check Modif] : right perso2" << std::endl;
+		perso2choisi->move(dureeIteration->asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * 100), 0);
 	}
 	if (perso2choisi->getMoveLeft()) //check si le bool est actif
 	{
-		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
-		std::cout << "[PERSONNAGE 2] : PosX = " << perso2choisi->getPosition().x << " et PosY = " << perso2choisi->getPosition().y << std::endl;
+		perso2choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 }
 
