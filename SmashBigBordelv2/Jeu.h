@@ -64,16 +64,18 @@ protected:
 	sf::Text *ViePerso;
 	sf::Text *BouclierPerso;
 	sf::Text *AtoutPerso;
-	sf::Text *VieTimer;
+	sf::Text *HUDTimer;
+
+	sf::String text_timer;
 
 	sf::Time *dureeIteration;
 	sf::Clock *clock;
 
+	// Clock timer général
 	sf::Clock *clock_jeu;
-	//sf::Texture Return_Texture_Plateforme;
-	//sf::Texture Return_Texture_Map;
 
-	// Attribut texture
+	// Variable état jeu if false = jeu terminé
+	bool Game_State = true;
 
 };
 
