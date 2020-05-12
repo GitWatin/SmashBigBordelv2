@@ -84,13 +84,18 @@ protected:
 	int minute;
 	int secondes;
 
+	float temporary_time;
 	float TempsDeJeu;
 	sf::Time dureeIteration;
-	sf::Time timer_jeu;
+
 	sf::Clock *clock;
 
 	// Clock timer général
 	sf::Clock *clock_jeu;
+	sf::Time timer_jeu;
+
+	sf::Clock *clock_HUD;
+	sf::Time timer_HUD;
 
 	// Variable état jeu if false = jeu terminé
 	bool Game_State = true;

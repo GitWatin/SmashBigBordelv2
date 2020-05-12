@@ -185,7 +185,9 @@ void Jeu::CallModif()
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
 	// demmarage du Timer du jeu (5min )
-	this->clock_jeu = new sf::Clock;
+	this->clock_jeu = new sf::Clock; 
+	this->clock_HUD = new sf::Clock;
+	temporary_time = 60;
 
 	map->setBackground();
 	map->setPlatefomes();
@@ -205,7 +207,7 @@ void Jeu::ChoixMap()
 		break;
 	case 2:
 		this->mapchoisie = new Map2();
-		this->TempsDeJeu = 300;
+		this->TempsDeJeu = 90;
 		break;
 	}
 	
@@ -436,7 +438,7 @@ void Jeu::CreateHUD()
 	HUDTimer->setString("0000");
 	HUDTimer->setFont(*font->SetFont("quicksand.ttf"));
 	HUDTimer->setFillColor(sf::Color::Black);
-	HUDTimer->setCharacterSize(30);
+	HUDTimer->setCharacterSize(50);
 	HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width/2, HUDTimer->getGlobalBounds().height/2);
 	HUDTimer->setPosition(0, -410);
 	vectorHUD.push_back(HUDTimer);
@@ -476,14 +478,14 @@ void Jeu::SetHUD()
 	{
 		AtoutPerso1->setString("Atout :" + perso1choisi->GetDerniersAtout());
 	}
-	else if (perso2choisi->GetDerniersAtout() != "")
+	if (perso1choisi->GetDerniersAtout() != "" && perso2choisi->GetDerniersAtout() != "")
 	{
+		AtoutPerso1->setString("Atout :" + perso1choisi->GetDerniersAtout());
 		AtoutPerso2->setString("Atout :" + perso2choisi->GetDerniersAtout());
 		AtoutPerso2->setOrigin(AtoutPerso2->getGlobalBounds().width, 0);
 	}
-	else if (perso1choisi->GetDerniersAtout() != "" && perso2choisi->GetDerniersAtout() != "")
+	if (perso2choisi->GetDerniersAtout() != "")
 	{
-		AtoutPerso1->setString("Atout :" + perso1choisi->GetDerniersAtout());
 		AtoutPerso2->setString("Atout :" + perso2choisi->GetDerniersAtout());
 		AtoutPerso2->setOrigin(AtoutPerso2->getGlobalBounds().width, 0);
 	}
@@ -496,6 +498,7 @@ void Jeu::SetHUD()
 void Jeu::Timing()
 {
 	sf::Time timer_jeu = clock_jeu->getElapsedTime();
+	sf::Time timer_HUD = clock_HUD->getElapsedTime();
 	
 	if (timer_jeu.asSeconds() > TempsDeJeu ) // Fin du jeu 
 	{
@@ -506,7 +509,8 @@ void Jeu::Timing()
 	}
 	else // Continue à incrementer
 	{
-		this->secondes = timer_jeu.asSeconds();
+		this->secondes = timer_HUD.asSeconds();
+		std::cout << "[Info] [Temps système]:" << timer_HUD.asSeconds() <<"    Temporary : " << temporary_time << std::endl;
 		
 		if (secondes < 10)
 		{
@@ -519,10 +523,12 @@ void Jeu::Timing()
 		}
 
 
-		if (timer_jeu.asSeconds() >= 60.f)
+		if (timer_HUD.asSeconds() >= temporary_time)
 		{
 			this->minute++;
-			clock_jeu->restart();
+			clock_HUD->restart();
+			this->temporary_time = temporary_time+ 60;
+			
 		}
 		
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
@@ -530,6 +536,6 @@ void Jeu::Timing()
 		Game_State = true;
 	}
 
-	std::cout << "[Info] [Status du jeu]:"<< Game_State << std::endl;
+	
 
 }

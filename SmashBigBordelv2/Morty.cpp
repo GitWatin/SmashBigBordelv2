@@ -14,7 +14,7 @@ Morty::Morty() : Personnage()
 	this->SetNbre_Vies(3);
 	this->SetNom("Morty " /*+ NomJoueur*/);
 	this->SetAvatar("plat_tiny.png"); // Avatar de l'HUD
-	this->SetDerniersAtout("Toto");
+	//this->SetDerniersAtout("Toto");
 
 	this->setTexture(*t->SetTexture(this->GetPathTexture()));
 	this->setTextureRect(sf::IntRect(0, 0, 90, 90));
