@@ -79,7 +79,7 @@ int Personnage::GetBouclier()
 
 
 
-std::vector<Personnage*> Personnage::GetVectorDrawable()
+std::vector<Personnage*> Personnage::GetVectorPersonnage()
 {
 	return Dessin;
 }

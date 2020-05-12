@@ -23,7 +23,7 @@ class Personnage :
 	virtual int GetBouclier();
 
 	
-	virtual std::vector< Personnage* >GetVectorDrawable();
+	virtual std::vector< Personnage* >GetVectorPersonnage();
 	
 protected:
 	int Nbre_Vies;
