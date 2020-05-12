@@ -8,6 +8,9 @@ Jeu::Jeu()
 	this->fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
+
+	// Timer du jeu (5min)
+	this->clock_jeu = new sf::Clock;
 	this->dureeIteration = sf::Time::Zero;
 }
 
@@ -154,7 +157,7 @@ void Jeu::SetView(float TailleX , float TailleY)
 void Jeu::CallModif()
 {
 
-	//ViePerso = new sf::Text;
+	ViePerso = new sf::Text;
 
 	FontManager *font;
 	font = new FontManager();
