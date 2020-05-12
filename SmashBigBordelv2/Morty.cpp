@@ -3,15 +3,10 @@
 
 Morty::Morty() : Personnage()
 {
-	;
-}
-
-void Morty::SetPersonnage()
-{
 	TextureManager *t;
 	t = new TextureManager();
 
-	
+
 
 	this->SetBouclier(50);
 	this->SetPoids(80);
@@ -29,6 +24,11 @@ void Morty::SetPersonnage()
 
 	Dessin.push_back(this);
 	delete t;
+}
+
+void Morty::SetPersonnage()
+{
+	
 }
 
 void Morty::Attaque(Personnage *NomCible, std::string TypeAttaque)

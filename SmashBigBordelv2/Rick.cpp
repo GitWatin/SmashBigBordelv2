@@ -3,15 +3,10 @@
 
 Rick::Rick() : Personnage()
 {
-
-}
-
-void Rick::SetPersonnage()
-{
 	TextureManager *t;
 	t = new TextureManager();
 
-	
+
 
 	this->SetBouclier(50);
 	this->SetPoids(100);
@@ -21,7 +16,7 @@ void Rick::SetPersonnage()
 	this->SetAvatar("plat_tiny.png"); // Avatar de l'HUD
 
 	this->setTexture(*t->SetTexture(this->GetPathTexture()));
-	this->setTextureRect(sf::IntRect(0, 0, 90 , 90));
+	this->setTextureRect(sf::IntRect(0, 0, 90, 90));
 	this->setColor(sf::Color::Green);
 	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
 	this->setPosition(100, 0);
@@ -29,6 +24,11 @@ void Rick::SetPersonnage()
 	Dessin.push_back(this);
 
 	delete t;
+}
+
+void Rick::SetPersonnage()
+{
+	
 }
 
 void Rick::Attaque(Personnage *NomCible, std::string TypeAttaque)

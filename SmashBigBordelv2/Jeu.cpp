@@ -155,8 +155,6 @@ void Jeu::ChoixPerso()
 	case 1:
 		
 		perso1choisi = new Rick();
-		perso1choisi->SetPersonnage();
-
 		std::cout << "J1 : Rick \n"<<std::endl;
 		
 
@@ -164,8 +162,6 @@ void Jeu::ChoixPerso()
 	case 2:
 		
 		perso1choisi = new Morty();
-		perso1choisi->SetPersonnage();
-
 		std::cout << "J1 : Morty \n" << std::endl;
 		break;
 	}
