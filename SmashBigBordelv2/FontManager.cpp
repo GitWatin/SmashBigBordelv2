@@ -27,12 +27,12 @@ sf::Font * FontManager::SetFont(std::string path_font)
 		{
 
 			// throw erreur
-			std::cout << "[Error] -[] :Erreur dans le chargement de la texture " << path_font << std::endl;
+			std::cout << "[Error] -[] :Erreur dans le chargement de la Font " << path_font << std::endl;
 			return 0;
 		}
 		else
 		{
-			std::cout << "[Texture chargée] :" << path_font << std::endl;
+			std::cout << "[Font chargée] :" << path_font << std::endl;
 			this->map_font.insert(std::pair<std::string, sf::Font*>(path_font, font));
 		}
 

@@ -206,7 +206,7 @@ void Jeu::DrawHUD()
 	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
 		fenetre->draw(*vectorHUD[i]);
-		std::cout << "[Info]:Return dessin " << vectorHUD[i] << std::endl;
+		//std::cout << "[Info]:Return dessin " << vectorHUD[i] << std::endl;
 	}
 }
 
@@ -268,7 +268,9 @@ void Jeu::Timing()
 {
 	sf::Time timer_jeu = clock_jeu->getElapsedTime();
 
-	if (timer_jeu.asSeconds <= 0)
+	std::cout << "[Info]: " << timer_jeu.asSeconds() << std::endl;
+	
+	/*if (timer_jeu.asSeconds >= 300.f)
 	{
 		this->text_timer = " Fin du jeu";
 		Game_State = false;
@@ -277,7 +279,6 @@ void Jeu::Timing()
 	{
 		text_timer = std::to_string(timer_jeu.asSeconds());
 		Game_State = true;
-	}
-
-	//clock_jeu->getElapsedTime
+	}*/
+	
 }
