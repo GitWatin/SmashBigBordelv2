@@ -127,8 +127,10 @@ void Jeu::CheckModif()
 	{
 		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 150)));
 	}
-	//if(pas de collision)
-	perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+	if (!perso2choisi->getCollision())
+	{
+		perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+	}
 	//----------J2--------------------------------
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
 	{
@@ -142,22 +144,37 @@ void Jeu::CheckModif()
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * 150)));
 	}
-	//if(pas de collision)
+	if(!perso2choisi->getCollision())
 	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 }
 
-void Jeu::CheckCollision(Personnage * michel)
+void Jeu::CheckCollision()
 {
+	//Collision Perso 1
 	
-	for (int i;i<(mapchoisie->GetVectorPlatefomes()).size();i++)
+	for (int i; i<(this->mapchoisie->GetVectorPlatefomes()).size() ;i++)
 	{
-		if (michel->getGlobalBounds()->intersects(mapchoisie->getPlatform(i)))
+		if (perso1choisi->getGlobalBounds()->intersects(this->mapchoisie->getPlatform(i)->getGlobalBounds))
 		{
-			michel->setCollision(true);
+			perso1choisi->setCollision(true);
 		}
 		else 
 		{
-			michel->setCollision(false);
+			perso1choisi->setCollision(false);
+		}
+	}
+
+	//collision Perso 2
+
+	for (int i; i < (this->mapchoisie->GetVectorPlatefomes()).size(); i++)
+	{
+		if (perso2choisi->getGlobalBounds()->intersects(this->mapchoisie->getPlatform(i)))
+		{
+			perso1choisi->setCollision(true);
+		}
+		else
+		{
+			perso1choisi->setCollision(false);
 		}
 	}
 }
@@ -171,8 +188,6 @@ void Jeu::CallModif()
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
-
-
 	map->setBackground();
 	map->setPlatefomes();
 }

@@ -8,7 +8,6 @@ public: // A voir pour les déclaration a cause de sfml
 	Entite();
 	~Entite();
 	
-	
 
 	virtual void SetNom(std::string nom);
 	virtual std::string GetNom();
