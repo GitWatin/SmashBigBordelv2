@@ -30,7 +30,6 @@ public:
 	 sf::View* GetView();
 	 void SetView(float TailleX, float TailleY);
 	 
-	 
 
 	 virtual void DrawPersonnage(std::vector < Personnage* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
