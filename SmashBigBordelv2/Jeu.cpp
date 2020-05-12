@@ -8,10 +8,11 @@ Jeu::Jeu()
 	this->fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
+	this->dureeIteration = new sf::Time(sf::Time::Zero);
 
 	// Timer du jeu (5min )
 	this->clock_jeu = new sf::Clock;
-	this->dureeIteration = sf::Time::Zero;
+	
 }
 
 Jeu :: ~Jeu()
