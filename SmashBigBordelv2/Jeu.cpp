@@ -120,6 +120,11 @@ void Jeu::SetView(float TailleX , float TailleY)
 	this->Vueprincipal->setSize(TailleX , TailleY);
 }
 
+void Jeu::CallModif()
+{
+	
+}
+
 
 
 //---------------------Entite--------------------------------------------
@@ -145,9 +150,10 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 }
 
 
-
+// Draw les elements de l'HUD
 void Jeu::DrawHUD()
 {
+	std::cout << "[HUD] :" << vectorHUD.size() << std::endl;
 	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
 		fenetre->draw(*vectorHUD[i]);
