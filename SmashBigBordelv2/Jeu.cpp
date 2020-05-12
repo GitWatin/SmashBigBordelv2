@@ -259,6 +259,7 @@ void Jeu::DrawHUD()
 	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
 		fenetre->draw(*vectorHUD[i]);
+		
 		//std::cout << "[Info]:Return dessin " << vectorHUD[i] << std::endl;
 	}
 }
@@ -274,7 +275,7 @@ void Jeu::DrawBackGround(Back_Ground *BackGround)
 // Fonction pour recuperer les informations des personnages et les ajouters au vector vectorHUD
 void Jeu::HUD()
 {
-	ViePerso = new sf::Text;
+	text_HUD = new sf::Text;
 	
 
 	FontManager *font;
@@ -283,23 +284,39 @@ void Jeu::HUD()
 	TextureManager *texture_hud;
 	texture_hud = new TextureManager();
 
+	avatar1 = new sf::Sprite;
+	avatar2 = new sf::Sprite;
+
 	// Set Label pour le perso 1
 
 	// Affichage de l'avatar : 
-	avatar1 = new sf::Sprite;
-
-	this->avatar1->setPosition(-200, -100);
-	this->avatar1->setTextureRect(sf::IntRect(0, 0, 20, 20));
-	this->avatar1->setColor(sf::Color::Red);
-	//this->avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()));
-	this->avatar1->setOrigin(this->avatar1->getGlobalBounds().width / 2, this->avatar1->getGlobalBounds().height / 2);
 	
+	avatar1->setTextureRect(sf::IntRect(0, 0, 50, 50));
+	avatar1->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
+	avatar1->setColor(sf::Color::Red);
+	avatar1->setPosition(+200, -450);
+	//this->avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()));
+	//this->avatar1->setOrigin(this->avatar1->getGlobalBounds().width / 2, this->avatar1->getGlobalBounds().height / 2);
+	vectorHUD.push_back(avatar1);
+	
+	text_HUD->setString("Joueur : " + perso1choisi->GetNom());
+	text_HUD->setFont(*font->SetFont("quicksand.ttf"));
+	text_HUD->setFillColor(sf::Color::Red);
+	text_HUD->setPosition(-500, -450);
+	vectorHUD.push_back(text_HUD);
+	
+	text_HUD->setString("Bouclier " + std::to_string(perso1choisi->GetNbre_Vies()));
+	text_HUD->setFont(*font->SetFont("quicksand.ttf"));
+	text_HUD->setFillColor(sf::Color::Red);
+	text_HUD->setPosition(-400, -450);
+	vectorHUD.push_back(text_HUD);
+	
+	// Display Timer
+		// Pas oublier de mettre le timer
 
-	ViePerso->setString("Vie de Rick " +std::to_string(perso1choisi->GetNbre_Vies()));
-	ViePerso->setFont(*font->SetFont("quicksand.ttf"));
-	ViePerso->setFillColor(sf::Color::Red);
-	ViePerso->setPosition(-600, -400);
-	vectorHUD.push_back(ViePerso);
+
+	// Set Label pour le perso 2
+
 	/*
 	BouclierPerso->setString(std::to_string(perso1choisi->GetBouclier()));
 	BouclierPerso->setPosition(0, 0);
@@ -308,12 +325,6 @@ void Jeu::HUD()
 	AtoutPerso->setString(perso1choisi->GetDerniersAtout());
 	AtoutPerso->setPosition(0, 0);
 	vectorHUD.push_back(AtoutPerso);
-
-	// Display Timer
-		// Pas oublier de mettre le timer
-
-
-	// Set Label pour le perso 2
 
 	ViePerso->setString(std::to_string(perso2choisi->GetNbre_Vies()));
 	ViePerso->setPosition(0, 0);
@@ -325,8 +336,8 @@ void Jeu::HUD()
 
 	AtoutPerso->setString(perso2choisi->GetDerniersAtout());
 	AtoutPerso->setPosition(0, 0);
-	vectorHUD.push_back(AtoutPerso);*/
-
+	vectorHUD.push_back(AtoutPerso);
+	*/
 	delete font;
 	delete texture_hud;
 }
