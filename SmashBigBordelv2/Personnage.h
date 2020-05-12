@@ -25,8 +25,8 @@ class Personnage :
 	virtual std::string GetAvatar();
 	virtual void SetAvatar(std::string path_avatar);
 
-	virtual void setMoveRight();
-	virtual void setMoveLeft();
+	virtual void setMoveRight(bool ok);
+	virtual void setMoveLeft(bool ok);
 	virtual void setJump();
 
 	virtual bool getMoveRight();
