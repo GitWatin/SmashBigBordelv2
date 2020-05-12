@@ -114,7 +114,6 @@ void Jeu::CallModif()
 	// Call HUD Function 
 	HUD();
 	Timing();
-
 }
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
@@ -335,7 +334,44 @@ void Jeu::HUD()
 	delete font;
 	delete texture_hud;
 }
+void Jeu::setHUD()
+{
+	text_HUD = new sf::Text;
 
+
+	FontManager *font;
+	font = new FontManager();
+
+	TextureManager *texture_hud;
+	texture_hud = new TextureManager();
+
+	avatar1 = new sf::Sprite;
+	avatar2 = new sf::Sprite;
+
+	// Set Label pour le perso 1
+
+	// Affichage de l'avatar : 
+
+	avatar1->setTextureRect(sf::IntRect(0, 0, 50, 50));
+	avatar1->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
+	avatar1->setColor(sf::Color::Red);
+	avatar1->setPosition(+200, -450);
+	//this->avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()));
+	//this->avatar1->setOrigin(this->avatar1->getGlobalBounds().width / 2, this->avatar1->getGlobalBounds().height / 2);
+	vectorHUD.push_back(avatar1);
+
+	text_HUD->setString("Joueur : " + perso1choisi->GetNom());
+	text_HUD->setFont(*font->SetFont("quicksand.ttf"));
+	text_HUD->setFillColor(sf::Color::Red);
+	text_HUD->setPosition(-500, -450);
+	vectorHUD.push_back(text_HUD);
+
+	text_HUD->setString("Bouclier " + std::to_string(perso1choisi->GetNbre_Vies()));
+	text_HUD->setFont(*font->SetFont("quicksand.ttf"));
+	text_HUD->setFillColor(sf::Color::Red);
+	text_HUD->setPosition(-400, -450);
+	vectorHUD.push_back(text_HUD);
+}
 // Fonction pour gerer le timer
 void Jeu::Timing()
 {

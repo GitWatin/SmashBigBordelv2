@@ -78,7 +78,7 @@ void main(int argc,char** argv[])
 	
 	Game.ChoixMap();
 	Game.ChoixPerso();
-	
+	Game.CallModif();
 	// Chargement des textures
 
 	

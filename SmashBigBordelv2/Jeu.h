@@ -43,6 +43,7 @@ public:
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 
 	 virtual void HUD();
+	 void setHUD();
 	 virtual void Timing();
 
 	 // Draw HUD
