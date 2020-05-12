@@ -105,6 +105,8 @@ void Jeu::CallModif()
 {
 	// Call HUD Function 
 	HUD();
+	Timing();
+
 }
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
@@ -283,6 +285,10 @@ void Jeu::HUD()
 	AtoutPerso->setPosition(0, 0);
 	vectorHUD.push_back(AtoutPerso);
 
+	// Display Timer
+		// Pas oublier de mettre le timer
+
+
 	// Set Label pour le perso 2
 
 	ViePerso->setString(std::to_string(perso2choisi->GetNbre_Vies()));
@@ -303,5 +309,18 @@ void Jeu::HUD()
 // Fonction pour gerer le timer
 void Jeu::Timing()
 {
+	sf::Time timer_jeu = clock_jeu->getElapsedTime();
 
+	if (timer_jeu.asSeconds <= 0)
+	{
+		this->text_timer = " Fin du jeu";
+		Game_State = false;
+	}
+	else
+	{
+		text_timer = std::to_string(timer_jeu.asSeconds());
+		Game_State = true;
+	}
+
+	//clock_jeu->getElapsedTime
 }
