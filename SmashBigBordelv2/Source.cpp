@@ -54,7 +54,7 @@ void VerifPosition(Entite *Plat);
 
 
 
-int main()
+void main(int argc,char** argv[])
 {
 	// Objet temps machine
 	
@@ -89,6 +89,8 @@ int main()
 		//------------------------------- Gestion des évènements -------------------------------
 		while (Game.GetWindow()->pollEvent(event))
 		{
+			Game.CheckInput(event);
+
 			if (event.type == sf::Event::Closed)
 				Game.GetWindow()->close();
 		}

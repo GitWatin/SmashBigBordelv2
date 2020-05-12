@@ -1,4 +1,6 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
@@ -18,6 +20,11 @@ public:
 	 Jeu ();
 	 ~Jeu();
 	 sf::RenderWindow* GetWindow();
+
+
+	 
+	 virtual void CheckInput(sf::Event event);
+	
 
 	 virtual void ChargementJeu(Map *map);
 	 virtual void ChoixMap();
@@ -49,12 +56,16 @@ protected:
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
 	std::vector < sf::Drawable* > vectorHUD;
-
-	const int VitesseDeplacement = 120;//  pixel/sec
+	
 	sf::Text *ViePerso;
 	sf::Text *BouclierPerso;
 	sf::Text *AtoutPerso;
 	sf::Text *VieTimer;
+
+	sf::Clock *clock;
+	sf::Time dureeIteration ;
+	const int VitesseDeplacement = 120;//  pixel/sec
+
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 

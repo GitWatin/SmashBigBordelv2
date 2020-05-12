@@ -27,6 +27,7 @@ void Rick::SetPersonnage()
 	this->perso->setPosition(100, 0);
 
 	Dessin.push_back(this->perso);
+
 	delete t;
 }
 
