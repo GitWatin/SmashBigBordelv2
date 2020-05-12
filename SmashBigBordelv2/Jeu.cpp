@@ -102,9 +102,14 @@ Map* Jeu::GetMapChoisie()
 	return this->mapchoisie;
 }
 
-Personnage * Jeu::GetPersochoisi()
+Personnage * Jeu::GetPerso1choisi()
 {
 	return this->perso1choisi;
+}
+
+Personnage * Jeu::GetPerso2choisi()
+{
+	return this->perso2choisi;
 }
 
 
@@ -119,6 +124,8 @@ void Jeu::SetView(float TailleX , float TailleY)
 	this->Vueprincipal->setCenter(0 , 0);
 	this->Vueprincipal->setSize(TailleX , TailleY);
 }
+
+
 
 
 
