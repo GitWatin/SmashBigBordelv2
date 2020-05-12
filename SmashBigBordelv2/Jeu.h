@@ -62,6 +62,9 @@ protected:
 	sf::Text *BouclierPerso;
 	sf::Text *AtoutPerso;
 	sf::Text *VieTimer;
+
+	sf::Time *dureeIteration;
+	sf::Clock *clock;
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 
