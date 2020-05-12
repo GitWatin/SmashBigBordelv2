@@ -6,8 +6,6 @@ Morty::Morty(int x, int y) : Personnage()
 	TextureManager *t;
 	t = new TextureManager();
 
-
-
 	this->SetBouclier(50);
 	this->SetPoids(60);
 	this->SetPourcentages(0);
