@@ -12,11 +12,12 @@ Morty::Morty(int x, int y) : Personnage()
 	this->SetNbre_Vies(3);
 	this->SetNom("Morty");
 	this->SetAvatar("morty.png"); // Avatar de l'HUD
+	this->SetPathTexture("morty1.png");
 	
 
 	this->setTexture(*t->SetTexture(this->GetPathTexture()));
-	this->setTextureRect(sf::IntRect(0, 0, 90, 90));
-	this->setColor(sf::Color::Black);
+	this->setTextureRect(sf::IntRect(0, 0, 78, 110));
+	//this->setColor(sf::Color::Black);
 	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
 	this->setPosition(x, y);
 
@@ -38,5 +39,12 @@ std::string Morty::GetPathTexture()
 {
 	return PathTexture;
 }
+
+void Morty::SetPathTexture(std::string path_perso)
+{
+	this->PathTexture = path_perso;
+}
+
+
 
 
