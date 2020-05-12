@@ -92,20 +92,20 @@ void Jeu::CheckModif()
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{
 		std::cout << " [Check Modif] : right perso1" << perso1choisi->GetPoids()<< std::endl;
-		perso1choisi->move(dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso1choisi->getMoveLeft()) //check si le bool est actif
 	{
-		perso1choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
 	{
 		std::cout << " [Check Modif] : right perso2" << std::endl;
-		perso2choisi->move(dureeIteration->asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * 100), 0);
+		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * 100), 0);
 	}
 	if (perso2choisi->getMoveLeft()) //check si le bool est actif
 	{
-		perso2choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 }
 
