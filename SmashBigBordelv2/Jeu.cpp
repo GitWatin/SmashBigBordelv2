@@ -138,14 +138,21 @@ void Jeu::SetView(float TailleX , float TailleY)
 
 void Jeu::CallModif()
 {
+	sf::Font font;
+	if (!font.loadFromFile("arial.ttf"))
+	{
+		
+	}
+
 	ViePerso = new sf::Text;
 
 	// Set Label pour le perso 1
 
-	ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
+	//ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
+	ViePerso->setString("HAN OUAIS");
 	ViePerso->setPosition(0, 0);
 	vectorHUD.push_back(ViePerso);
-
+	/*
 	BouclierPerso->setString(std::to_string(perso1choisi->GetBouclier()));
 	BouclierPerso->setPosition(0, 0);
 	vectorHUD.push_back(BouclierPerso);
@@ -166,7 +173,7 @@ void Jeu::CallModif()
 
 	AtoutPerso->setString(perso2choisi->GetDerniersAtout());
 	AtoutPerso->setPosition(0, 0);
-	vectorHUD.push_back(AtoutPerso);
+	vectorHUD.push_back(AtoutPerso);*/
 
 }
 
@@ -198,7 +205,7 @@ void Jeu::DrawHUD()
 	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
 		fenetre->draw(*vectorHUD[i]);
-		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
+		std::cout << "[Info]:Return dessin " << vectorHUD[i] << std::endl;
 	}
 }
 
