@@ -1,7 +1,7 @@
 #include "Rick.h"
 
 
-Rick::Rick() : Personnage()
+Rick::Rick(int x,int y) : Personnage()
 {
 	TextureManager *t;
 	t = new TextureManager();
@@ -20,7 +20,7 @@ Rick::Rick() : Personnage()
 	this->setTextureRect(sf::IntRect(0, 0, 90, 90));
 	this->setColor(sf::Color::Green);
 	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
-	this->setPosition(100, 0);
+	this->setPosition(x, y);
 
 	Dessin.push_back(this);
 

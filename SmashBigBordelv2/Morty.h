@@ -5,7 +5,7 @@ class Morty :
 	public Personnage
 {
 public:
-	Morty();
+	Morty(int x, int y);
 	void SetPersonnage();
 	void Attaque(Personnage *NomCible, std::string TypeAttaque);
 	std::string GetPathTexture();

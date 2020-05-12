@@ -122,7 +122,7 @@ void Jeu::CheckModif()
 	{
 		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement)));
 	}
-	else if (!perso2choisi->getCollision())
+	else if (!perso1choisi->getCollision())
 	{
 		perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 	}
@@ -140,7 +140,7 @@ void Jeu::CheckModif()
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement)));
 	}
 	if(!perso2choisi->getCollision())
-	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 }
 
 void Jeu::CheckCollision()
@@ -223,14 +223,14 @@ void Jeu::ChoixPerso()
 	{
 	case 1:
 		
-		perso1choisi = new Rick();
+		perso1choisi = new Rick(Spawn_x1,Spawn_y1);
 		std::cout << "J1 : Rick \n"<<std::endl;
 		
 
 		break;
 	case 2:
 		
-		perso1choisi = new Morty();
+		perso1choisi = new Morty(Spawn_x1, Spawn_y1);
 		std::cout << "J1 : Morty \n" << std::endl;
 		break;
 	}
@@ -242,14 +242,14 @@ void Jeu::ChoixPerso()
 	{
 	case 1:
 
-		perso2choisi = new Rick();
+		perso2choisi = new Rick(Spawn_x2, Spawn_y2);
 		perso2choisi->SetPersonnage();
 		
 		std::cout << "J2 : Rick  \n " << std::endl;
 		break;
 	case 2:
 
-		perso2choisi = new Morty();
+		perso2choisi = new Morty(Spawn_x2, Spawn_y2);
 		perso2choisi->SetPersonnage();
 
 		std::cout << "J2 : Morty \n " << std::endl;
