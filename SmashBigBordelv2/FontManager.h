@@ -2,10 +2,11 @@
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
-#include <map>
+
 
 class FontManager
 {
+public : 
 	FontManager();
 	~FontManager();
 

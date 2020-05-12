@@ -1,5 +1,6 @@
 #include "Jeu.h"
 #include "FontManager.h"
+
 //-------------JEU-----------------------------------------
 
 Jeu::Jeu()
@@ -152,11 +153,12 @@ void Jeu::SetView(float TailleX , float TailleY)
 
 void Jeu::CallModif()
 {
+
+	//ViePerso = new sf::Text;
+
 	FontManager *font;
 	font = new FontManager();
-
-	ViePerso = new sf::Text;
-
+		
 	// Set Label pour le perso 1
 
 	//ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
