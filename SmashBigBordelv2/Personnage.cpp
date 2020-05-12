@@ -77,6 +77,35 @@ int Personnage::GetBouclier()
 	return Bouclier;
 }
 
+void Personnage::setMoveRight()
+{
+	this->moveRight= !this->moveRight;
+}
+
+void Personnage::setMoveLeft()
+{
+	this->moveLeft = !this->moveLeft;
+}
+
+void Personnage::setJump()
+{
+}
+
+bool Personnage::getMoveRight()
+{
+	return this->moveRight;
+}
+
+bool Personnage::getMoveLeft()
+{
+	return this->moveLeft;
+}
+
+bool Personnage::getJump()
+{
+	return this->Jump;
+}
+
 
 
 std::vector<Personnage*> Personnage::GetVectorPersonnage()

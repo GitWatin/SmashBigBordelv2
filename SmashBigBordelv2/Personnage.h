@@ -22,6 +22,13 @@ class Personnage :
 	virtual void SetBouclier(int bouclier);
 	virtual int GetBouclier();
 
+	virtual void setMoveRight();
+	virtual void setMoveLeft();
+	virtual void setJump();
+
+	virtual bool getMoveRight();
+	virtual bool getMoveLeft();
+	virtual bool getJump();
 	
 	virtual std::vector< Personnage* >GetVectorPersonnage();
 	
@@ -36,5 +43,8 @@ protected:
 	std::string TypeAttaque;
 	Personnage *perso;
 	std::vector < Personnage* > Dessin;
+	bool moveRight=false;
+	bool moveLeft=false;
+	bool Jump=false;
 };
 
