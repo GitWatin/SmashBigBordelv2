@@ -110,7 +110,7 @@ void Jeu::CheckInput(sf::Event event)
 void Jeu::CheckModif()
 {
 	//---------J1--------------------------------
-	/*
+	
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{	
 		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
@@ -119,7 +119,7 @@ void Jeu::CheckModif()
 	{
 		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	else if (perso1choisi->getJump())
+	else if (perso1choisi->getJump()) // && perso2choisi->getCollision())
 	{
 		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement)));
 	}
@@ -136,16 +136,16 @@ void Jeu::CheckModif()
 	{
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	else if (perso2choisi->getJump() && perso2choisi->getCollision())
+	else if (perso2choisi->getJump()) //&& perso2choisi->getCollision())
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement)));
 	}
 	if(!perso2choisi->getCollision())
-	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));*/
+	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 }
 
 void Jeu::CheckCollision()
-{/*
+{
 	//Collision Perso 1
 	/*
 	for (int i; i<(this->mapchoisie->GetVectorPlatefomes()).size() ;i++)
@@ -172,7 +172,8 @@ void Jeu::CheckCollision()
 		{
 			perso1choisi->setCollision(false);
 		}
-	}*/
+	}
+	*/
 }
 
 void Jeu::CallModif()
