@@ -2,6 +2,7 @@
 #include "FontManager.h"
 #include "TextureManager.h"
 
+
 //-------------JEU-----------------------------------------
 
 Jeu::Jeu()
@@ -13,18 +14,13 @@ Jeu::Jeu()
 
 	// Timer du jeu (5min )
 	this->clock_jeu = new sf::Clock;
-	
 }
 
 Jeu :: ~Jeu()
 {
 	Entite *jeu;
 	jeu = new Entite();
-
-
-
 	delete jeu;
-
 	// Destructeur HUD
 	for (int i = 0; i < vectorHUD.size(); i++)
 	{
@@ -273,7 +269,6 @@ Personnage * Jeu::GetPerso2choisi()
 	return this->perso2choisi;
 }
 
-
 sf::View * Jeu::GetView()
 {
 	return this->Vueprincipal;
@@ -459,33 +454,34 @@ void Jeu::SetHUD()
 	TextureManager *texture_hud;
 	texture_hud = new TextureManager();
 
-	avatar1 = new sf::Sprite;
-	avatar2 = new sf::Sprite;
 
-	// Set Label pour le perso 1
+	NomPerso1->setString(perso1choisi->GetNom());
+	NomPerso2->setString(perso2choisi->GetNom());
 
-	// Affichage de l'avatar : 
+	ViePerso1->setString(std::to_string(perso1choisi->GetNbre_Vies()));
+	ViePerso2->setString(std::to_string(perso2choisi->GetNbre_Vies()));
 
-	//NomPerso1->setString("Joueur : " + perso1choisi->GetNom());
+	BouclierPerso1->setString(std::to_string(perso1choisi->GetBouclier()));
+	BouclierPerso2->setString(std::to_string(perso2choisi->GetBouclier()));
+
+	AtoutPerso1->setString(perso1choisi->GetDerniersAtout());
+	AtoutPerso2->setString(perso2choisi->GetDerniersAtout());
 }
+
 // Fonction pour gerer le timer
 void Jeu::Timing()
 {
-	
 	sf::Time timer_jeu = clock_jeu->getElapsedTime();
 
-	std::cout << "[Info]: " << timer_jeu.asSeconds() << std::endl;
-	
-	/*if (timer_jeu.asSeconds >= 300.f)
+	if (timer_jeu.asSeconds >= 300.f)
 	{
-		this->text_timer = " Fin du jeu";
+		this->HUDTimer->setString(" Fin du jeu");
+		std::cout << "[Info]: Fin du jeu (Time done)" << std::endl;
 		Game_State = false;
 	}
 	else
 	{
-		text_timer = std::to_string(timer_jeu.asSeconds());
+		this->HUDTimer->setString(std::to_string(timer_jeu.asSeconds()));
 		Game_State = true;
 	}
-
-	//clock_jeu->getElapsedTime*/
 }
