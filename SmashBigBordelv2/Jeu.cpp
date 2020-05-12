@@ -11,6 +11,7 @@ Jeu::Jeu()
 	this->clock = new sf::Clock;
 	dureeIteration = sf::Time::Zero;
 
+
 	// Timer du jeu (5min )
 	this->clock_jeu = new sf::Clock;
 	
