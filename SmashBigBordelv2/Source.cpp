@@ -27,6 +27,8 @@
 #include <ctime>
 #include <stdlib.h>
 
+void main(int argc, char ** argv[]);
+
 void VerifPosition(Entite *Plat);
 
 //Entite J;
@@ -85,6 +87,7 @@ void main(int argc,char** argv[])
 	//----------------------------- Boucle du jeu --------------------------------------------------
 	while (Game.GetWindow()->isOpen())
 	{
+		Game.setDureeIteration();
 		sf::Event event;
 		//------------------------------- Gestion des évènements -------------------------------
 		while (Game.GetWindow()->pollEvent(event))
