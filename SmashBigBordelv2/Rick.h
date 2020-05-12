@@ -13,6 +13,6 @@ public:
 
 protected:
 
-	std::string PathTexture = "  ";// rajouter le path
+	std::string PathTexture = "plat_tiny.png";// rajouter le path
 };
 

@@ -8,8 +8,8 @@ Rick::Rick() : Personnage()
 
 void Rick::SetPersonnage()
 {
-	//TextureManager *t;
-	//t = new TextureManager();
+	TextureManager *t;
+	t = new TextureManager();
 
 	this->perso = new Rick();
 
@@ -20,13 +20,14 @@ void Rick::SetPersonnage()
 	this->perso->SetNom("Rick : " /*+ NomJoueur*/);
 
 
-	//this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));
+	this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));
 	this->perso->setTextureRect(sf::IntRect(0, 0, 268, 90));
 	this->perso->setColor(sf::Color::Green);
 	this->perso->setOrigin(this->perso->getGlobalBounds().width / 2, this->perso->getGlobalBounds().height / 2);
 	this->perso->setPosition(0, 0);
 
-	//delete t;
+	Dessin.push_back(this->perso);
+	delete t;
 }
 
 void Rick::Attaque(Personnage *NomCible, std::string TypeAttaque)

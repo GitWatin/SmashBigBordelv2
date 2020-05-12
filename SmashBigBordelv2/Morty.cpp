@@ -8,8 +8,8 @@ Morty::Morty() : Personnage()
 
 void Morty::SetPersonnage()
 {
-	//TextureManager *t;
-	//t = new TextureManager();
+	TextureManager *t;
+	t = new TextureManager();
 
 	this->perso = new Morty();
 
@@ -20,7 +20,8 @@ void Morty::SetPersonnage()
 	this->perso->SetNom("Morty : " /*+ NomJoueur*/);
 
 
-	//this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));
+	
+	this->perso->setTexture(*t->SetTexture(this->GetPathTexture()));
 
 	this->perso->setTextureRect(sf::IntRect(0, 0, 268, 90));
 	this->perso->setColor(sf::Color::Red);
@@ -28,9 +29,9 @@ void Morty::SetPersonnage()
 
 	this->perso->setPosition(100, 0);
 
-	this->perso->SetVectorPersonnages(perso);
+	Dessin.push_back(this->perso);
 
-	//delete t;
+	delete t;
 }
 
 void Morty::Attaque(Personnage *NomCible, std::string TypeAttaque)

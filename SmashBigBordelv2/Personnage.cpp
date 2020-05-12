@@ -77,10 +77,7 @@ int Personnage::GetBouclier()
 	return Bouclier;
 }
 
-void Personnage::SetVectorPersonnages(Personnage * drawable)
-{
-	Dessin.push_back(drawable);
-}
+
 
 std::vector<Personnage*> Personnage::GetVectorDrawable()
 {

@@ -22,7 +22,7 @@ class Personnage :
 	virtual void SetBouclier(int bouclier);
 	virtual int GetBouclier();
 
-	virtual void SetVectorPersonnages(Personnage *drawable);
+	
 	virtual std::vector< Personnage* >GetVectorDrawable();
 	
 protected:
