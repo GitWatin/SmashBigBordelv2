@@ -8,7 +8,7 @@ Entite::Entite() : Sprite()
 
 Entite::~Entite()
 {
-	
+	;
 }
 
 

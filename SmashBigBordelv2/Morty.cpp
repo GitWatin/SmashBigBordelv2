@@ -1,7 +1,12 @@
 #include "Morty.h"
-#include "TextureManager.h"
+
 
 Morty::Morty() : Personnage()
+{
+	;
+}
+
+void Morty::SetPersonnage()
 {
 	//TextureManager *t;
 	//t = new TextureManager();
@@ -26,10 +31,6 @@ Morty::Morty() : Personnage()
 	this->perso->SetVectorPersonnages(perso);
 
 	//delete t;
-}
-
-void Morty::SetPersonnage()
-{
 }
 
 void Morty::Attaque(Personnage *NomCible, std::string TypeAttaque)

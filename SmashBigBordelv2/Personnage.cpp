@@ -4,7 +4,7 @@
 
 Personnage::Personnage() : Entite()
 {
-	
+	;
 }
 
 Personnage::~Personnage()

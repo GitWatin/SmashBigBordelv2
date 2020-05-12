@@ -55,24 +55,50 @@ void Jeu::ChoixPerso()
 	switch (choix1)
 	{
 	case 1:
-		this->perso1choisi = new Rick();
+		Rick *rick;
+		rick = new Rick();
+		rick->SetPersonnage();
+		this->perso1choisi = rick;
+		this->perso1choisi->SetVectorPersonnages(perso1choisi);
+		std::cout << "J1 : Rick "<<std::endl;
+		//delete rick;
 		break;
 	case 2:
-		this->perso1choisi = new Morty();
+		Morty *morty;
+		morty = new Morty;
+		morty->SetPersonnage();
+		this->perso1choisi = morty;
+		this->perso1choisi->SetVectorPersonnages(perso1choisi);
+		std::cout << "J1 : Morty " << std::endl;
+
+		//delete morty;
 		break;
 	}
-
-	std::cout << "perso 1  : \n 1. Rick 1 \n 2. Morty";
+	
+	std::cout << "perso 2  : \n 1. Rick 1 \n 2. Morty";
 	std::cin >> choix1;
 	switch (choix1)
 	{
 	case 1:
-		this->perso2choisi = new Rick();
+		Rick *rick;
+		rick = new Rick();
+		rick->SetPersonnage();
+		this->perso2choisi = rick;
+		this->perso2choisi->SetVectorPersonnages(this->perso2choisi);
+		//delete rick;
+		std::cout << "J2 : Rick " << std::endl;
 		break;
 	case 2:
-		this->perso2choisi = new Morty();
+		Morty *morty;
+		morty = new Morty;
+		morty->SetPersonnage();
+		this->perso2choisi = morty;
+		this->perso2choisi->SetVectorPersonnages(this->perso2choisi);
+		std::cout << "J2 : Morty " << std::endl;
+		//delete morty;
 		break;
 	}
+	
 }
 
 Map* Jeu::GetMapChoisie()

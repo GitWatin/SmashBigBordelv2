@@ -1,7 +1,12 @@
 #include "Rick.h"
-#include "TextureManager.h"
+
 
 Rick::Rick() : Personnage()
+{
+
+}
+
+void Rick::SetPersonnage()
 {
 	//TextureManager *t;
 	//t = new TextureManager();
@@ -20,15 +25,8 @@ Rick::Rick() : Personnage()
 	this->perso->setColor(sf::Color::Green);
 	this->perso->setOrigin(this->perso->getGlobalBounds().width / 2, this->perso->getGlobalBounds().height / 2);
 	this->perso->setPosition(0, 0);
-	this->perso->SetVectorPersonnages(perso);
 
 	//delete t;
-
-}
-
-void Rick::SetPersonnage()
-{
-
 }
 
 void Rick::Attaque(Personnage *NomCible, std::string TypeAttaque)
