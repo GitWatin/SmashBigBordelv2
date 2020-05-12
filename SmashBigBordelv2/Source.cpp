@@ -12,6 +12,7 @@
 #include "Map1.h"
 #include "Map.h"
 
+
 //Lib-----------------------------------------------
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -93,7 +94,6 @@ int main()
 		}
 		//-------------------------------- Modification des états des objets--------------------
 		
-
 		Game.SetView(1600, 900); //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		
 
