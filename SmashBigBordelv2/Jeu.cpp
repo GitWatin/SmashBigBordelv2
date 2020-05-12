@@ -1,13 +1,17 @@
 #include "Jeu.h"
 #include "FontManager.h"
+
 //-------------JEU-----------------------------------------
 
 Jeu::Jeu()
 {
 	this->fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	this->fenetre->setFramerateLimit(60);
-	this->clock = new sf::Clock();
-	this->dureeIteration = new sf::Time(sf::Time::Zero);
+	this->clock = new sf::Clock;
+
+	// Timer du jeu (5min)
+	this->clock_jeu = new sf::Clock;
+	this->dureeIteration = sf::Time::Zero;
 }
 
 Jeu :: ~Jeu()
@@ -33,18 +37,9 @@ sf::RenderWindow* Jeu::GetWindow()
 
 void Jeu::CheckInput(sf::Event event)
 {
-	switch (event.type)
+	switch (event.key.code)
 	{
-	case sf::Event::Closed:
-		fenetre->close();
-		break;
-	case sf::Event::EventType::KeyPressed:
-		switch (event.key.code)
-		{
-		case sf::Keyboard::Right:
-			
-			break;
-		}
+		de
 		break;
 	}
 }
@@ -161,11 +156,12 @@ void Jeu::SetView(float TailleX , float TailleY)
 
 void Jeu::CallModif()
 {
-	FontManager *font;
-	font = new FontManager();
 
 	ViePerso = new sf::Text;
 
+	FontManager *font;
+	font = new FontManager();
+		
 	// Set Label pour le perso 1
 
 	//ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
