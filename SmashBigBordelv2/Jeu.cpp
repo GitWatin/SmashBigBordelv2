@@ -186,8 +186,8 @@ void Jeu::CallModif()
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
 	// demmarage du Timer du jeu (5min )
-	this->clock_jeu = new sf::Clock; 
-	this->clock_HUD = new sf::Clock;
+	this->clock_jeu = new sf::Clock; //  
+	this->clock_HUD = new sf::Clock; 
 	temporary_time = 60;
 
 	map->setBackground();
@@ -362,7 +362,7 @@ void Jeu::CreateHUD()
 
 	// Creation de l'avatar perso 1: 
 	avatar1->setTextureRect(sf::IntRect(0, 0, 80, 80));
-	avatar1->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
+	avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()));
 	avatar1->setPosition(-720, -370);
 	avatar1->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
 
@@ -399,7 +399,7 @@ void Jeu::CreateHUD()
 	// --------------- Perso 2 ----------------------
 
 	avatar2->setTextureRect(sf::IntRect(0, 0, 80, 80));
-	avatar2->setTexture(*texture_hud->SetTexture("plat_tiny.png"));
+	avatar2->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar()));
 	avatar2->setPosition(+720, -370);
 	avatar2->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
 	vectorHUD.push_back(avatar2);
@@ -511,12 +511,10 @@ void Jeu::Timing()
 	else // Continue à incrementer
 	{
 		this->secondes = timer_HUD.asSeconds();
-		std::cout << "[Info] [Temps système]:" << timer_HUD.asSeconds() <<"    Temporary : " << temporary_time << std::endl;
 		
-		if (secondes < 10)
+		if (secondes < 10) // Permet d'afficher un 0 devant les secondes 
 		{
-			this->HUDTimer->setString(std::to_string(this->minute) + ":" + "0"+ std::to_string(this->secondes));
-			
+			this->HUDTimer->setString(std::to_string(this->minute) + ":" + "0"+ std::to_string(this->secondes));	
 		}
 		else
 		{
@@ -524,7 +522,7 @@ void Jeu::Timing()
 		}
 
 
-		if (timer_HUD.asSeconds() >= temporary_time)
+		if (timer_HUD.asSeconds() >= temporary_time) // Incremente les minutes et restart le clock HUD
 		{
 			this->minute++;
 			clock_HUD->restart();
