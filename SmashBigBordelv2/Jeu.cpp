@@ -1,4 +1,5 @@
 #include "Jeu.h"
+#include "FontManager.h"
 //-------------JEU-----------------------------------------
 
 Jeu::Jeu()
@@ -30,6 +31,8 @@ sf::RenderWindow* Jeu::GetWindow()
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
+
+
 	map->setBackground();
 	map->setPlatefomes();
 }
@@ -138,11 +141,8 @@ void Jeu::SetView(float TailleX , float TailleY)
 
 void Jeu::CallModif()
 {
-	sf::Font font;
-	if (!font.loadFromFile("arial.ttf"))
-	{
-		
-	}
+	FontManager *font;
+	font = new FontManager();
 
 	ViePerso = new sf::Text;
 
@@ -150,6 +150,7 @@ void Jeu::CallModif()
 
 	//ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
 	ViePerso->setString("HAN OUAIS");
+	ViePerso->setFont(*font->SetFont("quicksand.ttf"));
 	ViePerso->setPosition(0, 0);
 	vectorHUD.push_back(ViePerso);
 	/*
@@ -174,6 +175,8 @@ void Jeu::CallModif()
 	AtoutPerso->setString(perso2choisi->GetDerniersAtout());
 	AtoutPerso->setPosition(0, 0);
 	vectorHUD.push_back(AtoutPerso);*/
+
+	delete font;
 
 }
 
