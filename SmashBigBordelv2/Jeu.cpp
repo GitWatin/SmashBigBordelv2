@@ -9,7 +9,7 @@ Jeu::Jeu()
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
 
-	// Timer du jeu (5min)
+	// Timer du jeu (5min )
 	this->clock_jeu = new sf::Clock;
 	this->dureeIteration = sf::Time::Zero;
 }
