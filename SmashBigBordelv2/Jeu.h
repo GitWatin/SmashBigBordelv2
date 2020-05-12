@@ -49,12 +49,6 @@ protected:
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
 	std::vector < sf::Drawable* > vectorHUD;
-
-	const int VitesseDeplacement = 120;//  pixel/sec
-	sf::Text *ViePerso;
-	sf::Text *BouclierPerso;
-	sf::Text *AtoutPerso;
-	sf::Text *VieTimer;
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 
