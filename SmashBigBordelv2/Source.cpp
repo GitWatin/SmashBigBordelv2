@@ -99,7 +99,8 @@ void main(int argc,char** argv[])
 		//-------------------------------- Modification des états des objets--------------------
 
 		Game.CheckModif();
-		Game.CheckCollision();
+		Game.CheckCollision(Game.GetPerso1choisi());
+		Game.CheckCollision(Game.GetPerso2choisi());
 		Game.CallModif();
 		Game.SetView(1600, 900); //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		

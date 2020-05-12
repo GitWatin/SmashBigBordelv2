@@ -25,7 +25,7 @@ public:
 	 virtual void setDureeIteration();
 	 virtual void CheckInput(sf::Event event);
 	 virtual void CheckModif();
-	 virtual void CheckCollision();
+	 virtual void CheckCollision(Personnage *michel);
 
 	 virtual void ChargementJeu(Map *map);
 	 virtual void ChoixMap();
