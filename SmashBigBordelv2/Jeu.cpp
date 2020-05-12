@@ -146,10 +146,10 @@ void Jeu::CheckModif()
 void Jeu::CheckCollision()
 {
 	//Collision Perso 1
-	/*
+	
 	for (int i; i<(this->mapchoisie->GetVectorPlatefomes()).size() ;i++)
 	{
-		if (perso1choisi->getGlobalBounds().height->intersects(this->mapchoisie->getPlatform(i)->getGlobalBounds))
+		if (perso1choisi->getGlobalBounds()->intersects(this->mapchoisie->getPlatform(i)->getGlobalBounds))
 		{
 			perso1choisi->setCollision(true);
 		}
@@ -172,7 +172,7 @@ void Jeu::CheckCollision()
 			perso1choisi->setCollision(false);
 		}
 	}
-	*/
+	
 }
 
 void Jeu::CallModif()
