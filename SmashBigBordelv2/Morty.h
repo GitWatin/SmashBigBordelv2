@@ -12,6 +12,6 @@ public:
 
 protected:
 	
-	std::string PathTexture = "plat_grande.png";
+	std::string PathTexture = "plat_tiny.png";
 };
 
