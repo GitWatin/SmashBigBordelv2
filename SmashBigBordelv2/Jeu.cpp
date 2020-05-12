@@ -78,6 +78,7 @@ void Jeu::CheckInput(sf::Event event)
 			break;
 		}
 		break;
+
 	case sf::Event::EventType::KeyReleased :
 		switch (event.key.code)
 		{
@@ -90,7 +91,7 @@ void Jeu::CheckInput(sf::Event event)
 			perso1choisi->setMoveLeft(false);
 			break;
 		case sf::Keyboard::Up:
-			perso1choisi->setJump(true);
+			perso1choisi->setJump(false);
 			break;
 
 
@@ -126,7 +127,8 @@ void Jeu::CheckModif()
 	{
 		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 150)));
 	}
-
+	//if(pas de collision)
+	perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 	//----------J2--------------------------------
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
 	{
@@ -140,7 +142,24 @@ void Jeu::CheckModif()
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * 150)));
 	}
+	//if(pas de collision)
+	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+}
+
+void Jeu::CheckCollision(Personnage * michel)
+{
 	
+	for (int i;i<(mapchoisie->GetVectorPlatefomes()).size();i++)
+	{
+		if (michel->getGlobalBounds()->intersects(mapchoisie->getPlatform(i)))
+		{
+			michel->setCollision(true);
+		}
+		else 
+		{
+			michel->setCollision(false);
+		}
+	}
 }
 
 void Jeu::CallModif()

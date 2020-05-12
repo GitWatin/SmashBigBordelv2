@@ -25,6 +25,7 @@ public:
 	 virtual void setDureeIteration();
 	 virtual void CheckInput(sf::Event event);
 	 virtual void CheckModif();
+	 virtual void CheckCollision(Personnage *michel);
 
 	 virtual void ChargementJeu(Map *map);
 	 virtual void ChoixMap();
@@ -57,12 +58,14 @@ protected:
 	sf::RenderWindow *fenetre;
 	sf::View *Vueprincipal;
 	Map *mapchoisie;
+
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
+
 	std::vector < sf::Drawable* > vectorHUD;
 
 	const int VitesseDeplacement = 150;//  pixel/sec
-	
+	const int Gravity = 50;
 	// Label HUD
 	sf::Sprite *avatar1;
 	sf::Text *NomPerso1;

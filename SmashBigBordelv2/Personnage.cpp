@@ -100,8 +100,12 @@ void Personnage::setMoveLeft(bool ok)
 
 void Personnage::setJump(bool ok)
 {
-	if (!this->Jump && !ok )
-		this->Jump = ok;
+	this->Jump = ok;
+}
+
+void Personnage::setCollision(bool ok)
+{
+	this->Collision = ok;
 }
 
 bool Personnage::getMoveRight()
@@ -117,6 +121,11 @@ bool Personnage::getMoveLeft()
 bool Personnage::getJump()
 {
 	return this->Jump;
+}
+
+bool Personnage::getCollision()
+{
+	return this->Collision;
 }
 
 

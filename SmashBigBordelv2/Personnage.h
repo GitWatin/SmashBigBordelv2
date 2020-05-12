@@ -29,9 +29,12 @@ class Personnage :
 	virtual void setMoveLeft(bool ok);
 	virtual void setJump(bool ok);
 
+	virtual void setCollision(bool ok);
+
 	virtual bool getMoveRight();
 	virtual bool getMoveLeft();
 	virtual bool getJump();
+	virtual bool getCollision();
 	
 	virtual std::vector< Personnage* >GetVectorPersonnage();
 	
@@ -50,5 +53,6 @@ protected:
 	bool moveRight=false;
 	bool moveLeft=false;
 	bool Jump=false;
+	bool Collision = false;
 };
 
