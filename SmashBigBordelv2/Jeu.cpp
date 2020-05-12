@@ -9,7 +9,7 @@ Jeu::Jeu()
 	this->fenetre = new sf::RenderWindow(sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
-	this->dureeIteration = new sf::Time(sf::Time::Zero);
+	this->dureeIteration = sf::Time::Zero;
 
 	// Timer du jeu (5min )
 	this->clock_jeu = new sf::Clock;
@@ -40,7 +40,7 @@ sf::RenderWindow* Jeu::GetWindow()
 
 void Jeu::setDureeIteration()
 {
-	this->dureeIteration = &clock->restart();
+	dureeIteration = clock->restart();
 }
 
 void Jeu::CheckInput(sf::Event event)
@@ -92,20 +92,20 @@ void Jeu::CheckModif()
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{
 		std::cout << " [Check Modif] : right perso1" << perso1choisi->GetPoids()<< std::endl;
-		perso1choisi->move(dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso1choisi->getMoveLeft()) //check si le bool est actif
 	{
-		perso1choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
 	{
 		std::cout << " [Check Modif] : right perso2" << std::endl;
-		perso2choisi->move(dureeIteration->asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * 100), 0);
+		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * 100), 0);
 	}
 	if (perso2choisi->getMoveLeft()) //check si le bool est actif
 	{
-		perso2choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
 	}
 }
 
