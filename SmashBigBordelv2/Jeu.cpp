@@ -46,6 +46,12 @@ void Jeu::CheckInput(sf::Event event)
 	}
 }
 
+void Jeu::CallModif()
+{
+	// Call HUD Function 
+	HUD();
+}
+
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
 
@@ -156,47 +162,7 @@ void Jeu::SetView(float TailleX , float TailleY)
 
 //---------------------Entite--------------------------------------------
 
-void Jeu::CallModif()
-{
 
-	ViePerso = new sf::Text;
-
-	FontManager *font;
-	font = new FontManager();
-		
-	// Set Label pour le perso 1
-
-	//ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
-	ViePerso->setString("HAN OUAIS");
-	ViePerso->setFont(*font->SetFont("quicksand.ttf"));
-	ViePerso->setPosition(0, 0);
-	vectorHUD.push_back(ViePerso);
-	/*
-	BouclierPerso->setString(std::to_string(perso1choisi->GetBouclier()));
-	BouclierPerso->setPosition(0, 0);
-	vectorHUD.push_back(BouclierPerso);
-
-	AtoutPerso->setString(perso1choisi->GetDerniersAtout());
-	AtoutPerso->setPosition(0, 0);
-	vectorHUD.push_back(AtoutPerso);
-
-	// Set Label pour le perso 2
-
-	ViePerso->setString(std::to_string(perso2choisi->GetNbre_Vies()));
-	ViePerso->setPosition(0, 0);
-	vectorHUD.push_back(ViePerso);
-
-	BouclierPerso->setString(std::to_string(perso2choisi->GetBouclier()));
-	BouclierPerso->setPosition(0, 0);
-	vectorHUD.push_back(BouclierPerso);
-
-	AtoutPerso->setString(perso2choisi->GetDerniersAtout());
-	AtoutPerso->setPosition(0, 0);
-	vectorHUD.push_back(AtoutPerso);*/
-
-	delete font;
-
-}
 
 void Jeu::DrawPersonnage(std::vector < Personnage* > Dessin)
 {
@@ -234,5 +200,53 @@ void Jeu::DrawBackGround(Back_Ground *BackGround)
 {
 	fenetre->draw(*BackGround);
 
+
+}
+
+
+// Fonction pour recuperer les informations des personnages et les ajouters au vector vectorHUD
+void Jeu::HUD()
+{
+	ViePerso = new sf::Text;
+
+	FontManager *font;
+	font = new FontManager();
+
+	// Set Label pour le perso 1
+
+	//ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
+	ViePerso->setString("HAN OUAIS");
+	ViePerso->setFont(*font->SetFont("quicksand.ttf"));
+	ViePerso->setPosition(0, 0);
+	vectorHUD.push_back(ViePerso);
+	/*
+	BouclierPerso->setString(std::to_string(perso1choisi->GetBouclier()));
+	BouclierPerso->setPosition(0, 0);
+	vectorHUD.push_back(BouclierPerso);
+
+	AtoutPerso->setString(perso1choisi->GetDerniersAtout());
+	AtoutPerso->setPosition(0, 0);
+	vectorHUD.push_back(AtoutPerso);
+
+	// Set Label pour le perso 2
+
+	ViePerso->setString(std::to_string(perso2choisi->GetNbre_Vies()));
+	ViePerso->setPosition(0, 0);
+	vectorHUD.push_back(ViePerso);
+
+	BouclierPerso->setString(std::to_string(perso2choisi->GetBouclier()));
+	BouclierPerso->setPosition(0, 0);
+	vectorHUD.push_back(BouclierPerso);
+
+	AtoutPerso->setString(perso2choisi->GetDerniersAtout());
+	AtoutPerso->setPosition(0, 0);
+	vectorHUD.push_back(AtoutPerso);*/
+
+	delete font;
+}
+
+// Fonction pour gerer le timer
+void Jeu::Timing()
+{
 
 }

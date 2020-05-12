@@ -42,6 +42,9 @@ public:
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 
+	 virtual void HUD();
+	 virtual void Timing();
+
 	 // Draw HUD
 	 virtual void DrawHUD();
 
@@ -65,6 +68,8 @@ protected:
 
 	sf::Time *dureeIteration;
 	sf::Clock *clock;
+
+	sf::Clock *clock_jeu;
 	//sf::Texture Return_Texture_Plateforme;
 	//sf::Texture Return_Texture_Map;
 
