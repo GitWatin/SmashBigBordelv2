@@ -50,10 +50,8 @@ protected:
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
 	std::vector < sf::Drawable* > vectorHUD;
-	//sf::Texture Return_Texture_Plateforme;
-	//sf::Texture Return_Texture_Map;
-
-	// Attribut texture
+	
+	const int VitesseDeplacement = 120;//  pixel/sec
 
 };
 
