@@ -72,7 +72,7 @@ protected:
 
 	sf::String text_timer;
 
-	sf::Time *dureeIteration;
+	sf::Time dureeIteration;
 	sf::Clock *clock;
 
 	// Clock timer général
