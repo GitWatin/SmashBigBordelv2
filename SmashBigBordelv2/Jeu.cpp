@@ -76,10 +76,10 @@ void Jeu::CheckInput(sf::Event event)
 			perso1choisi->setMoveLeft();
 			break;
 		case sf::Keyboard::D:
-			this->perso2choisi->setMoveRight();
+			perso2choisi->setMoveRight();
 			break;
 		case sf::Keyboard::Q:
-			this->perso2choisi->setMoveLeft();
+			perso2choisi->setMoveLeft();
 			break;
 		}
 		break;
@@ -95,8 +95,7 @@ void Jeu::CheckModif()
 	}
 	if (perso1choisi->getMoveLeft()) //check si le bool est actif
 	{
-		std::cout << " [Check Modif] : left perso1" << std::endl;
-		perso1choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso1choisi->move(2, 0);
 	}
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
 	{
@@ -105,8 +104,7 @@ void Jeu::CheckModif()
 	}
 	if (perso2choisi->getMoveLeft()) //check si le bool est actif
 	{
-		std::cout << " [Check Modif] : left perso2" << std::endl;
-		perso2choisi->move(-dureeIteration->asSeconds()*((VitesseDeplacement/perso2choisi->GetPoids())*100), 0);
+		perso2choisi->move(2, 0);
 	}
 }
 
@@ -318,6 +316,7 @@ void Jeu::HUD()
 // Fonction pour gerer le timer
 void Jeu::Timing()
 {
+	
 	sf::Time timer_jeu = clock_jeu->getElapsedTime();
 
 	std::cout << "[Info]: " << timer_jeu.asSeconds() << std::endl;
@@ -331,6 +330,7 @@ void Jeu::Timing()
 	{
 		text_timer = std::to_string(timer_jeu.asSeconds());
 		Game_State = true;
-	}*/
-	
+	}
+
+	//clock_jeu->getElapsedTime*/
 }
