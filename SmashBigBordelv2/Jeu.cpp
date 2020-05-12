@@ -1,5 +1,6 @@
 #include "Jeu.h"
 #include "FontManager.h"
+#include "TextureManager.h"
 
 //-------------JEU-----------------------------------------
 
@@ -272,16 +273,30 @@ void Jeu::DrawBackGround(Back_Ground *BackGround)
 void Jeu::HUD()
 {
 	ViePerso = new sf::Text;
+	
 
 	FontManager *font;
 	font = new FontManager();
 
+	TextureManager *texture_hud;
+	texture_hud = new TextureManager();
+
 	// Set Label pour le perso 1
 
-	//ViePerso->setString(std::to_string(perso1choisi->GetNbre_Vies()));
-	ViePerso->setString("HAN OUAIS");
+	// Affichage de l'avatar : 
+	avatar1 = new sf::Sprite;
+
+	this->avatar1->setPosition(-200, -100);
+	this->avatar1->setTextureRect(sf::IntRect(0, 0, 20, 20));
+	this->avatar1->setColor(sf::Color::Red);
+	//this->avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()));
+	this->avatar1->setOrigin(this->avatar1->getGlobalBounds().width / 2, this->avatar1->getGlobalBounds().height / 2);
+	
+
+	ViePerso->setString("Vie de Rick " +std::to_string(perso1choisi->GetNbre_Vies()));
 	ViePerso->setFont(*font->SetFont("quicksand.ttf"));
-	ViePerso->setPosition(0, 0);
+	ViePerso->setFillColor(sf::Color::Red);
+	ViePerso->setPosition(-600, -400);
 	vectorHUD.push_back(ViePerso);
 	/*
 	BouclierPerso->setString(std::to_string(perso1choisi->GetBouclier()));
@@ -311,6 +326,7 @@ void Jeu::HUD()
 	vectorHUD.push_back(AtoutPerso);*/
 
 	delete font;
+	delete texture_hud;
 }
 
 // Fonction pour gerer le timer
