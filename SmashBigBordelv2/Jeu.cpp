@@ -20,6 +20,7 @@ Jeu :: ~Jeu()
 	jeu = new Entite();
 
 
+
 	delete jeu;
 
 	// Destructeur HUD
