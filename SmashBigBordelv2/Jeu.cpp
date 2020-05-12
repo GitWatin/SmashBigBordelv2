@@ -118,7 +118,7 @@ void Jeu::CheckModif()
 	{
 		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	else if (perso1choisi->getJump()) // && perso2choisi->getCollision())
+	else if (perso1choisi->getJump()&& perso1choisi->getCollision())
 	{
 		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement)));
 	}
@@ -135,7 +135,7 @@ void Jeu::CheckModif()
 	{
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	else if (perso2choisi->getJump()) //&& perso2choisi->getCollision())
+	else if (perso2choisi->getJump()&& perso2choisi->getCollision())
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement)));
 	}
@@ -143,36 +143,21 @@ void Jeu::CheckModif()
 	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 }
 
-void Jeu::CheckCollision()
+void Jeu::CheckCollision(Personnage *michel)
 {
-	//Collision Perso 1
 	
-	for (int i; i<(this->mapchoisie->GetVectorPlatefomes()).size() ;i++)
+	
+	for (int i=0; i<(this->mapchoisie->GetVectorPlatefomes()).size() ;i++)
 	{
-		if (perso1choisi->getGlobalBounds()->intersects(this->mapchoisie->getPlatform(i)->getGlobalBounds))
+		if (michel->getGlobalBounds().intersects(this->mapchoisie->getPlatform(i)->getGlobalBounds()))
 		{
-			perso1choisi->setCollision(true);
+			michel->setCollision(true);
 		}
 		else 
 		{
-			perso1choisi->setCollision(false);
+			michel->setCollision(false);
 		}
-	}
-
-	//collision Perso 2
-
-	for (int i; i < (this->mapchoisie->GetVectorPlatefomes()).size(); i++)
-	{
-		if (perso2choisi->getGlobalBounds()->intersects(this->mapchoisie->getPlatform(i)->getGlobalBounds))
-		{
-			perso1choisi->setCollision(true);
-		}
-		else
-		{
-			perso1choisi->setCollision(false);
-		}
-	}
-	
+	}	
 }
 
 void Jeu::CallModif()
@@ -239,8 +224,8 @@ void Jeu::ChoixPerso()
 
 	
 	std::cout << "perso 2 : \n 1. Rick 1 \n 2. Morty \n";
-	std::cin >> choix1;
-	switch (choix1)
+	std::cin >> choix2;
+	switch (choix2)
 	{
 	case 1:
 

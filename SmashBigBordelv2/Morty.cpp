@@ -23,6 +23,7 @@ Morty::Morty(int x, int y) : Personnage()
 	this->setPosition(x, y);
 
 	Dessin.push_back(this);
+
 	delete t;
 }
 
