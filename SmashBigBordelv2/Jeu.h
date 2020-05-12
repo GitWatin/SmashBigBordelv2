@@ -61,7 +61,7 @@ protected:
 	Personnage *perso2choisi;
 	std::vector < sf::Drawable* > vectorHUD;
 
-	const int VitesseDeplacement = 100;//  pixel/sec
+	const int VitesseDeplacement = 150;//  pixel/sec
 	
 	// Label HUD
 	sf::Sprite *avatar1;

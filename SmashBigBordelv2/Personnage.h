@@ -27,7 +27,7 @@ class Personnage :
 
 	virtual void setMoveRight(bool ok);
 	virtual void setMoveLeft(bool ok);
-	virtual void setJump();
+	virtual void setJump(bool ok);
 
 	virtual bool getMoveRight();
 	virtual bool getMoveLeft();
