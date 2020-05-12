@@ -61,10 +61,10 @@ protected:
 	std::vector < sf::Drawable* > vectorHUD;
 
 	const int VitesseDeplacement = 100;//  pixel/sec
-	sf::Text *ViePerso;
-	sf::Text *BouclierPerso;
-	sf::Text *AtoutPerso;
-	sf::Text *HUDTimer;
+	sf::Text *text_HUD;
+	//sf::Text *BouclierPerso;
+	//sf::Text *AtoutPerso;
+	//sf::Text *HUDTimer;
 
 	sf::Sprite *avatar1;
 	sf::Sprite *avatar2;
