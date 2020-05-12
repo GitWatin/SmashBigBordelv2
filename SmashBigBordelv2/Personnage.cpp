@@ -98,8 +98,10 @@ void Personnage::setMoveLeft(bool ok)
 	this->moveLeft = ok;
 }
 
-void Personnage::setJump()
+void Personnage::setJump(bool ok)
 {
+	if (!this->Jump && !ok )
+		this->Jump = ok;
 }
 
 bool Personnage::getMoveRight()

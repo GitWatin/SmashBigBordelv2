@@ -9,7 +9,7 @@ Morty::Morty() : Personnage()
 
 
 	this->SetBouclier(50);
-	this->SetPoids(80);
+	this->SetPoids(60);
 	this->SetPourcentages(0);
 	this->SetNbre_Vies(3);
 	this->SetNom("Rick : " /*+ NomJoueur*/);

@@ -90,6 +90,7 @@ void main(int argc,char** argv[])
 	{
 		
 		Game.setDureeIteration();
+
 		sf::Event event;
 		//------------------------------- Gestion des évènements -------------------------------
 		while (Game.GetWindow()->pollEvent(event))

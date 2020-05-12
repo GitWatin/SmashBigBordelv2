@@ -53,34 +53,57 @@ void Jeu::CheckInput(sf::Event event)
 	case sf::Event::EventType :: KeyPressed :
 		switch (event.key.code)
 		{
+			//---------J1--------------------------------
+
 		case sf::Keyboard::Right :
 			perso1choisi->setMoveRight(true);
 			break;
 		case sf::Keyboard::Left:
 			perso1choisi->setMoveLeft(true);
 			break;
+		case sf::Keyboard::Up:
+			perso1choisi->setJump(true);
+			break;
+
+			//---------J2--------------------------------
+
 		case sf::Keyboard::D:
 			perso2choisi->setMoveRight(true);
 			break;
 		case sf::Keyboard::Q:
 			perso2choisi->setMoveLeft(true);
 			break;
+		case sf::Keyboard::Z:
+			perso2choisi->setJump(true);
+			break;
 		}
 		break;
 	case sf::Event::EventType::KeyReleased :
 		switch (event.key.code)
 		{
+			//---------J1--------------------------------
+
 		case sf::Keyboard::Right:
 			perso1choisi->setMoveRight(false);
 			break;
 		case sf::Keyboard::Left:
 			perso1choisi->setMoveLeft(false);
 			break;
+		case sf::Keyboard::Up:
+			perso1choisi->setJump(true);
+			break;
+
+
+			//---------J2--------------------------------
+
 		case sf::Keyboard::D:
 			perso2choisi->setMoveRight(false);
 			break;
 		case sf::Keyboard::Q:
 			perso2choisi->setMoveLeft(false);
+			break;
+		case sf::Keyboard::Z:
+			perso2choisi->setJump(false);
 			break;
 		}
 		break;
@@ -89,24 +112,35 @@ void Jeu::CheckInput(sf::Event event)
 
 void Jeu::CheckModif()
 {
+	//---------J1--------------------------------
+
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
-	{
-		std::cout << " [Check Modif] : right perso1" << perso1choisi->GetPoids()<< std::endl;
-		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+	{	
+		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 150), 0);
 	}
 	if (perso1choisi->getMoveLeft()) //check si le bool est actif
 	{
-		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 150), 0);
 	}
+	if (perso1choisi->getJump())
+	{
+		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 150)));
+	}
+
+	//----------J2--------------------------------
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
 	{
-		std::cout << " [Check Modif] : right perso2" << std::endl;
-		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * 100), 0);
+		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * 150), 0);
 	}
 	if (perso2choisi->getMoveLeft()) //check si le bool est actif
 	{
-		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * 100), 0);
+		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * 150), 0);
 	}
+	if (perso2choisi->getJump())
+	{
+		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * 150)));
+	}
+	
 }
 
 void Jeu::CallModif()
