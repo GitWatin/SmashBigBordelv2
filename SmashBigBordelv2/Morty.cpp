@@ -14,13 +14,11 @@ Morty::Morty(int x, int y) : Personnage()
 	this->SetAvatar("morty.png"); // Avatar de l'HUD
 	this->SetPathTexture("morty1.png");
 	
-
 	this->setTexture(*t->SetTexture(this->GetPathTexture()));
 	this->setTextureRect(sf::IntRect(0, 0, 78, 110));
 	//this->setColor(sf::Color::Black);
 	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
 	this->setPosition(x, y);
-
 	Dessin.push_back(this);
 
 	delete t;
