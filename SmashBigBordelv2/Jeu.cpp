@@ -109,7 +109,7 @@ void Jeu::CheckInput(sf::Event event)
 void Jeu::CheckModif()
 {
 	//---------J1--------------------------------
-	/*
+	
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{	
 		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
@@ -118,11 +118,11 @@ void Jeu::CheckModif()
 	{
 		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	else if (perso1choisi->getJump())
+	else if (perso1choisi->getJump()) // && perso2choisi->getCollision())
 	{
 		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement)));
 	}
-	else if (!perso2choisi->getCollision())
+	else if (!perso1choisi->getCollision())
 	{
 		perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 	}
@@ -135,16 +135,16 @@ void Jeu::CheckModif()
 	{
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	else if (perso2choisi->getJump() && perso2choisi->getCollision())
+	else if (perso2choisi->getJump()) //&& perso2choisi->getCollision())
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement)));
 	}
 	if(!perso2choisi->getCollision())
-	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));*/
+	perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 }
 
 void Jeu::CheckCollision()
-{/*
+{
 	//Collision Perso 1
 	/*
 	for (int i; i<(this->mapchoisie->GetVectorPlatefomes()).size() ;i++)
@@ -171,7 +171,8 @@ void Jeu::CheckCollision()
 		{
 			perso1choisi->setCollision(false);
 		}
-	}*/
+	}
+	*/
 }
 
 void Jeu::CallModif()
@@ -224,14 +225,14 @@ void Jeu::ChoixPerso()
 	{
 	case 1:
 		
-		perso1choisi = new Rick();
+		perso1choisi = new Rick(Spawn_x1,Spawn_y1);
 		std::cout << "J1 : Rick \n"<<std::endl;
 		
 
 		break;
 	case 2:
 		
-		perso1choisi = new Morty();
+		perso1choisi = new Morty(Spawn_x1, Spawn_y1);
 		std::cout << "J1 : Morty \n" << std::endl;
 		break;
 	}
@@ -243,14 +244,14 @@ void Jeu::ChoixPerso()
 	{
 	case 1:
 
-		perso2choisi = new Rick();
+		perso2choisi = new Rick(Spawn_x2, Spawn_y2);
 		perso2choisi->SetPersonnage();
 		
 		std::cout << "J2 : Rick  \n " << std::endl;
 		break;
 	case 2:
 
-		perso2choisi = new Morty();
+		perso2choisi = new Morty(Spawn_x2, Spawn_y2);
 		perso2choisi->SetPersonnage();
 
 		std::cout << "J2 : Morty \n " << std::endl;

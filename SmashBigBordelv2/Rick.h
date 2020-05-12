@@ -5,7 +5,7 @@ class Rick :
 	public Personnage
 {
 public:
-	Rick();
+	Rick(int x, int y);
 	void SetPersonnage();
 	void Attaque(Personnage *NomCible, std::string TypeAttaque);
 

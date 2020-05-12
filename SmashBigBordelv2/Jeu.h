@@ -66,6 +66,10 @@ protected:
 
 	const int VitesseDeplacement = 150;//  pixel/sec
 	const int Gravity = 50;
+	const float Spawn_x1 = 100;
+	const float Spawn_y1 = 0;
+	const float Spawn_x2 = -100;
+	const float Spawn_y2 = 0;
 	// Label HUD
 	sf::Sprite *avatar1;
 	sf::Text *NomPerso1;
