@@ -18,19 +18,19 @@ void Entite::CheckCollision(Entite *entite)
 	sf::Vector2f thisPosition = this->getPosition();
 	sf::FloatRect thisHitBox = this->getGlobalBounds();
 
-	if (jacqueHitBox.intersects(thisHitBox))
-	{
-		if(jacqueHitBox.width)
-		{
-
-		}
-		this->setCheckCollision(true);
-	}
-	/*if (jacquePosition.x < thisPosition.x + thisHitBox.width && thisPosition.x < jacquePosition.x + jacqueHitBox.width && jacquePosition.y < thisPosition.y + thisHitBox.height && thisPosition.y < jacquePosition.y + jacqueHitBox.height)
+	//if (jacqueHitBox.intersects(thisHitBox))
+	//{
+	//	if(jacquePosition.x < thisPosition.x + thisHitBox.width)
+	//	{
+	//		this->setCheckCollision(true);
+	//	}
+	//	
+	//}
+	if (jacquePosition.x < thisPosition.x + (thisHitBox.width/2) && thisPosition.x < jacquePosition.x + (jacqueHitBox.width / 2) && jacquePosition.y < thisPosition.y + (thisHitBox.height / 2) && thisPosition.y < jacquePosition.y + (jacqueHitBox.height / 2))
 	{
 		this->setCheckCollision(true);
 		std::cout << "[Collision] : " << this->GetNom() << " et " << entite << std::endl;
-	}*/
+	}
 }
 
 void Entite::setCollision(bool ok)

@@ -147,10 +147,9 @@ void Jeu::CheckModif()
 	 }
 }
 
-}
 
-void Jeu::CheckCollisionPlat(Personnage *michel)
-{	/*
+void Jeu::CheckCollision(Personnage *michel)
+{	
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
 	{
 		michel->CheckCollision(mapchoisie->getPlatform(i));
@@ -167,6 +166,7 @@ void Jeu::CheckCollisionPlat(Personnage *michel)
 	
 }
 
+/*
 bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 {
 	sf::Vector2f plateformePosition = plateforme->getPosition();
@@ -217,17 +217,18 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 		}
 
 		return true;
-	}*/
-	return false;
+	}
 	
 	
-}
+	
+}*/
+
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
 	TextureManager *texture_move;
-	texture_move= new TextureManager();
+	texture_move = new TextureManager();
 
-
+}
 
 void Jeu::CallModif()
 {
