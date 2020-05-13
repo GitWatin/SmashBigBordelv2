@@ -111,44 +111,44 @@ void Jeu::CheckModif()
 	{
 		//---------J1--------------------------------
 
-		if (perso1choisi->getMoveRight()) //check si le bool est actif
+		if (perso1choisi->getMoveRight() && perso1choisi->getVersdroite()) //check si le bool est actif
 		{
 			Animate(perso1choisi, "droite");
 			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso1choisi->getMoveLeft()) //check si le bool est actif
+		if (perso1choisi->getMoveLeft() && perso1choisi->getVersgauche()) //check si le bool est actif
 		{
 			Animate(perso1choisi, "gauche");
 			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
+		if (perso1choisi->getJump() && perso1choisi->getVershaut() && !perso1choisi->getVersbas())
 		{
 			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
 		}
-		if (!perso1choisi->getCollision() && !perso1choisi->getJump())
+		if (!perso1choisi->getCollision() && perso1choisi->getVersbas())
 		{
 			perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 		}
 		//----------J2--------------------------------
-		if (perso2choisi->getMoveRight()) //check si le bool est actif
+		if (perso2choisi->getMoveRight() && perso2choisi->getVersdroite())//check si le bool est actif
 		{
 			Animate(perso2choisi, "droite");
 			perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso2choisi->getMoveLeft()) //check si le bool est actif
+		if (perso2choisi->getMoveLeft() && perso1choisi->getVersgauche()) //check si le bool est actif
 		{
 			Animate(perso2choisi, "gauche");
 			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
+		if (perso2choisi->getJump() && perso2choisi->getVershaut() && !perso2choisi->getVersbas())
 		{
 			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 		}
-		if (!perso2choisi->getCollision() && !perso2choisi->getJump())
+		if (!perso2choisi->getCollision() &&  perso1choisi->getVersbas())
 		{
 			perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 		}
-	}
+	} 
 }
 
 
