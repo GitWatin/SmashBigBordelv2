@@ -106,45 +106,98 @@ void Jeu::CheckInput(sf::Event event)
 
 void Jeu::CheckModif()
 {
-	//---------J1--------------------------------
 	
-	if (perso1choisi->getMoveRight()) //check si le bool est actif
-	{	
-		Animate(perso1choisi, "droite");
-		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
-	}
-	 if (perso1choisi->getMoveLeft()) //check si le bool est actif
+	if (Game_State_Final == true && Game_State == true)
 	{
-		 Animate(perso1choisi, "gauche");
-		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
+		//---------J1--------------------------------
+
+		if (perso1choisi->getMoveRight()) //check si le bool est actif
+		{
+			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
+			Animate(perso1choisi, "droite");
+		}
+		if (perso1choisi->getMoveLeft()) //check si le bool est actif
+		{
+			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
+			Animate(perso1choisi, "gauche");
+		}
+		if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
+		{
+			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
+		}
+		if (!perso1choisi->getCollision() && !perso1choisi->getJump())
+		{
+			perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+		}
+		//----------J2--------------------------------
+		if (perso2choisi->getMoveRight()) //check si le bool est actif
+		{
+			perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
+			Animate(perso2choisi, "droite");
+		}
+		if (perso2choisi->getMoveLeft()) //check si le bool est actif
+		{
+			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
+			Animate(perso2choisi, "gauche");
+		}
+		if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
+		{
+			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
+		}
+		if (!perso2choisi->getCollision() && !perso2choisi->getJump())
+		{
+			perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
+		}
 	}
-	if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
+}
+
+
+void Jeu::Animate(Personnage *perso, std::string direction)
+{
+	TextureManager *texture_move;
+	texture_move = new TextureManager();
+
+	NomTextureMove = perso->GetAvatar();
+	sf::Time timer_Move = clock_Move->getElapsedTime();
+
+	std::cout << dureeIteration.asSeconds() << std::endl;
+
+	if (timer_Move.asSeconds() >= 0.2 && direction == "droite")
 	{
-		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
+		std::cout << sens << std::endl;
+		if (sens == 2)
+		{
+			perso->setScale(-1, 1);
+			this->sens = 1;
+		}
+		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
+		//perso->setScale(-1, 1);
+
+		clock_Move->restart();
+		this->Iteration = Iteration + 1;
+		this->sens = 1;//Droite
 	}
-	if (!perso1choisi->getCollision() && !perso1choisi->getJump())
+
+
+	if (timer_Move.asSeconds() >= 0.2 && direction == "gauche")
 	{
-		perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+		std::cout << sens << std::endl;
+		if (sens == 1)
+		{	
+			perso->setScale(1, 1);
+			this->sens = 2;
+		}
+		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
+		clock_Move->restart();
+		this->Iteration = Iteration + 1;
+		this->sens = 2;//Gauche
 	}
-	//----------J2--------------------------------
-	if (perso2choisi->getMoveRight()) //check si le bool est actif
+	else if (this->Iteration == 4)
 	{
-		Animate(perso2choisi, "droite");
-		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * VitesseDeplacement), 0);
+		this->Iteration = 0;
 	}
-	if (perso2choisi->getMoveLeft()) //check si le bool est actif
-	{
-		Animate(perso2choisi, "gauche");
-		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
-	}
-	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
-	{
-		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
-	}
-	 if (!perso2choisi->getCollision() && !perso2choisi->getJump())
-	 {
-		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
-	 }
+	delete texture_move;
+
 }
 
 
@@ -231,52 +284,9 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 	
 	
 }
-void Jeu::Animate(Personnage *perso, std::string direction)
-{
-	TextureManager *texture_move;
-	texture_move= new TextureManager();
-
-	NomTextureMove = perso->GetAvatar();
-	sf::Time timer_Move = clock_Move->getElapsedTime();
-
-	if (timer_Move.asSeconds() >= 0.2 && direction=="droite")
-	{
-		std::cout << sens << std::endl;
-		if (sens == 2)
-		{
-			perso->setScale(-1, 1);
-			this->sens = 1;
-		}
-		perso->setTexture(*texture_move->SetTexture(NomTextureMove+std::to_string(Iteration)+".png"));
-		//perso->setScale(-1, 1);
-
-		clock_Move->restart();
-		this->Iteration = Iteration + 1;
-		this->sens = 1;//Droite
-	}
 
 
-	if (timer_Move.asSeconds() >= 0.2 && direction == "gauche")
-	{
-		std::cout << sens << std::endl;
-		if (sens == 1)
-		{
-			std::cout << "Coucou_gauche" << std::endl;
-			perso->setScale(1, 1);
-			this->sens = 2;
-		}
-		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
-		clock_Move->restart();
-		this->Iteration = Iteration + 1;
-		this->sens = 2;//Gauche
-	}
-	else if(this->Iteration == 4)
-	{
-		this->Iteration = 0;
-	}
-	delete texture_move;
 
-}
 void Jeu::CallModif()
 {
 	// Call HUD Function 
@@ -619,7 +629,7 @@ void Jeu::Timing()
 		this->HUDTimer->setString(" Fin du jeu");
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 		//std::cout << "[Info]: Fin du jeu (Time done)" << std::endl;
-		Game_State = false;
+		Game_State_Final = false;
 	}
 	else // Continue à incrementer
 	{
@@ -645,7 +655,7 @@ void Jeu::Timing()
 		
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 		
-		//Game_State = true;
+		Game_State_Final = true;
 	}
 
 	
