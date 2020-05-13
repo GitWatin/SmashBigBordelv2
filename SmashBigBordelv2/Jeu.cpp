@@ -113,6 +113,7 @@ void Jeu::CheckModif()
 
 		if (perso1choisi->getMoveRight() && perso1choisi->getVersdroite()) //check si le bool est actif
 		{
+			
 			Animate(perso1choisi, "droite");
 			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
@@ -231,6 +232,7 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
+	
 	TextureManager *texture_move;
 	texture_move= new TextureManager();
 	NomTextureMove = perso->GetAvatar();
@@ -396,11 +398,7 @@ void Jeu::SetView(float TailleX , float TailleY)
 	this->Vueprincipal->setSize(TailleX , TailleY);
 }
 
-
-
 //---------------------Entite--------------------------------------------
-
-
 
 void Jeu::DrawPersonnage(std::vector < Personnage* > Dessin)
 {
@@ -604,8 +602,6 @@ void Jeu::SetHUD()
 		AtoutPerso2->setString("Atout :" + perso2choisi->GetDerniersAtout());
 		AtoutPerso2->setOrigin(AtoutPerso2->getGlobalBounds().width, 0);
 	}
-
-	
 
 }
 
