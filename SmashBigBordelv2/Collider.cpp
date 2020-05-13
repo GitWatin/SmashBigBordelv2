@@ -1,23 +1,22 @@
-#include "Collisionneur.h"
+#include "Collider.h"
 
-Collisionneur::Collisionneur(sf::Sprite &michel) : michel(michel)
-{
-
-}
-
-Collisionneur::~Collisionneur( )
+Collider::Collider(sf::Sprite *michel) 
 {
 }
 
-void Collisionneur::Move(float dx, float dy)
+Collider::~Collider()
 {
-	michel.move(dx, dy);
 }
 
-bool Collisionneur::CheckCollision(Collisionneur & jacque, float repoussement)
+void Collider::Move(float dx, float dy)
 {
-	sf::Vector2f jacquePosition = jacque.GetPosition();
-	sf::FloatRect jacqueHitBox= jacque.GetHitBox();
+	michel->move(dx, dy);
+}
+
+bool Collider::CheckCollision(Collider *jacque, float repoussement)
+{
+	sf::Vector2f jacquePosition = jacque->GetPosition();
+	sf::FloatRect jacqueHitBox = jacque->GetHitBox();
 	sf::Vector2f thisPosition = GetPosition();
 	sf::FloatRect thisHitBox = GetHitBox();
 
@@ -36,24 +35,24 @@ bool Collisionneur::CheckCollision(Collisionneur & jacque, float repoussement)
 			if (deltaX > 0.0f)
 			{
 				Move(intersectionX * (1.0f - repoussement), 0.0f);
-				jacque.Move(-intersectionX * (1.0f - repoussement), 0.0f);
+				jacque->Move(-intersectionX * (1.0f - repoussement), 0.0f);
 
 			}
 			else
 			{
 				Move(-intersectionX * (1.0f - repoussement), 0.0f);
-				jacque.Move(intersectionX * (1.0f - repoussement), 0.0f);
+				jacque->Move(intersectionX * (1.0f - repoussement), 0.0f);
 			}
 			if (deltaY > 0.0f)
 			{
 				Move(intersectionY * (1.0f - repoussement), 0.0f);
-				jacque.Move(-intersectionY * (1.0f - repoussement), 0.0f);
+				jacque->Move(-intersectionY * (1.0f - repoussement), 0.0f);
 
 			}
 			else
 			{
 				Move(-intersectionY * (1.0f - repoussement), 0.0f);
-				jacque.Move(intersectionY * (1.0f - repoussement), 0.0f);
+				jacque->Move(intersectionY * (1.0f - repoussement), 0.0f);
 			}
 		}
 
@@ -63,12 +62,12 @@ bool Collisionneur::CheckCollision(Collisionneur & jacque, float repoussement)
 	return false;
 }
 
-sf::Vector2f Collisionneur::GetPosition()
+sf::Vector2f Collider::GetPosition()
 {
-	return michel.getPosition();
+	return michel->getPosition();
 }
 
-sf::FloatRect Collisionneur::GetHitBox()
+sf::FloatRect Collider::GetHitBox()
 {
-	return  michel.getGlobalBounds().contains;
+	return  michel->getGlobalBounds();
 }

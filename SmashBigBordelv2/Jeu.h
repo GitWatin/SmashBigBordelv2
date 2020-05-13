@@ -25,7 +25,6 @@ public:
 	 virtual void setDureeIteration();
 	 virtual void CheckInput(sf::Event event);
 	 virtual void CheckModif();
-	 virtual bool CheckCollision(Entite *michel, Entite *plateforme, float repoussement);
 
 	 virtual void ChargementJeu(Map *map);
 	 virtual void ChoixMap();
@@ -33,7 +32,7 @@ public:
 
 	 virtual void Animate(Personnage *perso, std::string direction);
 
-	 void CheckCollisionPlat(Personnage *jacque);
+	 void CheckCollision(Personnage *michel);
 
 	 Map* GetMapChoisie();
 	 Personnage* GetPerso1choisi();
@@ -74,9 +73,9 @@ protected:
 	const int Gravity = 150;
 
 	const float Spawn_x1 = 100;
-	const float Spawn_y1 = -300;
+	const float Spawn_y1 = 0;
 	const float Spawn_x2 = -100;
-	const float Spawn_y2 = -300;
+	const float Spawn_y2 = 0;
 	// Label HUD
 	sf::Sprite *avatar1;
 	sf::Text *NomPerso1;

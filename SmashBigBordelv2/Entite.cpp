@@ -11,9 +11,27 @@ Entite::~Entite()
 	;
 }
 
+void Entite::CheckCollision(Entite *entite)
+{
+	sf::Vector2f jacquePosition = entite->getPosition();
+	sf::FloatRect jacqueHitBox = entite->getGlobalBounds();
+	sf::Vector2f thisPosition = this->getPosition();
+	sf::FloatRect thisHitBox = this->getGlobalBounds();
+
+	if (jacqueHitBox.intersects(thisHitBox))
+	{
+		this->setCheckCollision(true);
+	}
+	/*if (jacquePosition.x < thisPosition.x + thisHitBox.width && thisPosition.x < jacquePosition.x + jacqueHitBox.width && jacquePosition.y < thisPosition.y + thisHitBox.height && thisPosition.y < jacquePosition.y + jacqueHitBox.height)
+	{
+		this->setCheckCollision(true);
+		std::cout << "[Collision] : " << this->GetNom() << " et " << entite << std::endl;
+	}*/
+}
+
 void Entite::setCollision(bool ok)
 {
-	this->Collision = true;
+	this->Collision = ok;
 }
 
 bool Entite::getCollision()
@@ -21,7 +39,15 @@ bool Entite::getCollision()
 	return this->Collision;
 }
 
+void Entite::setCheckCollision(bool ok)
+{
+	this->CheckColision = ok;
+}
 
+bool Entite::getCheckCollision()
+{
+	return this->CheckColision;
+}
 
 
 void Entite::SetNom(std::string nom)
