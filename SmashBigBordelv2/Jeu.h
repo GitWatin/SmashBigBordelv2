@@ -71,8 +71,8 @@ protected:
 	std::vector < sf::Drawable* > vectorHUD;
 
 	const int VitesseDeplacement = 150;//  pixel/sec
-	const int VitesseSaut = 300;
-	const int Gravity = 150;
+	const int VitesseSaut = 20;
+	const int Gravity = 9.81;
 
 	const float Spawn_x1 = 100;
 	const float Spawn_y1 = -500;
