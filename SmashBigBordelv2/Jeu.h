@@ -120,6 +120,7 @@ protected:
 	// Variable état jeu if false = jeu terminé
 	bool Game_State = true;
 	bool CountDownDone;
+	int CountDownInt;
 
 };
 

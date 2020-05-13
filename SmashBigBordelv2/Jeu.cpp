@@ -278,7 +278,14 @@ void Jeu::CallModif()
 	// Call HUD Function 
 
 	SetHUD();
-	Timing();
+	CountDown();
+
+	if (Game_State == true)
+	{
+		Timing();
+	}
+
+	
 }
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
@@ -288,6 +295,8 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 	this->clock_HUD = new sf::Clock; 
 	this->clock_Move = new sf::Clock;
 	temporary_time = 60;
+	CountDownInt = 5;
+	Game_State = false;
 
 	map->setBackground();
 	map->setPlatefomes();
@@ -441,6 +450,7 @@ void Jeu::DrawBackGround(Back_Ground *BackGround)
 void Jeu::CreateHUD()
 {
 	this->clock_Depart = new sf::Clock; // Demarrage count down depart
+	
 
 	NomPerso1 = new sf::Text;
 	NomPerso2 = new sf::Text;
@@ -539,7 +549,7 @@ void Jeu::CreateHUD()
 	vectorHUD.push_back(AtoutPerso2);
 
 
-	HUDTimer->setString("0000");
+	HUDTimer->setString("");
 	HUDTimer->setFont(*font->SetFont("quicksand.ttf"));
 	HUDTimer->setFillColor(sf::Color::Black);
 	HUDTimer->setCharacterSize(50);
@@ -644,12 +654,27 @@ void Jeu::Timing()
 
 void Jeu::CountDown()
 {
+	
 	sf::Time timer_Depart = clock_Depart->getElapsedTime();
 	
-	if (timer_Depart.asSeconds() >= 1)
+	if (timer_Depart.asSeconds() >= 1 && Game_State==false)
 	{
+		this->CountDownInt = CountDownInt - 1;
+		this->HUDTimer->setString( "Début dans :" + std::to_string(this->CountDownInt));
+		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
+		clock_Depart->restart();
+		Game_State = false;
+		clock_HUD->restart();
+			
+	}
+	else if(CountDownInt==0)
+	{
+		std::cout << "J suis la" << std::endl;
+		Game_State = true;
+		
 
 	}
+
 
 
 }
