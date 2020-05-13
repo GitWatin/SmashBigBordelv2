@@ -148,10 +148,10 @@ void Jeu::CheckModif()
 
 }
 
-/*
 
-void Jeu::CheckCollisionPlat(Personnage *michel)
-{	/*
+
+void Jeu::CheckCollision(Personnage *michel)
+{	
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
 	{
 		michel->CheckCollision(mapchoisie->getPlatform(i));
@@ -167,7 +167,7 @@ void Jeu::CheckCollisionPlat(Personnage *michel)
 	michel->setCheckCollision(false);
 	
 }
-
+/*
 bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 {
 	sf::Vector2f plateformePosition = plateforme->getPosition();
