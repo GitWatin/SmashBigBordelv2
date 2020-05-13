@@ -114,10 +114,12 @@ protected:
 	sf::Clock *clock_Move;
 	sf::Time timer_Move;
 	int Iteration;
+	int Iteration2;
 	int sens;
 	std::string NomTextureMove;
 	// Variable état jeu if false = jeu terminé
 	bool Game_State = true;
+	bool Game_State_Final;
 	bool CountDownDone;
 	int CountDownInt;
 
