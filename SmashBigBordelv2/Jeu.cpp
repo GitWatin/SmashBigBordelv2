@@ -158,7 +158,8 @@ void Jeu::CheckCollision(Personnage *michel)
 {	
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
 	{
-		michel->CheckCollision(mapchoisie->getPlatform(i));
+		michel->CheckCollision(mapchoisie->getPlatform(i),0,this->dureeIteration);
+		//mapchoisie->getPlatform(i)->CheckCollision(michel, 0.0f);
 	}
 	if (michel->getCheckCollision())
 	{
@@ -436,6 +437,11 @@ void Jeu::DrawBackGround(Back_Ground *BackGround)
 {
 	fenetre->draw(*BackGround);
 
+}
+
+sf::Time Jeu::GetdureeIteration()
+{
+	return dureeIteration;
 }
 
 
