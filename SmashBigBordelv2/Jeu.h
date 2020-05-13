@@ -31,6 +31,8 @@ public:
 	 virtual void ChoixMap();
 	 virtual void ChoixPerso();
 
+	 virtual void Animate(Personnage *perso, std::string direction);
+
 	 Map* GetMapChoisie();
 	 Personnage* GetPerso1choisi();
 	 Personnage* GetPerso2choisi();
@@ -103,6 +105,12 @@ protected:
 	sf::Clock *clock_HUD;
 	sf::Time timer_HUD;
 
+	// Horloge pour la gestion du mouvement
+	sf::Clock *clock_Move;
+	sf::Time timer_Move;
+	int Iteration;
+	int sens;
+	std::string NomTextureMove;
 	// Variable état jeu if false = jeu terminé
 	bool Game_State = true;
 

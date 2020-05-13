@@ -13,12 +13,12 @@ Rick::Rick(int x,int y) : Personnage()
 	this->SetPourcentages(0);
 	this->SetNbre_Vies(3);
 	this->SetNom("Rick");
-	this->SetAvatar("rick.png"); // Avatar de l'HUD
+	this->SetAvatar("rick"); // Avatar de l'HUD
 	this->SetDerniersAtout("Toto");
+	this->SetPathTexture("rick0.png");
 
 	this->setTexture(*t->SetTexture(this->GetPathTexture()));
-	this->setTextureRect(sf::IntRect(0, 0, 90, 90));
-	this->setColor(sf::Color::Green);
+	this->setTextureRect(sf::IntRect(0, 0, 85, 124));
 	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
 	this->setPosition(x, y);
 
@@ -36,6 +36,13 @@ void Rick::Attaque(Personnage *NomCible, std::string TypeAttaque)
 {
 
 }
+
+void Rick::SetPathTexture(std::string path_texture_rick)
+{
+	this->PathTexture = path_texture_rick;
+}
+
+
 
 std::string Rick::GetPathTexture()
 {
