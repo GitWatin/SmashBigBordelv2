@@ -20,6 +20,10 @@ void Entite::CheckCollision(Entite *entite)
 
 	if (jacqueHitBox.intersects(thisHitBox))
 	{
+		if(jacqueHitBox.width)
+		{
+
+		}
 		this->setCheckCollision(true);
 	}
 	/*if (jacquePosition.x < thisPosition.x + thisHitBox.width && thisPosition.x < jacquePosition.x + jacqueHitBox.width && jacquePosition.y < thisPosition.y + thisHitBox.height && thisPosition.y < jacquePosition.y + jacqueHitBox.height)
