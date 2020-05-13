@@ -158,43 +158,15 @@ void Jeu::CheckCollision(Personnage *michel)
 	}
 	if (michel->getCheckCollision())
 	{
-		if (michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
-		{
-			michel->setCollision(true);
-			std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
-			break;
-		}
-		if (!michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
-		{
-			std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
-			michel->setCollision(false);
-		}
+		michel->setCollision(true);
 	}
+	if (!michel->getCheckCollision())
+	{
+		michel->setCollision(false);
+	}
+	michel->setCheckCollision(false);
 	
 }
-
-bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
-{
-	sf::Vector2f plateformePosition = plateforme->getPosition();
-	sf::FloatRect plateformeHitBox = plateforme->getGlobalBounds();
-	sf::Vector2f michelPosition = michel->getPosition();
-	sf::FloatRect michelHitBox = michel->getGlobalBounds();
-
-	float deltaX = plateformePosition.x - michelPosition.x;
-	float deltaY = plateformePosition.y - michelPosition.y;
-
-	float intersectionX = abs(deltaX) - (plateformeHitBox.width + michelHitBox.width);
-	float intersectionY = abs(deltaY) - (plateformeHitBox.height + michelHitBox.height);
-
-	if(!michelHitBox.intersects(plateformeHitBox))
-	{
-		return true;
-	}
-	/*
-	if (plateformePosition.x < michelPosition.x + michelHitBox.width && michelPosition.x < plateformePosition.x + plateformeHitBox.width && plateformePosition.y < michelPosition.y + michelHitBox.height && michelPosition.y < plateformePosition.y + plateformeHitBox.height)
-	{
-		
-		repoussement = std::min(std::max(repoussement, 0.0f), 1.0f);
 
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
