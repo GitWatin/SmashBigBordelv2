@@ -25,7 +25,7 @@ public:
 	 virtual void setDureeIteration();
 	 virtual void CheckInput(sf::Event event);
 	 virtual void CheckModif();
-	 virtual void CheckCollision(Entite *michel, Entite *plateforme, float repoussement);
+	 virtual bool CheckCollision(Entite *michel, Entite *plateforme, float repoussement);
 
 	 virtual void ChargementJeu(Map *map);
 	 virtual void ChoixMap();
