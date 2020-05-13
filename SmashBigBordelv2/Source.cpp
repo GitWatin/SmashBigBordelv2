@@ -77,7 +77,6 @@ void main(int argc,char** argv[])
 
 	
 	Game.ChoixMap();
-	
 	Game.ChargementJeu(Game.GetMapChoisie()); // Chargement une fois 
 	Game.ChoixPerso();
 	Game.CreateHUD(); // Création de l'interface HUD

@@ -354,15 +354,13 @@ void Jeu::ChoixPerso()
 	case 1:
 
 		perso2choisi = new Rick(Spawn_x2, Spawn_y2);
-		perso2choisi->SetPersonnage();
 		
 		std::cout << "J2 : Rick  \n " << std::endl;
 		break;
 	case 2:
 
 		perso2choisi = new Morty(Spawn_x2, Spawn_y2);
-		perso2choisi->SetPersonnage();
-
+	
 		std::cout << "J2 : Morty \n " << std::endl;
 		
 		break;
