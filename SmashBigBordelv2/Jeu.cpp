@@ -145,9 +145,10 @@ void Jeu::CheckModif()
 	 {
 		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 	 }
-}
 
 }
+
+
 
 void Jeu::CheckCollisionPlat(Personnage *michel)
 {	/*
