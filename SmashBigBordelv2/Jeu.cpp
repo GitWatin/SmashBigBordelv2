@@ -11,8 +11,6 @@ Jeu::Jeu()
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
 	this->dureeIteration = sf::Time::Zero;
-
-
 }
 
 Jeu :: ~Jeu()
@@ -160,14 +158,43 @@ void Jeu::CheckCollision(Personnage *michel)
 	}
 	if (michel->getCheckCollision())
 	{
-		michel->setCollision(true);
+		if (michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
+		{
+			michel->setCollision(true);
+			std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			break;
+		}
+		if (!michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
+		{
+			std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			michel->setCollision(false);
+		}
 	}
-	if (!michel->getCheckCollision())
-	{
-		michel->setCollision(false);
-	}
-	michel->setCheckCollision(false);
+	
 }
+
+bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
+{
+	sf::Vector2f plateformePosition = plateforme->getPosition();
+	sf::FloatRect plateformeHitBox = plateforme->getGlobalBounds();
+	sf::Vector2f michelPosition = michel->getPosition();
+	sf::FloatRect michelHitBox = michel->getGlobalBounds();
+
+	float deltaX = plateformePosition.x - michelPosition.x;
+	float deltaY = plateformePosition.y - michelPosition.y;
+
+	float intersectionX = abs(deltaX) - (plateformeHitBox.width + michelHitBox.width);
+	float intersectionY = abs(deltaY) - (plateformeHitBox.height + michelHitBox.height);
+
+	if(!michelHitBox.intersects(plateformeHitBox))
+	{
+		return true;
+	}
+	/*
+	if (plateformePosition.x < michelPosition.x + michelHitBox.width && michelPosition.x < plateformePosition.x + plateformeHitBox.width && plateformePosition.y < michelPosition.y + michelHitBox.height && michelPosition.y < plateformePosition.y + plateformeHitBox.height)
+	{
+		
+		repoussement = std::min(std::max(repoussement, 0.0f), 1.0f);
 
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
@@ -212,8 +239,6 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 	{
 		this->Iteration = 0;
 	}
-
-
 	delete texture_move;
 
 }
@@ -228,8 +253,6 @@ void Jeu::CallModif()
 	{
 		Timing();
 	}
-
-	
 }
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
@@ -263,7 +286,6 @@ void Jeu::ChoixMap()
 		this->TempsDeJeu = 90;
 		break;
 	}
-	
 }
 
 void Jeu::ChoixPerso()
@@ -385,7 +407,6 @@ void Jeu::DrawHUD()
 void Jeu::DrawBackGround(Back_Ground *BackGround)
 {
 	fenetre->draw(*BackGround);
-
 
 }
 
@@ -615,11 +636,6 @@ void Jeu::CountDown()
 	{
 		std::cout << "J suis la" << std::endl;
 		Game_State = true;
-		
-
 	}
-
-
-
 }
 
