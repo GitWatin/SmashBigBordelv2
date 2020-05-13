@@ -65,11 +65,13 @@ protected:
 	std::vector < sf::Drawable* > vectorHUD;
 
 	const int VitesseDeplacement = 150;//  pixel/sec
-	const int Gravity = 50;
+	const int VitesseSaut = 500;
+
+	const int Gravity = 900;
 	const float Spawn_x1 = 100;
-	const float Spawn_y1 = -200;
+	const float Spawn_y1 = -300;
 	const float Spawn_x2 = -100;
-	const float Spawn_y2 = -200;
+	const float Spawn_y2 = -300;
 	// Label HUD
 	sf::Sprite *avatar1;
 	sf::Text *NomPerso1;

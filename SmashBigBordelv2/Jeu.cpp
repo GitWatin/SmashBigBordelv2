@@ -120,9 +120,9 @@ void Jeu::CheckModif()
 	}
 	if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
 	{
-		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement)));
+		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
 	}
-	if (!perso1choisi->getCollision())
+	if (!perso1choisi->getCollision() && !perso1choisi->getJump())
 	{
 		perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 	}
@@ -137,9 +137,9 @@ void Jeu::CheckModif()
 	}
 	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
 	{
-		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement)));
+		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 	}
-	 if (!perso2choisi->getCollision())
+	 if (!perso2choisi->getCollision()&& !perso2choisi->getJump())
 	 {
 		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 	 }
