@@ -18,6 +18,12 @@ void Entite::CheckCollision(Entite *entite)
 	sf::Vector2f thisPosition = this->getPosition();
 	sf::FloatRect thisHitBox = this->getGlobalBounds();
 
+	float deltaX = jacquePosition.x - thisPosition.x;
+	float deltaY = jacquePosition.y - thisPosition.y;
+
+	float intersectionX = abs(deltaX) - ((jacqueHitBox.width/2) + (thisHitBox.width/2));
+	float intersectionY = abs(deltaY) - ((jacqueHitBox.height/2) + (thisHitBox.height/2));
+
 	//if (jacqueHitBox.intersects(thisHitBox))
 	//{
 	//	if(jacquePosition.x < thisPosition.x + thisHitBox.width)
@@ -26,10 +32,25 @@ void Entite::CheckCollision(Entite *entite)
 	//	}
 	//	
 	//}
-	if (jacquePosition.x < thisPosition.x + (thisHitBox.width/2) && thisPosition.x < jacquePosition.x + (jacqueHitBox.width / 2) && jacquePosition.y < thisPosition.y + (thisHitBox.height / 2) && thisPosition.y < jacquePosition.y + (jacqueHitBox.height / 2))
+	if (intersectionX < 0.0f && intersectionY < 0.0f)
 	{
+		
+			if (intersectionX > intersectionY)
+			{
+				if (deltaX > 0.0f)
+				{
+
+				}
+
+				if (deltaY > 0.0f)
+				{
+
+				}
+			}
+			
+			std::cout << "[Collision] : " << this->GetNom() << " et " << entite << std::endl;
+		
 		this->setCheckCollision(true);
-		std::cout << "[Collision] : " << this->GetNom() << " et " << entite << std::endl;
 	}
 }
 
