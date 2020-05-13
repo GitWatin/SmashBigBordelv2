@@ -646,7 +646,7 @@ void Jeu::CountDown()
 {
 	sf::Time timer_Depart = clock_Depart->getElapsedTime();
 	
-	if (timer_Depart.asSeconds >= 1)
+	if (timer_Depart.asSeconds() >= 1)
 	{
 
 	}

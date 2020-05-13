@@ -16,7 +16,6 @@ public:
 	virtual std::vector< Plateforme* >GetVectorPlatefomes();
 	Back_Ground* getBackground();
 
-	Collisionneur getCollisionneur(int pos);
 
 protected:
 
