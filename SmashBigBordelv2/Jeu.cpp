@@ -11,6 +11,8 @@ Jeu::Jeu()
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
 	this->dureeIteration = sf::Time::Zero;
+
+
 }
 
 Jeu :: ~Jeu()
@@ -141,15 +143,15 @@ void Jeu::CheckModif()
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 	}
-	 if (!perso2choisi->getCollision()&& !perso2choisi->getJump())
+	 if (!perso2choisi->getCollision() && !perso2choisi->getJump())
 	 {
 		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 	 }
 }
 
 
-void Jeu::CheckCollisionPlat(Personnage *jacque)
-{
+void Jeu::CheckCollisionPlat(Personnage *michel)
+{	/*
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
 	{
 		jacque->setCollision(this->CheckCollision(jacque, mapchoisie->getPlatform(i), 0.0f));
@@ -157,7 +159,23 @@ void Jeu::CheckCollisionPlat(Personnage *jacque)
 		{
 			std::cout << "[Collision] : " << jacque->GetNom() << " et " << mapchoisie->getPlatform(i) << " BOOL : "<< jacque->getCollision() << std::endl;
 		}
+	}*/
+	// permier jet collisioneur
+	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
+	{
+		if (michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
+		{
+			michel->setCollision(true);
+			//std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			break;
+		}
+		if (!michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
+		{
+			//std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			michel->setCollision(false);
+		}
 	}
+	
 }
 
 bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
@@ -173,7 +191,7 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 	float intersectionX = abs(deltaX) - (plateformeHitBox.width + michelHitBox.width);
 	float intersectionY = abs(deltaY) - (plateformeHitBox.height + michelHitBox.height);
 
-	if(michel->getGlobalBounds().intersects(plateforme->getGlobalBounds()))
+	if(!michelHitBox.intersects(plateformeHitBox))
 	{
 		return true;
 	}
@@ -212,6 +230,8 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 		return true;
 	}*/
 	return false;
+	
+	
 }
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
@@ -256,6 +276,8 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 	{
 		this->Iteration = 0;
 	}
+
+
 	delete texture_move;
 
 }
@@ -270,6 +292,8 @@ void Jeu::CallModif()
 	{
 		Timing();
 	}
+
+	
 }
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
@@ -303,6 +327,7 @@ void Jeu::ChoixMap()
 		this->TempsDeJeu = 90;
 		break;
 	}
+	
 }
 
 void Jeu::ChoixPerso()
@@ -424,6 +449,7 @@ void Jeu::DrawHUD()
 void Jeu::DrawBackGround(Back_Ground *BackGround)
 {
 	fenetre->draw(*BackGround);
+
 
 }
 
@@ -653,6 +679,8 @@ void Jeu::CountDown()
 	{
 		std::cout << "J suis la" << std::endl;
 		Game_State = true;
+		
+
 	}
 
 
