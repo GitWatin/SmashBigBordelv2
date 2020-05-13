@@ -139,7 +139,7 @@ void Jeu::CheckModif()
 		Animate(perso2choisi, "gauche");
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	 if (perso2choisi->getJump() && perso2choisi->getCollision())
+	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 	}
