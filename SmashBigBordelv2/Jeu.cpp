@@ -476,7 +476,6 @@ void Jeu::CreateHUD()
 	texture_hud = new TextureManager();
 
 
-
 	// Creation de l'avatar perso 1: 
 	avatar1->setTextureRect(sf::IntRect(0, 0, 80, 80));
 	avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()+".png"));
