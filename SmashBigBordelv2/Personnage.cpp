@@ -104,10 +104,6 @@ void Personnage::setJump(bool ok)
 	this->Jump = ok;
 }
 
-void Personnage::setCollision(bool ok)
-{
-	this->Collision = ok;
-}
 
 bool Personnage::getMoveRight()
 {
@@ -124,15 +120,7 @@ bool Personnage::getJump()
 	return this->Jump;
 }
 
-Collisionneur* Personnage::getCollisionneur()
-{
-	return &Collisionneur(perso);
-}
 
-bool Personnage::getCollision()
-{
-	return this->getCollisionneur();
-}
 
 
 

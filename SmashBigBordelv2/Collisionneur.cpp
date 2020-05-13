@@ -1,5 +1,5 @@
 #include "Collisionneur.h"
-
+/*
 Collisionneur::Collisionneur(sf::Sprite &michel) : michel(michel)
 {
 
@@ -71,4 +71,4 @@ sf::Vector2f Collisionneur::GetPosition()
 sf::FloatRect Collisionneur::GetHitBox()
 {
 	return  michel.getGlobalBounds().contains;
-}
+}*/

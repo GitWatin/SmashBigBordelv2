@@ -1,6 +1,5 @@
 #pragma once
 #include "Entite.h"
-#include "Collisionneur.h"
 #include<iostream>
 
 
@@ -30,15 +29,13 @@ class Personnage :
 	virtual void setMoveLeft(bool ok);
 	virtual void setJump(bool ok);
 
-	virtual void setCollision(bool ok);
+	
 
 	virtual bool getMoveRight();
 	virtual bool getMoveLeft();
 	virtual bool getJump();
 
-	Collisionneur * getCollisionneur();
-
-	bool getCollision();
+	
 	
 	virtual std::vector< Personnage* >GetVectorPersonnage();
 	
@@ -59,6 +56,6 @@ protected:
 	bool moveRight=false;
 	bool moveLeft=false;
 	bool Jump=false;
-	bool Collision = false;
+
 };
 

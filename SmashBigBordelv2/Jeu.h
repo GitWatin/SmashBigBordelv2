@@ -25,13 +25,15 @@ public:
 	 virtual void setDureeIteration();
 	 virtual void CheckInput(sf::Event event);
 	 virtual void CheckModif();
-	 virtual void CheckCollision(Personnage *michel);
+	 virtual void CheckCollision(Entite *michel, Entite *plateforme, float repoussement);
 
 	 virtual void ChargementJeu(Map *map);
 	 virtual void ChoixMap();
 	 virtual void ChoixPerso();
 
 	 virtual void Animate(Personnage *perso, std::string direction);
+
+	 void CheckCollisionPlat(Personnage *jacque);
 
 	 Map* GetMapChoisie();
 	 Personnage* GetPerso1choisi();

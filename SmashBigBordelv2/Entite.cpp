@@ -11,10 +11,14 @@ Entite::~Entite()
 	;
 }
 
-bool Entite::CheckCollision(Entite * perso, Entite * plateforme, float repoussement)
+void Entite::setCollision(bool ok)
 {
+	this->Collision = true;
+}
 
-	return false;
+bool Entite::getCollision()
+{
+	return this->Collision;
 }
 
 

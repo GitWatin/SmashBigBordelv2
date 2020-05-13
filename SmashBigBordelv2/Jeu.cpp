@@ -196,17 +196,63 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 	delete texture_move;
 
 }
-
-void Jeu::CheckCollision(Personnage *michel)
+void Jeu::CheckCollisionPlat(Personnage *jacque)
 {
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
 	{
-		mapchoisie->getCollisionneur(i).CheckCollision(michel->getCollisionneur(),0.0f);
-				
-		std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
-		break;
-		
+		this->CheckCollision(jacque, mapchoisie->getPlatform(i), 0);
 	}
+	
+}
+
+void Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
+{
+	sf::Vector2f plateformePosition = plateforme->getPosition();
+	sf::FloatRect plateformeHitBox = plateforme->getGlobalBounds();
+	sf::Vector2f michelPosition = michel->getPosition();
+	sf::FloatRect michelHitBox = michel->getGlobalBounds();
+
+	float deltaX = plateformePosition.x - michelPosition.x;
+	float deltaY = plateformePosition.y - michelPosition.y;
+
+	float intersectionX = abs(deltaX) - (plateformeHitBox.width + michelHitBox.width);
+	float intersectionY = abs(deltaY) - (plateformeHitBox.height + michelHitBox.height);
+
+	if (plateformePosition.x < michelPosition.x + michelHitBox.width && michelPosition.x < plateformePosition.x + plateformeHitBox.width && plateformePosition.y < michelPosition.y + michelHitBox.height && michelPosition.y < plateformePosition.y + plateformeHitBox.height)
+	{
+		repoussement = std::min(std::max(repoussement, 0.0f), 1.0f);
+
+		if (intersectionX > intersectionY)
+		{
+			if (deltaX > 0.0f)
+			{
+				michel->move(intersectionX * (1.0f - repoussement), 0.0f);
+				plateforme->move(-intersectionX * (1.0f - repoussement), 0.0f);
+
+			}
+			else
+			{
+				michel->move(-intersectionX * (1.0f - repoussement), 0.0f);
+				plateforme->move(intersectionX * (1.0f - repoussement), 0.0f);
+			}
+			if (deltaY > 0.0f)
+			{
+				michel->move(intersectionY * (1.0f - repoussement), 0.0f);
+				plateforme->move(-intersectionY * (1.0f - repoussement), 0.0f);
+
+			}
+			else
+			{
+				michel->move(-intersectionY * (1.0f - repoussement), 0.0f);
+				plateforme->move(intersectionY * (1.0f - repoussement), 0.0f);
+			}
+		}
+
+		michel->setCollision(true);
+	}
+
+	michel->setCollision(false);
+	
 
 
 	/* permier jet collisioneur

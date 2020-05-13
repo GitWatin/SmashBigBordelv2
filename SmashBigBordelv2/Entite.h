@@ -1,14 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include"Collisionneur.h"
+
 
 class Entite : public sf::Sprite
 {
 public: // A voir pour les déclaration a cause de sfml
 	Entite();
 	~Entite();
-	virtual bool CheckCollision(Entite *perso, Entite*plateforme,float repoussement);
+	virtual void setCollision(bool ok);
+	virtual bool getCollision();
 
 	virtual void SetNom(std::string nom);
 	virtual std::string GetNom();
@@ -34,7 +35,7 @@ public: // A voir pour les déclaration a cause de sfml
 	*/
 
 protected:
-	Entite *entite;
+	bool Collision = false;
 	std::string Nom;
 	//float Position_X;
 	//float Position_Y;
