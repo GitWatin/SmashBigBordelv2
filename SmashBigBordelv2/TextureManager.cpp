@@ -31,7 +31,7 @@ sf::Texture* TextureManager::SetTexture(std::string path_texture)
 		}
 		else
 		{
-			std::cout << "[Texture chargée] :" << path_texture << std::endl;
+			std::cout << "[Texture chargee] :" << path_texture << std::endl;
 			this->map_textures.insert(std::pair<std::string, sf::Texture*>(path_texture, texture));
 		}
 		
@@ -52,7 +52,8 @@ sf::Texture * TextureManager::GetTexture(std::string path_texture)
 	}
 	else
 	{
-		// Du coup ca existe MDR hg
+		std::cout << "[J'ai trouve une texture] :" << path_texture << std::endl;
+		// Du coup ca existe MDR 
 		return  map_textures.find(path_texture)->second;
 	}
 

@@ -131,10 +131,12 @@ void Jeu::CheckModif()
 	//----------J2--------------------------------
 	if (perso2choisi->getMoveRight()) //check si le bool est actif
 	{
+		Animate(perso2choisi, "droite");
 		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
 	if (perso2choisi->getMoveLeft()) //check si le bool est actif
 	{
+		Animate(perso2choisi, "gauche");
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
 	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
@@ -160,7 +162,6 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 		std::cout << sens << std::endl;
 		if (sens == 2)
 		{
-			std::cout << "Coucou_droite" << std::endl;
 			perso->setScale(-1, 1);
 			this->sens = 1;
 		}
@@ -439,6 +440,8 @@ void Jeu::DrawBackGround(Back_Ground *BackGround)
 // Fonction pour recuperer les informations des personnages et les ajouters au vector vectorHUD
 void Jeu::CreateHUD()
 {
+	this->clock_Depart = new sf::Clock; // Demarrage count down depart
+
 	NomPerso1 = new sf::Text;
 	NomPerso2 = new sf::Text;
 	ViePerso1 = new sf::Text;
@@ -632,9 +635,22 @@ void Jeu::Timing()
 		
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 		
-		Game_State = true;
+		//Game_State = true;
 	}
 
 	
 
 }
+
+void Jeu::CountDown()
+{
+	sf::Time timer_Depart = clock_Depart->getElapsedTime();
+	
+	if (timer_Depart.asSeconds >= 1)
+	{
+
+	}
+
+
+}
+

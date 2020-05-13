@@ -50,6 +50,7 @@ public:
 	 virtual void CreateHUD();
 	 void SetHUD();
 	 virtual void Timing();
+	 virtual void CountDown();
 
 	 // Draw HUD
 	 virtual void DrawHUD();
@@ -107,7 +108,10 @@ protected:
 	sf::Clock *clock_HUD;
 	sf::Time timer_HUD;
 
-	// Horloge pour la gestion du mouvement
+	sf::Clock *clock_Depart;
+	sf::Time timer_Depart;
+
+	// Attribut pour la gestion des mouvements
 	sf::Clock *clock_Move;
 	sf::Time timer_Move;
 	int Iteration;
@@ -115,6 +119,7 @@ protected:
 	std::string NomTextureMove;
 	// Variable état jeu if false = jeu terminé
 	bool Game_State = true;
+	bool CountDownDone;
 
 };
 

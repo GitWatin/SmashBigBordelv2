@@ -122,8 +122,6 @@ bool Personnage::getJump()
 
 
 
-
-
 std::vector<Personnage*> Personnage::GetVectorPersonnage()
 {
 	return Dessin;
