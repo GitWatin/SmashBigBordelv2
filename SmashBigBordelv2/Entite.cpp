@@ -1,4 +1,5 @@
 #include "Entite.h"
+#include "Jeu.h"
 #include <iostream>
 
 Entite::Entite() : Sprite()
@@ -11,7 +12,7 @@ Entite::~Entite()
 	;
 }
 
-void Entite::CheckCollision(Entite *entite)
+void Entite::CheckCollision(Entite *entite, float repoussement, sf::Time dureeIteration)
 {
 	sf::Vector2f jacquePosition = entite->getPosition();
 	sf::FloatRect jacqueHitBox = entite->getGlobalBounds();
@@ -24,32 +25,38 @@ void Entite::CheckCollision(Entite *entite)
 	float intersectionX = abs(deltaX) - ((jacqueHitBox.width/2) + (thisHitBox.width/2));
 	float intersectionY = abs(deltaY) - ((jacqueHitBox.height/2) + (thisHitBox.height/2));
 
-	//if (jacqueHitBox.intersects(thisHitBox))
-	//{
-	//	if(jacquePosition.x < thisPosition.x + thisHitBox.width)
-	//	{
-	//		this->setCheckCollision(true);
-	//	}
-	//	
-	//}
 	if (intersectionX < 0.0f && intersectionY < 0.0f)
 	{
-		
-			if (intersectionX > intersectionY)
+		//repoussement = std::min(std::max(repoussement, 0.0f), 1.0f);
+		if (intersectionX > intersectionY)
+		{
+			if (deltaX > 0.0f)
 			{
-				if (deltaX > 0.0f)
-				{
-
-				}
-
-				if (deltaY > 0.0f)
-				{
-
-				}
+				this->move((intersectionX *dureeIteration.asSeconds()) * (dureeIteration.asSeconds() - repoussement), 0.0f); //vers la droite
+				//entite->move(intersectionX * (dureeIteration.asSeconds() - repoussement)* dureeIteration.asSeconds(), 0.0f);
 			}
+			else
+			{
+				this->move(-(intersectionX *dureeIteration.asSeconds())  * (dureeIteration.asSeconds() - repoussement), 0.0f);//vers la gauche
+				//entite->move(intersectionX * (dureeIteration.asSeconds() - repoussement)* dureeIteration.asSeconds(), 0.0f);
+			}
+		}
+		else
+		{
+			if (deltaY > 0.0f)
+			{
+				this->move(0.0f, (intersectionX *dureeIteration.asSeconds())  * (dureeIteration.asSeconds() - repoussement));//vers le bas
+				//entite->move(0.0f ,intersectionX * (dureeIteration.asSeconds() - repoussement)*dureeIteration.asSeconds());
+			}
+			else
+			{
+				this->move(0.0f ,-(intersectionX *dureeIteration.asSeconds()) * (dureeIteration.asSeconds() - repoussement));//vers le haut
+				//entite->move(0.0f, intersectionX * (dureeIteration.asSeconds() - repoussement)* dureeIteration.asSeconds());
+			}
+		}
+		
 			
 			std::cout << "[Collision] : " << this->GetNom() << " et " << entite << std::endl;
-		
 		this->setCheckCollision(true);
 	}
 }

@@ -46,6 +46,8 @@ public:
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 
+	 virtual sf::Time GetdureeIteration();
+
 	 virtual void CreateHUD();
 	 void SetHUD();
 	 virtual void Timing();
