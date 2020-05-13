@@ -139,7 +139,7 @@ void Jeu::CheckModif()
 		Animate(perso2choisi, "gauche");
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
+	 if (perso2choisi->getJump() && !perso2choisi->getCollision())
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 	}
@@ -147,92 +147,28 @@ void Jeu::CheckModif()
 	 {
 		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 	 }
+	 
 }
 
 
-void Jeu::CheckCollisionPlat(Personnage *michel)
-{	/*
+void Jeu::CheckCollision(Personnage *michel)
+{	
+	//permier jet collisioneur
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
 	{
-		jacque->setCollision(this->CheckCollision(jacque, mapchoisie->getPlatform(i), 0.0f));
-		if(jacque->getCollision())
-		{
-			std::cout << "[Collision] : " << jacque->GetNom() << " et " << mapchoisie->getPlatform(i) << " BOOL : "<< jacque->getCollision() << std::endl;
-		}
-	}*/
-	// permier jet collisioneur
-	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
-	{
-		if (michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
-		{
-			michel->setCollision(true);
-			std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
-			break;
-		}
-		if (!michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
-		{
-			std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
-			michel->setCollision(false);
-		}
+		michel->CheckCollision(mapchoisie->getPlatform(i));
 	}
-	
+	if (michel->getCheckCollision())
+	{
+		michel->setCollision(true);
+	}
+	if (!michel->getCheckCollision())
+	{
+		michel->setCollision(false);
+	}
+	michel->setCheckCollision(false);
 }
 
-bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
-{
-	sf::Vector2f plateformePosition = plateforme->getPosition();
-	sf::FloatRect plateformeHitBox = plateforme->getGlobalBounds();
-	sf::Vector2f michelPosition = michel->getPosition();
-	sf::FloatRect michelHitBox = michel->getGlobalBounds();
-
-	float deltaX = plateformePosition.x - michelPosition.x;
-	float deltaY = plateformePosition.y - michelPosition.y;
-
-	float intersectionX = abs(deltaX) - (plateformeHitBox.width + michelHitBox.width);
-	float intersectionY = abs(deltaY) - (plateformeHitBox.height + michelHitBox.height);
-
-	if(!michelHitBox.intersects(plateformeHitBox))
-	{
-		return true;
-	}
-	/*
-	if (plateformePosition.x < michelPosition.x + michelHitBox.width && michelPosition.x < plateformePosition.x + plateformeHitBox.width && plateformePosition.y < michelPosition.y + michelHitBox.height && michelPosition.y < plateformePosition.y + plateformeHitBox.height)
-	{
-		
-		repoussement = std::min(std::max(repoussement, 0.0f), 1.0f);
-
-		if (intersectionX > intersectionY)
-		{
-			if (deltaX > 0.0f)
-			{
-				michel->move(intersectionX * (1.0f - repoussement), 0.0f);
-				//plateforme->move(-intersectionX * (1.0f - repoussement), 0.0f);
-
-			}
-			else
-			{
-				michel->move(-intersectionX * (1.0f - repoussement), 0.0f);
-				//plateforme->move(intersectionX * (1.0f - repoussement), 0.0f);
-			}
-			if (deltaY > 0.0f)
-			{
-				michel->move(intersectionY * (1.0f - repoussement), 0.0f);
-				//plateforme->move(-intersectionY * (1.0f - repoussement), 0.0f);
-
-			}
-			else
-			{
-				michel->move(-intersectionY * (1.0f - repoussement), 0.0f);
-				//plateforme->move(intersectionY * (1.0f - repoussement), 0.0f);
-			}
-		}
-
-		return true;
-	}*/
-	return false;
-	
-	
-}
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
 	TextureManager *texture_move;
