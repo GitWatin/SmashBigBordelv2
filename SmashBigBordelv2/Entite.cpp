@@ -32,26 +32,30 @@ void Entite::CheckCollision(Entite *entite, float repoussement, sf::Time dureeIt
 		{
 			if (deltaX > 0.0f)
 			{
-				this->move((intersectionX *dureeIteration.asSeconds()) * (dureeIteration.asSeconds() - repoussement), 0.0f); //vers la droite
-				//entite->move(intersectionX * (dureeIteration.asSeconds() - repoussement)* dureeIteration.asSeconds(), 0.0f);
+				this->move((intersectionX *dureeIteration.asSeconds()) * (dureeIteration.asSeconds() - repoussement), 0.0f);
+				this->setVersdroite(false);//vers la droite
+				
 			}
-			else
+			else if (deltaX < 0.0f)
 			{
 				this->move(-(intersectionX *dureeIteration.asSeconds())  * (dureeIteration.asSeconds() - repoussement), 0.0f);//vers la gauche
-				//entite->move(intersectionX * (dureeIteration.asSeconds() - repoussement)* dureeIteration.asSeconds(), 0.0f);
+				this->setVersgauche(false);
+				
 			}
-		}
-		else
-		{
+		
+		else if(intersectionX < intersectionY)
+		
 			if (deltaY > 0.0f)
 			{
 				this->move(0.0f, (intersectionX *dureeIteration.asSeconds())  * (dureeIteration.asSeconds() - repoussement));//vers le bas
-				//entite->move(0.0f ,intersectionX * (dureeIteration.asSeconds() - repoussement)*dureeIteration.asSeconds());
+				this->setVersbas(false);
+				
 			}
-			else
+			else if (deltaY < 0.0f)
 			{
 				this->move(0.0f ,-(intersectionX *dureeIteration.asSeconds()) * (dureeIteration.asSeconds() - repoussement));//vers le haut
-				//entite->move(0.0f, intersectionX * (dureeIteration.asSeconds() - repoussement)* dureeIteration.asSeconds());
+				this->setVershaut(false);
+				
 			}
 		}
 		
@@ -79,6 +83,46 @@ void Entite::setCheckCollision(bool ok)
 bool Entite::getCheckCollision()
 {
 	return this->CheckColision;
+}
+
+void Entite::setVersdroite(bool ok)
+{
+	this->Versdroite = ok;
+}
+
+bool Entite::getVersdroite()
+{
+	return this->Versdroite;
+}
+
+void Entite::setVersgauche(bool ok)
+{
+	this->Versgauche = ok;
+}
+
+bool Entite::getVersgauche()
+{
+	return this->Versgauche;
+}
+
+void Entite::setVershaut(bool ok)
+{
+	this->Vershaut = ok;
+}
+
+bool Entite::getVershaut()
+{
+	return this->Vershaut;
+}
+
+void Entite::setVersbas(bool ok)
+{
+	this->Versbas = ok;
+}
+
+bool Entite::getVersbas()
+{
+	return this->Versbas;
 }
 
 

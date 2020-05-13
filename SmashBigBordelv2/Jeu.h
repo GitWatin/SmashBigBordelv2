@@ -75,9 +75,9 @@ protected:
 	const int Gravity = 150;
 
 	const float Spawn_x1 = 100;
-	const float Spawn_y1 = 0;
+	const float Spawn_y1 = -500;
 	const float Spawn_x2 = -100;
-	const float Spawn_y2 = 0;
+	const float Spawn_y2 = -500;
 	// Label HUD
 	sf::Sprite *avatar1;
 	sf::Text *NomPerso1;

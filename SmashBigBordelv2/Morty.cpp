@@ -19,7 +19,7 @@ Morty::Morty(int x, int y) : Personnage()
 	this->setTextureRect(sf::IntRect(0, 0, 78, 110));
 	//this->setColor(sf::Color::Black);
 	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
-	this->setPosition(x, y);
+	this->setPosition(x , y);
 	Dessin.push_back(this);
 
 	delete t;

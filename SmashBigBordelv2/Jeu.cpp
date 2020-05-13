@@ -115,45 +115,45 @@ void Jeu::CheckModif()
 	{
 		//---------J1--------------------------------
 
-		if (perso1choisi->getMoveRight()) //check si le bool est actif
+		if (perso1choisi->getMoveRight() && perso1choisi->getVersdroite()) //check si le bool est actif
 		{
 			
 			Animate(perso1choisi, "droite",1);
 			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso1choisi->getMoveLeft()) //check si le bool est actif
+		if (perso1choisi->getMoveLeft() && perso1choisi->getVersgauche()) //check si le bool est actif
 		{
 			Animate(perso1choisi, "gauche",1);
 			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
+		if (perso1choisi->getJump() && perso1choisi->getVershaut()/*&& !perso2choisi->getVersbas()*/)
 		{
 			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
 		}
-		if (!perso1choisi->getCollision() && !perso1choisi->getJump())
+		if (!perso1choisi->getCollision() && perso1choisi->getVersbas())
 		{
 			perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 		}
 		//----------J2--------------------------------
-		if (perso2choisi->getMoveRight()) //check si le bool est actif
+		if (perso2choisi->getMoveRight() && perso2choisi->getVersdroite())//check si le bool est actif
 		{
 			Animate(perso2choisi, "droite",2);
 			perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso2choisi->getMoveLeft()) //check si le bool est actif
+		if (perso2choisi->getMoveLeft() && perso1choisi->getVersgauche()) //check si le bool est actif
 		{
 			Animate(perso2choisi, "gauche",3);
 			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
+		if (perso2choisi->getJump() && perso2choisi->getVershaut() /*&& !perso2choisi->getVersbas()*/)
 		{
 			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 		}
-		if (!perso2choisi->getCollision() && !perso2choisi->getJump())
+		if (!perso2choisi->getCollision() &&  perso1choisi->getVersbas())
 		{
 			perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 		}
-	}
+	} 
 }
 
 
@@ -172,6 +172,10 @@ void Jeu::CheckCollision(Personnage *michel)
 	if (!michel->getCheckCollision())
 	{
 		michel->setCollision(false);
+		michel->setVersbas(true);
+		michel->setVershaut(true);
+		michel->setVersgauche(true);
+		michel->setVersdroite(true);
 	}
 	michel->setCheckCollision(false);
 	
@@ -360,15 +364,13 @@ void Jeu::ChoixPerso()
 	case 1:
 
 		perso2choisi = new Rick(Spawn_x2, Spawn_y2);
-		perso2choisi->SetPersonnage();
 		
 		std::cout << "J2 : Rick  \n " << std::endl;
 		break;
 	case 2:
 
 		perso2choisi = new Morty(Spawn_x2, Spawn_y2);
-		perso2choisi->SetPersonnage();
-
+	
 		std::cout << "J2 : Morty \n " << std::endl;
 		
 		break;
