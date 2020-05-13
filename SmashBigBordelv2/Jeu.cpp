@@ -112,10 +112,12 @@ void Jeu::CheckModif()
 	
 	if (perso1choisi->getMoveRight()) //check si le bool est actif
 	{	
+		Animate(perso1choisi, "droite");
 		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
 	 if (perso1choisi->getMoveLeft()) //check si le bool est actif
 	{
+		 Animate(perso1choisi, "gauche");
 		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
 	if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
@@ -145,6 +147,56 @@ void Jeu::CheckModif()
 	 }
 }
 
+void Jeu::Animate(Personnage *perso, std::string direction)
+{
+	TextureManager *texture_move;
+	texture_move= new TextureManager();
+
+	NomTextureMove = perso->GetAvatar();
+	sf::Time timer_Move = clock_Move->getElapsedTime();
+
+	if (timer_Move.asSeconds() >= 0.2 && direction=="droite")
+	{
+		std::cout << sens << std::endl;
+		if (sens == 2)
+		{
+			std::cout << "Coucou_droite" << std::endl;
+			perso->setScale(-1, 1);
+			this->sens = 1;
+		}
+		perso->setTexture(*texture_move->SetTexture(NomTextureMove+std::to_string(Iteration)+".png"));
+		//perso->setScale(-1, 1);
+
+		clock_Move->restart();
+		this->Iteration = Iteration + 1;
+		this->sens = 1;//Droite
+	}
+
+
+	if (timer_Move.asSeconds() >= 0.2 && direction == "gauche")
+	{
+		std::cout << sens << std::endl;
+		if (sens == 1)
+		{
+			std::cout << "Coucou_gauche" << std::endl;
+			perso->setScale(1, 1);
+			this->sens = 2;
+		}
+		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
+		clock_Move->restart();
+		this->Iteration = Iteration + 1;
+		this->sens = 2;//Gauche
+	}
+	else if(this->Iteration == 4)
+	{
+		this->Iteration = 0;
+	}
+
+
+	delete texture_move;
+
+}
+
 void Jeu::CheckCollision(Personnage *michel)
 {
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
@@ -163,12 +215,12 @@ void Jeu::CheckCollision(Personnage *michel)
 		if(michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
 		{
 			michel->setCollision(true);
-			std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			//std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
 			break;
 		}
 		if(!michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
 		{
-			std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			//std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
 			michel->setCollision(false);
 		}
 	}*/	
@@ -187,6 +239,7 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 	// demmarage du Timer du jeu (5min )
 	this->clock_jeu = new sf::Clock; //  
 	this->clock_HUD = new sf::Clock; 
+	this->clock_Move = new sf::Clock;
 	temporary_time = 60;
 
 	map->setBackground();
@@ -260,6 +313,8 @@ void Jeu::ChoixPerso()
 
 	
 }
+
+
 
 Map* Jeu::GetMapChoisie()
 {
@@ -361,7 +416,7 @@ void Jeu::CreateHUD()
 
 	// Creation de l'avatar perso 1: 
 	avatar1->setTextureRect(sf::IntRect(0, 0, 80, 80));
-	avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()));
+	avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()+".png"));
 	avatar1->setPosition(-720, -370);
 	avatar1->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
 
@@ -398,7 +453,7 @@ void Jeu::CreateHUD()
 	// --------------- Perso 2 ----------------------
 
 	avatar2->setTextureRect(sf::IntRect(0, 0, 80, 80));
-	avatar2->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar()));
+	avatar2->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar() + ".png"));
 	avatar2->setPosition(+720, -370);
 	avatar2->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
 	vectorHUD.push_back(avatar2);
@@ -504,7 +559,7 @@ void Jeu::Timing()
 	{
 		this->HUDTimer->setString(" Fin du jeu");
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
-		std::cout << "[Info]: Fin du jeu (Time done)" << std::endl;
+		//std::cout << "[Info]: Fin du jeu (Time done)" << std::endl;
 		Game_State = false;
 	}
 	else // Continue à incrementer

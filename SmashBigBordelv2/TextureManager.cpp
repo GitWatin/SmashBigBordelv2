@@ -25,7 +25,6 @@ sf::Texture* TextureManager::SetTexture(std::string path_texture)
 
 		if (!texture->loadFromFile(path_texture))
 		{
-
 			// throw erreur
 			std::cout << "[Error] -[] :Erreur dans le chargement de la texture " << path_texture << std::endl;
 			return 0;

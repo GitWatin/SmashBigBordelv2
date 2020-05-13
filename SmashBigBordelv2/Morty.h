@@ -9,10 +9,13 @@ public:
 	void SetPersonnage();
 	void Attaque(Personnage *NomCible, std::string TypeAttaque);
 	std::string GetPathTexture();
+
+
 	virtual void SetPathTexture(std::string path_perso);
 
 protected:
 	
 	std::string PathTexture;
+
 };
 

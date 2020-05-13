@@ -49,6 +49,8 @@ protected:
 	double Pourcentages;
 	float Poids;
 	int Bouclier;
+
+	std::string NomSimple;
 	std::string DerniersAtout;
 	std::string TypeAttaque;
 	std::string Path_Avatar;
