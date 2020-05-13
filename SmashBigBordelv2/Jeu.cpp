@@ -424,7 +424,14 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
 	}
 }
-
+void Jeu::DrawLimite(std::vector< Limite* > Dessin)
+{
+	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
+	{
+		fenetre->draw(*Dessin[i]);
+		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
+	}
+}
 
 // Draw les elements de l'HUD
 void Jeu::DrawHUD()

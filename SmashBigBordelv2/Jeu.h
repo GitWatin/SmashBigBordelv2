@@ -10,6 +10,7 @@
 #include "Map1.h"
 #include "Map2.h"
 #include "Collisionneur.h"
+#include "Limite.h"
 
 
 class Jeu
@@ -44,6 +45,7 @@ public:
 	 virtual void CallModif();
 	 virtual void DrawPersonnage(std::vector < Personnage* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
+	 virtual void DrawLimite(std::vector<Limite*> Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 
 	 virtual sf::Time GetdureeIteration();

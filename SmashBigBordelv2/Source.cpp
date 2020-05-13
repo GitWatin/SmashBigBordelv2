@@ -116,6 +116,7 @@ void main(int argc,char** argv[])
 
 		Game.GetWindow()->setView(*Game.GetView());
 		Game.DrawBackGround(Game.GetMapChoisie()->getBackground());
+		Game.DrawLimite(Game.GetMapChoisie()->GetlimiteMap());
 		Game.DrawPlateforme(Game.GetMapChoisie()->GetVectorPlatefomes());
 		Game.DrawPersonnage(Game.GetPerso1choisi()->GetVectorPersonnage());
 		Game.DrawPersonnage(Game.GetPerso2choisi()->GetVectorPersonnage());
