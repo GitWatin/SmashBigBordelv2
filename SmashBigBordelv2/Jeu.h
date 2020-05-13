@@ -30,7 +30,7 @@ public:
 	 virtual void ChoixMap();
 	 virtual void ChoixPerso();
 
-	 virtual void Animate(Personnage *perso, std::string direction);
+	 virtual void Animate(Personnage *perso, std::string direction,int NumPerso);
 
 	 void CheckCollision(Personnage *michel);
 
@@ -118,6 +118,10 @@ protected:
 	int Iteration;
 	int Iteration2;
 	int sens;
+
+	int LastTimePerso1;
+	int LastTimePerso2;
+
 	std::string NomTextureMove;
 	// Variable état jeu if false = jeu terminé
 	bool Game_State = true;

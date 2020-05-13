@@ -13,6 +13,7 @@ Morty::Morty(int x, int y) : Personnage()
 	this->SetNom("Morty");
 	this->SetAvatar("morty"); // Avatar de l'HUD
 	this->SetPathTexture("morty0.png");
+	this->LastTime = 0;
 	
 	this->setTexture(*t->SetTexture(this->GetPathTexture()));
 	this->setTextureRect(sf::IntRect(0, 0, 78, 110));

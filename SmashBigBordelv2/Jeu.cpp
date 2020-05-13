@@ -18,6 +18,10 @@ Jeu :: ~Jeu()
 	Entite *jeu;
 	jeu = new Entite();
 	delete jeu;
+	delete clock_Depart;
+	delete clock_HUD;
+	delete clock_jeu;
+	delete clock_Move;
 	// Destructeur HUD
 	for (int i = 0; i < vectorHUD.size(); i++)
 	{
@@ -114,12 +118,12 @@ void Jeu::CheckModif()
 		if (perso1choisi->getMoveRight()) //check si le bool est actif
 		{
 			
-			Animate(perso1choisi, "droite");
+			Animate(perso1choisi, "droite",1);
 			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso1choisi->getMoveLeft()) //check si le bool est actif
 		{
-			Animate(perso1choisi, "gauche");
+			Animate(perso1choisi, "gauche",1);
 			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
@@ -133,12 +137,12 @@ void Jeu::CheckModif()
 		//----------J2--------------------------------
 		if (perso2choisi->getMoveRight()) //check si le bool est actif
 		{
-			Animate(perso2choisi, "droite");
+			Animate(perso2choisi, "droite",2);
 			perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso2choisi->getMoveLeft()) //check si le bool est actif
 		{
-			Animate(perso2choisi, "gauche");
+			Animate(perso2choisi, "gauche",3);
 			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
@@ -230,8 +234,10 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 }*/
 
 
-void Jeu::Animate(Personnage *perso, std::string direction)
+void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
 {
+	
+
 	
 	TextureManager *texture_move;
 	texture_move= new TextureManager();
@@ -273,7 +279,7 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 		this->Iteration = 0;
 	}
 	delete texture_move;
-
+	
 }
 
 void Jeu::CallModif()

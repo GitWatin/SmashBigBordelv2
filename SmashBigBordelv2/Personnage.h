@@ -29,7 +29,7 @@ class Personnage :
 	virtual void setMoveLeft(bool ok);
 	virtual void setJump(bool ok);
 
-	
+	float LastTime;
 
 	virtual bool getMoveRight();
 	virtual bool getMoveLeft();
@@ -46,6 +46,8 @@ protected:
 	double Pourcentages;
 	float Poids;
 	int Bouclier;
+
+	
 
 	std::string NomSimple;
 	std::string DerniersAtout;
