@@ -148,7 +148,7 @@ void Jeu::CheckModif()
 
 }
 
-
+/*
 
 void Jeu::CheckCollisionPlat(Personnage *michel)
 {	/*
@@ -218,11 +218,13 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 		}
 
 		return true;
-	}*/
-	return false;
+	}
+	//return false;
 	
 	
-}
+}*/
+
+
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
 	TextureManager *texture_move;
