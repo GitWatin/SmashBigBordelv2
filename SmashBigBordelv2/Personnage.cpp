@@ -134,8 +134,6 @@ bool Personnage::getCollision()
 	return this->getCollisionneur();
 }
 
-
-
 std::vector<Personnage*> Personnage::GetVectorPersonnage()
 {
 	return Dessin;
