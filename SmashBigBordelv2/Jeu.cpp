@@ -137,7 +137,7 @@ void Jeu::CheckModif()
 		Animate(perso2choisi, "gauche");
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	 if (perso2choisi->getJump() && !perso2choisi->getCollision())
+	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 	}
@@ -145,13 +145,12 @@ void Jeu::CheckModif()
 	 {
 		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 	 }
-	 
 }
 
+}
 
-void Jeu::CheckCollision(Personnage *michel)
-{	
-	//permier jet collisioneur
+void Jeu::CheckCollisionPlat(Personnage *michel)
+{	/*
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
 	{
 		michel->CheckCollision(mapchoisie->getPlatform(i));
@@ -168,52 +167,68 @@ void Jeu::CheckCollision(Personnage *michel)
 	
 }
 
+bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
+{
+	sf::Vector2f plateformePosition = plateforme->getPosition();
+	sf::FloatRect plateformeHitBox = plateforme->getGlobalBounds();
+	sf::Vector2f michelPosition = michel->getPosition();
+	sf::FloatRect michelHitBox = michel->getGlobalBounds();
+
+	float deltaX = plateformePosition.x - michelPosition.x;
+	float deltaY = plateformePosition.y - michelPosition.y;
+
+	float intersectionX = abs(deltaX) - (plateformeHitBox.width + michelHitBox.width);
+	float intersectionY = abs(deltaY) - (plateformeHitBox.height + michelHitBox.height);
+
+	if(!michelHitBox.intersects(plateformeHitBox))
+	{
+		return true;
+	}
+	/*
+	if (plateformePosition.x < michelPosition.x + michelHitBox.width && michelPosition.x < plateformePosition.x + plateformeHitBox.width && plateformePosition.y < michelPosition.y + michelHitBox.height && michelPosition.y < plateformePosition.y + plateformeHitBox.height)
+	{
+		
+		repoussement = std::min(std::max(repoussement, 0.0f), 1.0f);
+
+		if (intersectionX > intersectionY)
+		{
+			if (deltaX > 0.0f)
+			{
+				michel->move(intersectionX * (1.0f - repoussement), 0.0f);
+				//plateforme->move(-intersectionX * (1.0f - repoussement), 0.0f);
+
+			}
+			else
+			{
+				michel->move(-intersectionX * (1.0f - repoussement), 0.0f);
+				//plateforme->move(intersectionX * (1.0f - repoussement), 0.0f);
+			}
+			if (deltaY > 0.0f)
+			{
+				michel->move(intersectionY * (1.0f - repoussement), 0.0f);
+				//plateforme->move(-intersectionY * (1.0f - repoussement), 0.0f);
+
+			}
+			else
+			{
+				michel->move(-intersectionY * (1.0f - repoussement), 0.0f);
+				//plateforme->move(intersectionY * (1.0f - repoussement), 0.0f);
+			}
+		}
+
+		return true;
+	}*/
+	return false;
+	
+	
+}
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
 	TextureManager *texture_move;
 	texture_move= new TextureManager();
 
-	NomTextureMove = perso->GetAvatar();
-	sf::Time timer_Move = clock_Move->getElapsedTime();
-
-	if (timer_Move.asSeconds() >= 0.2 && direction=="droite")
-	{
-		std::cout << sens << std::endl;
-		if (sens == 2)
-		{
-			perso->setScale(-1, 1);
-			this->sens = 1;
-		}
-		perso->setTexture(*texture_move->SetTexture(NomTextureMove+std::to_string(Iteration)+".png"));
-		//perso->setScale(-1, 1);
-
-		clock_Move->restart();
-		this->Iteration = Iteration + 1;
-		this->sens = 1;//Droite
-	}
 
 
-	if (timer_Move.asSeconds() >= 0.2 && direction == "gauche")
-	{
-		std::cout << sens << std::endl;
-		if (sens == 1)
-		{
-			std::cout << "Coucou_gauche" << std::endl;
-			perso->setScale(1, 1);
-			this->sens = 2;
-		}
-		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
-		clock_Move->restart();
-		this->Iteration = Iteration + 1;
-		this->sens = 2;//Gauche
-	}
-	else if(this->Iteration == 4)
-	{
-		this->Iteration = 0;
-	}
-	delete texture_move;
-
-}
 void Jeu::CallModif()
 {
 	// Call HUD Function 
@@ -556,7 +571,7 @@ void Jeu::Timing()
 		this->HUDTimer->setString(" Fin du jeu");
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 		//std::cout << "[Info]: Fin du jeu (Time done)" << std::endl;
-		Game_State = false;
+		Game_State_Final = false;
 	}
 	else // Continue à incrementer
 	{
@@ -582,7 +597,7 @@ void Jeu::Timing()
 		
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 		
-		//Game_State = true;
+		Game_State_Final = true;
 	}
 
 	
