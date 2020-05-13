@@ -124,9 +124,14 @@ bool Personnage::getJump()
 	return this->Jump;
 }
 
+Collisionneur* Personnage::getCollisionneur()
+{
+	return &Collisionneur(perso);
+}
+
 bool Personnage::getCollision()
 {
-	return this->Collision;
+	return this->getCollisionneur();
 }
 
 

@@ -11,6 +11,14 @@ Entite::~Entite()
 	;
 }
 
+bool Entite::CheckCollision(Entite * perso, Entite * plateforme, float repoussement)
+{
+
+	return false;
+}
+
+
+
 
 void Entite::SetNom(std::string nom)
 {

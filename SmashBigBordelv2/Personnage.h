@@ -1,5 +1,6 @@
 #pragma once
 #include "Entite.h"
+#include "Collisionneur.h"
 #include<iostream>
 
 
@@ -34,7 +35,10 @@ class Personnage :
 	virtual bool getMoveRight();
 	virtual bool getMoveLeft();
 	virtual bool getJump();
-	virtual bool getCollision();
+
+	Collisionneur * getCollisionneur();
+
+	bool getCollision();
 	
 	virtual std::vector< Personnage* >GetVectorPersonnage();
 	

@@ -9,7 +9,7 @@
 #include "Rick.h"
 #include "Map1.h"
 #include "Map2.h"
-
+#include "Collisionneur.h"
 
 
 class Jeu
@@ -65,9 +65,9 @@ protected:
 	std::vector < sf::Drawable* > vectorHUD;
 
 	const int VitesseDeplacement = 150;//  pixel/sec
-	const int VitesseSaut = 500;
+	const int VitesseSaut = 300;
+	const int Gravity = 150;
 
-	const int Gravity = 900;
 	const float Spawn_x1 = 100;
 	const float Spawn_y1 = -300;
 	const float Spawn_x2 = -100;

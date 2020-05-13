@@ -47,6 +47,11 @@ Back_Ground* Map::getBackground()
 	return BackGround;
 }
 
+Collisionneur Map::getCollisionneur(int pos)
+{
+	return Collisionneur(*this->getPlatform(pos));
+}
+
 
 /*
 void Map::GenerateurPlateformeMap(Map *mapouche)

@@ -9,7 +9,8 @@ class Plateforme :
 		//Plateforme(float position_x, float position_y, float taille_x, float taille_y,std::string path_texture);
 		Plateforme();
 		~Plateforme();
-
+	
+		
 	
 	protected:
 	 //float Pos_X;

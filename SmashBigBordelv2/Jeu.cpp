@@ -147,6 +147,17 @@ void Jeu::CheckModif()
 
 void Jeu::CheckCollision(Personnage *michel)
 {
+	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
+	{
+		mapchoisie->getCollisionneur(i).CheckCollision(michel->getCollisionneur(),0.0f);
+				
+		std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+		break;
+		
+	}
+
+
+	/* permier jet collisioneur
 	for (int i=0; i<(mapchoisie->GetVectorPlatefomes()).size() ;i++)
 	{
 		if(michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
@@ -160,7 +171,7 @@ void Jeu::CheckCollision(Personnage *michel)
 			std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
 			michel->setCollision(false);
 		}
-	}	
+	}*/	
 }
 
 void Jeu::CallModif()

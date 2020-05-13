@@ -92,17 +92,17 @@ void main(int argc,char** argv[])
 		while (Game.GetWindow()->pollEvent(event))
 		{
 			Game.CheckInput(event);
-
+			
 			if (event.type == sf::Event::Closed)
 				Game.GetWindow()->close();
 		}
 		//-------------------------------- Modification des états des objets--------------------
-
+		Game.SetView(1600, 900);
 		Game.CheckModif();
 		Game.CheckCollision(Game.GetPerso1choisi());
 		Game.CheckCollision(Game.GetPerso2choisi());
 		Game.CallModif();
-		Game.SetView(1600, 900); //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
+		 //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		
 
 		//back_ground->setPosition((-rect_game_x/2),(-rect_game_y/2)); //Rectangle de fond positionner au milieur de la vue

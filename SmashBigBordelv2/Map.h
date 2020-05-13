@@ -1,6 +1,7 @@
 #pragma once
 #include "Plateforme.h"
 #include "Back_Ground.h"
+#include"Collisionneur.h"
 #include <iostream>
 class Map
 {
@@ -14,6 +15,8 @@ public:
 	Plateforme* getPlatform(int pos);
 	virtual std::vector< Plateforme* >GetVectorPlatefomes();
 	Back_Ground* getBackground();
+
+	Collisionneur getCollisionneur(int pos);
 
 protected:
 
