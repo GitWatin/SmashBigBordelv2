@@ -110,8 +110,8 @@ void Jeu::CheckInput(sf::Event event)
 
 void Jeu::CheckModif()
 {
-	//if (Game_State == true && Game_State_Final == true) decommenter ca pour avoir le countdown
-	if(true)
+	if (Game_State == true && Game_State_Final == true)// decommenter ca pour avoir le countdown
+	//if(true)
 	{
 		//---------J1--------------------------------
 
@@ -240,8 +240,6 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 
 void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
 {
-	
-
 	
 	TextureManager *texture_move;
 	texture_move= new TextureManager();
@@ -376,7 +374,6 @@ void Jeu::ChoixPerso()
 		break;
 	}
 
-	
 }
 
 Map* Jeu::GetMapChoisie()
@@ -563,10 +560,6 @@ void Jeu::CreateHUD()
 	HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width/2, HUDTimer->getGlobalBounds().height/2);
 	HUDTimer->setPosition(0, -410);
 	vectorHUD.push_back(HUDTimer);
-
-
-
-
 	
 	delete font;
 	delete texture_hud;
@@ -653,8 +646,6 @@ void Jeu::Timing()
 		Game_State_Final = true;
 	}
 
-	
-
 }
 
 void Jeu::CountDown()
@@ -665,7 +656,7 @@ void Jeu::CountDown()
 	if (timer_Depart.asSeconds() >= 1 && Game_State==false)
 	{
 		this->CountDownInt = CountDownInt - 1;
-		this->HUDTimer->setString( "Début dans :" + std::to_string(this->CountDownInt));
+		this->HUDTimer->setString( "Start du game dans :" + std::to_string(this->CountDownInt));
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 		clock_Depart->restart();
 		Game_State = false;
