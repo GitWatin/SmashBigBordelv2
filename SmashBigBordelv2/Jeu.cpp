@@ -166,12 +166,12 @@ void Jeu::CheckCollisionPlat(Personnage *michel)
 		if (michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
 		{
 			michel->setCollision(true);
-			//std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
 			break;
 		}
 		if (!michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
 		{
-			//std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
+			std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
 			michel->setCollision(false);
 		}
 	}
