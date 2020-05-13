@@ -11,8 +11,6 @@ Jeu::Jeu()
 	this->fenetre->setFramerateLimit(60);
 	this->clock = new sf::Clock;
 	this->dureeIteration = sf::Time::Zero;
-
-
 }
 
 Jeu :: ~Jeu()
@@ -160,8 +158,6 @@ void Jeu::CheckCollisionPlat(Personnage *jacque)
 			std::cout << "[Collision] : " << jacque->GetNom() << " et " << mapchoisie->getPlatform(i) << " BOOL : "<< jacque->getCollision() << std::endl;
 		}
 	}
-
-	
 }
 
 bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
@@ -260,8 +256,6 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 	{
 		this->Iteration = 0;
 	}
-
-
 	delete texture_move;
 
 }
@@ -276,8 +270,6 @@ void Jeu::CallModif()
 	{
 		Timing();
 	}
-
-	
 }
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
@@ -311,7 +303,6 @@ void Jeu::ChoixMap()
 		this->TempsDeJeu = 90;
 		break;
 	}
-	
 }
 
 void Jeu::ChoixPerso()
@@ -433,7 +424,6 @@ void Jeu::DrawHUD()
 void Jeu::DrawBackGround(Back_Ground *BackGround)
 {
 	fenetre->draw(*BackGround);
-
 
 }
 
@@ -663,8 +653,6 @@ void Jeu::CountDown()
 	{
 		std::cout << "J suis la" << std::endl;
 		Game_State = true;
-		
-
 	}
 
 
