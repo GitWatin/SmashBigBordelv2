@@ -122,7 +122,7 @@ void Jeu::CheckModif()
 			Animate(perso1choisi, "gauche");
 			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso1choisi->getJump() && perso1choisi->getVershaut() && !perso1choisi->getVersbas())
+		if (perso1choisi->getJump() && perso1choisi->getVershaut()/*&& !perso2choisi->getVersbas()*/)
 		{
 			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
 		}
@@ -141,7 +141,7 @@ void Jeu::CheckModif()
 			Animate(perso2choisi, "gauche");
 			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
-		if (perso2choisi->getJump() && perso2choisi->getVershaut() && !perso2choisi->getVersbas())
+		if (perso2choisi->getJump() && perso2choisi->getVershaut() /*&& !perso2choisi->getVersbas()*/)
 		{
 			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 		}
@@ -168,6 +168,10 @@ void Jeu::CheckCollision(Personnage *michel)
 	if (!michel->getCheckCollision())
 	{
 		michel->setCollision(false);
+		michel->setVersbas(true);
+		michel->setVershaut(true);
+		michel->setVersgauche(true);
+		michel->setVersdroite(true);
 	}
 	michel->setCheckCollision(false);
 	

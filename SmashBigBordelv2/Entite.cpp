@@ -36,25 +36,25 @@ void Entite::CheckCollision(Entite *entite, float repoussement, sf::Time dureeIt
 				this->setVersdroite(false);//vers la droite
 				
 			}
-			else
+			else if (deltaX < 0.0f)
 			{
 				this->move(-(intersectionX *dureeIteration.asSeconds())  * (dureeIteration.asSeconds() - repoussement), 0.0f);//vers la gauche
-				this->setVersdroite(false);
+				this->setVersgauche(false);
 				
 			}
-		}
-		else
-		{
+		
+		else if(intersectionX < intersectionY)
+		
 			if (deltaY > 0.0f)
 			{
 				this->move(0.0f, (intersectionX *dureeIteration.asSeconds())  * (dureeIteration.asSeconds() - repoussement));//vers le bas
-				this->setVersdroite(false);
+				this->setVersbas(false);
 				
 			}
-			else
+			else if (deltaY < 0.0f)
 			{
 				this->move(0.0f ,-(intersectionX *dureeIteration.asSeconds()) * (dureeIteration.asSeconds() - repoussement));//vers le haut
-				this->setVersdroite(false);
+				this->setVershaut(false);
 				
 			}
 		}
