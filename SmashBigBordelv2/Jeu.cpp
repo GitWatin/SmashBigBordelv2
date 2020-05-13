@@ -137,7 +137,7 @@ void Jeu::CheckModif()
 		Animate(perso2choisi, "gauche");
 		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
-	 if (perso2choisi->getJump() && !perso2choisi->getCollision())
+	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
 	{
 		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 	}
@@ -145,11 +145,13 @@ void Jeu::CheckModif()
 	 {
 		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 	 }
+
 }
 
+/*
 
-void Jeu::CheckCollision(Personnage *michel)
-{	
+void Jeu::CheckCollisionPlat(Personnage *michel)
+{	/*
 	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
 	{
 		michel->CheckCollision(mapchoisie->getPlatform(i));
@@ -166,7 +168,6 @@ void Jeu::CheckCollision(Personnage *michel)
 	
 }
 
-/*
 bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 {
 	sf::Vector2f plateformePosition = plateforme->getPosition();
@@ -218,15 +219,54 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 
 		return true;
 	}
-	
+	//return false;
 	
 	
 }*/
 
+
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
 	TextureManager *texture_move;
-	texture_move = new TextureManager();
+	texture_move= new TextureManager();
+	NomTextureMove = perso->GetAvatar();
+	sf::Time timer_Move = clock_Move->getElapsedTime();
+
+	std::cout << dureeIteration.asSeconds() << std::endl;
+
+	if (timer_Move.asSeconds() >= 0.2 && direction == "droite")
+	{
+		std::cout << sens << std::endl;
+		if (sens == 2)
+		{
+			perso->setScale(-1, 1);
+			this->sens = 1;
+		}
+		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
+		//perso->setScale(-1, 1);
+
+		clock_Move->restart();
+		this->Iteration = Iteration + 1;
+		this->sens = 1;//Droite
+	}
+	if (timer_Move.asSeconds() >= 0.2 && direction == "gauche")
+	{
+		std::cout << sens << std::endl;
+		if (sens == 1)
+		{	
+			perso->setScale(1, 1);
+			this->sens = 2;
+		}
+		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
+		clock_Move->restart();
+		this->Iteration = Iteration + 1;
+		this->sens = 2;//Gauche
+	}
+	else if (this->Iteration == 4)
+	{
+		this->Iteration = 0;
+	}
+	delete texture_move;
 
 }
 
@@ -260,7 +300,7 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 void Jeu::ChoixMap()
 {
 	int choix;
-	// a gerer avec un switch dans le menu pour les différente maps
+	// a gerer avec un switch dans le menu pour les diffÃ©rente maps
 	std::cout << "Choissez une map : \n 1. Map 1 \n 2. Map 2 \n";
 	std::cin >> choix;
 	switch (choix)
@@ -280,7 +320,7 @@ void Jeu::ChoixPerso()
 {
 	int choix1;
 	int choix2;
-	// a gerer avec un switch dans le menu pour les différente maps
+	// a gerer avec un switch dans le menu pour les diffÃ©rente maps
 	std::cout << "perso 1  : \n 1. Rick 1 \n 2. Morty \n";
 	std::cin >> choix1;
 	switch (choix1)
@@ -361,7 +401,7 @@ void Jeu::SetView(float TailleX , float TailleY)
 
 void Jeu::DrawPersonnage(std::vector < Personnage* > Dessin)
 {
-	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
+	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de crÃ©ation[1][2]
 	{
 		fenetre->draw(*Dessin[i]);
 		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
@@ -372,7 +412,7 @@ void Jeu::DrawPersonnage(std::vector < Personnage* > Dessin)
 
 void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 {
-	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
+	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de crÃ©ation[1][2]
 	{
 		fenetre->draw(*Dessin[i]);
 		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
@@ -384,7 +424,7 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 void Jeu::DrawHUD()
 {
 	
-	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
+	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de crÃ©ation[1][2]
 	{
 		fenetre->draw(*vectorHUD[i]);
 		
@@ -574,7 +614,7 @@ void Jeu::Timing()
 		//std::cout << "[Info]: Fin du jeu (Time done)" << std::endl;
 		Game_State_Final = false;
 	}
-	else // Continue à incrementer
+	else // Continue Ã  incrementer
 	{
 		this->secondes = timer_HUD.asSeconds();
 		
@@ -613,7 +653,7 @@ void Jeu::CountDown()
 	if (timer_Depart.asSeconds() >= 1 && Game_State==false)
 	{
 		this->CountDownInt = CountDownInt - 1;
-		this->HUDTimer->setString( "Début dans :" + std::to_string(this->CountDownInt));
+		this->HUDTimer->setString( "DÃ©but dans :" + std::to_string(this->CountDownInt));
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 		clock_Depart->restart();
 		Game_State = false;
