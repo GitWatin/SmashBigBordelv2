@@ -658,8 +658,5 @@ void Jeu::CountDown()
 		std::cout << "J suis la" << std::endl;
 		Game_State = true;
 	}
-
-
-
 }
 
