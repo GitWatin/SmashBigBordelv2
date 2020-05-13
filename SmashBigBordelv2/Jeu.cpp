@@ -109,44 +109,46 @@ void Jeu::CheckInput(sf::Event event)
 void Jeu::CheckModif()
 {
 	//---------J1--------------------------------
-	
-	if (perso1choisi->getMoveRight()) //check si le bool est actif
-	{	
-		Animate(perso1choisi, "droite");
-		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
-	}
-	 if (perso1choisi->getMoveLeft()) //check si le bool est actif
+	if (Game_State = true)
 	{
-		 Animate(perso1choisi, "gauche");
-		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
+		if (perso1choisi->getMoveRight()) //check si le bool est actif
+		{
+			Animate(perso1choisi, "droite");
+			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
+		}
+		if (perso1choisi->getMoveLeft()) //check si le bool est actif
+		{
+			Animate(perso1choisi, "gauche");
+			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
+		}
+		if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
+		{
+			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
+		}
+		if (!perso1choisi->getCollision() && !perso1choisi->getJump())
+		{
+			perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+		}
+		//----------J2--------------------------------
+		if (perso2choisi->getMoveRight()) //check si le bool est actif
+		{
+			Animate(perso2choisi, "droite");
+			perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
+		}
+		if (perso2choisi->getMoveLeft()) //check si le bool est actif
+		{
+			Animate(perso2choisi, "gauche");
+			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
+		}
+		if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
+		{
+			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
+		}
+		if (!perso2choisi->getCollision() && !perso2choisi->getJump())
+		{
+			perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
+		}
 	}
-	if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
-	{
-		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
-	}
-	if (!perso1choisi->getCollision() && !perso1choisi->getJump())
-	{
-		perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
-	}
-	//----------J2--------------------------------
-	if (perso2choisi->getMoveRight()) //check si le bool est actif
-	{
-		Animate(perso2choisi, "droite");
-		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * VitesseDeplacement), 0);
-	}
-	if (perso2choisi->getMoveLeft()) //check si le bool est actif
-	{
-		Animate(perso2choisi, "gauche");
-		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
-	}
-	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
-	{
-		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
-	}
-	 if (!perso2choisi->getCollision()&& !perso2choisi->getJump())
-	 {
-		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
-	 }
 }
 
 void Jeu::Animate(Personnage *perso, std::string direction)
