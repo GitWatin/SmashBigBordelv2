@@ -109,48 +109,114 @@ void Jeu::CheckInput(sf::Event event)
 void Jeu::CheckModif()
 {
 	//---------J1--------------------------------
-	if (Game_State = true)
-	{
-		if (perso1choisi->getMoveRight()) //check si le bool est actif
-		{
-			Animate(perso1choisi, "droite");
-			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
-		}
-		if (perso1choisi->getMoveLeft()) //check si le bool est actif
-		{
-			Animate(perso1choisi, "gauche");
-			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
-		}
-		if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
-		{
-			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
-		}
-		if (!perso1choisi->getCollision() && !perso1choisi->getJump())
-		{
-			perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
-		}
-		//----------J2--------------------------------
-		if (perso2choisi->getMoveRight()) //check si le bool est actif
-		{
-			Animate(perso2choisi, "droite");
-			perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
-		}
-		if (perso2choisi->getMoveLeft()) //check si le bool est actif
-		{
-			Animate(perso2choisi, "gauche");
-			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
-		}
-		if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
-		{
-			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
-		}
-		if (!perso2choisi->getCollision() && !perso2choisi->getJump())
-		{
-			perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
-		}
+	
+	if (perso1choisi->getMoveRight()) //check si le bool est actif
+	{	
+		Animate(perso1choisi, "droite");
+		perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 	}
+	 if (perso1choisi->getMoveLeft()) //check si le bool est actif
+	{
+		 Animate(perso1choisi, "gauche");
+		perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
+	}
+	if (perso1choisi->getJump()/*&& perso1choisi->getCollision()*/)
+	{
+		perso1choisi->move(0 ,(-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
+	}
+	if (!perso1choisi->getCollision() && !perso1choisi->getJump())
+	{
+		perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+	}
+	//----------J2--------------------------------
+	if (perso2choisi->getMoveRight()) //check si le bool est actif
+	{
+		Animate(perso2choisi, "droite");
+		perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement /perso2choisi->GetPoids()) * VitesseDeplacement), 0);
+	}
+	if (perso2choisi->getMoveLeft()) //check si le bool est actif
+	{
+		Animate(perso2choisi, "gauche");
+		perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
+	}
+	 if (perso2choisi->getJump() /*&& perso2choisi->getCollision()*/)
+	{
+		perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
+	}
+	 if (!perso2choisi->getCollision()&& !perso2choisi->getJump())
+	 {
+		 perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
+	 }
 }
 
+
+void Jeu::CheckCollisionPlat(Personnage *jacque)
+{
+	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
+	{
+		jacque->setCollision(this->CheckCollision(jacque, mapchoisie->getPlatform(i), 0.0f));
+		if(jacque->getCollision())
+		{
+			std::cout << "[Collision] : " << jacque->GetNom() << " et " << mapchoisie->getPlatform(i) << " BOOL : "<< jacque->getCollision() << std::endl;
+		}
+	}
+
+	
+}
+
+bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
+{
+	sf::Vector2f plateformePosition = plateforme->getPosition();
+	sf::FloatRect plateformeHitBox = plateforme->getGlobalBounds();
+	sf::Vector2f michelPosition = michel->getPosition();
+	sf::FloatRect michelHitBox = michel->getGlobalBounds();
+
+	float deltaX = plateformePosition.x - michelPosition.x;
+	float deltaY = plateformePosition.y - michelPosition.y;
+
+	float intersectionX = abs(deltaX) - (plateformeHitBox.width + michelHitBox.width);
+	float intersectionY = abs(deltaY) - (plateformeHitBox.height + michelHitBox.height);
+
+	if(michel->getGlobalBounds().intersects(plateforme->getGlobalBounds()))
+	{
+		return true;
+	}
+	/*
+	if (plateformePosition.x < michelPosition.x + michelHitBox.width && michelPosition.x < plateformePosition.x + plateformeHitBox.width && plateformePosition.y < michelPosition.y + michelHitBox.height && michelPosition.y < plateformePosition.y + plateformeHitBox.height)
+	{
+		
+		repoussement = std::min(std::max(repoussement, 0.0f), 1.0f);
+
+		if (intersectionX > intersectionY)
+		{
+			if (deltaX > 0.0f)
+			{
+				michel->move(intersectionX * (1.0f - repoussement), 0.0f);
+				//plateforme->move(-intersectionX * (1.0f - repoussement), 0.0f);
+
+			}
+			else
+			{
+				michel->move(-intersectionX * (1.0f - repoussement), 0.0f);
+				//plateforme->move(intersectionX * (1.0f - repoussement), 0.0f);
+			}
+			if (deltaY > 0.0f)
+			{
+				michel->move(intersectionY * (1.0f - repoussement), 0.0f);
+				//plateforme->move(-intersectionY * (1.0f - repoussement), 0.0f);
+
+			}
+			else
+			{
+				michel->move(-intersectionY * (1.0f - repoussement), 0.0f);
+				//plateforme->move(intersectionY * (1.0f - repoussement), 0.0f);
+			}
+		}
+
+		return true;
+	}*/
+	return false;
+}
 void Jeu::Animate(Personnage *perso, std::string direction)
 {
 	TextureManager *texture_move;
@@ -199,82 +265,6 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 	delete texture_move;
 
 }
-void Jeu::CheckCollisionPlat(Personnage *jacque)
-{
-	for (int i = 0; i < (mapchoisie->GetVectorPlatefomes()).size(); i++)
-	{
-		this->CheckCollision(jacque, mapchoisie->getPlatform(i), 0);
-	}
-	
-}
-
-void Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
-{
-	sf::Vector2f plateformePosition = plateforme->getPosition();
-	sf::FloatRect plateformeHitBox = plateforme->getGlobalBounds();
-	sf::Vector2f michelPosition = michel->getPosition();
-	sf::FloatRect michelHitBox = michel->getGlobalBounds();
-
-	float deltaX = plateformePosition.x - michelPosition.x;
-	float deltaY = plateformePosition.y - michelPosition.y;
-
-	float intersectionX = abs(deltaX) - (plateformeHitBox.width + michelHitBox.width);
-	float intersectionY = abs(deltaY) - (plateformeHitBox.height + michelHitBox.height);
-
-	if (plateformePosition.x < michelPosition.x + michelHitBox.width && michelPosition.x < plateformePosition.x + plateformeHitBox.width && plateformePosition.y < michelPosition.y + michelHitBox.height && michelPosition.y < plateformePosition.y + plateformeHitBox.height)
-	{
-		repoussement = std::min(std::max(repoussement, 0.0f), 1.0f);
-
-		if (intersectionX > intersectionY)
-		{
-			if (deltaX > 0.0f)
-			{
-				michel->move(intersectionX * (1.0f - repoussement), 0.0f);
-				plateforme->move(-intersectionX * (1.0f - repoussement), 0.0f);
-
-			}
-			else
-			{
-				michel->move(-intersectionX * (1.0f - repoussement), 0.0f);
-				plateforme->move(intersectionX * (1.0f - repoussement), 0.0f);
-			}
-			if (deltaY > 0.0f)
-			{
-				michel->move(intersectionY * (1.0f - repoussement), 0.0f);
-				plateforme->move(-intersectionY * (1.0f - repoussement), 0.0f);
-
-			}
-			else
-			{
-				michel->move(-intersectionY * (1.0f - repoussement), 0.0f);
-				plateforme->move(intersectionY * (1.0f - repoussement), 0.0f);
-			}
-		}
-
-		michel->setCollision(true);
-	}
-
-	michel->setCollision(false);
-	
-
-
-	/* permier jet collisioneur
-	for (int i=0; i<(mapchoisie->GetVectorPlatefomes()).size() ;i++)
-	{
-		if(michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
-		{
-			michel->setCollision(true);
-			//std::cout << "[Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
-			break;
-		}
-		if(!michel->getGlobalBounds().intersects(mapchoisie->getPlatform(i)->getGlobalBounds()))
-		{
-			//std::cout << "[Fin Collision] : " << michel->GetNom() << " et " << mapchoisie->getPlatform(i) << std::endl;
-			michel->setCollision(false);
-		}
-	}*/	
-}
-
 void Jeu::CallModif()
 {
 	// Call HUD Function 
