@@ -57,7 +57,7 @@ int Personnage::GetNbre_Vies()
 
 void  Personnage::SetDerniersAtout(std::string derniers_atout)
 {
-	std::cout << "[SET ATOUTS:] " << derniers_atout <<  std::endl;
+	//std::cout << "[SET ATOUTS:] " << derniers_atout <<  std::endl;
 	this->DerniersAtout = derniers_atout;
 }
 
