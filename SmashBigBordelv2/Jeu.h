@@ -147,6 +147,7 @@ protected:
 
 	// Attribut pour la gestion des mouvements
 	sf::Clock *clock_Move;
+	sf::Clock * clock_Att;
 	sf::Time timer_Move;
 	int Iteration;
 	int Iteration2;

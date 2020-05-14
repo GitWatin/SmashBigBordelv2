@@ -104,25 +104,25 @@ void main(int argc,char** argv[])
 		Game.CheckCollision(Game.GetPerso2choisi());
 		Game.CallModif();
 		Game.CheckVictory();
-		 //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
+		//center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		
 
-			   //back_ground->setPosition((-rect_game_x/2),(-rect_game_y/2)); //Rectangle de fond positionner au milieur de la vue
-			   //point_reference->setPosition((-Rshape / 2), (-Rshape / 2));//Cercle vert positionner au milieur de la vue Référence
+		//back_ground->setPosition((-rect_game_x/2),(-rect_game_y/2)); //Rectangle de fond positionner au milieur de la vue
+		//point_reference->setPosition((-Rshape / 2), (-Rshape / 2));//Cercle vert positionner au milieur de la vue Référence
 
-			   //-------------------------------- Effacer le contenu de la fenêtre----------------------
+		//-------------------------------- Effacer le contenu de la fenêtre----------------------
 
-				Game.GetWindow()->clear();
+		Game.GetWindow()->clear();
 
-				//-------------------------------- Liaison des objets graphiques à la fenêtre------------
+		//-------------------------------- Liaison des objets graphiques à la fenêtre------------
 
-				Game.GetWindow()->setView(*Game.GetView());
-				Game.DrawBackGround(Game.GetMapChoisie()->getBackground());
-				Game.DrawPlateforme(Game.GetMapChoisie()->GetVectorPlatefomes());
-				Game.DrawPersonnage(Game.GetPerso1choisi()->GetVectorPersonnage());
-				Game.DrawPersonnage(Game.GetPerso2choisi()->GetVectorPersonnage());
-				Game.DrawHUD();
-				Game.GetWindow()->display();
+		Game.GetWindow()->setView(*Game.GetView());
+		Game.DrawBackGround(Game.GetMapChoisie()->getBackground());
+		Game.DrawPlateforme(Game.GetMapChoisie()->GetVectorPlatefomes());
+		Game.DrawPersonnage(Game.GetPerso1choisi()->GetVectorPersonnage());
+		Game.DrawPersonnage(Game.GetPerso2choisi()->GetVectorPersonnage());
+		Game.DrawHUD();
+		Game.GetWindow()->display();
 
 			
 	}

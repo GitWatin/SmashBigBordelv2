@@ -20,6 +20,7 @@ Jeu :: ~Jeu()
 	delete clock_HUD;
 	delete clock_jeu;
 	delete clock_Move;
+	delete clock_Att;
 	
 	// Destructeur HUD
 	for (int i = 0; i < vectorHUD.size(); i++)
@@ -151,12 +152,12 @@ void Jeu::CheckModif()
 		}
 		if (perso1choisi->getAttaque())
 		{
-			sf::Time TempsDernièreAttaque = clock_Move->getElapsedTime();
+			sf::Time TempsDernièreAttaque = clock_Att->getElapsedTime();
 			if (TempsDernièreAttaque.asSeconds() <= 1.0f)
 			{
 				perso1choisi->Attaque(perso2choisi, perso1choisi->GetLastTime(), dureeIteration.asSeconds());//augmenter% 
 			}
-			clock_Move->restart();
+			clock_Att->restart();
 		}
 		//----------J2--------------------------------
 		if (perso2choisi->getMoveRight() && perso2choisi->getVersdroite() && !perso2choisi->getAttaque())//check si le bool est actif
@@ -178,15 +179,14 @@ void Jeu::CheckModif()
 		{
 			perso2choisi->move(0, (dureeIteration.asSeconds()*((perso2choisi->GetPoids()) * Gravity)));
 		}
-		if ( perso2choisi->getAttaque())
+		if (perso2choisi->getRepoussement())
 		{
-			sf::Time TempsDernièreAttaque = clock_Move->getElapsedTime();
+			sf::Time TempsDernièreAttaque = clock_Att->getElapsedTime();
 			if (TempsDernièreAttaque.asSeconds() <= 1.0f )
 			{
 				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime(),dureeIteration.asSeconds());//augmenter% 
 			}
-			clock_Move->restart();
-				
+			clock_Att->restart();	
 		}
 	} 
 }
@@ -294,6 +294,7 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 	this->clock_jeu = new sf::Clock; //  
 	this->clock_HUD = new sf::Clock; 
 	this->clock_Move = new sf::Clock;
+	this->clock_Att = new sf::Clock;
 	temporary_time = 60;
 	CountDownInt = 5;
 	Game_State = false;

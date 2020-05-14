@@ -29,7 +29,7 @@ class Personnage :
 	virtual void setMoveLeft(bool ok);
 	virtual void setJump(bool ok);
 	virtual void setAttaque(bool ok);
-
+	virtual void setRepoussement(bool ok);
 	virtual int GetLastTime();
 	virtual void SetLastTime(int value);
 
@@ -37,6 +37,7 @@ class Personnage :
 	virtual bool getMoveLeft();
 	virtual bool getJump();
 	virtual bool getAttaque();
+	virtual bool getRepoussement();
 
 	
 	
@@ -62,5 +63,6 @@ protected:
 	bool moveLeft=false;
 	bool Jump=false;
 	bool attaque = false;
+	bool repoussement = false;
 };
 
