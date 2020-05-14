@@ -61,6 +61,7 @@ void Jeu::CheckInput(sf::Event event)
 			perso1choisi->setJump(true);
 			break;
 		case sf::Keyboard::RControl:
+			if(perso1choisi->CheckAttaque(perso2choisi))
 			perso1choisi->setAttaque(true);
 			break;
 
@@ -76,6 +77,7 @@ void Jeu::CheckInput(sf::Event event)
 			perso2choisi->setJump(true);
 			break;
 		case sf::Keyboard::Space:
+			if(perso2choisi->CheckAttaque(perso2choisi))
 			perso2choisi->setAttaque(true);
 			break;
 		}
@@ -96,7 +98,7 @@ void Jeu::CheckInput(sf::Event event)
 		case sf::Keyboard::Up:
 			perso1choisi->setJump(false);
 			break;
-		case sf::Keyboard::LControl:
+		case sf::Keyboard::RControl:	
 			perso1choisi->setAttaque(false);
 			break;
 
@@ -149,19 +151,12 @@ void Jeu::CheckModif()
 		}
 		if (perso1choisi->getAttaque())
 		{
-			if (perso1choisi->CheckAttaque(perso2choisi))
+			sf::Time TempsDernièreAttaque = clock_Move->getElapsedTime();
+			if (TempsDernièreAttaque.asSeconds() <= 1.0f)
 			{
-				perso1choisi->Attaque(perso2choisi, perso1choisi->GetLastTime());//augmenter% 
+				perso1choisi->Attaque(perso2choisi, perso1choisi->GetLastTime(), dureeIteration.asSeconds());//augmenter% 
 			}
-			if (perso1choisi->GetLastTime() == 1)//droite
-			{
-				perso2choisi->move(perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
-			}
-			if (perso1choisi->GetLastTime() == 2)//gauche
-			{
-				perso2choisi->move(-perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
-			}	
-			perso1choisi->setAttaque(false);
+			clock_Move->restart();
 		}
 		//----------J2--------------------------------
 		if (perso2choisi->getMoveRight() && perso2choisi->getVersdroite() && !perso2choisi->getAttaque())//check si le bool est actif
@@ -185,20 +180,13 @@ void Jeu::CheckModif()
 		}
 		if ( perso2choisi->getAttaque())
 		{
-			if (perso2choisi->CheckAttaque(perso1choisi))
+			sf::Time TempsDernièreAttaque = clock_Move->getElapsedTime();
+			if (TempsDernièreAttaque.asSeconds() <= 1.0f )
 			{
-				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime());//augmenter% 
+				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime(),dureeIteration.asSeconds());//augmenter% 
 			}
-			
-			if (perso2choisi->GetLastTime() == 1)//droite
-			{
-				perso1choisi->move(perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
-			}
-			if (perso2choisi->GetLastTime() == 2)//gauche
-			{
-				perso1choisi->move(-perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
-			}
-			perso2choisi->setAttaque(false);	
+			clock_Move->restart();
+				
 		}
 	} 
 }
