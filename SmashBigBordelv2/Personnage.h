@@ -50,7 +50,7 @@ protected:
 	float Poids;
 	int Bouclier;
 
-	int LastTime
+	int LastTime;
 
 	std::string NomSimple;
 	std::string DerniersAtout;

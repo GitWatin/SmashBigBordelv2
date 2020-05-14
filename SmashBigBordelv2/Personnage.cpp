@@ -23,6 +23,11 @@ void Personnage::SetPourcentages(int percent)
 	this->Pourcentages = percent;
 }
 
+void Personnage::SetPourcentages(double percent)
+{
+	this->Pourcentages = percent;
+}
+
 int Personnage::GetPourcentages()
 {
 	return this->Pourcentages;
@@ -102,6 +107,21 @@ void Personnage::setMoveLeft(bool ok)
 void Personnage::setJump(bool ok)
 {
 	this->Jump = ok;
+}
+
+void Personnage::setAttaque(bool ok)
+{
+	this->attaque = ok;
+}
+
+int Personnage::GetLastTime()
+{
+	return LastTime;
+}
+
+void Personnage::SetLastTime(int value)
+{
+	this->LastTime = value;
 }
 
 
