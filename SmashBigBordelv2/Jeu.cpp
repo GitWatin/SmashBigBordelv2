@@ -188,7 +188,7 @@ void Jeu::CheckCollision(Personnage *michel)
 
 
 
-void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
+void Jeu::Animate(Personnage *perso, std::string direction)
 {
 	
 	TextureManager *texture_move;
@@ -668,10 +668,9 @@ void Jeu::Perso1Gagne()
 	texture_Rick = new TextureManager();
 	// Victoire du perso 2
 	perso1choisi->setTexture(*texture_Rick->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
-	perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
+	//perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
 	perso2choisi->setTexture(*texture_Rick->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
 
-	Game_State = false;
 	Game_State_Final = false;
 
 	this->HUDTimer->setString(perso1choisi->GetNom() + " Winner ");
@@ -685,10 +684,9 @@ void Jeu::Perso2Gagne()
 	texture_Rick = new TextureManager();
 	// Victoire du perso 2
 	perso1choisi->setTexture(*texture_Rick->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
-	perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
+	//perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
 	perso2choisi->setTexture(*texture_Rick->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
 
-	Game_State = false;
 	Game_State_Final = false;
 
 	this->HUDTimer->setString(perso2choisi->GetNom() + " Winner ");
