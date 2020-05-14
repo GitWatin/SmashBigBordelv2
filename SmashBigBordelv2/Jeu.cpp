@@ -121,8 +121,7 @@ void Jeu::CheckInput(sf::Event event)
 
 void Jeu::CheckModif()
 {
-	//std::cout << "Game_State" << Game_State << std::endl;
-	//std::cout << "Game_State_Final" << Game_State_Final << std::endl;
+
 
 	// decommenter ca pour avoir le countdown
 	//if(true)
@@ -370,40 +369,37 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 
 void Jeu::ChoixMap()
 {
-	int choix;
+	
 	// a gerer avec un switch dans le menu pour les différente maps
-	std::cout << "Choissez une map : \n 1. Map 1 \n 2. Map 2 \n";
-	std::cin >> choix;
+	//std::cout << "Choissez une map : \n 1. Map 1 \n 2. Map 2 \n";
+	//std::cin >> choix;
+	//choix = 1;
 	switch (choix)
 	{
 	case 1 :
 		this->mapchoisie = new Map1();
-		this->TempsDeJeu = 15;
+		this->TempsDeJeu = 95;
 		break;
 	case 2:
 		this->mapchoisie = new Map2();
-		this->TempsDeJeu = 90;
+		this->TempsDeJeu = 95;
 		break;
 	}
 }
 
 void Jeu::ChoixPerso()
 {
-	int choix1;
-	int choix2;
+
 	// a gerer avec un switch dans le menu pour les différente maps
-	std::cout << "perso 1  : \n 1. Rick 1 \n 2. Morty \n";
-	std::cin >> choix1;
+	//std::cout << "perso 1  : \n 1. Rick 1 \n 2. Morty \n";
+	//std::cin >> choix1;
+	//choix1 = 1;
 	switch (choix1)
 	{
 	case 1:
 		
 		perso1choisi = new Rick(Spawn_x1,Spawn_y1);
-
-
 		std::cout << "J1 : Rick \n"<<std::endl;
-		
-
 		break;
 	case 2:
 		
@@ -413,8 +409,9 @@ void Jeu::ChoixPerso()
 	}
 
 	
-	std::cout << "perso 2 : \n 1. Rick 1 \n 2. Morty \n";
-	std::cin >> choix2;
+	//std::cout << "perso 2 : \n 1. Rick 1 \n 2. Morty \n";
+	//std::cin >> choix2;
+	//choix2 = 2;
 	switch (choix2)
 	{
 	case 1:
@@ -496,6 +493,8 @@ void Jeu::DrawHUD()
 	}
 }
 
+
+
 void Jeu::DrawBackGround(Back_Ground *BackGround)
 {
 	fenetre->draw(*BackGround);
@@ -550,7 +549,7 @@ void Jeu::CreateHUD()
 
 	Perso1->setString("Morty");
 	Perso1->setFont(*font->SetFont("quicksand.ttf"));
-	Perso1->setFillColor(sf::Color::Black);
+	Perso1->setFillColor(sf::Color::Green);
 	Perso1->setPosition(perso1choisi->getPosition().x, perso1choisi->getPosition().y-85);
 	Perso1->setOrigin(Perso1->getGlobalBounds().width / 2, Perso1->getGlobalBounds().height / 2);
 	vectorHUD.push_back(Perso1);
@@ -641,7 +640,7 @@ void Jeu::CreateHUD()
 
 	Perso2->setString(perso2choisi->GetNom());
 	Perso2->setFont(*font->SetFont("quicksand.ttf"));
-	Perso2->setFillColor(sf::Color::Black);
+	Perso2->setFillColor(sf::Color::Blue);
 	Perso2->setPosition(perso2choisi->getPosition().x, perso2choisi->getPosition().y - 85);
 	Perso2->setOrigin(Perso2->getGlobalBounds().width / 2, Perso2->getGlobalBounds().height / 2);
 	vectorHUD.push_back(Perso2);
@@ -810,5 +809,168 @@ void Jeu::Perso2Gagne()
 	this->HUDTimer->setString(perso2choisi->GetNom() + " Winner ");
 	this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 	delete texture_Rick;
+}
+
+
+void Jeu::StartMenu()
+{
+
+	sf::RenderWindow Menu(sf::VideoMode(800, 600), "Menu");
+	std::string NomJoueur1="";
+	std::string NomJoueur2="";
+	std::string MAP = "";
+	choix = 1;
+
+	while (Menu.isOpen())
+	{
+		FontManager *font;
+		font = new FontManager();
+		TextureManager *texture_menu;
+		texture_menu= new TextureManager();
+		MenuMap1 = new sf::Sprite;
+		MenuMap1->setTextureRect(sf::IntRect(0, 0, 1600, 900));
+		MenuMap1->setTexture(*texture_menu->SetTexture("background_map1.png"));
+		MenuMap1->setScale(0.1, 0.1);
+		MenuMap1->setPosition(200, 100);
+
+		MenuMap2 = new sf::Sprite;
+		MenuMap2->setTextureRect(sf::IntRect(0, 0, 1600, 900));
+		MenuMap2->setTexture(*texture_menu->SetTexture("background_map2.png"));
+		MenuMap2->setScale(0.1, 0.1);
+		MenuMap2->setPosition(400, 100);
+
+		Joueur1 = new sf::Text;
+		Joueur1->setPosition(200, 300);
+		Joueur1-> setFont(*font->SetFont("quicksand.ttf"));
+		Joueur1->setString("Joueur 1:" + NomJoueur1);
+		Joueur1->setFillColor(sf::Color::Green);
+
+
+		Joueur2 = new sf::Text;
+		Joueur2->setPosition(500, 300);
+		Joueur2->setFont(*font->SetFont("quicksand.ttf"));
+		Joueur2->setString("Joueur 2 :"+NomJoueur2);
+		Joueur2->setFillColor(sf::Color::Green);
+
+		SelectedMap = new sf::Text;
+		SelectedMap->setPosition(300, 50);
+		SelectedMap->setFont(*font->SetFont("quicksand.ttf"));
+		SelectedMap->setString("MAP :" + MAP);
+		SelectedMap->setFillColor(sf::Color::Green);
+
+		MenuJ1Morty = new sf::Sprite;
+		MenuJ1Morty->setTextureRect(sf::IntRect(0, 0,80,80));
+		MenuJ1Morty->setTexture(*texture_menu->SetTexture("morty.png"));
+		MenuJ1Morty->setPosition(150, 400);
+
+		MenuJ1Rick = new sf::Sprite;
+		MenuJ1Rick->setTextureRect(sf::IntRect(0, 0, 80, 80));
+		MenuJ1Rick->setTexture(*texture_menu->SetTexture("rick.png"));
+		MenuJ1Rick->setPosition(250, 400);
+
+		MenuJ2Morty = new sf::Sprite;
+		MenuJ2Morty->setTextureRect(sf::IntRect(0, 0, 80, 80));
+		MenuJ2Morty->setTexture(*texture_menu->SetTexture("morty.png"));
+		MenuJ2Morty->setPosition(450, 400);
+
+		MenuJ2Rick = new sf::Sprite;
+		MenuJ2Rick->setTextureRect(sf::IntRect(0, 0, 80, 80));
+		MenuJ2Rick->setTexture(*texture_menu->SetTexture("rick.png"));
+		MenuJ2Rick->setPosition(550, 400);
+
+		Play = new sf::Sprite;
+		Play->setTextureRect(sf::IntRect(0, 0, 1024, 1024));
+		Play->setScale(0.0781, 0.0781);
+		Play->setTexture(*texture_menu->SetTexture("play.png"));
+		Play->setPosition(600, 500);
+	   	  
+
+		// on inspecte tous les évènements de la fenêtre qui ont été émis depuis la précédente itération
+		sf::Event event;
+		while (Menu.pollEvent(event))
+		{
+
+
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				if (Play->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
+				{
+					Menu.close();
+				}
+				if (MenuMap1->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
+				{
+					std::cout << "MAp 1 Map : " << choix << std::endl;
+					this->choix = 1;
+					MAP = "SF";
+				}
+				if (MenuMap2->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
+				{
+					std::cout << "MAp2 Map : " << choix << std::endl;
+					this->choix = 2;
+					MAP = "Desert";
+				}
+
+				if (MenuJ1Morty->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
+				{
+					std::cout << "Choix 1 : " << choix << std::endl;
+					this->choix1 = 1;
+					NomJoueur1 = "Morty";
+				}
+				if (MenuJ1Rick->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
+				{
+					std::cout << "Choix 1 : " << choix << std::endl;
+					this->choix1 = 2;
+					NomJoueur1 = "Rick";
+				}
+				if (MenuJ2Morty->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
+				{
+					std::cout << "Choix 1 : " << choix << std::endl;
+					this->choix2 = 1;
+					NomJoueur2 = "Morty";
+				}
+				if (MenuJ2Rick->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
+				{
+					std::cout << "Choix 1 : " << choix << std::endl;
+					this->choix2 = 2;
+					NomJoueur2 = "Rick";
+				}
+			}
+
+
+
+
+
+
+
+
+
+			// évènement "fermeture demandée" : on ferme la fenêtre
+			if (event.type == sf::Event::Closed)
+				Menu.close();
+		}
+
+		Menu.clear();
+		Menu.draw(*MenuMap1);
+		Menu.draw(*MenuMap2);
+		Menu.draw(*Joueur1);
+		Menu.draw(*Joueur2);
+		Menu.draw(*MenuJ1Morty);
+		Menu.draw(*MenuJ1Rick);
+		Menu.draw(*MenuJ2Morty);
+		Menu.draw(*MenuJ2Rick);
+		Menu.draw(*Play);
+		Menu.draw(*SelectedMap);
+		Menu.display();
+
+
+		delete texture_menu;
+		delete font;
+	}
+
+
+	
+	Menu.close();
+
+
 }
 

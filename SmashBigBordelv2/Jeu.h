@@ -61,6 +61,8 @@ public:
 	 // Draw HUD
 	 virtual void DrawHUD();
 
+	 virtual void StartMenu();
+
 
 
 
@@ -76,6 +78,7 @@ protected:
 	Personnage *perso2choisi;
 
 	std::vector < sf::Drawable* > vectorHUD;
+	std::vector < sf::Drawable* > Menu;
 
 	const int VitesseDeplacement = 150;//  pixel/sec
 	const int VitesseSaut = 300;
@@ -92,11 +95,8 @@ protected:
 	sf::Text *BouclierPerso1;
 	sf::Text *AtoutPerso1;
 	sf::Text *PourcentPerso1;
-
 	sf::Text *Perso1;
 	sf::Text *Perso2;
-
-		
 	sf::Text *HUDTimer;
 	sf::Sprite *Winner;
 	sf::Sprite *avatar2;
@@ -105,6 +105,24 @@ protected:
 	sf::Text *BouclierPerso2;
 	sf::Text *AtoutPerso2;
 	sf::Text *PourcentPerso2;
+
+
+	// Sprite pour le menu
+	sf::Sprite *MenuMap1;
+	sf::Sprite *MenuMap2;
+	sf::Text *Joueur1;
+	sf::Text *Joueur2;
+	sf::Text *SelectedMap;
+	sf::Sprite *MenuJ1Rick;
+	sf::Sprite *MenuJ1Morty;
+	sf::Sprite *MenuJ2Rick;
+	sf::Sprite *MenuJ2Morty;
+	sf::Sprite *Play;
+	int choix;
+	int choix1;
+	int choix2;
+
+
 
 	int minute;
 	int secondes;

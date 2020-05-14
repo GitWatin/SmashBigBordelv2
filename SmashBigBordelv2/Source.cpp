@@ -76,7 +76,7 @@ void main(int argc,char** argv[])
 	//point_reference->setFillColor(sf::Color::Green);
 	
 
-
+	Game.StartMenu();
 
 	
 	Game.ChoixMap();
