@@ -9,6 +9,7 @@ class Entite : public sf::Sprite
 public: // A voir pour les déclaration a cause de sfml
 	Entite();
 	~Entite();
+	bool CheckZone(Entite * background);
 	virtual void CheckCollision(Entite *entite, float repoussement, sf::Time dureeIteration);
 	virtual void setCollision(bool ok);
 	virtual bool getCollision();

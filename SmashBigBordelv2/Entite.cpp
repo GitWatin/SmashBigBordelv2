@@ -11,7 +11,28 @@ Entite::~Entite()
 {
 	;
 }
+bool Entite::CheckZone(Entite *background)
+{
+	float CenterX = background->getOrigin().x ;
+	float CenterY = background->getOrigin().y;
+	float CoteDroit = (this->getPosition().x) - ((this->getGlobalBounds().width) / 2);//droite
+	float CoteGauche = (this->getPosition().x) + ((this->getGlobalBounds().width) / 2); //gauche
+	float CoteHaut = (this->getPosition().y) + ((this->getGlobalBounds().height) / 2); //haut
+	float CoteBas = (this->getPosition().x) - ((this->getGlobalBounds().width) / 2); //bas
 
+	if (background->getGlobalBounds().intersects(this->getGlobalBounds()))
+	{
+		if ((CenterX + ((background->getGlobalBounds().width) / 2)) < CoteDroit || (CenterX - ((background->getGlobalBounds().width) / 2 ))< CoteGauche || (CenterY + ((background->getGlobalBounds().height) / 2)) < CoteBas|| (CenterY - ((background->getGlobalBounds().height) / 2)) < CoteHaut)
+		{
+			return true;
+		}
+	}
+	else
+	{
+		return false;
+	}
+
+}
 void Entite::CheckCollision(Entite *entite, float repoussement, sf::Time dureeIteration)
 {
 	sf::Vector2f jacquePosition = entite->getPosition();
