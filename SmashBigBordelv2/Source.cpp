@@ -103,6 +103,7 @@ void main(int argc,char** argv[])
 		Game.CheckCollision(Game.GetPerso1choisi());
 		Game.CheckCollision(Game.GetPerso2choisi());
 		Game.CallModif();
+		Game.CheckVictory();
 		 //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		
 
