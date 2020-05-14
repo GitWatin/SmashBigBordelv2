@@ -20,6 +20,7 @@ Jeu :: ~Jeu()
 	delete clock_HUD;
 	delete clock_jeu;
 	delete clock_Move;
+	delete clock_Att;
 	
 	// Destructeur HUD
 	for (int i = 0; i < vectorHUD.size(); i++)
@@ -61,6 +62,7 @@ void Jeu::CheckInput(sf::Event event)
 			perso1choisi->setJump(true);
 			break;
 		case sf::Keyboard::RControl:
+			if(perso1choisi->CheckAttaque(perso2choisi))
 			perso1choisi->setAttaque(true);
 			break;
 
@@ -76,6 +78,7 @@ void Jeu::CheckInput(sf::Event event)
 			perso2choisi->setJump(true);
 			break;
 		case sf::Keyboard::Space:
+			if(perso2choisi->CheckAttaque(perso2choisi))
 			perso2choisi->setAttaque(true);
 			break;
 		}
@@ -96,7 +99,7 @@ void Jeu::CheckInput(sf::Event event)
 		case sf::Keyboard::Up:
 			perso1choisi->setJump(false);
 			break;
-		case sf::Keyboard::LControl:
+		case sf::Keyboard::RControl:	
 			perso1choisi->setAttaque(false);
 			break;
 
@@ -123,6 +126,9 @@ void Jeu::CheckInput(sf::Event event)
 void Jeu::CheckModif()
 {
 
+
+	// decommenter ca pour avoir le countdown
+	//if(true)
 	if (Game_State == true && Game_State_Final == true)
 	{
 		//---------J1--------------------------------
@@ -148,19 +154,12 @@ void Jeu::CheckModif()
 		}
 		if (perso1choisi->getAttaque())
 		{
-			if (perso1choisi->CheckAttaque(perso2choisi))
+			sf::Time TempsDernièreAttaque = clock_Att->getElapsedTime();
+			if (TempsDernièreAttaque.asSeconds() <= 1.0f)
 			{
-				perso1choisi->Attaque(perso2choisi, perso1choisi->GetLastTime());//augmenter% 
+				perso1choisi->Attaque(perso2choisi, perso1choisi->GetLastTime(), dureeIteration.asSeconds());//augmenter% 
 			}
-			if (perso1choisi->GetLastTime() == 1)//droite
-			{
-				perso2choisi->move(perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
-			}
-			if (perso1choisi->GetLastTime() == 2)//gauche
-			{
-				perso2choisi->move(-perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
-			}	
-			perso1choisi->setAttaque(false);
+			clock_Att->restart();
 		}
 		//----------J2--------------------------------
 		if (perso2choisi->getMoveRight() && perso2choisi->getVersdroite() && !perso2choisi->getAttaque())//check si le bool est actif
@@ -182,22 +181,14 @@ void Jeu::CheckModif()
 		{
 			perso2choisi->move(0, (dureeIteration.asSeconds()*((perso2choisi->GetPoids()) * Gravity)));
 		}
-		if ( perso2choisi->getAttaque())
+		if (perso2choisi->getRepoussement())
 		{
-			if (perso2choisi->CheckAttaque(perso1choisi))
+			sf::Time TempsDernièreAttaque = clock_Att->getElapsedTime();
+			if (TempsDernièreAttaque.asSeconds() <= 1.0f )
 			{
-				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime());//augmenter% 
+				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime(),dureeIteration.asSeconds());//augmenter% 
 			}
-			
-			if (perso2choisi->GetLastTime() == 1)//droite
-			{
-					perso1choisi->move(perso1choisi->GetPourcentages()*dureeIteration.asSeconds() * 10, 0);	
-			}
-			if (perso2choisi->GetLastTime() == 2)//gauche
-			{
-				perso1choisi->move(-perso1choisi->GetPourcentages()*dureeIteration.asSeconds() * 10, 0);
-			}
-			perso2choisi->setAttaque(false);	
+			clock_Att->restart();	
 		}
 	} 
 }
@@ -305,6 +296,7 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 	this->clock_jeu = new sf::Clock; //  
 	this->clock_HUD = new sf::Clock; 
 	this->clock_Move = new sf::Clock;
+	this->clock_Att = new sf::Clock;
 	temporary_time = 60;
 	CountDownInt = 5;
 	Game_State = false;
@@ -860,7 +852,6 @@ void Jeu::StartMenu()
 				if (Play->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
 					Menu.close();
-					
 				}
 				if (MenuMap1->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
@@ -919,16 +910,6 @@ void Jeu::StartMenu()
 		Menu.draw(*SelectedMap);
 		Menu.display();
 
-		delete MenuJ1Morty;
-		delete MenuJ1Rick;
-		delete MenuJ2Morty;
-		delete MenuJ2Rick;
-		delete Joueur1;
-		delete Joueur2;
-		delete Play;
-		delete SelectedMap;
-		delete MenuMap1;
-		delete MenuMap2;
 
 		delete texture_menu;
 		delete font;
