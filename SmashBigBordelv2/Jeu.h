@@ -31,6 +31,7 @@ public:
 	 virtual void ChoixPerso();
 
 	 virtual void Animate(Personnage *perso, std::string direction,int NumPerso);
+	 virtual void CheckVictory();
 
 	 void CheckCollision(Personnage *michel);
 
