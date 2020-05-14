@@ -9,12 +9,13 @@
 
 Map::Map(int plateforme)
 {
-	while (plateforme) 
+	this->BackGround = new Back_Ground();
+	while (plateforme+4) 
 	{
 		this->plateformes.push_back(new Plateforme());// TODO créer un constructeur vide ?
 		plateforme--;
 	}
-	this->BackGround = new Back_Ground();
+	
 	
 }
 

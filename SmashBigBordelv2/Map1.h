@@ -10,6 +10,8 @@ class Map1 :
 		Map1();
 		virtual void setPlatefomes();
 		virtual void setBackground();
+		
+
 		sf::Vector2f * getVue();
 		virtual std::string GetPath(int taille);
 		std::string GetPathBackground();

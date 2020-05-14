@@ -56,6 +56,13 @@ void Map2::setBackground()
 
 	delete t;
 }
+//void Map2::setBordure()
+//{
+//	this->GetVectorPlatefomes().push_back(new Plateforme(Sx / 2, 0, 100, Sy + 200)); //droite
+//	this->GetVectorPlatefomes().push_back(new Plateforme(-Sx / 2, 0, 100, Sy + 200));//gauche
+//	this->GetVectorPlatefomes().push_back(new Plateforme(0, -Sy / 2, Sx + 200, 100));//haut	
+//	this->GetVectorPlatefomes().push_back(new Plateforme(0, Sy / 2, Sx + 200, 100));//bas
+//}
 sf::Vector2f *Map2::getVue()
 {
 	size = new sf::Vector2f(Sx, Sy);
