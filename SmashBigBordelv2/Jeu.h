@@ -7,9 +7,11 @@
 #include "Entite.h"
 #include "Morty.h"
 #include "Rick.h"
+
 #include "Map1.h"
 #include "Map2.h"
 #include "Collisionneur.h"
+#include "Limite.h"
 
 
 class Jeu
@@ -40,11 +42,12 @@ public:
 	 Personnage* GetPerso2choisi();
 
 	 sf::View* GetView();
-	 void SetView(float TailleX, float TailleY);
+	 void SetView(sf::Vector2f *size);
 	 
 	 virtual void CallModif();
 	 virtual void DrawPersonnage(std::vector < Personnage* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
+	 //virtual void DrawLimite(std::vector<Limite*> Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 
 	 virtual sf::Time GetdureeIteration();
@@ -71,9 +74,9 @@ protected:
 
 	std::vector < sf::Drawable* > vectorHUD;
 
-	const int VitesseDeplacement = 150;//  pixel/sec
-	const int VitesseSaut = 300;
-	const int Gravity = 150;
+	const float VitesseDeplacement = 150;//  pixel/sec
+	const float VitesseSaut = 20;
+	const float Gravity = 9.81;
 
 	const float Spawn_x1 = 100;
 	const float Spawn_y1 = -500;
