@@ -104,6 +104,18 @@ void Personnage::setJump(bool ok)
 	this->Jump = ok;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 int Personnage::GetLastTime()
 {
 	return this->LastTime;
@@ -112,6 +124,11 @@ int Personnage::GetLastTime()
 void Personnage::SetLastTime(int value)
 {
 	this->LastTime = value;
+=======
+void Personnage::setAttaque(bool ok)
+{
+	this->attaque = ok;
+>>>>>>> efccdb7e313b727ba373cd7638a1ced1c57f7db8
 }
 
 
@@ -128,6 +145,11 @@ bool Personnage::getMoveLeft()
 bool Personnage::getJump()
 {
 	return this->Jump;
+}
+
+bool Personnage::getAttaque()
+{
+	return this->attaque;
 }
 
 
