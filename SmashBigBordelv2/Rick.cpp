@@ -22,7 +22,7 @@ Rick::Rick(int x,int y) : Personnage()
 	this->setTextureRect(sf::IntRect(0, 0, 85, 124));
 	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
 	this->setPosition(x, y);
-
+	*t->SetTexture(this->GetAvatar() + "victory.png");
 	Dessin.push_back(this);
 
 	delete t;
