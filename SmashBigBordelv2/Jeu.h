@@ -66,7 +66,6 @@ protected:
 	sf::RenderWindow *fenetre;
 	sf::View *Vueprincipal;
 	Map *mapchoisie;
-
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
 
