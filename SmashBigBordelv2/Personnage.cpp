@@ -104,6 +104,11 @@ void Personnage::setJump(bool ok)
 	this->Jump = ok;
 }
 
+void Personnage::setAttaque(bool ok)
+{
+	this->attaque = ok;
+}
+
 
 bool Personnage::getMoveRight()
 {
@@ -118,6 +123,11 @@ bool Personnage::getMoveLeft()
 bool Personnage::getJump()
 {
 	return this->Jump;
+}
+
+bool Personnage::getAttaque()
+{
+	return this->attaque;
 }
 
 

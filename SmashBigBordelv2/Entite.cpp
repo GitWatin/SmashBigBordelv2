@@ -19,17 +19,41 @@ bool Entite::CheckZone(Entite *background)
 	float CoteGauche = (this->getPosition().x) + ((this->getGlobalBounds().width) / 2); //gauche
 	float CoteHaut = (this->getPosition().y) + ((this->getGlobalBounds().height) / 2); //haut
 	float CoteBas = (this->getPosition().x) - ((this->getGlobalBounds().width) / 2); //bas
-
-	if (background->getGlobalBounds().intersects(this->getGlobalBounds()))
 	{
-		if ((CenterX + ((background->getGlobalBounds().width) / 2)) < CoteDroit || (CenterX - ((background->getGlobalBounds().width) / 2 ))< CoteGauche || (CenterY + ((background->getGlobalBounds().height) / 2)) < CoteBas|| (CenterY - ((background->getGlobalBounds().height) / 2)) < CoteHaut)
+		if (background->getGlobalBounds().intersects(this->getGlobalBounds()))
 		{
-			return true;
+			if ((CenterX + ((background->getGlobalBounds().width) / 2)) < CoteDroit || (CenterX - ((background->getGlobalBounds().width) / 2)) < CoteGauche || (CenterY + ((background->getGlobalBounds().height) / 2)) < CoteBas || (CenterY - ((background->getGlobalBounds().height) / 2)) < CoteHaut)
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return false;
 		}
 	}
-	else
+
+}
+bool Entite::CheckAttaque(Entite *entite)
+{
+	float CenterX = entite->getOrigin().x;
+	float CenterY = entite->getOrigin().y;
+	float CoteDroit = (this->getPosition().x) + ((this->getGlobalBounds().width) / 2);//droite
+	float CoteGauche = (this->getPosition().x) - ((this->getGlobalBounds().width) / 2); //gauche
+	float CoteHaut = (this->getPosition().y) - ((this->getGlobalBounds().height) / 2); //haut
+	float CoteBas = (this->getPosition().x) + ((this->getGlobalBounds().width) / 2); //bas
 	{
-		return false;
+		if (entite->getGlobalBounds().intersects(this->getGlobalBounds()))
+		{
+			if ((CenterX + ((entite->getGlobalBounds().width) / 2)) < CoteDroit || (CenterX - ((entite->getGlobalBounds().width) / 2)) < CoteGauche || (CenterY + ((entite->getGlobalBounds().height) / 2)) < CoteBas || (CenterY - ((entite->getGlobalBounds().height) / 2)) < CoteHaut)
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }

@@ -30,9 +30,19 @@ Rick::Rick(int x,int y) : Personnage()
 
 
 
-void Rick::Attaque(Personnage *NomCible, std::string TypeAttaque)
+void Rick::Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration)
 {
-	 
+	NomCible->SetPourcentages(NomCible->GetPourcentages()+10);
+	if (TypeAttaque = 1)//droite
+	{
+		NomCible->move(NomCible->GetPourcentages()*dureeIteration, 0);
+	}
+	if (TypeAttaque = 2)//gauche
+	{
+		NomCible->move(-NomCible->GetPourcentages()*dureeIteration, 0);
+	}
+	
+
 }
 
 void Rick::SetPathTexture(std::string path_texture_rick)
