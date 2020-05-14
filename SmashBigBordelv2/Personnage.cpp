@@ -23,10 +23,7 @@ void Personnage::SetPourcentages(int percent)
 	this->Pourcentages = percent;
 }
 
-void Personnage::SetPourcentages(double percent)
-{
-	this->Pourcentages = percent;
-}
+
 
 int Personnage::GetPourcentages()
 {
