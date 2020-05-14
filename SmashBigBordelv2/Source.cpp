@@ -98,7 +98,7 @@ void main(int argc,char** argv[])
 				Game.GetWindow()->close();
 		}
 		//-------------------------------- Modification des états des objets--------------------
-		Game.SetView(1600, 900);
+		Game.SetView(Game.GetMapChoisie()->getVue());
 		Game.CheckModif();
 		Game.CheckCollision(Game.GetPerso1choisi());
 		Game.CheckCollision(Game.GetPerso2choisi());
