@@ -11,8 +11,8 @@ class Personnage :
 	~Personnage();
 	virtual void SetPersonnage() = 0;
 	virtual void Attaque(Personnage *NomCible, std::string TypeAttaque) = 0;
-	virtual void SetPourcentages(double percent);
-	virtual double GetPourcentages();
+	virtual void SetPourcentages(int percent);
+	virtual int GetPourcentages();
 	virtual void SetPoids(float poids);
 	virtual int GetPoids();
 	virtual void SetNbre_Vies(int nbre_vies);
@@ -29,7 +29,8 @@ class Personnage :
 	virtual void setMoveLeft(bool ok);
 	virtual void setJump(bool ok);
 
-	int LastTime;
+	virtual int GetLastTime();
+	virtual void SetLastTime(int value);
 
 	virtual bool getMoveRight();
 	virtual bool getMoveLeft();
@@ -43,11 +44,11 @@ protected:
 	int Nbre_Vies;
 	int Force_Attaque1;
 	int Force_Attaque2;
-	double Pourcentages;
+	int Pourcentages;
 	float Poids;
 	int Bouclier;
 
-	
+	int LastTime
 
 	std::string NomSimple;
 	std::string DerniersAtout;

@@ -200,30 +200,30 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 
 	if (timer_Move.asSeconds() >= 0.2 && direction == "droite")
 	{
-		if (perso->LastTime == 2)
+		if (perso->GetLastTime() == 2)
 		{
 			perso->setScale(-1, 1);
-			perso->LastTime = 1;
+			perso->SetLastTime(1);
 		}
 		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
 		//perso->setScale(-1, 1);
 
 		clock_Move->restart();
 		this->Iteration = Iteration + 1;
-		perso->LastTime = 1;//Droite
+		perso->SetLastTime(1);//Droite
 	}
 	if (timer_Move.asSeconds() >= 0.2 && direction == "gauche")
 	{
 		std::cout << sens << std::endl;
-		if (perso->LastTime == 1)
+		if (perso->GetLastTime() == 1)
 		{	
 			perso->setScale(1, 1);
-			perso->LastTime = 2;
+			perso->SetLastTime(2);
 		}
 		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
 		clock_Move->restart();
 		this->Iteration = Iteration + 1;
-		perso->LastTime = 2;//Gauche
+		perso->SetLastTime(2);//Gauche
 	}
 	if (timer_Move.asSeconds() >= 0.2 && direction == "jump")
 	{
@@ -468,12 +468,17 @@ void Jeu::CreateHUD()
 
 	NomPerso1 = new sf::Text;
 	NomPerso2 = new sf::Text;
+
+	Perso1 = new sf::Text;
+	Perso2 = new sf::Text;
 	ViePerso1 = new sf::Text;
 	ViePerso2 = new sf::Text;
 	BouclierPerso1 = new sf::Text;
 	BouclierPerso2 = new sf::Text;
 	AtoutPerso1 = new sf::Text;
 	AtoutPerso2 = new sf::Text;
+	PourcentPerso1 = new sf::Text;
+	PourcentPerso2 = new sf::Text;
 	HUDTimer = new sf::Text;
 	
 	avatar1 = new sf::Sprite;
@@ -494,33 +499,48 @@ void Jeu::CreateHUD()
 	avatar1->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
 
 	vectorHUD.push_back(avatar1);
-	
+
+	Perso1->setString("Morty");
+	Perso1->setFont(*font->SetFont("quicksand.ttf"));
+	Perso1->setFillColor(sf::Color::Black);
+	Perso1->setPosition(perso1choisi->getPosition().x, perso1choisi->getPosition().y-85);
+	Perso1->setOrigin(Perso1->getGlobalBounds().width / 2, Perso1->getGlobalBounds().height / 2);
+	vectorHUD.push_back(Perso1);
+
 	NomPerso1->setString("Morty");
 	NomPerso1->setFont(*font->SetFont("quicksand.ttf"));
-	NomPerso1->setFillColor(sf::Color::Red);
+	NomPerso1->setFillColor(sf::Color::Green);
 	NomPerso1->setPosition(-670, -410);
 	vectorHUD.push_back(NomPerso1);
 
 	ViePerso1->setString("Vie restante : 3");
 	ViePerso1->setFont(*font->SetFont("quicksand.ttf"));
-	ViePerso1->setFillColor(sf::Color::Red);
+	ViePerso1->setFillColor(sf::Color::Green);
 	ViePerso1->setCharacterSize(24);
 	ViePerso1->setPosition(-670, -360);
 	vectorHUD.push_back(ViePerso1);
 
 	BouclierPerso1->setString("Bouclier : 100%");
 	BouclierPerso1->setFont(*font->SetFont("quicksand.ttf"));
-	BouclierPerso1->setFillColor(sf::Color::Red);
+	BouclierPerso1->setFillColor(sf::Color::Green);
 	BouclierPerso1->setCharacterSize(24);
 	BouclierPerso1->setPosition(-480, -410);
 	vectorHUD.push_back(BouclierPerso1);
 
 	AtoutPerso1->setString("");
 	AtoutPerso1->setFont(*font->SetFont("quicksand.ttf"));
-	AtoutPerso1->setFillColor(sf::Color::Red);
+	AtoutPerso1->setFillColor(sf::Color::Green);
 	AtoutPerso1->setCharacterSize(24);
 	AtoutPerso1->setPosition(-480, -360);
 	vectorHUD.push_back(AtoutPerso1);
+
+
+	PourcentPerso1->setString("");
+	PourcentPerso1->setFont(*font->SetFont("quicksand.ttf"));
+	PourcentPerso1->setFillColor(sf::Color::Green);
+	PourcentPerso1->setCharacterSize(50);
+	PourcentPerso1->setPosition(-740, +360);
+	vectorHUD.push_back(PourcentPerso1);
 
 
 	// --------------- Perso 2 ----------------------
@@ -562,6 +582,22 @@ void Jeu::CreateHUD()
 	AtoutPerso2->setPosition(+480, -360);
 	vectorHUD.push_back(AtoutPerso2);
 
+	PourcentPerso2->setString("");
+	PourcentPerso2->setFont(*font->SetFont("quicksand.ttf"));
+	PourcentPerso2->setFillColor(sf::Color::Blue);
+	PourcentPerso2->setCharacterSize(50);
+	PourcentPerso2->setOrigin(PourcentPerso2->getGlobalBounds().width, 0);
+	PourcentPerso2->setPosition(+740, +360);
+	vectorHUD.push_back(PourcentPerso2);
+
+
+	Perso2->setString(perso2choisi->GetNom());
+	Perso2->setFont(*font->SetFont("quicksand.ttf"));
+	Perso2->setFillColor(sf::Color::Black);
+	Perso2->setPosition(perso2choisi->getPosition().x, perso2choisi->getPosition().y - 85);
+	Perso2->setOrigin(Perso2->getGlobalBounds().width / 2, Perso2->getGlobalBounds().height / 2);
+	vectorHUD.push_back(Perso2);
+
 
 	HUDTimer->setString("");
 	HUDTimer->setFont(*font->SetFont("quicksand.ttf"));
@@ -570,6 +606,9 @@ void Jeu::CreateHUD()
 	HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width/2, HUDTimer->getGlobalBounds().height/2);
 	HUDTimer->setPosition(0, -410);
 	vectorHUD.push_back(HUDTimer);
+
+
+
 	
 	delete font;
 	delete texture_hud;
@@ -587,6 +626,16 @@ void Jeu::SetHUD()
 
 	//std::cout << "[Info]: " << perso2choisi->GetDerniersAtout() << std::endl;
 
+	Perso1->setString(perso1choisi->GetNom());
+	Perso1->setOrigin(Perso1->getGlobalBounds().width / 2, Perso1->getGlobalBounds().height / 2);
+	Perso1->setPosition(perso1choisi->getPosition().x, perso1choisi->getPosition().y + -85);
+
+	Perso2->setString(perso2choisi->GetNom());
+	Perso2->setOrigin(Perso2->getGlobalBounds().width / 2, Perso2->getGlobalBounds().height / 2);
+	Perso2->setPosition(perso2choisi->getPosition().x, perso2choisi->getPosition().y + -85);
+	
+	
+
 	NomPerso1->setString(perso1choisi->GetNom());
 	NomPerso2->setString(perso2choisi->GetNom());
 
@@ -597,6 +646,10 @@ void Jeu::SetHUD()
 	BouclierPerso1->setString("Bouclier :" + std::to_string(perso1choisi->GetBouclier()));
 	BouclierPerso2->setString("Bouclier :" + std::to_string(perso2choisi->GetBouclier()));
 	BouclierPerso2->setOrigin(BouclierPerso2->getGlobalBounds().width, 0);
+
+	PourcentPerso1->setString(std::to_string(perso1choisi->GetPourcentages()) + "%");
+	PourcentPerso2->setString(std::to_string(perso2choisi->GetPourcentages()) + "%");
+	PourcentPerso2->setOrigin(PourcentPerso2->getGlobalBounds().width, 0);
 
 	if (perso1choisi->GetDerniersAtout() != "")
 	{

@@ -90,6 +90,11 @@ protected:
 	sf::Text *ViePerso1;
 	sf::Text *BouclierPerso1;
 	sf::Text *AtoutPerso1;
+	sf::Text *PourcentPerso1;
+
+	sf::Text *Perso1;
+	sf::Text *Perso2;
+
 		
 	sf::Text *HUDTimer;
 	sf::Sprite *Winner;
@@ -98,6 +103,7 @@ protected:
 	sf::Text *ViePerso2;
 	sf::Text *BouclierPerso2;
 	sf::Text *AtoutPerso2;
+	sf::Text *PourcentPerso2;
 
 	int minute;
 	int secondes;
