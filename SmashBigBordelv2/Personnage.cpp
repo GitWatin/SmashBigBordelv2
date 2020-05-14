@@ -24,7 +24,6 @@ void Personnage::SetPourcentages(int percent)
 }
 
 
-
 int Personnage::GetPourcentages()
 {
 	return this->Pourcentages;

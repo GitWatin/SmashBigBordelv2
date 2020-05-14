@@ -17,7 +17,7 @@ sf::Font * FontManager::SetFont(std::string path_font)
 
 	static sf::Font *font;
 
-	font = this->GetFont(path_font);// Mr Lerat on a un problème ici aussi ( renvoie l'erreur std::out_of_range car pas d'élément "trouvable" dans map)
+	font = this->GetFont(path_font);
 	if (font == NULL)
 	{
 		std::cout << "[INFO] -[] :Premier IF " << std::endl;
@@ -48,12 +48,10 @@ sf::Font * FontManager::GetFont(std::string path_font)
 
 	if (map_font.find(path_font) == map_font.end())
 	{
-		// Ca n'existe pas 
 		return NULL;
 	}
 	else
 	{
-		// Du coup ca existe MDR hg
 		return  map_font.find(path_font)->second;
 	}
 }

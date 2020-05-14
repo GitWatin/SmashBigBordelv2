@@ -21,26 +21,6 @@ void Map2::setPlatefomes()
 	this->getPlatform(0)->setOrigin(this->getPlatform(0)->getGlobalBounds().width / 2, this->getPlatform(0)->getGlobalBounds().height / 2);
 
 
-	/*
-	this->getPlatform(1)->setPosition(100, 300);
-	this->getPlatform(1)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(1)->setTextureRect(sf::IntRect(0, 0, 100, 20));
-
-
-	this->getPlatform(2)->setPosition(-100, 200);
-	this->getPlatform(2)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(2)->setTextureRect(sf::IntRect(0, 0, 100, 20));
-
-
-	this->getPlatform(3)->setPosition(50, 20);
-	this->getPlatform(3)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(3)->setTextureRect(sf::IntRect(0, 0, 100, 20));
-
-
-	this->getPlatform(4)->setPosition(-500, 900);
-	this->getPlatform(4)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(4)->setTextureRect(sf::IntRect(0, 0, 1000, 50));
-	*/
 	delete t;
 
 }
@@ -56,13 +36,7 @@ void Map2::setBackground()
 
 	delete t;
 }
-//void Map2::setBordure()
-//{
-//	this->GetVectorPlatefomes().push_back(new Plateforme(Sx / 2, 0, 100, Sy + 200)); //droite
-//	this->GetVectorPlatefomes().push_back(new Plateforme(-Sx / 2, 0, 100, Sy + 200));//gauche
-//	this->GetVectorPlatefomes().push_back(new Plateforme(0, -Sy / 2, Sx + 200, 100));//haut	
-//	this->GetVectorPlatefomes().push_back(new Plateforme(0, Sy / 2, Sx + 200, 100));//bas
-//}
+
 sf::Vector2f *Map2::getVue()
 {
 	size = new sf::Vector2f(Sx, Sy);

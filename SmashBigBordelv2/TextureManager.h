@@ -7,7 +7,6 @@
 class TextureManager
 {
 public :
-	
 	TextureManager();
 	~TextureManager();
 	virtual sf::Texture* GetTexture(std::string path_texture);

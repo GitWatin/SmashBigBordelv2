@@ -65,16 +65,6 @@ void main(int argc,char** argv[])
 
 	Jeu Game;
 	
-	//window = new sf::RenderWindow (sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
-	//window->setFramerateLimit(60);
-	
-	//------------------------Création des Sprite ---------------------------------------------
-	// rect defini pour la plage de jeu
-	//back_ground = new sf::RectangleShape (sf::Vector2f(rect_game_x,rect_game_y));
-	//mes_objets.push_back(back_ground);
-	//point_reference = new sf::CircleShape(Rshape);
-	//point_reference->setFillColor(sf::Color::Green);
-	
 	Game.StartMenu();
 
 	Game.ChoixMap();

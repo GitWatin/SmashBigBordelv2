@@ -13,7 +13,7 @@ public:
 	
 protected:
 
-	std::string PathTexture;// rajouter le path
+	std::string PathTexture;
 
 
 };

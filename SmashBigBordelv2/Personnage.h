@@ -38,8 +38,6 @@ class Personnage :
 	virtual bool getJump();
 	virtual bool getAttaque();
 
-	
-	
 	virtual std::vector< Personnage* >GetVectorPersonnage();
 	
 protected:

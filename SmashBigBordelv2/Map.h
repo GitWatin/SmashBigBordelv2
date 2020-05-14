@@ -17,7 +17,6 @@ public:
 	virtual std::vector< Plateforme* >GetVectorPlatefomes();
 	Back_Ground* getBackground();
 
-
 protected:
 
 	std::vector < Plateforme* > plateformes;

@@ -16,7 +16,6 @@ Map::Map(int plateforme)
 		plateforme--;
 	}
 	
-	
 }
 
 Map::~Map(void)

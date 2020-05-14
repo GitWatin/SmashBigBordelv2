@@ -17,80 +17,65 @@ class Jeu
 
 public:
 	
+	// Constructeur et destructeur
 	 Jeu ();
 	 ~Jeu();
+
+	 // Fenetre de jeu
 	 sf::RenderWindow* GetWindow();
 
-
+	 // --------------- Fonctions -----------------
 	 virtual void setDureeIteration();
 	 virtual void CheckInput(sf::Event event);
 	 virtual void CheckModif();
-
 	 virtual void ChargementJeu(Map *map);
 	 virtual void ChoixMap();
 	 virtual void ChoixPerso();
-
 	 virtual void Animate(Personnage *perso, std::string direction);
 	 virtual void CheckVictory();
-
 	 void PersoGagne(Personnage * perso1choisi, Personnage * perso2choisi);
-
-
-
 	 void CheckCollision(Personnage *michel);
-	 void CheckAttaque(Personnage *michel);//pas besoin normalement
-
-	 Map* GetMapChoisie();
-	 Personnage* GetPerso1choisi();
-	 Personnage* GetPerso2choisi();
-
-	 sf::View* GetView();
-	 void SetView(sf::Vector2f* size);
-	 
+	 void CheckAttaque(Personnage *michel);
 	 virtual void CallModif();
 	 virtual void DrawPersonnage(std::vector < Personnage* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
-
+	 void SetView(sf::Vector2f* size);
 	 virtual sf::Time GetdureeIteration();
-
 	 virtual void CreateHUD();
 	 void SetHUD();
 	 virtual void Timing();
 	 virtual void CountDown();
-
-
-
-	 // Draw HUD
+	 Map* GetMapChoisie();
+	 Personnage* GetPerso1choisi();
+	 Personnage* GetPerso2choisi();
+	 sf::View* GetView();
 	 virtual void DrawHUD();
-
 	 virtual void StartMenu();
+	
 
-
-
-
-
-	//Get Return_Texture_Plateforme
-	//Get Return_Texture_Map
 protected:
+
+	// ----------------- Attributs ---------------
+
 	float Timer;
 	sf::RenderWindow *fenetre;
 	sf::View *Vueprincipal;
 	Map *mapchoisie;
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
-	
 	std::vector < sf::Drawable* > vectorHUD;
 	std::vector < sf::Drawable* > Menu;
 
+	// Constante
 	const int VitesseDeplacement = 150;//  pixel/sec
 	const int VitesseSaut = 300;
 	const int Gravity = 10;
-
 	const float Spawn_x1 = -100;
 	const float Spawn_y1 = -300;
 	const float Spawn_x2 = 100;
 	const float Spawn_y2 = -300;
+
 	// Label HUD
 	sf::Sprite *avatar1;
 	sf::Text *NomPerso1;
@@ -108,6 +93,10 @@ protected:
 	sf::Text *BouclierPerso2;
 	sf::Text *AtoutPerso2;
 	sf::Text *PourcentPerso2;
+	int minute;
+	int secondes;
+	float temporary_time;
+	float TempsDeJeu;
 
 
 	// Sprite pour le menu
@@ -125,13 +114,6 @@ protected:
 	int choix1;
 	int choix2;
 
-
-
-	int minute;
-	int secondes;
-
-	float temporary_time;
-	float TempsDeJeu;
 	sf::Time dureeIteration;
 
 	sf::Clock *clock;

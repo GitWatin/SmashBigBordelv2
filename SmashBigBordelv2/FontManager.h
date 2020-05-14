@@ -3,7 +3,6 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-
 class FontManager
 {
 public : 

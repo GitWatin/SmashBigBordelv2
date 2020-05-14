@@ -123,9 +123,6 @@ void Jeu::CheckInput(sf::Event event)
 void Jeu::CheckModif()
 {
 
-
-	// decommenter ca pour avoir le countdown
-	//if(true)
 	if (Game_State == true && Game_State_Final == true)
 	{
 		//---------J1--------------------------------
@@ -320,10 +317,7 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 void Jeu::ChoixMap()
 {
 	
-	// a gerer avec un switch dans le menu pour les différente maps
-	//std::cout << "Choissez une map : \n 1. Map 1 \n 2. Map 2 \n";
-	//std::cin >> choix;
-	//choix = 1;
+
 	switch (choix)
 	{
 	case 1 :
@@ -340,10 +334,7 @@ void Jeu::ChoixMap()
 void Jeu::ChoixPerso()
 {
 
-	// a gerer avec un switch dans le menu pour les différente maps
-	//std::cout << "perso 1  : \n 1. Rick 1 \n 2. Morty \n";
-	//std::cin >> choix1;
-	//choix1 = 1;
+
 	switch (choix1)
 	{
 	case 1:
@@ -359,9 +350,6 @@ void Jeu::ChoixPerso()
 	}
 
 	
-	//std::cout << "perso 2 : \n 1. Rick 1 \n 2. Morty \n";
-	//std::cin >> choix2;
-	//choix2 = 2;
 	switch (choix2)
 	{
 	case 1:
@@ -438,8 +426,6 @@ void Jeu::DrawHUD()
 	for (int i = 0; i < vectorHUD.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
 	{
 		fenetre->draw(*vectorHUD[i]);
-		
-		//std::cout << "[Info]:Return dessin " << vectorHUD[i] << std::endl;
 	}
 }
 
@@ -488,8 +474,7 @@ void Jeu::CreateHUD()
 	texture_hud = new TextureManager();
 
 
-
-	// Creation de l'avatar perso 1: 
+	// Creation de l' HUD
 	avatar1->setTextureRect(sf::IntRect(0, 0, 80, 80));
 	avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar()+".png"));
 	avatar1->setPosition(-720, -370);
@@ -587,14 +572,12 @@ void Jeu::CreateHUD()
 	PourcentPerso2->setPosition(+740, +360);
 	vectorHUD.push_back(PourcentPerso2);
 
-
 	Perso2->setString(perso2choisi->GetNom());
 	Perso2->setFont(*font->SetFont("quicksand.ttf"));
 	Perso2->setFillColor(sf::Color::Blue);
 	Perso2->setPosition(perso2choisi->getPosition().x, perso2choisi->getPosition().y - 85);
 	Perso2->setOrigin(Perso2->getGlobalBounds().width / 2, Perso2->getGlobalBounds().height / 2);
 	vectorHUD.push_back(Perso2);
-
 
 	HUDTimer->setString("");
 	HUDTimer->setFont(*font->SetFont("quicksand.ttf"));
@@ -604,13 +587,10 @@ void Jeu::CreateHUD()
 	HUDTimer->setPosition(0, -410);
 	vectorHUD.push_back(HUDTimer);
 
-
-
 	
 	delete font;
 	delete texture_hud;
 }
-
 
 void Jeu::SetHUD()
 {
@@ -731,7 +711,6 @@ void Jeu::CountDown()
 
 void Jeu::CheckVictory()
 {
-
 
 	// Function to test if game is done
 	Winner = new sf::Sprite;
@@ -921,14 +900,6 @@ void Jeu::StartMenu()
 					NomJoueur2 = "Rick";
 				}
 			}
-
-
-
-
-
-
-
-
 
 			// évènement "fermeture demandée" : on ferme la fenêtre
 			if (event.type == sf::Event::Closed)

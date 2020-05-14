@@ -3,5 +3,6 @@
 class Atout :
 	public Entite
 {
+
 };
 

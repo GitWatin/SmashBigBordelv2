@@ -9,7 +9,6 @@ Plateforme::Plateforme(float position_x, float position_y, float taille_x, float
 {
 	TextureManager *t;
 	t = new TextureManager();
-
 	this->setTexture(*t->SetTexture("plat2_tiny.png"));
 	this->setTextureRect(sf::IntRect(0, 0, taille_x, taille_y));
 	this->setOrigin(taille_x / 2, taille_y / 2);

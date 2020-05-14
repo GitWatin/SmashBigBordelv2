@@ -7,12 +7,8 @@ public:
 	Map2();
 	virtual void setPlatefomes();
 	virtual void setBackground();
-	
-
 	sf::Vector2f * getVue();
-
 	virtual std::string GetPath(int taille);
-
 	std::string GetPathBackground();
 	//virtual std::string GetPathPlateforme();
 	//virtual std::string GetPathBackground();

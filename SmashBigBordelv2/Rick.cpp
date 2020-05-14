@@ -6,8 +6,6 @@ Rick::Rick(int x,int y) : Personnage()
 	TextureManager *t;
 	t = new TextureManager();
 
-
-
 	this->SetBouclier(50);
 	this->SetPoids(100);
 	this->SetPourcentages(0);

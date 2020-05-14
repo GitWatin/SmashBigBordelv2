@@ -12,15 +12,13 @@ TextureManager::TextureManager()
 
 sf::Texture* TextureManager::SetTexture(std::string path_texture)
 {
-	
-	//std::cout << "[Debut du chargement de la texture] :" << std::endl;
 
 	static sf::Texture *texture;
 	
-	texture = this->GetTexture(path_texture);// Mr Lerat on a un problème ici aussi ( renvoie l'erreur std::out_of_range car pas d'élément "trouvable" dans map)
+	texture = this->GetTexture(path_texture);
 	if (texture == NULL)
 	{
-		//std::cout << "[INFO] -[] :Premier IF " << std::endl;
+		
 		texture = new sf::Texture;
 
 		if (!texture->loadFromFile(path_texture))
@@ -41,31 +39,27 @@ sf::Texture* TextureManager::SetTexture(std::string path_texture)
 }
 
 sf::Texture * TextureManager::GetTexture(std::string path_texture)
-{// Ici on a un problème 
-	//std::cout << "[Path Texture Manager]:" << path_texture << std::endl;
-
+{
 
 	if (map_textures.find(path_texture) == map_textures.end())
 	{
-		// Ca n'existe pas 
+		
 		return NULL;
 	}
 	else
 	{
 		std::cout << "[J'ai trouve une texture] :" << path_texture << std::endl;
-		// Du coup ca existe MDR 
+		
 		return  map_textures.find(path_texture)->second;
 	}
 
 }
 
 
-
-
 TextureManager::~TextureManager()
 {
 
 	map_textures.clear();
-	// Supprimer chaque pointeur
+	
 }
 
