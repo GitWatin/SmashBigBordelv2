@@ -29,6 +29,8 @@ class Personnage :
 	virtual void setJump(bool ok);
 	virtual void setAttaque(bool ok);
 
+	int GetLastTime();
+
 	int LastTime;
 
 	virtual bool getMoveRight();
