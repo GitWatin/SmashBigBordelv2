@@ -28,32 +28,7 @@
 #include <stdlib.h>
 
 void main(int argc, char ** argv[]);
-
 void VerifPosition(Entite *Plat);
-
-//Entite J;
-
-//void GenerateurPlateforme();
-//void GenerateurMap(Map mapouche);
-//void GenerateurEntiteFixe(Entite *entite_fixe);
-
-//création vector contenant tous les Entite
-//std::vector < sf::Drawable* > mes_objets;		:	 Contenu dans Entite
-//std::vector < Entite* > entite_fixe;			:	Contenu dans Entite
-//sf::RectangleShape *back_ground;
-//sf::CircleShape *point_reference;
-//Taille de la vue si x=1600 ; y = 900 => vue 16:9
-//float x=1600;
-//float y=900;
-//Rayon cercle reference
-//float Rshape=10;
-// Taille view
-//float rect_game_x = x;
-//float rect_game_y = y;
-
-// Chargement de la texture (View totale)
-
-
 
 
 void main(int argc,char** argv[])
@@ -63,19 +38,9 @@ void main(int argc,char** argv[])
 	//---------------------------- Création de la fenêtre -----------------------------------------
 	
 	Jeu Game;
-	
-	//window = new sf::RenderWindow (sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
-	//window->setFramerateLimit(60);
-	
-	//------------------------Création des Sprite ---------------------------------------------
-	// rect defini pour la plage de jeu
-	//back_ground = new sf::RectangleShape (sf::Vector2f(rect_game_x,rect_game_y));
-	//mes_objets.push_back(back_ground);
-	//point_reference = new sf::CircleShape(Rshape);
-	//point_reference->setFillColor(sf::Color::Green);
-	
 
-	
+	//------------------------Création des Sprite ---------------------------------------------
+
 	Game.ChoixMap();
 	Game.ChargementJeu(Game.GetMapChoisie()); // Chargement une fois 
 	Game.ChoixPerso();
@@ -97,17 +62,14 @@ void main(int argc,char** argv[])
 				Game.GetWindow()->close();
 		}
 		//-------------------------------- Modification des états des objets--------------------
-		Game.SetView(1600, 900);
+		Game.SetView(Game.GetMapChoisie()->getVue());//center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		Game.CheckModif();
 		Game.CheckCollision(Game.GetPerso1choisi());
 		Game.CheckCollision(Game.GetPerso2choisi());
 		Game.CallModif();
-		Game.CheckVictory();
 		 //center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		
 
-		//back_ground->setPosition((-rect_game_x/2),(-rect_game_y/2)); //Rectangle de fond positionner au milieur de la vue
-		//point_reference->setPosition((-Rshape / 2), (-Rshape / 2));//Cercle vert positionner au milieur de la vue Référence
 
 		//-------------------------------- Effacer le contenu de la fenêtre----------------------
 
@@ -117,6 +79,7 @@ void main(int argc,char** argv[])
 
 		Game.GetWindow()->setView(*Game.GetView());
 		Game.DrawBackGround(Game.GetMapChoisie()->getBackground());
+		//Game.DrawLimite(Game.GetMapChoisie()->GetlimiteMap());
 		Game.DrawPlateforme(Game.GetMapChoisie()->GetVectorPlatefomes());
 		Game.DrawPersonnage(Game.GetPerso1choisi()->GetVectorPersonnage());
 		Game.DrawPersonnage(Game.GetPerso2choisi()->GetVectorPersonnage());
