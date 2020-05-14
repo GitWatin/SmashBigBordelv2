@@ -1,6 +1,5 @@
 #pragma once
 #include "Map1.h"
-#include "TextureManager.h"
 #include "Map.h"
 #include <iostream>
 
@@ -38,7 +37,35 @@ void Map1::setPlatefomes()
 	this->getPlatform(2)->setTextureRect(sf::IntRect(0, 0, 268, 90));
 	this->getPlatform(2)->setOrigin(this->getPlatform(2)->getGlobalBounds().width/2, this->getPlatform(2)->getGlobalBounds().height/2);
 
-	
+
+	//limite droite
+	this->getLimite(0)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getLimite(0)->setTextureRect(sf::IntRect(0, 0, 100, 1100));
+	this->getLimite(0)->setColor(sf::Color::Red);
+	this->getLimite(0)->setOrigin(this->getLimite(0)->getGlobalBounds().width / 2, this->getLimite(0)->getGlobalBounds().height / 2);
+	this->getLimite(0)->setPosition(800, 0);
+
+	//limite gauche
+	this->getLimite(1)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getLimite(1)->setTextureRect(sf::IntRect(0, 0, 100, 1100));
+	this->getLimite(1)->setColor(sf::Color::Red);
+	this->getLimite(1)->setOrigin(this->getLimite(1)->getGlobalBounds().width / 2, this->getLimite(1)->getGlobalBounds().height / 2);
+	this->getLimite(1)->setPosition(-800, 0);
+
+	//limite haut
+	this->getLimite(2)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getLimite(2)->setTextureRect(sf::IntRect(0, 0, 1800, 100));
+	this->getLimite(2)->setColor(sf::Color::Red);
+	this->getLimite(2)->setOrigin(this->getLimite(2)->getGlobalBounds().width / 2, this->getLimite(2)->getGlobalBounds().height / 2);
+	this->getLimite(2)->setPosition(0, -450);
+
+	//limite basse
+	this->getLimite(3)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getLimite(3)->setTextureRect(sf::IntRect(0, 0, 1800, 100));
+	this->getLimite(3)->setColor(sf::Color::Red);
+	this->getLimite(3)->setOrigin(this->getLimite(3)->getGlobalBounds().width / 2, this->getLimite(3)->getGlobalBounds().height / 2);
+	this->getLimite(3)->setPosition(0, 450);
+
 	delete t;
 
 }

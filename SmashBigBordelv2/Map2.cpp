@@ -20,27 +20,34 @@ void Map2::setPlatefomes()
 	this->getPlatform(0)->setTextureRect(sf::IntRect(0, 0, 1123, 115));
 	this->getPlatform(0)->setOrigin(this->getPlatform(0)->getGlobalBounds().width / 2, this->getPlatform(0)->getGlobalBounds().height / 2);
 
+	//limite droite
+	this->getLimite(0)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getLimite(0)->setTextureRect(sf::IntRect(0, 0, 100, 1100));
+	this->getLimite(0)->setColor(sf::Color::Red);
+	this->getLimite(0)->setOrigin(this->getLimite(0)->getGlobalBounds().width / 2, this->getLimite(0)->getGlobalBounds().height / 2);
+	this->getLimite(0)->setPosition(800, 0);
 
-	/*
-	this->getPlatform(1)->setPosition(100, 300);
-	this->getPlatform(1)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(1)->setTextureRect(sf::IntRect(0, 0, 100, 20));
+	//limite gauche
+	this->getLimite(1)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getLimite(1)->setTextureRect(sf::IntRect(0, 0, 100, 1100));
+	this->getLimite(1)->setColor(sf::Color::Red);
+	this->getLimite(1)->setOrigin(this->getLimite(1)->getGlobalBounds().width / 2, this->getLimite(1)->getGlobalBounds().height / 2);
+	this->getLimite(1)->setPosition(-800, 0);
 
+	//limite haut
+	this->getLimite(2)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getLimite(2)->setTextureRect(sf::IntRect(0, 0, 1800, 100));
+	this->getLimite(2)->setColor(sf::Color::Red);
+	this->getLimite(2)->setOrigin(this->getLimite(2)->getGlobalBounds().width / 2, this->getLimite(2)->getGlobalBounds().height / 2);
+	this->getLimite(2)->setPosition(0, -450);
 
-	this->getPlatform(2)->setPosition(-100, 200);
-	this->getPlatform(2)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(2)->setTextureRect(sf::IntRect(0, 0, 100, 20));
+	//limite basse
+	this->getLimite(3)->setTexture(*t->SetTexture(this->GetPath(1)));
+	this->getLimite(3)->setTextureRect(sf::IntRect(0, 0, 1800, 100));
+	this->getLimite(3)->setColor(sf::Color::Red);
+	this->getLimite(3)->setOrigin(this->getLimite(3)->getGlobalBounds().width / 2, this->getLimite(3)->getGlobalBounds().height / 2);
+	this->getLimite(3)->setPosition(0, 450);
 
-
-	this->getPlatform(3)->setPosition(50, 20);
-	this->getPlatform(3)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(3)->setTextureRect(sf::IntRect(0, 0, 100, 20));
-
-
-	this->getPlatform(4)->setPosition(-500, 900);
-	this->getPlatform(4)->setTexture(*t->SetTexture(this->GetPath()));
-	this->getPlatform(4)->setTextureRect(sf::IntRect(0, 0, 1000, 50));
-	*/
 	delete t;
 
 }

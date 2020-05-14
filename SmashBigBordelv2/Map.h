@@ -17,7 +17,9 @@ public:
 	virtual void setPlatefomes() = 0;
 	int countPlatforms();
 
+	Limite*getLimite(int pos);
 	Plateforme* getPlatform(int pos);
+
 	virtual std::vector< Plateforme* >GetVectorPlatefomes();
 	virtual std::vector< Limite* >GetlimiteMap();
 	Back_Ground* getBackground();

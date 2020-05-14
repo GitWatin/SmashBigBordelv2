@@ -3,17 +3,17 @@
 
 Map::Map(int plateforme)
 {
-	while (plateforme) 
+	while (plateforme)
 	{
 		this->plateformes.push_back(new Plateforme());// TODO créer un constructeur vide ?
 		plateforme--;
 	}
 	this->BackGround = new Back_Ground();
-	this->limiteMap.push_back(new Limite(600,0,100,1100));
-	this->limiteMap.push_back(new Limite(-600,0, 100, 1100));
-	this->limiteMap.push_back(new Limite(350, 0, 1800, 100));
-	this->limiteMap.push_back(new Limite(-350, 0, 100, 100));
-
+	for (int i = 0; i < 4; i++)
+	{
+		this->limiteMap.push_back(new Limite()); 
+	}
+	
 	
 }
 
@@ -36,6 +36,11 @@ int Map::countPlatforms() {
 	return this->plateformes.size();
 }
 
+Limite * Map::getLimite(int pos)
+{
+	return this->limiteMap[pos];
+}
+
 Plateforme * Map::getPlatform(int pos)
 {
 	return this->plateformes[pos];
@@ -46,9 +51,9 @@ std::vector< Plateforme* > Map::GetVectorPlatefomes()
 	return plateformes;
 }
 
-std::vector<Limite*> Map::GetlimiteMap()
+std::vector< Limite* > Map::GetlimiteMap()
 {
-	return limiteMap;
+	return this->limiteMap;
 }
 
 Back_Ground* Map::getBackground()
