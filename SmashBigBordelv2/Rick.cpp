@@ -28,14 +28,11 @@ Rick::Rick(int x,int y) : Personnage()
 	delete t;
 }
 
-void Rick::SetPersonnage()
-{
-	
-}
+
 
 void Rick::Attaque(Personnage *NomCible, std::string TypeAttaque)
 {
-
+	 
 }
 
 void Rick::SetPathTexture(std::string path_texture_rick)

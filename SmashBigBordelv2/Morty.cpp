@@ -26,10 +26,6 @@ Morty::Morty(int x, int y) : Personnage()
 	delete t;
 }
 
-void Morty::SetPersonnage()
-{
-	
-}
 
 void Morty::Attaque(Personnage *NomCible, std::string TypeAttaque)
 {
