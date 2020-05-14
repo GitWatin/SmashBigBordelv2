@@ -112,6 +112,7 @@ protected:
 	sf::Sprite *MenuMap2;
 	sf::Text *Joueur1;
 	sf::Text *Joueur2;
+	sf::Text *SelectedMap;
 	sf::Sprite *MenuJ1Rick;
 	sf::Sprite *MenuJ1Morty;
 	sf::Sprite *MenuJ2Rick;

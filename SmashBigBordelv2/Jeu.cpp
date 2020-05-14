@@ -399,11 +399,7 @@ void Jeu::ChoixPerso()
 	case 1:
 		
 		perso1choisi = new Rick(Spawn_x1,Spawn_y1);
-
-
 		std::cout << "J1 : Rick \n"<<std::endl;
-		
-
 		break;
 	case 2:
 		
@@ -822,6 +818,7 @@ void Jeu::StartMenu()
 	sf::RenderWindow Menu(sf::VideoMode(800, 600), "Menu");
 	std::string NomJoueur1="";
 	std::string NomJoueur2="";
+	std::string MAP = "";
 	choix = 1;
 
 	while (Menu.isOpen())
@@ -854,6 +851,12 @@ void Jeu::StartMenu()
 		Joueur2->setFont(*font->SetFont("quicksand.ttf"));
 		Joueur2->setString("Joueur 2 :"+NomJoueur2);
 		Joueur2->setFillColor(sf::Color::Green);
+
+		SelectedMap = new sf::Text;
+		SelectedMap->setPosition(300, 50);
+		SelectedMap->setFont(*font->SetFont("quicksand.ttf"));
+		SelectedMap->setString("MAP :" + MAP);
+		SelectedMap->setFillColor(sf::Color::Green);
 
 		MenuJ1Morty = new sf::Sprite;
 		MenuJ1Morty->setTextureRect(sf::IntRect(0, 0,80,80));
@@ -898,11 +901,13 @@ void Jeu::StartMenu()
 				{
 					std::cout << "MAp 1 Map : " << choix << std::endl;
 					this->choix = 1;
+					MAP = "SF";
 				}
 				if (MenuMap2->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
 					std::cout << "MAp2 Map : " << choix << std::endl;
 					this->choix = 2;
+					MAP = "Desert";
 				}
 
 				if (MenuJ1Morty->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
@@ -954,6 +959,7 @@ void Jeu::StartMenu()
 		Menu.draw(*MenuJ2Morty);
 		Menu.draw(*MenuJ2Rick);
 		Menu.draw(*Play);
+		Menu.draw(*SelectedMap);
 		Menu.display();
 
 
