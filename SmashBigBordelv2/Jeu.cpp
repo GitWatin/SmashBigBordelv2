@@ -81,6 +81,7 @@ void Jeu::CheckInput(sf::Event event)
 
 		case sf::Keyboard::Right:
 			perso1choisi->setMoveRight(false);
+
 			break;
 		case sf::Keyboard::Left:
 			perso1choisi->setMoveLeft(false);
@@ -108,24 +109,29 @@ void Jeu::CheckInput(sf::Event event)
 
 void Jeu::CheckModif()
 {
-	if (Game_State == true && Game_State_Final == true)// decommenter ca pour avoir le countdown
+	std::cout << "Game_State" << Game_State << std::endl;
+	std::cout << "Game_State_Final" << Game_State_Final << std::endl;
+
+	// decommenter ca pour avoir le countdown
 	//if(true)
+	if (Game_State == true && Game_State_Final == true)
 	{
 		//---------J1--------------------------------
 
 		if (perso1choisi->getMoveRight() && perso1choisi->getVersdroite()) //check si le bool est actif
 		{
 			
-			Animate(perso1choisi, "droite",1);
+			Animate(perso1choisi, "droite");
 			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso1choisi->getMoveLeft() && perso1choisi->getVersgauche()) //check si le bool est actif
 		{
-			Animate(perso1choisi, "gauche",1);
+			Animate(perso1choisi, "gauche");
 			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso1choisi->getJump() && perso1choisi->getVershaut()/*&& !perso2choisi->getVersbas()*/)
 		{
+			Animate(perso1choisi, "jump");
 			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
 		}
 		if (!perso1choisi->getCollision() && perso1choisi->getVersbas())
@@ -135,16 +141,17 @@ void Jeu::CheckModif()
 		//----------J2--------------------------------
 		if (perso2choisi->getMoveRight() && perso2choisi->getVersdroite())//check si le bool est actif
 		{
-			Animate(perso2choisi, "droite",2);
+			Animate(perso2choisi, "droite");
 			perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso2choisi->getMoveLeft() && perso1choisi->getVersgauche()) //check si le bool est actif
 		{
-			Animate(perso2choisi, "gauche",3);
+			Animate(perso2choisi, "gauche");
 			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso2choisi->getJump() && perso2choisi->getVershaut() /*&& !perso2choisi->getVersbas()*/)
 		{
+			Animate(perso2choisi, "jump");
 			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 		}
 		if (!perso2choisi->getCollision() &&  perso1choisi->getVersbas())
@@ -236,7 +243,7 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 }*/
 
 
-void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
+void Jeu::Animate(Personnage *perso, std::string direction)
 {
 	
 	TextureManager *texture_move;
@@ -288,41 +295,35 @@ void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
 
 void Jeu::CheckVictory()
 {
+
+
 	// Function to test if game is done
 	Winner = new sf::Sprite;
-	TextureManager *texture_hud;
-	texture_hud = new TextureManager();
+
 	//std::cout<< perso1choisi.GetN <<std::endl;
 	if (perso1choisi->GetBouclier() <= 0 || perso1choisi->GetNbre_Vies() <= 0 || Perso1Bord == true)
 	{
-
-		// Victoire du perso 2
-		Winner->setTextureRect(sf::IntRect(0, 0, 85, 124));
-		Winner->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
-		//Winner->setScale(2, 2);
-		Winner->setPosition(0, 0);
-		Winner->setOrigin(Winner->getGlobalBounds().width / 2, Winner->getGlobalBounds().height / 2);
-		vectorHUD.push_back(Winner);
-
-
-		this->HUDTimer->setString(perso2choisi->GetNom() + " Winner ");
-		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
-
+		Perso2Gagne();
 	}
-
 	if (perso2choisi->GetBouclier() <= 0 || perso2choisi->GetNbre_Vies() <= 0 || Perso2Bord == true) // Rick Gagne
 	{
-		// Victoire du perso 2
-		perso1choisi->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
-		perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
-		perso2choisi->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
-
-		Game_State = false;
-		Game_State_Final = false;
-
-		this->HUDTimer->setString(perso1choisi->GetNom() + " Winner ");
-		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
+		Perso1Gagne();
 	}
+	if (Game_State_Final == false && Game_State==true)// Si le timer arrive à 0
+	{
+		std::cout << " Time's UP " << std::endl;
+
+		if (perso2choisi->GetNbre_Vies() < perso1choisi->GetNbre_Vies())
+		{
+			Perso1Gagne(); // Perso 1 Gagne
+		}
+		if (perso1choisi->GetNbre_Vies() < perso2choisi->GetNbre_Vies())
+		{
+			Perso2Gagne(); // Perso 2 Gagne
+		}
+
+	}
+
 
 	//delete texture_hud;
 
@@ -351,7 +352,7 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 	temporary_time = 60;
 	CountDownInt = 5;
 	Game_State = false;
-	sens = 2;
+
 
 	map->setBackground();
 	map->setPlatefomes();
@@ -388,6 +389,8 @@ void Jeu::ChoixPerso()
 	case 1:
 		
 		perso1choisi = new Rick(Spawn_x1,Spawn_y1);
+
+
 		std::cout << "J1 : Rick \n"<<std::endl;
 		
 
@@ -712,5 +715,39 @@ void Jeu::CountDown()
 	{
 		Game_State = true;
 	}
+}
+
+void Jeu::Perso1Gagne()
+{
+	TextureManager *texture_Rick;
+	texture_Rick = new TextureManager();
+	// Victoire du perso 2
+	perso1choisi->setTexture(*texture_Rick->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
+	perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
+	perso2choisi->setTexture(*texture_Rick->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
+
+	Game_State = false;
+	Game_State_Final = false;
+
+	this->HUDTimer->setString(perso1choisi->GetNom() + " Winner ");
+	this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
+	delete texture_Rick;
+}
+
+void Jeu::Perso2Gagne()
+{
+	TextureManager *texture_Rick;
+	texture_Rick = new TextureManager();
+	// Victoire du perso 2
+	perso1choisi->setTexture(*texture_Rick->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
+	perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
+	perso2choisi->setTexture(*texture_Rick->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
+
+	Game_State = false;
+	Game_State_Final = false;
+
+	this->HUDTimer->setString(perso2choisi->GetNom() + " Winner ");
+	this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
+	delete texture_Rick;
 }
 

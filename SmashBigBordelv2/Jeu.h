@@ -30,7 +30,7 @@ public:
 	 virtual void ChoixMap();
 	 virtual void ChoixPerso();
 
-	 virtual void Animate(Personnage *perso, std::string direction,int NumPerso);
+	 virtual void Animate(Personnage *perso, std::string direction);
 	 virtual void CheckVictory();
 
 	 void CheckCollision(Personnage *michel);
@@ -54,8 +54,13 @@ public:
 	 virtual void Timing();
 	 virtual void CountDown();
 
+	 virtual void Perso1Gagne();
+	 virtual void Perso2Gagne();
+
 	 // Draw HUD
 	 virtual void DrawHUD();
+
+
 
 
 

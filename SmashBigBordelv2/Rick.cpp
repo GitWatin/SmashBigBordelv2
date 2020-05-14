@@ -11,11 +11,12 @@ Rick::Rick(int x,int y) : Personnage()
 	this->SetBouclier(50);
 	this->SetPoids(100);
 	this->SetPourcentages(0);
-	this->SetNbre_Vies(3);
+	this->SetNbre_Vies(2);
 	this->SetNom("Rick");
 	this->SetAvatar("rick"); // Avatar de l'HUD
 	this->SetDerniersAtout("Toto");
 	this->SetPathTexture("rick0.png");
+	this->LastTime = 2;
 
 	this->setTexture(*t->SetTexture(this->GetPathTexture()));
 	this->setTextureRect(sf::IntRect(0, 0, 85, 124));
