@@ -1,20 +1,19 @@
 #include "Map.h"
-#include "Plateforme.h"
-#include "Jeu.h"
-#include "TextureManager.h"
-#include "Entite.h"
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <iostream>
+
 
 Map::Map(int plateforme)
 {
-	while (plateforme) 
+	while (plateforme)
 	{
 		this->plateformes.push_back(new Plateforme());// TODO créer un constructeur vide ?
 		plateforme--;
 	}
 	this->BackGround = new Back_Ground();
+	/*for (int i = 0; i < 4; i++)
+	{
+		this->limiteMap.push_back(new Limite()); 
+	}*/
+	
 	
 }
 
@@ -26,11 +25,21 @@ Map::~Map(void)
 		plateformes.pop_back();
 	}
 	delete BackGround;
+	//for (int i = 0; i < limiteMap.size(); i++) // suppression des plateforme
+	//{
+	//	delete limiteMap.back();
+	//	limiteMap.pop_back();
+	//}
 }
 
 int Map::countPlatforms() {
 	return this->plateformes.size();
 }
+
+//Limite * Map::getLimite(int pos)
+//{
+//	return this->limiteMap[pos];
+//}
 
 Plateforme * Map::getPlatform(int pos)
 {
@@ -41,6 +50,11 @@ std::vector< Plateforme* > Map::GetVectorPlatefomes()
 {
 	return plateformes;
 }
+
+//std::vector< Limite* > Map::GetlimiteMap()
+//{
+//	return limiteMap;
+//}
 
 Back_Ground* Map::getBackground()
 {
