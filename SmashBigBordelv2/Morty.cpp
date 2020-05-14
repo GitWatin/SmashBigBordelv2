@@ -21,6 +21,8 @@ Morty::Morty(int x, int y) : Personnage()
 	//this->setColor(sf::Color::Black);
 	this->setOrigin(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2);
 	this->setPosition(x , y);
+
+	*t->SetTexture(this->GetAvatar() + "victory.png");
 	Dessin.push_back(this);
 
 	delete t;

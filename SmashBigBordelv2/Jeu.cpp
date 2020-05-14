@@ -20,6 +20,7 @@ Jeu :: ~Jeu()
 	delete clock_HUD;
 	delete clock_jeu;
 	delete clock_Move;
+	
 	// Destructeur HUD
 	for (int i = 0; i < vectorHUD.size(); i++)
 	{
@@ -121,8 +122,6 @@ void Jeu::CheckInput(sf::Event event)
 
 void Jeu::CheckModif()
 {
-
-
 	// decommenter ca pour avoir le countdown
 	//if(true)
 	if (Game_State == true && Game_State_Final == true)
@@ -285,58 +284,6 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 	
 }
 
-void Jeu::CheckVictory()
-{
-
-
-	// Function to test if game is done
-	Winner = new sf::Sprite;
-
-	//std::cout<< perso1choisi.GetN <<std::endl;
-	if (perso1choisi->GetBouclier() <= 0 || Perso1Bord == true || !perso1choisi->CheckZone(this->GetMapChoisie()->getBackground()))
-	{
-		if (perso1choisi->GetNbre_Vies()<=0)
-		{
-			Perso2Gagne();
-		}
-		else
-		{
-			perso1choisi->SetNbre_Vies(perso1choisi->GetNbre_Vies()-1);
-			perso1choisi->setPosition(Spawn_x1, Spawn_y1);
-		}
-		
-	}
-
-	if (perso2choisi->GetBouclier() <= 0 || Perso2Bord == true || !perso2choisi->CheckZone(this->GetMapChoisie()->getBackground())) // Rick Gagne
-	{
-		if (perso2choisi->GetNbre_Vies() <= 0)
-		{
-			Perso1Gagne();
-		}
-		else
-		{
-			perso2choisi->SetNbre_Vies(perso2choisi->GetNbre_Vies() -1);
-			perso2choisi->setPosition(Spawn_x1, Spawn_y1);
-		}
-	}
-	if (Game_State_Final == false && Game_State==true)// Si le timer arrive à 0
-	{
-		std::cout << " Time's UP " << std::endl;
-
-		if (perso2choisi->GetNbre_Vies() < perso1choisi->GetNbre_Vies())
-		{
-			Perso1Gagne(); // Perso 1 Gagne
-		}
-		if (perso1choisi->GetNbre_Vies() < perso2choisi->GetNbre_Vies())
-		{
-			Perso2Gagne(); // Perso 2 Gagne
-		}
-
-	}
-
-	//delete texture_hud;
-
-}
 
 
 void Jeu::CallModif()
@@ -354,6 +301,7 @@ void Jeu::CallModif()
 
 void Jeu::ChargementJeu(Map *map) // Chargement une fois
 {
+	
 	// demmarage du Timer du jeu (5min )
 	this->clock_jeu = new sf::Clock; //  
 	this->clock_HUD = new sf::Clock; 
@@ -362,7 +310,7 @@ void Jeu::ChargementJeu(Map *map) // Chargement une fois
 	CountDownInt = 5;
 	Game_State = false;
 
-
+	
 	map->setBackground();
 	map->setPlatefomes();
 }
@@ -779,38 +727,73 @@ void Jeu::CountDown()
 	}
 }
 
-void Jeu::Perso1Gagne()
+void Jeu::CheckVictory()
+{
+
+
+	// Function to test if game is done
+	Winner = new sf::Sprite;
+
+	//std::cout<< perso1choisi.GetN <<std::endl;
+	if (perso1choisi->GetBouclier() <= 0 || Perso1Bord == true || !perso1choisi->CheckZone(this->GetMapChoisie()->getBackground()))
+	{
+		if (perso1choisi->GetNbre_Vies()<=0)
+		{
+			PersoGagne(perso1choisi,perso2choisi);
+		}
+		else
+		{
+			perso1choisi->SetNbre_Vies(perso1choisi->GetNbre_Vies()-1);
+			perso1choisi->setPosition(Spawn_x1, Spawn_y1);
+		}
+		
+	}
+
+	if (perso2choisi->GetBouclier() <= 0 || Perso2Bord == true || !perso2choisi->CheckZone(this->GetMapChoisie()->getBackground())) // Rick Gagne
+	{
+		if (perso2choisi->GetNbre_Vies() <= 0)
+		{
+			PersoGagne(perso2choisi, perso1choisi);
+		}
+		else
+		{
+			perso2choisi->SetNbre_Vies(perso2choisi->GetNbre_Vies() -1);
+			perso2choisi->setPosition(Spawn_x1, Spawn_y1);
+		}
+	}
+	if (Game_State_Final == false && Game_State==true)// Si le timer arrive à 0
+	{
+		std::cout << " Time's UP " << std::endl;
+
+		if (perso2choisi->GetNbre_Vies() < perso1choisi->GetNbre_Vies())
+		{
+			PersoGagne(perso2choisi, perso1choisi); // Perso 1 Gagne
+		}
+		if (perso1choisi->GetNbre_Vies() < perso2choisi->GetNbre_Vies())
+		{
+			PersoGagne(perso1choisi, perso2choisi); // Perso 2 Gagne
+		}
+
+	}
+
+	//delete texture_hud;
+
+}
+
+void Jeu::PersoGagne(Personnage *perso1,Personnage *perso2)
 {
 	TextureManager *texture_Rick;
 	texture_Rick = new TextureManager();
-	// Victoire du perso 2
-	perso1choisi->setTexture(*texture_Rick->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
-	//perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
-	perso2choisi->setTexture(*texture_Rick->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
+	
+	perso1->setTexture(*texture_Rick->SetTexture(perso1->GetAvatar() + "victory.png"));
+	perso2->setTexture(*texture_Rick->SetTexture(perso2->GetAvatar() + "victory.png"));
 
 	Game_State_Final = false;
 
-	this->HUDTimer->setString(perso1choisi->GetNom() + " Winner ");
+	this->HUDTimer->setString(perso1->GetNom() + " Winner ");
 	this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 	delete texture_Rick;
 }
-
-void Jeu::Perso2Gagne()
-{
-	TextureManager *texture_Rick;
-	texture_Rick = new TextureManager();
-	// Victoire du perso 2
-	perso1choisi->setTexture(*texture_Rick->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
-	//perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
-	perso2choisi->setTexture(*texture_Rick->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
-
-	Game_State_Final = false;
-
-	this->HUDTimer->setString(perso2choisi->GetNom() + " Winner ");
-	this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
-	delete texture_Rick;
-}
-
 
 void Jeu::StartMenu()
 {

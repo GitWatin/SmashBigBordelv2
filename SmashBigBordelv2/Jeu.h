@@ -33,6 +33,10 @@ public:
 	 virtual void Animate(Personnage *perso, std::string direction);
 	 virtual void CheckVictory();
 
+	 void PersoGagne(Personnage * perso1choisi, Personnage * perso2choisi);
+
+
+
 	 void CheckCollision(Personnage *michel);
 	 void CheckAttaque(Personnage *michel);//pas besoin normalement
 
@@ -55,8 +59,6 @@ public:
 	 virtual void Timing();
 	 virtual void CountDown();
 
-	 virtual void Perso1Gagne();
-	 virtual void Perso2Gagne();
 
 	 // Draw HUD
 	 virtual void DrawHUD();
@@ -76,7 +78,7 @@ protected:
 	Map *mapchoisie;
 	Personnage *perso1choisi;
 	Personnage *perso2choisi;
-
+	
 	std::vector < sf::Drawable* > vectorHUD;
 	std::vector < sf::Drawable* > Menu;
 
