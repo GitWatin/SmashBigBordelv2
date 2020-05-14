@@ -9,10 +9,10 @@ Map::Map(int plateforme)
 		plateforme--;
 	}
 	this->BackGround = new Back_Ground();
-	this->limiteMap.push_back(new Limite(800,0,100,1100));
-	this->limiteMap.push_back(new Limite(-800,0, 100, 1100));
-	this->limiteMap.push_back(new Limite(450, 0, 1800, 100));
-	this->limiteMap.push_back(new Limite(-450, 0, 100, 100));
+	this->limiteMap.push_back(new Limite(600,0,100,1100));
+	this->limiteMap.push_back(new Limite(-600,0, 100, 1100));
+	this->limiteMap.push_back(new Limite(350, 0, 1800, 100));
+	this->limiteMap.push_back(new Limite(-350, 0, 100, 100));
 
 	
 }
