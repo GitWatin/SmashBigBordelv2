@@ -26,13 +26,18 @@ Morty::Morty(int x, int y) : Personnage()
 	delete t;
 }
 
-void Morty::SetPersonnage()
-{
-	
-}
 
-void Morty::Attaque(Personnage *NomCible, std::string TypeAttaque)
+void Morty::Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration)
 {
+	NomCible->SetPourcentages(NomCible->GetPourcentages() + 10);
+	if (TypeAttaque = 1)//droite
+	{
+		NomCible->move(NomCible->GetPourcentages()*dureeIteration, 0);
+	}
+	if (TypeAttaque = 2)//gauche
+	{
+		NomCible->move(-NomCible->GetPourcentages()*dureeIteration, 0);
+	}
 }
 
 std::string Morty::GetPathTexture()
