@@ -60,8 +60,7 @@ void Jeu::CheckInput(sf::Event event)
 			perso1choisi->setJump(true);
 			break;
 		case sf::Keyboard::RControl:
-			if(!perso1choisi->getAttaque())perso1choisi->setAttaque(true);
-			
+			perso1choisi->setAttaque(true);
 			break;
 
 			//---------J2--------------------------------
@@ -76,7 +75,7 @@ void Jeu::CheckInput(sf::Event event)
 			perso2choisi->setJump(true);
 			break;
 		case sf::Keyboard::Space:
-			if (!perso2choisi->getAttaque())perso2choisi->setAttaque(true);
+			perso2choisi->setAttaque(true);
 			break;
 		}
 		break;
@@ -159,11 +158,11 @@ void Jeu::CheckModif()
 			}
 			if (perso1choisi->GetLastTime() == 1)//droite
 			{
-				perso2choisi->move(perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*VitesseDeplacement, 0);
+				perso2choisi->move(perso2choisi->GetPourcentages()*dureeIteration.asSeconds(), 0);
 			}
 			if (perso1choisi->GetLastTime() == 2 )//gauche
 			{
-				perso2choisi->move(-perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*VitesseDeplacement, 0);
+				perso2choisi->move(-perso2choisi->GetPourcentages()*dureeIteration.asSeconds(), 0);
 			}
 		}
 		//----------J2--------------------------------
@@ -194,11 +193,11 @@ void Jeu::CheckModif()
 			}
 			if (perso2choisi->GetLastTime() == 1)//droite
 			{
-				perso1choisi->move(perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*VitesseDeplacement, 0);
+				perso1choisi->move(perso1choisi->GetPourcentages()*dureeIteration.asSeconds(), 0);
 			}
 			if (perso2choisi->GetLastTime() == 2)//gauche
 			{
-				perso1choisi->move(-perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*VitesseDeplacement, 0);
+				perso1choisi->move(-perso1choisi->GetPourcentages()*dureeIteration.asSeconds(), 0);
 			}
 		}
 	} 
