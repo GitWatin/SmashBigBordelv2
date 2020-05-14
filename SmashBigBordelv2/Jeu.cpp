@@ -121,8 +121,8 @@ void Jeu::CheckInput(sf::Event event)
 
 void Jeu::CheckModif()
 {
-	std::cout << "Game_State" << Game_State << std::endl;
-	std::cout << "Game_State_Final" << Game_State_Final << std::endl;
+	//std::cout << "Game_State" << Game_State << std::endl;
+	//std::cout << "Game_State_Final" << Game_State_Final << std::endl;
 
 	// decommenter ca pour avoir le countdown
 	//if(true)

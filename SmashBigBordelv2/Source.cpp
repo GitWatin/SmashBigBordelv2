@@ -76,6 +76,8 @@ void main(int argc,char** argv[])
 	//point_reference->setFillColor(sf::Color::Green);
 	
 
+
+
 	
 	Game.ChoixMap();
 	Game.ChargementJeu(Game.GetMapChoisie()); // Chargement une fois 
