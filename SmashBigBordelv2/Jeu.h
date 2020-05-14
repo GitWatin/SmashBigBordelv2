@@ -34,6 +34,7 @@ public:
 	 virtual void CheckVictory();
 
 	 void CheckCollision(Personnage *michel);
+	 void CheckAttaque(Personnage *michel);
 
 	 Map* GetMapChoisie();
 	 Personnage* GetPerso1choisi();

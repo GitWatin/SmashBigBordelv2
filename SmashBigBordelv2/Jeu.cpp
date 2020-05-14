@@ -214,6 +214,14 @@ void Jeu::CheckCollision(Personnage *michel)
 	
 }
 
+void Jeu::CheckAttaque(Personnage * michel)
+{
+	if (michel->getAttaque())
+	{
+
+	}
+}
+
 
 
 void Jeu::Animate(Personnage *perso, std::string direction)
