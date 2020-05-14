@@ -28,7 +28,7 @@ Morty::Morty(int x, int y) : Personnage()
 }
 
 
-void Morty::Attaque(Personnage *NomCible, int TypeAttaque)
+void Morty::Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration)
 {
 	if(TypeAttaque = 1)//droite
 	{

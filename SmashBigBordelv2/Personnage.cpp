@@ -110,6 +110,11 @@ void Personnage::setAttaque(bool ok)
 	this->attaque = ok;
 }
 
+void Personnage::setRepoussement(bool ok)
+{
+	this->repoussement = ok;
+}
+
 int Personnage::GetLastTime()
 {
 	return LastTime;
@@ -140,6 +145,11 @@ bool Personnage::getJump()
 bool Personnage::getAttaque()
 {
 	return this->attaque;
+}
+
+bool Personnage::getRepoussement()
+{
+	return this->repoussement;
 }
 
 

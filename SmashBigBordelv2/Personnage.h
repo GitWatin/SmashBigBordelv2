@@ -10,7 +10,7 @@ class Personnage :
 	Personnage();
 	~Personnage();
 
-	virtual void Attaque(Personnage *NomCible, int TypeAttaque) = 0;
+	virtual void Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration) = 0;
 	virtual void SetPourcentages(int percent);
 	virtual int GetPourcentages();
 	virtual void SetPoids(float poids);
@@ -29,7 +29,7 @@ class Personnage :
 	virtual void setMoveLeft(bool ok);
 	virtual void setJump(bool ok);
 	virtual void setAttaque(bool ok);
-
+	virtual void setRepoussement(bool ok);
 	virtual int GetLastTime();
 	virtual void SetLastTime(int value);
 
@@ -37,6 +37,7 @@ class Personnage :
 	virtual bool getMoveLeft();
 	virtual bool getJump();
 	virtual bool getAttaque();
+	virtual bool getRepoussement();
 
 	virtual std::vector< Personnage* >GetVectorPersonnage();
 	
@@ -60,5 +61,6 @@ protected:
 	bool moveLeft=false;
 	bool Jump=false;
 	bool attaque = false;
+	bool repoussement = false;
 };
 
