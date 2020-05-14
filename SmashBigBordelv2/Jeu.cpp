@@ -59,7 +59,7 @@ void Jeu::CheckInput(sf::Event event)
 		case sf::Keyboard::Up:
 			perso1choisi->setJump(true);
 			break;
-		case sf::Keyboard::LControl:
+		case sf::Keyboard::RControl:
 			perso1choisi->setAttaque(true);
 			break;
 
@@ -131,7 +131,6 @@ void Jeu::CheckModif()
 
 		if (perso1choisi->getMoveRight() && perso1choisi->getVersdroite() && !perso1choisi->getAttaque()) //check si le bool est actif
 		{
-			
 			Animate(perso1choisi, "droite");
 			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
@@ -143,18 +142,26 @@ void Jeu::CheckModif()
 		if (perso1choisi->getJump() && perso1choisi->getVershaut() && !perso1choisi->getAttaque()/*&& !perso2choisi->getVersbas()*/)
 		{
 			Animate(perso1choisi, "jump");
-			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
+			perso1choisi->move(0, (-dureeIteration.asSeconds()*(( perso1choisi->GetPoids()/Gravity) * VitesseSaut)));
 		}
 		if (!perso1choisi->getCollision() && perso1choisi->getVersbas() && !perso1choisi->getAttaque())
 		{
-			perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
+			perso1choisi->move(0, (dureeIteration.asSeconds()*(perso1choisi->GetPoids() * Gravity)));
 		}
 		if (perso1choisi->getAttaque())
 		{
 			if (perso1choisi->CheckAttaque(perso2choisi))
 			{
-				perso1choisi->Attaque(perso2choisi,perso1choisi->GetLastTime(),dureeIteration.asSeconds());
+				perso1choisi->Attaque(perso2choisi, perso1choisi->GetLastTime());//augmenter% 
 			}
+			if (perso1choisi->GetLastTime() == 1)//droite
+			{
+				perso2choisi->move(perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
+			}
+			if (perso1choisi->GetLastTime() == 2)//gauche
+			{
+				perso2choisi->move(-perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
+			}	
 			perso1choisi->setAttaque(false);
 		}
 		//----------J2--------------------------------
@@ -171,19 +178,28 @@ void Jeu::CheckModif()
 		if (perso2choisi->getJump() && perso2choisi->getVershaut() && !perso2choisi->getAttaque() /*&& !perso2choisi->getVersbas()*/)
 		{
 			Animate(perso2choisi, "jump");
-			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
+			perso2choisi->move(0, (-dureeIteration.asSeconds()*((perso2choisi->GetPoids()/ Gravity) * VitesseSaut)));
 		}
 		if (!perso2choisi->getCollision() &&  perso1choisi->getVersbas() && !perso2choisi->getAttaque())
 		{
-			perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
+			perso2choisi->move(0, (dureeIteration.asSeconds()*((perso2choisi->GetPoids()) * Gravity)));
 		}
-		if (perso2choisi->getAttaque())
+		if ( perso2choisi->getAttaque())
 		{
 			if (perso2choisi->CheckAttaque(perso1choisi))
 			{
-				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime(), dureeIteration.asSeconds());
+				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime());//augmenter% 
 			}
-			perso2choisi->setAttaque(false);
+			
+			if (perso2choisi->GetLastTime() == 1)//droite
+			{
+				perso1choisi->move(perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
+			}
+			if (perso2choisi->GetLastTime() == 2)//gauche
+			{
+				perso1choisi->move(-perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
+			}
+			perso2choisi->setAttaque(false);	
 		}
 	} 
 }
@@ -211,6 +227,10 @@ void Jeu::CheckCollision(Personnage *michel)
 	}
 	michel->setCheckCollision(false);
 	
+}
+
+void Jeu::CheckAttaque(Personnage * michel)
+{
 }
 
 

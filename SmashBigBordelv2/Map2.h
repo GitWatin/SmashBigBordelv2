@@ -17,7 +17,7 @@ public:
 	//virtual std::string GetPathPlateforme();
 	//virtual std::string GetPathBackground();
 protected:
-	float Sx = 2000;
+	float Sx = 1600;
 	float Sy = 900;
 	std::string PathPlateformeTiny = "plat2_tiny.png";
 	std::string PathPlateformePetite = "plat2_petite.png";

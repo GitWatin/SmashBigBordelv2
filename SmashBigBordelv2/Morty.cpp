@@ -27,16 +27,15 @@ Morty::Morty(int x, int y) : Personnage()
 }
 
 
-void Morty::Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration)
+void Morty::Attaque(Personnage *NomCible, int TypeAttaque)
 {
-	NomCible->SetPourcentages(NomCible->GetPourcentages() + 10);
-	if (TypeAttaque = 1)//droite
+	if(TypeAttaque = 1)//droite
 	{
-		NomCible->move(NomCible->GetPourcentages()*dureeIteration, 0);
+		NomCible->SetPourcentages(NomCible->GetPourcentages() + 10);
 	}
 	if (TypeAttaque = 2)//gauche
 	{
-		NomCible->move(-NomCible->GetPourcentages()*dureeIteration, 0);
+		NomCible->SetPourcentages(NomCible->GetPourcentages() + 10);
 	}
 }
 

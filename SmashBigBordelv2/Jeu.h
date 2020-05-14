@@ -34,6 +34,7 @@ public:
 	 virtual void CheckVictory();
 
 	 void CheckCollision(Personnage *michel);
+	 void CheckAttaque(Personnage *michel);//pas besoin normalement
 
 	 Map* GetMapChoisie();
 	 Personnage* GetPerso1choisi();
@@ -81,7 +82,7 @@ protected:
 
 	const int VitesseDeplacement = 150;//  pixel/sec
 	const int VitesseSaut = 300;
-	const int Gravity = 150;
+	const int Gravity = 10;
 
 	const float Spawn_x1 = -100;
 	const float Spawn_y1 = -300;
