@@ -276,6 +276,11 @@ void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
 		this->Iteration = Iteration + 1;
 		this->sens = 2;//Gauche
 	}
+	if (timer_Move.asSeconds() >= 0.2 && direction == "jump")
+	{
+		perso->setTexture(*texture_move->SetTexture(NomTextureMove + "jump.png"));
+		clock_Move->restart();
+	}
 	else if (this->Iteration == 4)
 	{
 		this->Iteration = 0;
@@ -283,6 +288,53 @@ void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
 	delete texture_move;
 	
 }
+
+void Jeu::CheckVictory()
+{
+	// Function to test if game is done
+	Winner = new sf::Sprite;
+	TextureManager *texture_hud;
+	texture_hud = new TextureManager();
+	//std::cout<< perso1choisi.GetN <<std::endl;
+	if (perso1choisi->GetBouclier() <= 0 || perso1choisi->GetNbre_Vies() <= 0)
+	{
+
+
+		// Victoire du perso 2
+		Winner->setTextureRect(sf::IntRect(0, 0, 170, 248));
+		Winner->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
+		Winner->setScale(2, 2);
+		Winner->setPosition(0, 0);
+		Winner->setOrigin(Winner->getGlobalBounds().width / 2, Winner->getGlobalBounds().height / 2);
+		vectorHUD.push_back(Winner);
+
+
+		this->HUDTimer->setString(perso2choisi->GetNom() + " Winner ");
+		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
+
+
+	}
+
+	if (perso2choisi->GetBouclier() <= 0 || perso2choisi->GetNbre_Vies() <= 0)
+	{
+
+		// Victoire du perso 2
+		avatar1->setTextureRect(sf::IntRect(0, 0, 150, 150));
+		avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
+		avatar1->setPosition(0, 0);
+		avatar1->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
+		vectorHUD.push_back(Winner);
+
+		this->HUDTimer->setString(perso1choisi->GetNom() + " Winner ");
+		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
+
+
+	}
+
+	delete texture_hud;
+
+}
+
 
 void Jeu::CallModif()
 {
