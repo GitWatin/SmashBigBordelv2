@@ -79,7 +79,7 @@ protected:
 
 	const int VitesseDeplacement = 150;//  pixel/sec
 	const int VitesseSaut = 300;
-	const int Gravity = 150;
+	const int Gravity = 10;
 
 	const float Spawn_x1 = -100;
 	const float Spawn_y1 = -300;
