@@ -122,6 +122,8 @@ void Jeu::CheckInput(sf::Event event)
 
 void Jeu::CheckModif()
 {
+
+
 	// decommenter ca pour avoir le countdown
 	//if(true)
 	if (Game_State == true && Game_State_Final == true)
@@ -192,11 +194,11 @@ void Jeu::CheckModif()
 			
 			if (perso2choisi->GetLastTime() == 1)//droite
 			{
-				perso1choisi->move(perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
+					perso1choisi->move(perso1choisi->GetPourcentages()*dureeIteration.asSeconds() * 10, 0);	
 			}
 			if (perso2choisi->GetLastTime() == 2)//gauche
 			{
-				perso1choisi->move(-perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*10, 0);
+				perso1choisi->move(-perso1choisi->GetPourcentages()*dureeIteration.asSeconds() * 10, 0);
 			}
 			perso2choisi->setAttaque(false);	
 		}
@@ -879,6 +881,7 @@ void Jeu::StartMenu()
 				if (Play->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
 					Menu.close();
+					
 				}
 				if (MenuMap1->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
@@ -945,6 +948,16 @@ void Jeu::StartMenu()
 		Menu.draw(*SelectedMap);
 		Menu.display();
 
+		delete MenuJ1Morty;
+		delete MenuJ1Rick;
+		delete MenuJ2Morty;
+		delete MenuJ2Rick;
+		delete Joueur1;
+		delete Joueur2;
+		delete Play;
+		delete SelectedMap;
+		delete MenuMap1;
+		delete MenuMap2;
 
 		delete texture_menu;
 		delete font;
