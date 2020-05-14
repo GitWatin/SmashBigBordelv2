@@ -246,14 +246,31 @@ void Jeu::CheckVictory()
 	Winner = new sf::Sprite;
 
 	//std::cout<< perso1choisi.GetN <<std::endl;
-	if (perso1choisi->GetBouclier() <= 0 || perso1choisi->GetNbre_Vies() <= 0 || Perso1Bord == true || !perso1choisi->CheckZone(this->GetMapChoisie()->getBackground()))
+	if (perso1choisi->GetBouclier() <= 0 || Perso1Bord == true || !perso1choisi->CheckZone(this->GetMapChoisie()->getBackground()))
 	{
-		Perso2Gagne();
+		if (perso1choisi->GetNbre_Vies()<=0)
+		{
+			Perso2Gagne();
+		}
+		else
+		{
+			perso1choisi->SetNbre_Vies(perso1choisi->GetNbre_Vies()-1);
+			perso1choisi->setPosition(Spawn_x1, Spawn_y1);
+		}
+		
 	}
 
-	if (perso2choisi->GetBouclier() <= 0 || perso2choisi->GetNbre_Vies() <= 0 || Perso2Bord == true) // Rick Gagne
+	if (perso2choisi->GetBouclier() <= 0 || Perso2Bord == true || !perso2choisi->CheckZone(this->GetMapChoisie()->getBackground())) // Rick Gagne
 	{
-		Perso1Gagne();
+		if (perso2choisi->GetNbre_Vies() <= 0)
+		{
+			Perso1Gagne();
+		}
+		else
+		{
+			perso2choisi->SetNbre_Vies(perso2choisi->GetNbre_Vies() -1);
+			perso2choisi->setPosition(Spawn_x1, Spawn_y1);
+		}
 	}
 	if (Game_State_Final == false && Game_State==true)// Si le timer arrive à 0
 	{
