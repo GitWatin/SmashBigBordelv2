@@ -15,7 +15,9 @@ Jeu::Jeu()
 
 Jeu :: ~Jeu()
 {
-	delete Vueprincipal;
+	Entite *jeu;
+	jeu = new Entite();
+	delete jeu;
 	delete clock_Depart;
 	delete clock_HUD;
 	delete clock_jeu;
@@ -116,40 +118,40 @@ void Jeu::CheckModif()
 		if (perso1choisi->getMoveRight() && perso1choisi->getVersdroite()) //check si le bool est actif
 		{
 			
-			Animate(perso1choisi, "droite");
+			Animate(perso1choisi, "droite",1);
 			perso1choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso1choisi->getMoveLeft() && perso1choisi->getVersgauche()) //check si le bool est actif
 		{
-			Animate(perso1choisi, "gauche");
+			Animate(perso1choisi, "gauche",1);
 			perso1choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso1choisi->getJump() && perso1choisi->getVershaut()/*&& !perso2choisi->getVersbas()*/)
 		{
 			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso1choisi->GetPoids()) * VitesseSaut)));
 		}
-		if (!perso1choisi->getCollision() && perso1choisi->getVersbas() && !perso1choisi->getJump())
+		if (!perso1choisi->getCollision() && perso1choisi->getVersbas())
 		{
-			perso1choisi->move(0, (dureeIteration.asSeconds()*(perso1choisi->GetPoids()  * Gravity)));
+			perso1choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso1choisi->GetPoids()) * Gravity)));
 		}
 		//----------J2--------------------------------
 		if (perso2choisi->getMoveRight() && perso2choisi->getVersdroite())//check si le bool est actif
 		{
-			Animate(perso2choisi, "droite");
+			Animate(perso2choisi, "droite",2);
 			perso2choisi->move(dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso2choisi->getMoveLeft() && perso1choisi->getVersgauche()) //check si le bool est actif
 		{
-			Animate(perso2choisi, "gauche");
+			Animate(perso2choisi, "gauche",3);
 			perso2choisi->move(-dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * VitesseDeplacement), 0);
 		}
 		if (perso2choisi->getJump() && perso2choisi->getVershaut() /*&& !perso2choisi->getVersbas()*/)
 		{
 			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * VitesseSaut)));
 		}
-		if (!perso2choisi->getCollision() &&  perso1choisi->getVersbas() && !perso2choisi->getJump())
+		if (!perso2choisi->getCollision() &&  perso1choisi->getVersbas())
 		{
-			perso2choisi->move(0, (dureeIteration.asSeconds()*(perso1choisi->GetPoids()  * Gravity)));
+			perso2choisi->move(0, (dureeIteration.asSeconds()*((VitesseDeplacement / perso2choisi->GetPoids()) * Gravity)));
 		}
 	} 
 }
@@ -236,7 +238,7 @@ bool Jeu::CheckCollision(Entite *michel,Entite *plateforme,float repoussement)
 }*/
 
 
-void Jeu::Animate(Personnage *perso, std::string direction)
+void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
 {
 	
 	TextureManager *texture_move;
@@ -274,62 +276,12 @@ void Jeu::Animate(Personnage *perso, std::string direction)
 		this->Iteration = Iteration + 1;
 		this->sens = 2;//Gauche
 	}
-	if (timer_Move.asSeconds() >= 0.2 && direction == "jump")
-	{
-		perso->setTexture(*texture_move->SetTexture(NomTextureMove + "jump.png"));
-		clock_Move->restart();
-	}
 	else if (this->Iteration == 4)
 	{
 		this->Iteration = 0;
 	}
 	delete texture_move;
 	
-}
-
-void Jeu::CheckVictory()
-{
-	// Function to test if game is done
-	Winner= new sf::Sprite;
-	//std::cout<< perso1choisi.GetN <<std::endl;
-	if (perso1choisi->GetBouclier() <= 0 || perso1choisi->GetNbre_Vies() <= 0)
-	{
-		TextureManager *texture_hud;
-		texture_hud = new TextureManager();
-		
-		// Victoire du perso 2
-		Winner->setTextureRect(sf::IntRect(0, 0, 170, 248));
-		Winner->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
-		Winner->setScale(2, 2);
-		Winner->setPosition(0, 0);
-		Winner->setOrigin(Winner->getGlobalBounds().width / 2, Winner->getGlobalBounds().height / 2);
-		
-
-		this->HUDTimer->setString(perso2choisi->GetNom() + " Winner ");
-		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
-
-		
-	}
-
-	if (perso2choisi->GetBouclier() <= 0 || perso2choisi->GetNbre_Vies() <= 0)
-	{
-		TextureManager *texture_hud;
-		texture_hud = new TextureManager();
-
-		// Victoire du perso 2
-		avatar1->setTextureRect(sf::IntRect(0, 0, 150, 150));
-		avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
-		avatar1->setPosition(0, 0);
-		avatar1->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
-
-		this->HUDTimer->setString(perso1choisi->GetNom() + " Winner ");
-		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
-
-
-	}
-
-	delete texture_hud;
-
 }
 
 void Jeu::CallModif()
@@ -444,11 +396,11 @@ sf::View * Jeu::GetView()
 	return this->Vueprincipal;
 }
 
-void Jeu::SetView(sf::Vector2f* size)
+void Jeu::SetView(float TailleX , float TailleY)
 {
 	this->Vueprincipal = new sf::View();
 	this->Vueprincipal->setCenter(0 , 0);
-	this->Vueprincipal->setSize(*size);
+	this->Vueprincipal->setSize(TailleX , TailleY);
 }
 
 //---------------------Entite--------------------------------------------
@@ -472,14 +424,7 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
 	}
 }
-//void Jeu::DrawLimite(std::vector< Limite* > Dessin)
-//{
-//	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
-//	{
-//		fenetre->draw(*Dessin[i]);
-//		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
-//	}
-//}
+
 
 // Draw les elements de l'HUD
 void Jeu::DrawHUD()

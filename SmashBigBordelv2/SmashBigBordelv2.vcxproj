@@ -144,7 +144,6 @@
     <ClCompile Include="Entite.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Jeu.cpp" />
-    <ClCompile Include="Limite.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Map1.cpp" />
     <ClCompile Include="Map2.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="Entite.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Jeu.h" />
-    <ClInclude Include="Limite.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Map1.h" />
     <ClInclude Include="Map2.h" />

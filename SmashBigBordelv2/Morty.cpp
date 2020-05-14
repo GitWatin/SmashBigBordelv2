@@ -9,7 +9,7 @@ Morty::Morty(int x, int y) : Personnage()
 	this->SetBouclier(50);
 	this->SetPoids(60);
 	this->SetPourcentages(0);
-	this->SetNbre_Vies(0);
+	this->SetNbre_Vies(3);
 	this->SetNom("Morty");
 	this->SetAvatar("morty"); // Avatar de l'HUD
 	this->SetPathTexture("morty0.png");
