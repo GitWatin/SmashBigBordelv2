@@ -88,7 +88,7 @@ protected:
 	sf::Text *AtoutPerso1;
 		
 	sf::Text *HUDTimer;
-
+	sf::Sprite *Winner;
 	sf::Sprite *avatar2;
 	sf::Text *NomPerso2;
 	sf::Text *ViePerso2;

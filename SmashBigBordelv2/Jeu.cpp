@@ -319,10 +319,11 @@ void Jeu::CheckVictory()
 	{
 
 		// Victoire du perso 2
-		avatar1->setTextureRect(sf::IntRect(0, 0, 150, 150));
-		avatar1->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
-		avatar1->setPosition(0, 0);
-		avatar1->setOrigin(avatar1->getGlobalBounds().width / 2, avatar1->getGlobalBounds().height / 2);
+		Winner->setTextureRect(sf::IntRect(0, 0, 170, 248));
+		Winner->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
+		Winner->setScale(2, 2);
+		Winner->setPosition(0, 0);
+		Winner->setOrigin(Winner->getGlobalBounds().width / 2, Winner->getGlobalBounds().height / 2);
 		vectorHUD.push_back(Winner);
 
 		this->HUDTimer->setString(perso1choisi->GetNom() + " Winner ");
