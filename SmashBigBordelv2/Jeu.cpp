@@ -15,9 +15,7 @@ Jeu::Jeu()
 
 Jeu :: ~Jeu()
 {
-	Entite *jeu;
-	jeu = new Entite();
-	delete jeu;
+	delete Vueprincipal;
 	delete clock_Depart;
 	delete clock_HUD;
 	delete clock_jeu;
@@ -396,11 +394,11 @@ sf::View * Jeu::GetView()
 	return this->Vueprincipal;
 }
 
-void Jeu::SetView(float TailleX , float TailleY)
+void Jeu::SetView(sf::Vector2f* size)
 {
 	this->Vueprincipal = new sf::View();
 	this->Vueprincipal->setCenter(0 , 0);
-	this->Vueprincipal->setSize(TailleX , TailleY);
+	this->Vueprincipal->setSize(*size);
 }
 
 //---------------------Entite--------------------------------------------
@@ -424,14 +422,14 @@ void Jeu::DrawPlateforme(std::vector< Plateforme* > Dessin)
 		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
 	}
 }
-void Jeu::DrawLimite(std::vector< Limite* > Dessin)
-{
-	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
-	{
-		fenetre->draw(*Dessin[i]);
-		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
-	}
-}
+//void Jeu::DrawLimite(std::vector< Limite* > Dessin)
+//{
+//	for (int i = 0; i < Dessin.size(); i++) // dessin successif des Drawable mes_objets dans leurs ordre de création[1][2]
+//	{
+//		fenetre->draw(*Dessin[i]);
+//		//std::cout << "[Info]:Return dessin " << Dessin[i] << std::endl;
+//	}
+//}
 
 // Draw les elements de l'HUD
 void Jeu::DrawHUD()

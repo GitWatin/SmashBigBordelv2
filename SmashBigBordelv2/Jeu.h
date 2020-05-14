@@ -7,6 +7,7 @@
 #include "Entite.h"
 #include "Morty.h"
 #include "Rick.h"
+
 #include "Map1.h"
 #include "Map2.h"
 #include "Collisionneur.h"
@@ -40,12 +41,12 @@ public:
 	 Personnage* GetPerso2choisi();
 
 	 sf::View* GetView();
-	 void SetView(float TailleX, float TailleY);
+	 void SetView(sf::Vector2f *size);
 	 
 	 virtual void CallModif();
 	 virtual void DrawPersonnage(std::vector < Personnage* > Dessin);
 	 virtual void DrawPlateforme(std::vector < Plateforme* > Dessin);
-	 virtual void DrawLimite(std::vector<Limite*> Dessin);
+	 //virtual void DrawLimite(std::vector<Limite*> Dessin);
 	 virtual void DrawBackGround(Back_Ground *BackGround);
 
 	 virtual sf::Time GetdureeIteration();

@@ -6,10 +6,9 @@ class Limite :
 {
 
 public:
-	Limite(float x, float y, float width, float height);
-	virtual std::string GetPathTexture();
+	Limite();
 	~Limite();
 protected:
-	std::string PathTexture = "morty0.png";
+	
 };
 

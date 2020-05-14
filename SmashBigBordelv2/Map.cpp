@@ -9,10 +9,10 @@ Map::Map(int plateforme)
 		plateforme--;
 	}
 	this->BackGround = new Back_Ground();
-	for (int i = 0; i < 4; i++)
+	/*for (int i = 0; i < 4; i++)
 	{
 		this->limiteMap.push_back(new Limite()); 
-	}
+	}*/
 	
 	
 }
@@ -25,21 +25,21 @@ Map::~Map(void)
 		plateformes.pop_back();
 	}
 	delete BackGround;
-	for (int i = 0; i < limiteMap.size(); i++) // suppression des plateforme
-	{
-		delete limiteMap.back();
-		limiteMap.pop_back();
-	}
+	//for (int i = 0; i < limiteMap.size(); i++) // suppression des plateforme
+	//{
+	//	delete limiteMap.back();
+	//	limiteMap.pop_back();
+	//}
 }
 
 int Map::countPlatforms() {
 	return this->plateformes.size();
 }
 
-Limite * Map::getLimite(int pos)
-{
-	return this->limiteMap[pos];
-}
+//Limite * Map::getLimite(int pos)
+//{
+//	return this->limiteMap[pos];
+//}
 
 Plateforme * Map::getPlatform(int pos)
 {
@@ -51,10 +51,10 @@ std::vector< Plateforme* > Map::GetVectorPlatefomes()
 	return plateformes;
 }
 
-std::vector< Limite* > Map::GetlimiteMap()
-{
-	return this->limiteMap;
-}
+//std::vector< Limite* > Map::GetlimiteMap()
+//{
+//	return limiteMap;
+//}
 
 Back_Ground* Map::getBackground()
 {

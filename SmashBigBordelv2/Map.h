@@ -15,18 +15,20 @@ public:
 	~Map(void);
 	virtual void setBackground() = 0;
 	virtual void setPlatefomes() = 0;
+	virtual sf::Vector2f* getVue()=0;
 	int countPlatforms();
 
-	Limite*getLimite(int pos);
+	//Limite*getLimite(int pos);
 	Plateforme* getPlatform(int pos);
 
 	virtual std::vector< Plateforme* >GetVectorPlatefomes();
-	virtual std::vector< Limite* >GetlimiteMap();
+	//virtual std::vector< Limite* >GetlimiteMap();
 	Back_Ground* getBackground();
 
 
 protected:
-	std::vector < Limite* > limiteMap;
+	//std::vector < Limite* > limiteMap;
 	std::vector < Plateforme* > plateformes;
 	Back_Ground *BackGround;
+	sf::Vector2f *size;
 };

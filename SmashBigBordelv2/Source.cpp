@@ -62,7 +62,7 @@ void main(int argc,char** argv[])
 				Game.GetWindow()->close();
 		}
 		//-------------------------------- Modification des états des objets--------------------
-		Game.SetView(1600, 900);//center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
+		Game.SetView(Game.GetMapChoisie()->getVue());//center les coordoné 2D de la window au centre de la vue  // Taille de la vue si x=1600 ; y = 900 => vue 16:9
 		Game.CheckModif();
 		Game.CheckCollision(Game.GetPerso1choisi());
 		Game.CheckCollision(Game.GetPerso2choisi());
@@ -79,7 +79,7 @@ void main(int argc,char** argv[])
 
 		Game.GetWindow()->setView(*Game.GetView());
 		Game.DrawBackGround(Game.GetMapChoisie()->getBackground());
-		Game.DrawLimite(Game.GetMapChoisie()->GetlimiteMap());
+		//Game.DrawLimite(Game.GetMapChoisie()->GetlimiteMap());
 		Game.DrawPlateforme(Game.GetMapChoisie()->GetVectorPlatefomes());
 		Game.DrawPersonnage(Game.GetPerso1choisi()->GetVectorPersonnage());
 		Game.DrawPersonnage(Game.GetPerso2choisi()->GetVectorPersonnage());
