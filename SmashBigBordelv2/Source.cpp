@@ -62,6 +62,7 @@ void main(int argc,char** argv[])
 	
 	//---------------------------- Création de la fenêtre -----------------------------------------
 	
+
 	Jeu Game;
 	
 	//window = new sf::RenderWindow (sf::VideoMode(1600, 900), "SmashBigBordel", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings(32));
