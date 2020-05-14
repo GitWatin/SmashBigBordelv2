@@ -59,8 +59,9 @@ void Jeu::CheckInput(sf::Event event)
 		case sf::Keyboard::Up:
 			perso1choisi->setJump(true);
 			break;
-		case sf::Keyboard::LControl:
-			perso1choisi->setAttaque(true);
+		case sf::Keyboard::RControl:
+			if(!perso1choisi->getAttaque())perso1choisi->setAttaque(true);
+			
 			break;
 
 			//---------J2--------------------------------
@@ -75,7 +76,7 @@ void Jeu::CheckInput(sf::Event event)
 			perso2choisi->setJump(true);
 			break;
 		case sf::Keyboard::Space:
-			perso2choisi->setAttaque(true);
+			if (!perso2choisi->getAttaque())perso2choisi->setAttaque(true);
 			break;
 		}
 		break;
@@ -154,9 +155,16 @@ void Jeu::CheckModif()
 		{
 			if (perso1choisi->CheckAttaque(perso2choisi))
 			{
-				perso1choisi->Attaque(perso2choisi,perso1choisi->GetLastTime(),dureeIteration.asSeconds());
+				perso1choisi->Attaque(perso2choisi,perso1choisi->GetLastTime());
 			}
-			perso1choisi->setAttaque(false);
+			if (perso1choisi->GetLastTime() == 1)//droite
+			{
+				perso2choisi->move(perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*VitesseDeplacement, 0);
+			}
+			if (perso1choisi->GetLastTime() == 2 )//gauche
+			{
+				perso2choisi->move(-perso2choisi->GetPourcentages()*dureeIteration.asSeconds()*VitesseDeplacement, 0);
+			}
 		}
 		//----------J2--------------------------------
 		if (perso2choisi->getMoveRight() && perso2choisi->getVersdroite() && !perso2choisi->getAttaque())//check si le bool est actif
@@ -182,9 +190,16 @@ void Jeu::CheckModif()
 		{
 			if (perso2choisi->CheckAttaque(perso1choisi))
 			{
-				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime(), dureeIteration.asSeconds());
+				perso2choisi->Attaque(perso1choisi, perso2choisi->GetLastTime());
 			}
-			perso2choisi->setAttaque(false);
+			if (perso2choisi->GetLastTime() == 1)//droite
+			{
+				perso1choisi->move(perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*VitesseDeplacement, 0);
+			}
+			if (perso2choisi->GetLastTime() == 2)//gauche
+			{
+				perso1choisi->move(-perso1choisi->GetPourcentages()*dureeIteration.asSeconds()*VitesseDeplacement, 0);
+			}
 		}
 	} 
 }
@@ -216,10 +231,6 @@ void Jeu::CheckCollision(Personnage *michel)
 
 void Jeu::CheckAttaque(Personnage * michel)
 {
-	if (michel->getAttaque())
-	{
-
-	}
 }
 
 

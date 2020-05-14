@@ -6,7 +6,7 @@ class Rick :
 {
 public:
 	Rick(int x, int y);
-	void Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration);
+	void Attaque(Personnage *NomCible, int TypeAttaque);
 	virtual void SetPathTexture(std::string path_texture_rick);
 
 	std::string GetPathTexture();
