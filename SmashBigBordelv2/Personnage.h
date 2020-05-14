@@ -29,7 +29,7 @@ class Personnage :
 	virtual void setMoveLeft(bool ok);
 	virtual void setJump(bool ok);
 
-	float LastTime;
+	int LastTime;
 
 	virtual bool getMoveRight();
 	virtual bool getMoveLeft();

@@ -248,31 +248,30 @@ void Jeu::Animate(Personnage *perso, std::string direction,int NumPerso)
 
 	if (timer_Move.asSeconds() >= 0.2 && direction == "droite")
 	{
-		std::cout << sens << std::endl;
-		if (sens == 2)
+		if (perso->LastTime == 2)
 		{
 			perso->setScale(-1, 1);
-			this->sens = 1;
+			perso->LastTime = 1;
 		}
 		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
 		//perso->setScale(-1, 1);
 
 		clock_Move->restart();
 		this->Iteration = Iteration + 1;
-		this->sens = 1;//Droite
+		perso->LastTime = 1;//Droite
 	}
 	if (timer_Move.asSeconds() >= 0.2 && direction == "gauche")
 	{
 		std::cout << sens << std::endl;
-		if (sens == 1)
+		if (perso->LastTime == 1)
 		{	
 			perso->setScale(1, 1);
-			this->sens = 2;
+			perso->LastTime = 2;
 		}
 		perso->setTexture(*texture_move->SetTexture(NomTextureMove + std::to_string(Iteration) + ".png"));
 		clock_Move->restart();
 		this->Iteration = Iteration + 1;
-		this->sens = 2;//Gauche
+		perso->LastTime = 2;//Gauche
 	}
 	if (timer_Move.asSeconds() >= 0.2 && direction == "jump")
 	{
@@ -294,14 +293,13 @@ void Jeu::CheckVictory()
 	TextureManager *texture_hud;
 	texture_hud = new TextureManager();
 	//std::cout<< perso1choisi.GetN <<std::endl;
-	if (perso1choisi->GetBouclier() <= 0 || perso1choisi->GetNbre_Vies() <= 0)
+	if (perso1choisi->GetBouclier() <= 0 || perso1choisi->GetNbre_Vies() <= 0 || Perso1Bord == true)
 	{
 
-
 		// Victoire du perso 2
-		Winner->setTextureRect(sf::IntRect(0, 0, 170, 248));
+		Winner->setTextureRect(sf::IntRect(0, 0, 85, 124));
 		Winner->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
-		Winner->setScale(2, 2);
+		//Winner->setScale(2, 2);
 		Winner->setPosition(0, 0);
 		Winner->setOrigin(Winner->getGlobalBounds().width / 2, Winner->getGlobalBounds().height / 2);
 		vectorHUD.push_back(Winner);
@@ -310,27 +308,23 @@ void Jeu::CheckVictory()
 		this->HUDTimer->setString(perso2choisi->GetNom() + " Winner ");
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 
-
 	}
 
-	if (perso2choisi->GetBouclier() <= 0 || perso2choisi->GetNbre_Vies() <= 0)
+	if (perso2choisi->GetBouclier() <= 0 || perso2choisi->GetNbre_Vies() <= 0 || Perso2Bord == true) // Rick Gagne
 	{
-
 		// Victoire du perso 2
-		Winner->setTextureRect(sf::IntRect(0, 0, 170, 248));
-		Winner->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
-		Winner->setScale(2, 2);
-		Winner->setPosition(0, 0);
-		Winner->setOrigin(Winner->getGlobalBounds().width / 2, Winner->getGlobalBounds().height / 2);
-		vectorHUD.push_back(Winner);
+		perso1choisi->setTexture(*texture_hud->SetTexture(perso1choisi->GetAvatar() + "victory.png"));
+		perso2choisi->setTextureRect(sf::IntRect(0, 0, 78, 62));
+		perso2choisi->setTexture(*texture_hud->SetTexture(perso2choisi->GetAvatar() + "victory.png"));
+
+		Game_State = false;
+		Game_State_Final = false;
 
 		this->HUDTimer->setString(perso1choisi->GetNom() + " Winner ");
 		this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
-
-
 	}
 
-	delete texture_hud;
+	//delete texture_hud;
 
 }
 

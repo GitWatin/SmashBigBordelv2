@@ -77,9 +77,9 @@ protected:
 	const int Gravity = 150;
 
 	const float Spawn_x1 = 100;
-	const float Spawn_y1 = -500;
+	const float Spawn_y1 = -300;
 	const float Spawn_x2 = -100;
-	const float Spawn_y2 = -500;
+	const float Spawn_y2 = -300;
 	// Label HUD
 	sf::Sprite *avatar1;
 	sf::Text *NomPerso1;
@@ -128,6 +128,8 @@ protected:
 	// Variable état jeu if false = jeu terminé
 	bool Game_State = true;
 	bool Game_State_Final;
+	bool Perso1Bord;
+	bool Perso2Bord;
 	bool CountDownDone;
 	int CountDownInt;
 
