@@ -30,7 +30,8 @@ public:
 	 virtual void ChoixMap();
 	 virtual void ChoixPerso();
 
-	 virtual void Animate(Personnage *perso, std::string direction,int NumPerso);
+	 virtual void Animate(Personnage *perso, std::string direction);
+	 virtual void CheckVictory();
 
 	 void CheckCollision(Personnage *michel);
 
@@ -86,7 +87,7 @@ protected:
 	sf::Text *AtoutPerso1;
 		
 	sf::Text *HUDTimer;
-
+	sf::Sprite *Winner;
 	sf::Sprite *avatar2;
 	sf::Text *NomPerso2;
 	sf::Text *ViePerso2;
