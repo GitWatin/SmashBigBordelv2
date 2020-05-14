@@ -39,7 +39,7 @@ public:
 	 Personnage* GetPerso2choisi();
 
 	 sf::View* GetView();
-	 void SetView(float TailleX, float TailleY);
+	 void SetView(sf::Vector2f* size);
 	 
 	 virtual void CallModif();
 	 virtual void DrawPersonnage(std::vector < Personnage* > Dessin);

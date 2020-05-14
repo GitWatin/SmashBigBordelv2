@@ -56,6 +56,11 @@ void Map2::setBackground()
 
 	delete t;
 }
+sf::Vector2f *Map2::getVue()
+{
+	size = new sf::Vector2f(Sx, Sy);
+	return this->size;
+}
 std::string Map2::GetPath(int taille)
 {
 	if(taille == 1)
