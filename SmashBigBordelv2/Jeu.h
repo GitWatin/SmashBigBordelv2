@@ -80,9 +80,9 @@ protected:
 	const int VitesseSaut = 300;
 	const int Gravity = 150;
 
-	const float Spawn_x1 = 100;
+	const float Spawn_x1 = -100;
 	const float Spawn_y1 = -300;
-	const float Spawn_x2 = -100;
+	const float Spawn_x2 = 100;
 	const float Spawn_y2 = -300;
 	// Label HUD
 	sf::Sprite *avatar1;
