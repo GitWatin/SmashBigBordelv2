@@ -10,7 +10,7 @@ class Personnage :
 	Personnage();
 	~Personnage();
 
-	virtual void Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration) = 0;
+	virtual void Attaque(Personnage *NomCible, int TypeAttaque) = 0;
 	virtual void SetPourcentages(int percent);
 	virtual int GetPourcentages();
 	virtual void SetPoids(float poids);

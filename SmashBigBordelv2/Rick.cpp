@@ -28,20 +28,16 @@ Rick::Rick(int x,int y) : Personnage()
 
 
 
-void Rick::Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration)
+void Rick::Attaque(Personnage *NomCible, int TypeAttaque)
 {
 	if (TypeAttaque = 1)//droite
 	{
 		NomCible->SetPourcentages(NomCible->GetPourcentages() + 10);
-		NomCible->move(NomCible->GetPourcentages()*dureeIteration* 10, 0);
 	}
 	if (TypeAttaque = 2)//gauche
 	{
 		NomCible->SetPourcentages(NomCible->GetPourcentages() + 10);
-		NomCible->move(-NomCible->GetPourcentages()*dureeIteration * 10, 0);
-
 	}
-	this->setAttaque(false);
 }
 
 void Rick::SetPathTexture(std::string path_texture_rick)

@@ -6,7 +6,7 @@ class Morty :
 {
 public:
 	Morty(int x, int y);
-	void Attaque(Personnage *NomCible, int TypeAttaque, float dureeIteration);
+	void Attaque(Personnage *NomCible, int TypeAttaque);
 	std::string GetPathTexture();
 	virtual void SetPathTexture(std::string path_perso);
 
