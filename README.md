@@ -1,6 +1,7 @@
 # SmashBigBordelv2
 🕹️ SmashBros in C++ using SFML Library 🖥️
 
+Projet académique C++
 
 Ressources utilisé :
 
