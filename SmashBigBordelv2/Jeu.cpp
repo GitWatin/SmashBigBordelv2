@@ -144,7 +144,11 @@ void Jeu::CheckModif()
 		if (perso1choisi->getJump() && perso1choisi->getVershaut() && !perso1choisi->getAttaque()/*&& !perso2choisi->getVersbas()*/)
 		{
 			Animate(perso1choisi, "jump");
-			perso1choisi->move(0, (-dureeIteration.asSeconds()*(( perso1choisi->GetPoids()/Gravity) * VitesseSaut)));
+			
+			perso1choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut/perso1choisi->GetPoids()) * Gravity*50)));
+
+			//perso1choisi->move(0, (-dureeIteration.asSeconds()*((perso1choisi->GetPoids()/Gravity) * VitesseSaut)));
+			
 		}
 		if (!perso1choisi->getCollision() && perso1choisi->getVersbas() && !perso1choisi->getAttaque())
 		{
@@ -181,7 +185,8 @@ void Jeu::CheckModif()
 		if (perso2choisi->getJump() && perso2choisi->getVershaut() && !perso2choisi->getAttaque() /*&& !perso2choisi->getVersbas()*/)
 		{
 			Animate(perso2choisi, "jump");
-			perso2choisi->move(0, (-dureeIteration.asSeconds()*((perso2choisi->GetPoids()/ Gravity) * VitesseSaut)));
+			perso2choisi->move(0, (-dureeIteration.asSeconds()*((VitesseSaut / perso2choisi->GetPoids()) * Gravity*50)));
+			//perso2choisi->move(0, (-dureeIteration.asSeconds()*((perso2choisi->GetPoids()/ Gravity) * VitesseSaut)));
 		}
 		if (!perso2choisi->getCollision() &&  perso1choisi->getVersbas() && !perso2choisi->getAttaque())
 		{
