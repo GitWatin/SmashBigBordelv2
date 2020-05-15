@@ -784,7 +784,7 @@ void Jeu::PersoGagne(Personnage *perso1,Personnage *perso2)
 
 	Game_State_Final = false;
 
-	this->HUDTimer->setString(perso1->GetNom() + " Winner ");
+	this->HUDTimer->setString(perso2->GetNom() + " Winner ");
 	this->HUDTimer->setOrigin(HUDTimer->getGlobalBounds().width / 2, HUDTimer->getGlobalBounds().height / 2);
 	delete texture_Rick;
 }
@@ -890,25 +890,25 @@ void Jeu::StartMenu()
 				if (MenuJ1Morty->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
 					std::cout << "Choix 1 : " << choix << std::endl;
-					this->choix1 = 1;
+					this->choix1 = 2;
 					NomJoueur1 = "Morty";
 				}
 				if (MenuJ1Rick->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
 					std::cout << "Choix 1 : " << choix << std::endl;
-					this->choix1 = 2;
+					this->choix1 = 1;
 					NomJoueur1 = "Rick";
 				}
 				if (MenuJ2Morty->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
 					std::cout << "Choix 1 : " << choix << std::endl;
-					this->choix2 = 1;
+					this->choix2 = 2;
 					NomJoueur2 = "Morty";
 				}
 				if (MenuJ2Rick->getGlobalBounds().contains(Menu.mapPixelToCoords(sf::Mouse::getPosition(Menu))))
 				{
 					std::cout << "Choix 1 : " << choix << std::endl;
-					this->choix2 = 2;
+					this->choix2 = 1;
 					NomJoueur2 = "Rick";
 				}
 			}
